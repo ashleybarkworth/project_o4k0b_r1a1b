@@ -96,7 +96,7 @@ export class LogicComparison implements IFilter {
     public validCourseSection(courseSection: ICourseSection): boolean {
         return this.innerFilters
             .map((filter) => filter.validCourseSection(courseSection))
-            .reduce(this.boolCombine, true);
+            .reduce(this.boolCombine);
     }
 }
 

@@ -24,6 +24,7 @@ describe("InsightFacade Add/Remove Dataset", function () {
     // automatically be loaded in the Before All hook.
     const datasetsToLoad: { [id: string]: string } = {
         courses: "./test/data/courses.zip",
+        courses2: "./test/data/courses2.zip",
     };
 
     let insightFacade: InsightFacade;
@@ -159,24 +160,6 @@ describe("InsightFacade PerformQuery", () => {
         Log.test(`AfterTest: ${this.currentTest.title}`);
     });
 
-    it("", async () => {
-        let response: any[] = await insightFacade.performQuery({
-            WHERE: {
-                IS: {
-                    courses_dept: "*"
-                }
-            },
-            OPTIONS: {
-                COLUMNS: ["courses_avg"],
-                ORDER: "courses_avg"
-            }
-        });
-        expect(response).to.deep.equal([{courses_avg: 30},
-            {courses_avg: 50},
-            {courses_avg: 80},
-            {courses_avg: 98}]);
-    });
-
     // Dynamically create and run a test for each query in testQueries
     it("Should run test queries", function () {
         describe("Dynamic InsightFacade PerformQuery tests", function () {
@@ -190,7 +173,7 @@ describe("InsightFacade PerformQuery", () => {
                         response = err;
                     } finally {
                         if (test.isQueryValid) {
-                            expect(response).to.deep.equal(test.result);
+                            expect(response).to.have.members(test.result as any[]);
                         } else {
                             expect(response).to.be.instanceOf(InsightError);
                         }
