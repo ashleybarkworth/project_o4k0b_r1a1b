@@ -1,4 +1,4 @@
-import { expect } from "chai";
+import {expect} from "chai";
 
 import {
     InsightDatasetKind,
@@ -38,7 +38,7 @@ describe("InsightFacade Add/Remove Dataset", function () {
                 loadDatasetPromises.push(TestUtil.readFileAsync(path));
             }
             const loadedDatasets = (await Promise.all(loadDatasetPromises)).map((buf, i) => {
-                return { [Object.keys(datasetsToLoad)[i]]: buf.toString("base64") };
+                return {[Object.keys(datasetsToLoad)[i]]: buf.toString("base64")};
             });
             datasets = Object.assign({}, ...loadedDatasets);
             expect(Object.keys(datasets)).to.have.length.greaterThan(0);
@@ -123,7 +123,7 @@ describe("InsightFacade PerformQuery", () => {
                 loadDatasetPromises.push(TestUtil.readFileAsync(path));
             }
             const loadedDatasets = (await Promise.all(loadDatasetPromises)).map((buf, i) => {
-                return { [Object.keys(datasetsToQuery)[i]]: buf.toString("base64") };
+                return {[Object.keys(datasetsToQuery)[i]]: buf.toString("base64")};
             });
             expect(loadedDatasets).to.have.length.greaterThan(0);
 
@@ -157,6 +157,24 @@ describe("InsightFacade PerformQuery", () => {
 
     afterEach(function () {
         Log.test(`AfterTest: ${this.currentTest.title}`);
+    });
+
+    it("", async () => {
+        let response: any[] = await insightFacade.performQuery({
+            WHERE: {
+                IS: {
+                    courses_dept: "*"
+                }
+            },
+            OPTIONS: {
+                COLUMNS: ["courses_avg"],
+                ORDER: "courses_avg"
+            }
+        });
+        expect(response).to.deep.equal([{courses_avg: 30},
+            {courses_avg: 50},
+            {courses_avg: 80},
+            {courses_avg: 98}]);
     });
 
     // Dynamically create and run a test for each query in testQueries

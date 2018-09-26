@@ -9,6 +9,7 @@ export interface ICourseSection {
     audit: number;
     uuid: string;
     year: number;
+    [key: string]: any;
 }
 
 export interface IFullDataset {

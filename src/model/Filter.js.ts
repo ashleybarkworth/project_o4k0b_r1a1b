@@ -1,4 +1,5 @@
 import {ICourseSection} from "./IFullDataset";
+import {InsightError} from "../controller/IInsightFacade";
 
 export interface IFilter {
     validCourseSection(courseSection: ICourseSection): boolean;
@@ -26,8 +27,23 @@ export class SComparison implements IFilter {
     }
 
     public validCourseSection(courseSection: ICourseSection): boolean {
-        // TODO
-        return true;
+        let val = courseSection[this.key];
+        if (typeof val !== "string" && !(val instanceof String)) {
+            throw new InsightError("Something went very wrong");
+        }
+        let stringVal = val as string;
+        let hasStartAsterisk: boolean = this.searchText.startsWith("*");
+        let hasEndAsterisk: boolean = this.searchText.endsWith("*");
+        let text: string = this.searchText.replace("*", "");
+        if (!hasStartAsterisk && !hasEndAsterisk) {
+            return text === stringVal;
+        } else if (!hasEndAsterisk) {
+            return stringVal.endsWith(text);
+        } else if (!hasStartAsterisk) {
+            return stringVal.startsWith(text);
+        } else {
+            return stringVal.includes(text);
+        }
     }
 }
 
@@ -41,8 +57,12 @@ export class MComparator implements IFilter {
     }
 
     public validCourseSection(courseSection: ICourseSection): boolean {
-        // TODO replace zero with value of key field
-        return this.comparison(50);
+        let val = courseSection[this.key];
+        if (Number.isNaN(val)) {
+            throw new InsightError("Something went very wrong");
+        }
+        let valAsNum = val as number;
+        return this.comparison(valAsNum);
     }
 }
 

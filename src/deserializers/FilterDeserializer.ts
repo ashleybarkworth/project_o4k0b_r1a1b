@@ -6,12 +6,19 @@ import {
     LtComparator,
     MComparator, Negation,
     OrComparison, SComparison
-} from "./model/Filter.js.js";
-import {InsightError} from "./controller/IInsightFacade";
+} from "../model/Filter.js.js";
+import {InsightError} from "../controller/IInsightFacade";
+import {ICourseSection} from "../model/IFullDataset";
 
 export class FilterDeserializer {
     private filters: string[] = ["AND", "OR", "LT", "GT", "EQ", "IS", "NOT"];
-    private datasetKey: string = null;
+    private validNumberTypeKeys = ["avg", "pass", "fail", "audit", "year"];
+    private validStringTypeKeys: string[] = ["dept", "id", "instructor", "title", "uuid"];
+    private datasetKey: string;
+
+    constructor(datsetKey: string) {
+        this.datasetKey = datsetKey;
+    }
 
     public deserialize(filter: any): IFilter {
         let keys: string[] = Object.keys(filter);
@@ -50,7 +57,13 @@ export class FilterDeserializer {
         }
         let keyAndId = keys[0];
         let key = this.getKey(keyAndId);
-        let val: number = filterBody[keyAndId];
+        let val: any = filterBody[keyAndId];
+        if (!this.validNumberTypeKeys.includes(key)) {
+            throw new InsightError("Passed non-numeric column key to MComparator");
+        }
+        if (Number.isNaN(val)) {
+            throw new InsightError("Attempted to pass a non-number value into MComparator");
+        }
         switch (type) {
             case "LT":
                 return new LtComparator(key, val);
@@ -75,6 +88,14 @@ export class FilterDeserializer {
         let keyAndId = keys[0];
         let key = this.getKey(keyAndId);
         let searchString: string = filterBody[keyAndId];
+
+        if (!this.validStringTypeKeys.includes(key)) {
+            throw new InsightError("Passed invalid column key into SComparison");
+        }
+        if (searchString.length > 2 && searchString.substring(1, searchString.length - 1).includes("*")) {
+            throw new InsightError("Invalid wildcard character in string");
+        }
+
         return new SComparison(key, searchString);
     }
 
@@ -85,12 +106,12 @@ export class FilterDeserializer {
         }
         let datasetId = split[0];
         let key = split[1];
-        if (this.datasetKey === null) {
-            this.datasetKey = datasetId;
-        } else if (this.datasetKey !== datasetId) {
+        if (this.datasetKey !== datasetId) {
             throw new InsightError("Mismatching dataset ids within query");
         }
-        // TODO kayla check that key is valid
+        if (!this.validStringTypeKeys.includes(key) && !this.validNumberTypeKeys.includes(key)) {
+            throw new InsightError("Invalid key");
+        }
         return key;
     }
 }
