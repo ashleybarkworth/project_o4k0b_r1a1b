@@ -1,6 +1,7 @@
 import Log from "../Util";
 import {IInsightFacade, InsightDataset, InsightDatasetKind} from "./IInsightFacade";
 import {InsightError, NotFoundError} from "./IInsightFacade";
+import {IDataset} from "../model/IDataset";
 
 /**
  * This is the main programmatic entry point for the project.
@@ -8,6 +9,7 @@ import {InsightError, NotFoundError} from "./IInsightFacade";
  *
  */
 export default class InsightFacade implements IInsightFacade {
+    private loadedDataSets: IDataset[];
 
     constructor() {
         Log.trace("InsightFacadeImpl::init()");
@@ -22,6 +24,11 @@ export default class InsightFacade implements IInsightFacade {
     }
 
     public performQuery(query: any): Promise <any[]> {
+        if (!query.hasOwnProperty("WHERE")) {
+            throw new InsightError("Missing WHERE key");
+        }
+        let filter = query.WHERE;
+        let keys: string[] = Object.keys(filter);
         return Promise.reject("Not implemented.");
     }
 
