@@ -1,4 +1,4 @@
-import {ICourseSection} from "./IDataset";
+import {ICourseSection} from "./IFullDataset";
 
 export interface IFilter {
     validCourseSection(courseSection: ICourseSection): boolean;

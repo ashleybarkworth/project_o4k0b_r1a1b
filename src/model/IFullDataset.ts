@@ -11,7 +11,7 @@ export interface ICourseSection {
     year: number;
 }
 
-export interface IDataset {
+export interface IFullDataset {
     id: string;
     sections: ICourseSection[];
 }

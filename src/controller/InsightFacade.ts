@@ -1,7 +1,7 @@
 import Log from "../Util";
 import {IInsightFacade, InsightDataset, InsightDatasetKind} from "./IInsightFacade";
 import {InsightError, NotFoundError} from "./IInsightFacade";
-import {IDataset} from "../model/IDataset";
+import {IFullDataset} from "../model/IFullDataset";
 
 /**
  * This is the main programmatic entry point for the project.
@@ -9,7 +9,7 @@ import {IDataset} from "../model/IDataset";
  *
  */
 export default class InsightFacade implements IInsightFacade {
-    private loadedDataSets: IDataset[];
+    private loadedDataSets: IFullDataset[];
 
     constructor() {
         Log.trace("InsightFacadeImpl::init()");
