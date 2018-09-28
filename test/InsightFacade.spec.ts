@@ -1,6 +1,7 @@
 import {expect} from "chai";
 
 import {
+    InsightDataset,
     InsightDatasetKind,
     InsightError,
     NotFoundError
@@ -67,8 +68,18 @@ describe("InsightFacade Add/Remove Dataset", function () {
     afterEach(function () {
         Log.test(`AfterTest: ${this.currentTest.title}`);
     });
+    it("Should list no datasets if none have been added", async () => {
+        let response: InsightDataset[];
+        try {
+            response = await insightFacade.listDatasets();
+        } catch (err) {
+            response = err;
+        } finally {
+            expect(response).to.have.length(0);
+        }
+    });
 
-    it("Should add a valid dataset", async function () {
+    it("Should add a valid dataset", async () => {
         const id: string = "courses";
         let response: string[];
 
@@ -77,12 +88,360 @@ describe("InsightFacade Add/Remove Dataset", function () {
         } catch (err) {
             response = err;
         } finally {
-            expect(response).to.deep.equal([id]);
+            expect(response).to.have.length(1);
+        }
+    });
+
+    it("Should list one dataset if only one has been added", async () => {
+        let response: InsightDataset[];
+        try {
+            response = await insightFacade.listDatasets();
+        } catch (err) {
+            response = err;
+        } finally {
+            expect(response).to.have.length(1);
+        }
+    });
+
+    it("Should add a second valid dataset", async () => {
+        const id: string = "rooms";
+        let response: string[];
+
+        try {
+            response = await insightFacade.addDataset(id, datasets[id], InsightDatasetKind.Courses);
+        } catch (err) {
+            response = err;
+        } finally {
+            expect(response).to.have.length(2);
+        }
+    });
+
+    it("Should list multiple datasets if more than one has been added", async () => {
+        let response: InsightDataset[];
+        try {
+            response = await insightFacade.listDatasets();
+        } catch (err) {
+            response = err;
+        } finally {
+            expect(response).to.have.length(2);
+        }
+    });
+
+    it("Should add a dataset with courses that have valid&invalid sections", async () => {
+        const id: string = "someCoursesWithInvalidSections";
+        let response: string[];
+
+        try {
+            response = await insightFacade.addDataset(id, datasets[id], InsightDatasetKind.Courses);
+        } catch (err) {
+            response = err;
+        } finally {
+            expect(response).to.have.length(3);
+        }
+
+    });
+
+    it("Should add a dataset with one course that has zero valid course sections", async () => {
+        const id: string = "oneCourseHasNoValidSections";
+        let response: string[];
+
+        try {
+            response = await insightFacade.addDataset(id, datasets[id], InsightDatasetKind.Courses);
+        } catch (err) {
+            response = err;
+        } finally {
+            expect(response).to.have.length(4);
+        }
+
+    });
+
+    it("Should add a dataset with one course that contains invalid JSON", async () => {
+        const id: string = "oneCourseContainsInvalidJSON";
+        let response: string[];
+
+        try {
+            response = await insightFacade.addDataset(id, datasets[id], InsightDatasetKind.Courses);
+        } catch (err) {
+            response = err;
+        } finally {
+            expect(response).to.have.length(5);
+        }
+
+    });
+
+    it("Should throw an InsightError when adding a dataset with no json files", async () => {
+        const id: string = "coursesJPEG";
+        let response: any[];
+
+        try {
+            response = await insightFacade.addDataset(id, datasets[id], InsightDatasetKind.Courses);
+        } catch (err) {
+            response = err;
+        } finally {
+            expect(response).to.be.a.instanceOf(InsightError);
+        }
+    });
+
+    it("Should throw an InsightError when adding a dataset with an existing id", async () => {
+        const id: string = "courses";
+        let response: any[];
+
+        try {
+            response = await insightFacade.addDataset(id, datasets[id], InsightDatasetKind.Courses);
+        } catch (err) {
+            response = err;
+        } finally {
+            expect(response).to.be.a.instanceOf(InsightError);
+        }
+    });
+
+    it("Should throw an InsightError when adding a dataset that's not a ZIP file", async () => {
+        const id: string = "testFile";
+        let response: any[];
+
+        try {
+            response = await insightFacade.addDataset(id, datasets[id], InsightDatasetKind.Courses);
+        } catch (err) {
+            response = err;
+        } finally {
+            expect(response).to.be.a.instanceOf(InsightError);
+        }
+    });
+
+    it("Should throw an InsightError when adding a dataset not under /courses", async () => {
+        const id: string = "notCoursesFolder";
+        let response: any[];
+
+        try {
+            response = await insightFacade.addDataset(id, datasets[id], InsightDatasetKind.Courses);
+        } catch (err) {
+            response = err;
+        } finally {
+            expect(response).to.be.a.instanceOf(InsightError);
+        }
+    });
+
+    it("Should throw an InsightError when adding a dataset with zero valid course sections", async () => {
+        const id: string = "zeroValidCourseSections";
+        let response: any[];
+
+        try {
+            response = await insightFacade.addDataset(id, datasets[id], InsightDatasetKind.Courses);
+        } catch (err) {
+            response = err;
+        } finally {
+            expect(response).to.be.a.instanceOf(InsightError);
+        }
+    });
+
+    it("Should throw an InsightError when adding a dataset that does not exist", async () => {
+        const id: string = "professors";
+        let response: any[];
+
+        try {
+            response = await insightFacade.addDataset(id, datasets[id], InsightDatasetKind.Courses);
+        } catch (err) {
+            response = err;
+        } finally {
+            expect(response).to.be.a.instanceOf(InsightError);
+        }
+    });
+
+    it("Should throw an InsightError when adding a dataset that contains no JSON files", async () => {
+        const id: string = "coursesAllImages";
+        let response: any[];
+
+        try {
+            response = await insightFacade.addDataset(id, datasets[id], InsightDatasetKind.Courses);
+        } catch (err) {
+            response = err;
+        } finally {
+            expect(response).to.be.a.instanceOf(InsightError);
+        }
+    });
+
+    it("Should throw an InsightError when adding a dataset with a null kind", async () => {
+        const id: string = "courses";
+        let response: any[];
+
+        try {
+            response = await insightFacade.addDataset(id, datasets[id], null);
+        } catch (err) {
+            response = err;
+        } finally {
+            expect(response).to.be.a.instanceOf(InsightError);
+        }
+    });
+
+    it("Should throw an InsightError when adding a dataset with an undefined kind", async () => {
+        const id: string = "courses";
+        let response: any[];
+
+        try {
+            response = await insightFacade.addDataset(id, datasets[id], undefined);
+        } catch (err) {
+            response = err;
+        } finally {
+            expect(response).to.be.a.instanceOf(InsightError);
+        }
+    });
+
+    it("Should throw an InsightError when adding a dataset with an empty id", async () => {
+        let response: any[];
+        const id: string = "";
+
+        try {
+            response = await insightFacade.addDataset(id, datasets[id], InsightDatasetKind.Courses);
+        } catch (err) {
+            response = err;
+        } finally {
+            expect(response).to.be.a.instanceOf(InsightError);
+        }
+    });
+
+    it("Should throw an InsightError when adding a dataset with a null id", async () => {
+        let response: any[];
+        const id: string = null;
+
+        try {
+            response = await insightFacade.addDataset(id, datasets[id], InsightDatasetKind.Courses);
+        } catch (err) {
+            response = err;
+        } finally {
+            expect(response).to.be.a.instanceOf(InsightError);
+        }
+    });
+
+    it("Should throw an InsightError when adding a dataset with an undefined id", async () => {
+        let response: any[];
+        const id: string = undefined;
+
+        try {
+            response = await insightFacade.addDataset(id, datasets[id], InsightDatasetKind.Courses);
+        } catch (err) {
+            response = err;
+        } finally {
+            expect(response).to.be.a.instanceOf(InsightError);
+        }
+    });
+
+    it("Should throw an InsightError when adding a dataset with null content", async () => {
+        let response: any[];
+        const id: string = "nullDataset";
+
+        try {
+            response = await insightFacade.addDataset(id, null, InsightDatasetKind.Courses);
+        } catch (err) {
+            response = err;
+        } finally {
+            expect(response).to.be.a.instanceOf(InsightError);
+        }
+    });
+
+    it("Should throw an InsightError when adding a dataset with undefined content", async () => {
+        let response: any[];
+        const id: string = "undefinedDataset";
+
+        try {
+            response = await insightFacade.addDataset(id, undefined, InsightDatasetKind.Courses);
+        } catch (err) {
+            response = err;
+        } finally {
+            expect(response).to.be.a.instanceOf(InsightError);
+        }
+    });
+
+    it("Should throw an InsightError when adding null", async () => {
+        let response: any[];
+        const id: string = null;
+
+        try {
+            response = await insightFacade.addDataset(id, id, InsightDatasetKind.Courses);
+        } catch (err) {
+            response = err;
+        } finally {
+            expect(response).to.be.a.instanceOf(InsightError);
+        }
+    });
+
+    it("Should throw an InsightError when adding undefined", async () => {
+        let response: any[];
+        const id: string = undefined;
+
+        try {
+            response = await insightFacade.addDataset(id, id, InsightDatasetKind.Courses);
+        } catch (err) {
+            response = err;
+        } finally {
+            expect(response).to.be.a.instanceOf(InsightError);
+        }
+    });
+
+    it("Should throw an InsightError when adding an empty dataset", async () => {
+        let response: any[];
+        const id: string = "emptyZIPFile";
+
+        try {
+            response = await insightFacade.addDataset(id, datasets[id], InsightDatasetKind.Courses);
+        } catch (err) {
+            response = err;
+        } finally {
+            expect(response).to.be.a.instanceOf(InsightError);
         }
     });
 
     // This is an example of a pending test. Add a callback function to make the test run.
-    it("Should remove the courses dataset");
+    it("Should remove a valid dataset", async () => {
+        const id: string = "courses";
+        let response: string;
+
+        try {
+            response = await insightFacade.removeDataset(id);
+        } catch (err) {
+            response = err;
+        } finally {
+            expect(response).to.deep.equal(id);
+        }
+    });
+
+    it("Should throw a NotFoundError when removing a dataset that does not exist", async () => {
+        const id: string = "professors";
+        let response: any;
+
+        try {
+            response = await insightFacade.removeDataset(id);
+        } catch (err) {
+            response = err;
+        } finally {
+            expect(response).to.be.instanceOf(NotFoundError);
+        }
+    });
+
+    it("Should throw an InsightError when removing a dataset with a null id", async () => {
+        const id: string = null;
+        let response: any;
+
+        try {
+            response = await insightFacade.removeDataset(id);
+        } catch (err) {
+            response = err;
+        } finally {
+            expect(response).to.be.instanceOf(InsightError);
+        }
+    });
+
+    it("Should throw an InsightError when removing a dataset with an undefined id", async () => {
+        const id: string = undefined;
+        let response: any;
+
+        try {
+            response = await insightFacade.removeDataset(id);
+        } catch (err) {
+            response = err;
+        } finally {
+            expect(response).to.be.instanceOf(InsightError);
+        }
+    });
 });
 
 // This test suite dynamically generates tests from the JSON files in test/queries.

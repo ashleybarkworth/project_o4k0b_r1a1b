@@ -27,7 +27,8 @@ export default class InsightFacade implements IInsightFacade {
     public addDataset(id: string, content: string, kind: InsightDatasetKind): Promise <string[]> {
         let promises: any[] = [];
         return new Promise<string[]>((resolve, reject) => {
-            if (kind !== InsightDatasetKind.Courses && kind !== InsightDatasetKind.Rooms) {
+            // For now, room types are not allowed
+            if (kind !== InsightDatasetKind.Courses) {
                 reject("Invalid InsightDataset kind");
             } else {
                 // TODO ashley add load dataset from disk
@@ -77,15 +78,22 @@ export default class InsightFacade implements IInsightFacade {
                                 courseSections.push(courseSection);
                             }
                         }
+
+                        fs.writeFile("./data/" + id + ".json", JSON.stringify(fileData), function (err) {
+                            if (err) {
+                                reject(new InsightError());
+                            }
+                        });
+
                         let dataset: IFullDataset = {id, sections: courseSections};
                         loadedDataSets.push(dataset);
                         resolve(loadedDataSets
                             .map((courseDataset: IFullDataset) => courseDataset.id));
                     }).catch( function () {
-                        reject(["Error while adding dataset"]);
+                        reject(new InsightError());
                     });
-                }).catch(function () {
-                    reject(["Error while adding dataset"]);
+                }).catch(function (err: any) {
+                    reject(new InsightError());
                 });
             }
         });
