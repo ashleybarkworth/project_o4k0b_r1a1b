@@ -6,7 +6,7 @@ import {
     LtComparator,
     MComparator, Negation,
     OrComparison, SComparison
-} from "../model/Filter.js.js";
+} from "../model/Filter.js";
 import {InsightError} from "../controller/IInsightFacade";
 
 export class FilterDeserializer {

@@ -1,6 +1,6 @@
 import {expect} from "chai";
 import {FilterDeserializer} from "../src/deserializers/FilterDeserializer";
-import {AndComparison, GtComparator, IFilter, OrComparison} from "../src/model/Filter.js.js";
+import {AndComparison, GtComparator, IFilter, OrComparison} from "../src/model/Filter.js";
 import {ICourseSection} from "../src/model/IFullDataset";
 
 describe("Simple deserialize tests", () => {
