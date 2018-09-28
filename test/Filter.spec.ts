@@ -50,6 +50,9 @@ describe("Simple deserialize tests", () => {
         let filter: IFilter = filterDeserializer.deserialize(query);
         expect(filter).to.be.instanceOf(AndComparison);
         expect(filter.validCourseSection(courseSection)).to.be.eq(true);
+        courseSection.avg = 0;
+        expect(filter.validCourseSection(courseSection)).to.be.eq(false);
+        courseSection.avg = 50;
     });
     it("Should deserialize an OR query", () => {
         let query: any = {

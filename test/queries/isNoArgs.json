@@ -1,0 +1,35 @@
+{
+    "title": "invalid, no arguments to is",
+    "query": {
+        "WHERE": {
+            "AND": [
+                {
+                    "LT": {
+                        "courses_avg": 30
+                    }
+                },
+                {
+                    "NOT": {
+                        "EQ": {
+                            "courses_avg": 0
+                        }
+                    }
+                },
+                {
+                    "IS": {
+                    }
+                }
+            ]
+        },
+        "OPTIONS": {
+            "COLUMNS": [
+                "courses_dept",
+                "courses_id",
+                "courses_avg"
+            ],
+            "ORDER": "courses_avg"
+        }
+    },
+    "isQueryValid": false,
+    "result": "invalid"
+}

@@ -8,7 +8,6 @@ import {
     OrComparison, SComparison
 } from "../model/Filter.js.js";
 import {InsightError} from "../controller/IInsightFacade";
-import {ICourseSection} from "../model/IFullDataset";
 
 export class FilterDeserializer {
     private filters: string[] = ["AND", "OR", "LT", "GT", "EQ", "IS", "NOT"];
@@ -21,6 +20,9 @@ export class FilterDeserializer {
     }
 
     public deserialize(filter: any): IFilter {
+        if (filter == null || filter === undefined || Array.isArray(filter)) {
+            throw new InsightError("Malformed filter!");
+        }
         let keys: string[] = Object.keys(filter);
         if (keys.length === 0 || keys.length > 1 || !this.filters.includes(keys[0])) {
             throw new InsightError("Invalid filter");
@@ -42,15 +44,18 @@ export class FilterDeserializer {
         throw new InsightError("Something went very wrong!");
     }
 
-    private deserializeLogicComparison(filterBody: any, type: string): LogicComparison {
+    private deserializeLogicComparison(filterBody: any, kind: string): LogicComparison {
         if (!Array.isArray(filterBody || filterBody.length < 1)) {
             throw new InsightError("Passed a non-array value into a logic comparison");
         }
         let innerFilters: IFilter[] = filterBody.map((filter: any) => this.deserialize(filter));
-        return type === "AND" ? new AndComparison(innerFilters) : new OrComparison(innerFilters);
+        if (innerFilters.length === 0) {
+            throw new InsightError("Empty array passed to logic comparison");
+        }
+        return kind === "AND" ? new AndComparison(innerFilters) : new OrComparison(innerFilters);
     }
 
-    private deserializeMComparator(filterBody: any, type: string): MComparator {
+    private deserializeMComparator(filterBody: any, kind: string): MComparator {
         let keys: string[] = Object.keys(filterBody);
         if (keys.length === 0 || keys.length > 1) {
             throw new InsightError("Invalid filter");
@@ -61,10 +66,10 @@ export class FilterDeserializer {
         if (!this.validNumberTypeKeys.includes(key)) {
             throw new InsightError("Passed non-numeric column key to MComparator");
         }
-        if (Number.isNaN(val)) {
+        if (typeof(val) !== "number") {
             throw new InsightError("Attempted to pass a non-number value into MComparator");
         }
-        switch (type) {
+        switch (kind) {
             case "LT":
                 return new LtComparator(key, val);
             case "EQ":
@@ -87,7 +92,11 @@ export class FilterDeserializer {
         }
         let keyAndId = keys[0];
         let key = this.getKey(keyAndId);
-        let searchString: string = filterBody[keyAndId];
+        let searchString = filterBody[keyAndId];
+
+        if (typeof searchString !== "string") {
+            throw new InsightError("Tried to pass a non-string value into scomparison");
+        }
 
         if (!this.validStringTypeKeys.includes(key)) {
             throw new InsightError("Passed invalid column key into SComparison");
@@ -99,7 +108,10 @@ export class FilterDeserializer {
         return new SComparison(key, searchString);
     }
 
-    private getKey(keyAndId: string) {
+    private getKey(keyAndId: any) {
+        if (typeof(keyAndId) !== "string") {
+            throw new InsightError("Non-string passed into key");
+        }
         let split = keyAndId.split("_");
         if (split.length !== 2) {
             throw new InsightError("Invalid key");

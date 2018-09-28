@@ -1,0 +1,51 @@
+{"title": "SELECT dept, id, avg WHERE avg < 60, != 0, and id is 3xx",
+    "query": {
+        "WHERE": {
+            "AND": [
+                {
+                    "LT": {
+                        "courses_avg": 30
+                    }
+                },
+                {
+                    "NOT": {
+                        "EQ": {
+                            "courses_avg": 0
+                        }
+                    }
+                },
+                {
+                    "IS": {
+                        "courses_id": "*3*"
+                    }
+                }
+            ]
+        },
+        "OPTIONS": {
+            "COLUMNS": [
+                "courses_dept",
+                "courses_id",
+                "courses_avg"
+            ],
+            "ORDER": "courses_avg"
+        }
+    },
+    "isQueryValid": true,
+    "result": [
+        {
+            "courses_dept": "busi",
+            "courses_id": "330",
+            "courses_avg": 4
+        },
+        {
+            "courses_dept": "busi",
+            "courses_id": "330",
+            "courses_avg": 4
+        },
+        {
+            "courses_dept": "fopr",
+            "courses_id": "362",
+            "courses_avg": 4.5
+        }
+    ]
+}

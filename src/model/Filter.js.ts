@@ -34,7 +34,7 @@ export class SComparison implements IFilter {
         let stringVal = val as string;
         let hasStartAsterisk: boolean = this.searchText.startsWith("*");
         let hasEndAsterisk: boolean = this.searchText.endsWith("*");
-        let text: string = this.searchText.replace("*", "");
+        let text: string = this.searchText.replace(new RegExp("\\*", "g"), "");
         if (!hasStartAsterisk && !hasEndAsterisk) {
             return text === stringVal;
         } else if (!hasEndAsterisk) {
@@ -58,7 +58,7 @@ export class MComparator implements IFilter {
 
     public validCourseSection(courseSection: ICourseSection): boolean {
         let val = courseSection[this.key];
-        if (Number.isNaN(val)) {
+        if (typeof(val) !== "number") {
             throw new InsightError("Something went very wrong");
         }
         let valAsNum = val as number;

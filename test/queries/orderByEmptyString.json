@@ -1,5 +1,5 @@
 {
-    "title": "SELECT avg, instructor, dept, uuid WHERE avg > 99",
+    "title": "Can't order by value not in columns",
     "query": {
         "WHERE": {
             "GT": {
@@ -16,26 +16,7 @@
             "ORDER": ""
         }
     },
-    "isQueryValid": true,
-    "result": [
-        {
-            "courses_avg": 99.19,
-            "courses_instructor": "cox, daniel",
-            "courses_dept": "cnps",
-            "courses_uuid": "26777"
-        },
-        {
-            "courses_avg": 99.78,
-            "courses_instructor": "gomez, jose",
-            "courses_dept": "math",
-            "courses_uuid": "5373"
-        },
-        {
-            "courses_avg": 99.78,
-            "courses_instructor": "",
-            "courses_dept": "math",
-            "courses_uuid": "5374"
-        }
-    ]
+    "isQueryValid": false,
+    "result": "Can't order by value not in columns"
 
 }

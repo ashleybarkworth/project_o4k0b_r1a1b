@@ -150,15 +150,13 @@ export default class InsightFacade implements IInsightFacade {
 
     public performQuery(query: any): Promise<any[]> {
         return new Promise<any[]>((resolve, reject) => {
-            if (!query.hasOwnProperty("WHERE") || !query.hasOwnProperty("OPTIONS")) {
-                throw new InsightError("Missing OPTIONS or WHERE key");
+            if (query == null || query === undefined ||
+                !query.hasOwnProperty("WHERE") || !query.hasOwnProperty("OPTIONS")) {
+                throw new InsightError("Invalid query");
             }
 
             let options: IOptions = new OptionsDeserializer().deserialize(query.OPTIONS);
             let datasetToQuery = this.getDataSetToQuery(options.key);
-            if (options.order !== undefined) {
-                datasetToQuery.sections.sort((secA, secB) => secA[options.order] < secB[options.order] ? -1 : 1);
-            }
             let filter: IFilter = new FilterDeserializer(options.key).deserialize(query.WHERE);
             let result: any[] = [];
             for (let section of datasetToQuery.sections) {
@@ -167,6 +165,9 @@ export default class InsightFacade implements IInsightFacade {
                     options.columns.forEach((key) => entry[options.key + "_" + key] = section[key]);
                     result.push(entry);
                 }
+            }
+            if (options.order !== undefined) {
+                result.sort((secA, secB) => secA[options.order] < secB[options.order] ? -1 : 1);
             }
             resolve(result);
         });

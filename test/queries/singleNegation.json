@@ -16,7 +16,7 @@
             "ORDER": "courses_avg"
         }
     },
-    "isQueryValid": false,
+    "isQueryValid": true,
     "result": [
         {"courses_dept": "crwr", "courses_avg": 98},
         {"courses_dept": "crwr", "courses_avg": 98},
