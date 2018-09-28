@@ -1,0 +1,24 @@
+{
+    "title": "Malformed query - key value in all caps",
+    "query": {
+        "WHERE": {
+            "AND": [
+                {
+                    "GT": {
+                        "COURSES_AVG": 90
+                    }
+                }
+            ]
+        },
+        "OPTIONS": {
+            "COLUMNS": [
+                "courses_dept",
+                "courses_id",
+                "courses_avg"
+            ],
+            "ORDER": "courses_avg"
+        }
+    },
+    "isQueryValid": false,
+    "result": "Not implemented."
+}

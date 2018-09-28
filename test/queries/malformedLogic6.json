@@ -1,0 +1,38 @@
+{
+    "title": "Malformed query - multiple LOGIC blocks",
+    "query": {
+        "WHERE": {
+            "AND": [
+                {
+                    "GT": {
+                        "courses_avg": 90
+                    }
+                },
+                {
+                    "EQ": {
+                        "courses_fail": 0
+                    }
+                }
+            ],
+            "OR": [
+                {
+                    "LT": {
+                        "courses_avg": 20
+                    }
+                }
+            ]
+        },
+        "OPTIONS": {
+            "COLUMNS": [
+                "courses_dept",
+                "courses_id",
+                "courses_avg"
+            ],
+            "ORDER": "courses_avg"
+        }
+    },
+    "isQueryValid": false,
+    "result": "Not implemented."
+}
+
+

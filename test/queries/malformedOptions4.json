@@ -1,0 +1,13 @@
+{
+    "title": "Malformed query - OPTIONS is a list",
+    "query": {
+        "WHERE": {
+            "EQ": {
+                "courses_avg": 76.002
+            }
+        },
+        "OPTIONS": []
+    },
+    "isQueryValid": false,
+    "result": "Not implemented."
+}

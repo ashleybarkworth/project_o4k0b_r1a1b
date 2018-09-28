@@ -1,0 +1,6 @@
+{
+    "title": "Malformed query - empty WHERE, no OPTIONS",
+    "query": {"WHERE": {}},
+    "isQueryValid": false,
+    "result": "Not implemented."
+}

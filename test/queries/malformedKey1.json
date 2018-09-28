@@ -1,0 +1,33 @@
+{
+    "title": "Malformed query - column key missing underscore",
+    "query": {
+        "WHERE": {
+            "AND": [
+                {
+                    "IS": {
+                        "courses_dept": "cpsc"
+                    }
+                },
+                {
+                    "LT": {
+                        "courses_avg": 89
+                    }
+                },
+                {
+                    "GT": {
+                        "courses_audit": 4
+                    }
+                }
+            ]
+        },
+        "OPTIONS": {
+            "COLUMNS": [
+                "coursesdept",
+                "courses_avg"
+            ],
+            "ORDER": "courses_avg"
+        }
+    },
+    "isQueryValid": false,
+    "result": "Not implemented."
+}

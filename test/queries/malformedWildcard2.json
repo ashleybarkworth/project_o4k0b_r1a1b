@@ -1,0 +1,30 @@
+{
+    "title": "Malformed query - two wildcards not allowed",
+    "query": {
+        "WHERE": {
+            "AND": [
+                {
+                    "LT": {
+                        "courses_avg": 30
+                    }
+                },
+                {
+                    "IS": {
+                        "courses_dept": "**cpsc"
+                    }
+                }
+            ]
+        },
+        "OPTIONS": {
+            "COLUMNS": [
+                "courses_dept",
+                "courses_avg"
+            ],
+            "ORDER": "courses_avg"
+        }
+    },
+    "isQueryValid": false,
+    "result": "Not implemented."
+}
+
+

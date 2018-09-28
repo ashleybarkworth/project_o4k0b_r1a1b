@@ -1,0 +1,7 @@
+{
+    "title": "Malformed query - query is null",
+    "query": null,
+    "isQueryValid": false,
+    "result": "Not implemented."
+}
+

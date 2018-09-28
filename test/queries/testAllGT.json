@@ -1,0 +1,43 @@
+{
+    "title": "SELECT dept, avg WHERE avg > 80 AND pass > 6 AND fail > 2 AND audit > 1 ORDER BY avg",
+    "query": {
+        "WHERE": {
+            "AND": [
+                {
+                    "GT": {
+                        "courses_avg": 80
+                    }
+                },
+                {
+                    "GT": {
+                        "courses_pass": 6
+                    }
+                },
+                {
+                    "GT": {
+                        "courses_fail": 2
+                    }
+                },
+                {
+                    "GT": {
+                        "courses_audit": 1
+                    }
+                }
+            ]
+        },
+        "OPTIONS": {
+            "COLUMNS": [
+                "courses_dept",
+                "courses_avg"
+            ],
+            "ORDER": "courses_avg"
+        }
+    },
+    "isQueryValid": true,
+    "result":[
+        {"courses_dept":"germ","courses_avg":80.04},
+        {"courses_dept":"germ","courses_avg":81.79},
+        {"courses_dept":"cpsc","courses_avg":82.66},
+        {"courses_dept":"germ","courses_avg":85.21}
+    ]
+}

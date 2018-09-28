@@ -1,0 +1,32 @@
+{
+    "title": "SELECT dept, avg WHERE audit > 1 AND uuid = '213*' ORDER BY avg",
+    "query": {
+        "WHERE": {
+            "AND": [
+                {
+                    "GT": {
+                        "courses_audit": 1
+                    }
+                },
+                {
+                    "IS": {
+                        "courses_uuid": "213*"
+                    }
+                }
+            ]
+        },
+        "OPTIONS": {
+            "COLUMNS": [
+                "courses_dept",
+                "courses_avg"
+            ],
+            "ORDER": "courses_avg"
+        }
+    },
+    "isQueryValid": true,
+    "result":[
+        {"courses_dept":"frst","courses_avg":86.18},
+        {"courses_dept":"frst","courses_avg":87},
+        {"courses_dept":"frst","courses_avg":87}
+    ]
+}

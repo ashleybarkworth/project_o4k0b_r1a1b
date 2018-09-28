@@ -1,0 +1,13 @@
+{
+    "title": "Malformed query - empty OPTIONS",
+    "query": {
+        "WHERE": {
+            "GT": {
+                "courses_audit": 13
+            }
+        },
+        "OPTIONS": {}
+    },
+    "isQueryValid": false,
+    "result": "Not implemented."
+}

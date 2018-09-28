@@ -1,0 +1,48 @@
+{
+    "title": "SELECT dept, avg, instructor, title, uuid WHERE dept = 'cpsc' AND id = '313' AND ... ORDER BY avg",
+    "query": {
+        "WHERE": {
+            "AND": [
+                {
+                    "IS": {
+                        "courses_dept": "cpsc"
+                    }
+                },
+                {
+                    "IS": {
+                        "courses_id": "313"
+                    }
+                },
+                {
+                    "IS": {
+                        "courses_instructor": "belleville, patrice"
+                    }
+                },
+                {
+                    "IS": {
+                        "courses_title": "comp hard&os"
+                    }
+                },
+                {
+                    "IS": {
+                        "courses_uuid": "72366"
+                    }
+                }
+            ]
+        },
+        "OPTIONS": {
+            "COLUMNS": [
+                "courses_dept",
+                "courses_avg",
+                "courses_instructor",
+                "courses_title",
+                "courses_uuid"
+            ],
+            "ORDER": "courses_avg"
+        }
+    },
+    "isQueryValid": true,
+    "result": [
+        {"courses_dept": "cpsc", "courses_avg": 71.94, "courses_instructor": "belleville, patrice", "courses_title": "comp hard&os", "courses_uuid": "72366"}
+    ]
+}

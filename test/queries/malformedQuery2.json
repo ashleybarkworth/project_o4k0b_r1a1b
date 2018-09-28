@@ -1,0 +1,7 @@
+{
+    "title": "Malformed query - empty query",
+    "query": {},
+    "isQueryValid": false,
+    "result": "Not implemented."
+}
+

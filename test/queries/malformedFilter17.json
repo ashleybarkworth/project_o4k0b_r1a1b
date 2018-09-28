@@ -1,0 +1,30 @@
+{
+    "title": "Malformed query - nesting in MCOMPARISON",
+    "query": {
+        "WHERE": {
+            "AND": [
+                {
+                "GT": {
+                    "GT": {
+                        "courses_avg": 95
+                    }
+                }
+                },
+                {
+                "IS": {
+                    "courses_dept": "adhe"
+                }
+                }
+            ]
+        },
+        "OPTIONS": {
+            "COLUMNS": [
+                "courses_dept",
+                "courses_avg"
+            ],
+            "ORDER": "courses_avg"
+        }
+    },
+    "isQueryValid": false,
+    "result": "Not implemented."
+}

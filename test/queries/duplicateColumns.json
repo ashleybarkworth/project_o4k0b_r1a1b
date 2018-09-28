@@ -1,0 +1,41 @@
+{
+    "title": "SELECT dept, dept, avg WHERE fail >= 10 AND avg > 80 AND dept = 'biol' ORDER BY avg",
+    "query": {
+        "WHERE": {
+            "AND": [
+                {
+                    "NOT": {
+                        "LT": {
+                            "courses_fail": 10
+                        }
+                    }
+                },
+                {
+                    "GT": {
+                        "courses_avg": 80
+                    }
+                },
+                {
+                    "IS": {
+                        "courses_dept": "biol"
+                    }
+                }
+            ]
+        },
+        "OPTIONS": {
+            "COLUMNS": [
+                "courses_dept",
+                "courses_dept",
+                "courses_avg"
+            ],
+            "ORDER": "courses_avg"
+        }
+    },
+    "isQueryValid": true,
+    "result":[
+        {"courses_dept":"biol","courses_avg":80.06},
+        {"courses_dept":"biol","courses_avg":80.27},
+        {"courses_dept":"biol","courses_avg":80.53}
+    ]
+}
+

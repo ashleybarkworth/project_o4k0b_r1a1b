@@ -1,0 +1,39 @@
+{
+    "title": "SELECT dept, id, audit WHERE audit > 13",
+    "query": {
+        "WHERE": {
+            "GT": {
+                "courses_audit": 13
+            }
+        },
+        "OPTIONS": {
+            "COLUMNS": [
+                "courses_dept",
+                "courses_id",
+                "courses_audit"
+            ]
+        }
+    },
+    "isQueryValid": true,
+    "result": [
+        {"courses_dept": "rhsc", "courses_id": "501", "courses_audit": 21},
+        {"courses_dept": "cons", "courses_id": "340", "courses_audit": 15},
+        {"courses_dept": "cpsc", "courses_id": "540", "courses_audit": 18},
+        {"courses_dept": "cpsc", "courses_id": "540", "courses_audit": 21},
+        {"courses_dept": "frst", "courses_id": "530", "courses_audit": 19},
+        {"courses_dept": "frst", "courses_id": "530", "courses_audit": 19},
+        {"courses_dept": "rhsc", "courses_id": "501", "courses_audit": 23},
+        {"courses_dept": "rhsc", "courses_id": "501", "courses_audit": 15},
+        {"courses_dept": "cpsc", "courses_id": "340", "courses_audit": 14},
+        {"courses_dept": "rhsc", "courses_id": "503", "courses_audit": 19},
+        {"courses_dept": "rhsc", "courses_id": "503", "courses_audit": 19},
+        {"courses_dept": "rhsc", "courses_id": "505", "courses_audit": 18},
+        {"courses_dept": "rhsc", "courses_id": "505", "courses_audit": 19},
+        {"courses_dept": "rhsc", "courses_id": "507", "courses_audit": 14},
+        {"courses_dept": "rhsc", "courses_id": "507", "courses_audit": 15},
+        {"courses_dept": "rhsc", "courses_id": "507", "courses_audit": 20},
+        {"courses_dept": "rhsc", "courses_id": "509", "courses_audit": 17}
+    ]
+}
+
+

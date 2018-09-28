@@ -1,0 +1,50 @@
+{
+    "title": "SELECT dept, avg WHERE avg > 90 AND dept = '*b' ORDER BY avg",
+    "query": {
+        "WHERE": {
+            "AND": [
+                {
+                    "GT": {
+                        "courses_avg": 90
+                    }
+                },
+                {
+                    "IS": {
+                        "courses_dept": "*b"
+                    }
+                }
+            ]
+        },
+        "OPTIONS": {
+            "COLUMNS": [
+                "courses_dept",
+                "courses_avg"
+            ],
+            "ORDER": "courses_avg"
+        }
+    },
+    "isQueryValid": true,
+    "result":[{"courses_dept":"micb","courses_avg":90.33},
+        {"courses_dept":"micb","courses_avg":90.33},
+        {"courses_dept":"micb","courses_avg":90.39},
+        {"courses_dept":"micb","courses_avg":90.39},
+        {"courses_dept":"micb","courses_avg":90.55},
+        {"courses_dept":"micb","courses_avg":90.55},
+        {"courses_dept":"micb","courses_avg":91.42},
+        {"courses_dept":"micb","courses_avg":91.42},
+        {"courses_dept":"micb","courses_avg":91.79},
+        {"courses_dept":"micb","courses_avg":91.79},
+        {"courses_dept":"micb","courses_avg":91.89},
+        {"courses_dept":"micb","courses_avg":91.89},
+        {"courses_dept":"micb","courses_avg":92.12},
+        {"courses_dept":"micb","courses_avg":92.12},
+        {"courses_dept":"micb","courses_avg":93.2},
+        {"courses_dept":"micb","courses_avg":93.2},
+        {"courses_dept":"micb","courses_avg":93.6},
+        {"courses_dept":"micb","courses_avg":93.6},
+        {"courses_dept":"micb","courses_avg":94.17},
+        {"courses_dept":"micb","courses_avg":94.17},
+        {"courses_dept":"aanb","courses_avg":94.44},
+        {"courses_dept":"aanb","courses_avg":94.44}]
+}
+

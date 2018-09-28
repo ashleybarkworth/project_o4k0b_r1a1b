@@ -1,0 +1,27 @@
+{
+    "title": "Malformed query - multiple comparisons in negation",
+    "query": {
+        "WHERE": {
+            "NOT":
+            {
+                "IS": {
+                    "courses_dept": "etec"
+                },
+                "GT": {
+                    "courses_fail": 20
+                }
+            }
+
+        },
+        "OPTIONS": {
+            "COLUMNS": [
+                "courses_dept",
+                "courses_avg",
+                "courses_instructor"
+            ],
+            "ORDER": "courses_instructor"
+        }
+    },
+    "isQueryValid": false,
+    "result": "Not implemented."
+}

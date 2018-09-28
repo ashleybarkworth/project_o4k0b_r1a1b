@@ -1,0 +1,19 @@
+{
+    "title": "SELECT dept WHERE dept > SCOMPARISON on number",
+    "query": {
+        "WHERE": {
+            "IS": {
+                "courses_avg": 90
+            }
+        },
+        "OPTIONS": {
+            "COLUMNS": [
+                "courses_dept",
+                "courses_avg"
+            ],
+            "ORDER": "courses_avg"
+        }
+    },
+    "isQueryValid": false,
+    "result": "Not implemented"
+}

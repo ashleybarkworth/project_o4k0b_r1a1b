@@ -1,0 +1,26 @@
+{
+    "title": "SELECT dept, avg, uuid WHERE uuid = '29776' ORDER BY uuid",
+    "query": {
+        "WHERE": {
+            "AND": [
+                {
+                    "IS": {
+                        "courses_uuid": "29776"
+                    }
+                }
+            ]
+        },
+        "OPTIONS": {
+            "COLUMNS": [
+                "courses_dept",
+                "courses_avg",
+                "courses_uuid"
+            ],
+            "ORDER": "courses_uuid"
+        }
+    },
+    "isQueryValid": true,
+    "result":[
+        {"courses_dept":"math","courses_avg":46.52,"courses_uuid":"29776"}
+    ]
+}

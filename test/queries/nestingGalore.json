@@ -1,0 +1,66 @@
+{
+    "title": "SELECT dept, id, title, instructor WHERE avg >= 99 OR instructor = 'falk, clifford' ORDER BY title",
+    "query": {
+        "WHERE": {
+            "NOT": {
+                "AND": [
+                    {
+                        "LT": {
+                            "courses_avg": 99
+                        }
+                    },
+                    {
+                        "NOT": {
+                            "AND": [
+                                {
+                                    "IS": {
+                                        "courses_instructor": "falk, clifford"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "OPTIONS": {
+            "COLUMNS": [
+                "courses_dept",
+                "courses_id",
+                "courses_title",
+                "courses_instructor"
+            ],
+            "ORDER": "courses_title"
+        }
+    },
+    "isQueryValid": true,
+    "result": [
+        {"courses_dept":"adhe","courses_id":"412","courses_title":"adul educ","courses_instructor":"falk, clifford"},
+        {"courses_dept":"adhe","courses_id":"412","courses_title":"adul educ","courses_instructor":"falk, clifford"},
+        {"courses_dept":"adhe","courses_id":"412","courses_title":"adul educ","courses_instructor":"falk, clifford"},
+        {"courses_dept":"adhe","courses_id":"412","courses_title":"adul educ","courses_instructor":"falk, clifford"},
+        {"courses_dept":"adhe","courses_id":"412","courses_title":"adul educ","courses_instructor":"falk, clifford"},
+        {"courses_dept":"adhe","courses_id":"412","courses_title":"adul educ","courses_instructor":"falk, clifford"},
+        {"courses_dept":"adhe","courses_id":"412","courses_title":"adul educ","courses_instructor":"falk, clifford"},
+        {"courses_dept":"adhe","courses_id":"412","courses_title":"adul educ","courses_instructor":"falk, clifford"},
+        {"courses_dept":"math","courses_id":"527","courses_title":"algb topology i","courses_instructor":"gomez, jose"},
+        {"courses_dept":"math","courses_id":"527","courses_title":"algb topology i","courses_instructor":""},
+        {"courses_dept":"etec","courses_id":"512","courses_title":"appl lear theor","courses_instructor":"falk, clifford"},
+        {"courses_dept":"etec","courses_id":"512","courses_title":"appl lear theor","courses_instructor":"falk, clifford"},
+        {"courses_dept":"etec","courses_id":"512","courses_title":"appl lear theor","courses_instructor":"falk, clifford"},
+        {"courses_dept":"etec","courses_id":"512","courses_title":"appl lear theor","courses_instructor":"falk, clifford"},
+        {"courses_dept":"etec","courses_id":"512","courses_title":"appl lear theor","courses_instructor":"falk, clifford"},
+        {"courses_dept":"etec","courses_id":"512","courses_title":"appl lear theor","courses_instructor":"falk, clifford"},
+        {"courses_dept":"etec","courses_id":"512","courses_title":"appl lear theor","courses_instructor":"falk, clifford"},
+        {"courses_dept":"cnps","courses_id":"574","courses_title":"career planning","courses_instructor":"cox, daniel"},
+        {"courses_dept":"etec","courses_id":"500","courses_title":"res meth educ","courses_instructor":"falk, clifford"},
+        {"courses_dept":"etec","courses_id":"500","courses_title":"res meth educ","courses_instructor":"falk, clifford"},
+        {"courses_dept":"etec","courses_id":"500","courses_title":"res meth educ","courses_instructor":"falk, clifford"},
+        {"courses_dept":"etec","courses_id":"500","courses_title":"res meth educ","courses_instructor":"falk, clifford"},
+        {"courses_dept":"etec","courses_id":"500","courses_title":"res meth educ","courses_instructor":"falk, clifford"},
+        {"courses_dept":"etec","courses_id":"500","courses_title":"res meth educ","courses_instructor":"falk, clifford"},
+        {"courses_dept":"etec","courses_id":"500","courses_title":"res meth educ", "courses_instructor":"falk, clifford"}
+    ]
+}
+
+

@@ -1,0 +1,15 @@
+{
+    "title": "Malformed query - no OPTIONS",
+    "query": {
+        "WHERE": {
+            "LT": {
+                "courses_avg": 30
+            }
+        }
+    },
+    "isQueryValid": false,
+    "result": "Not implemented."
+}
+
+
+

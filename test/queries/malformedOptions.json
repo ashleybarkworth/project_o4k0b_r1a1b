@@ -1,0 +1,19 @@
+{
+    "title": "Malformed query - misspelled OPTIONS",
+    "query": {
+        "WHERE": {
+            "GT": {
+                "courses_audit": 13
+            }
+        },
+        "OPTIONAL": {
+            "COLUMNS": [
+                "courses_dept",
+                "courses_id",
+                "courses_audit"
+            ]
+        }
+    },
+    "isQueryValid": false,
+    "result": "Not implemented."
+}

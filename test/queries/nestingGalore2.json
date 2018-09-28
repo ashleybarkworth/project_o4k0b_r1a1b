@@ -1,0 +1,63 @@
+{
+    "title": "SELECT dept, id, instructor, uuid, avg WHERE (...) ORDER BY avg",
+    "query": {
+        "WHERE": {
+            "AND": [
+                {
+                    "OR": [
+                        {
+                            "GT": {
+                                "courses_avg": 99
+                            }
+                        },
+                        {
+                            "EQ": {
+                                "courses_fail": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "AND": [
+                        {
+                            "IS": {
+                                "courses_dept": "math"
+                            }
+                        },
+                        {
+                            "OR": [
+                                {
+                                    "IS": {
+                                        "courses_uuid": "29788"
+                                    }
+                                },
+                                {
+                                    "IS": {
+                                        "courses_instructor": "burda, yuri"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "OPTIONS": {
+            "COLUMNS": [
+                "courses_dept",
+                "courses_id",
+                "courses_instructor",
+                "courses_uuid",
+                "courses_avg"
+            ],
+            "ORDER": "courses_avg"
+        }
+    },
+    "isQueryValid": true,
+    "result":[
+        {"courses_dept":"math","courses_id":"184","courses_instructor":"","courses_uuid":"29788","courses_avg":67.04},
+        {"courses_dept":"math","courses_id":"105","courses_instructor":"burda, yuri","courses_uuid":"24680","courses_avg":69.59}
+    ]
+}
+
+

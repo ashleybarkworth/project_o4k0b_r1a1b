@@ -1,0 +1,43 @@
+{
+    "title": "SELECT dept, avg WHERE avg < 50 AND pass < 100 AND fail < 10 AND audit < 1 ORDER BY avg",
+    "query": {
+        "WHERE": {
+            "AND": [
+                {
+                    "LT": {
+                        "courses_avg": 50
+                    }
+                },
+                {
+                    "LT": {
+                        "courses_pass": 100
+                    }
+                },
+                {
+                    "GT": {
+                        "courses_fail": 10
+                    }
+                },
+                {
+                    "LT": {
+                        "courses_audit": 1
+                    }
+                }
+            ]
+        },
+        "OPTIONS": {
+            "COLUMNS": [
+                "courses_dept",
+                "courses_avg"
+            ],
+            "ORDER": "courses_avg"
+        }
+    },
+    "isQueryValid": true,
+    "result": [
+        {"courses_dept": "educ", "courses_avg": 39.03},
+        {"courses_dept": "educ", "courses_avg": 39.03},
+        {"courses_dept": "busi", "courses_avg": 49.47},
+        {"courses_dept": "busi", "courses_avg": 49.47}
+    ]
+}

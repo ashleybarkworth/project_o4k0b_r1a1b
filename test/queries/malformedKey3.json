@@ -1,0 +1,20 @@
+{
+    "title": "Malformed query - invalid key",
+    "query": {
+        "WHERE": {
+            "GT": {
+                "blah_avg": 99
+            }
+        },
+        "OPTIONS": {
+            "COLUMNS": [
+                "blah_avg",
+                "courses_id"
+            ],
+            "ORDER": "blah_avg"
+        }
+    },
+    "isQueryValid": false,
+    "result": "Not implemented."
+}
+

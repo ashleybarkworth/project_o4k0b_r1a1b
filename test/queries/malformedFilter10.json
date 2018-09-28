@@ -1,0 +1,23 @@
+{
+    "title": "Malformed query - nested NOT in MCOMPARISON",
+    "query": {
+        "WHERE": {
+            "EQ": {
+                "NOT": {
+                    "EQ": {
+                        "courses_avg": "49.98"
+                    }
+                }
+            }
+        },
+        "OPTIONS": {
+            "COLUMNS": [
+                "courses_dept",
+                "courses_avg"
+            ],
+            "ORDER": "courses_avg"
+        }
+    },
+    "isQueryValid": false,
+    "result": "Not implemented."
+}

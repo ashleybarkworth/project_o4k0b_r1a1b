@@ -1,0 +1,24 @@
+{
+    "title": "Malformed query - multiple key:string pairs in SCOMPARISON",
+    "query": {
+        "WHERE": {
+            "IS": {
+                "courses_dept": "cpsc",
+                "courses_instructor": "kiczales, gregor"
+            }
+        },
+        "OPTIONS": {
+            "COLUMNS": [
+                "courses_dept",
+                "courses_avg",
+                "courses_pass",
+                "courses_fail"
+            ],
+            "ORDER": "courses_avg"
+        }
+    },
+    "isQueryValid": false,
+    "result": "Not implemented."
+}
+
+

@@ -1,0 +1,28 @@
+{
+    "title": "Malformed query - misspelled MCOMPARISON",
+    "query": {
+        "WHERE": {
+            "AND": [
+                {
+                    "GET": {
+                        "courses_avg": 90
+                    }
+                },
+                {
+                    "IS": {
+                        "courses_dept": "adhe"
+                    }
+                }
+            ]
+        },
+        "OPTIONS": {
+            "COLUMNS": [
+                "courses_dept",
+                "courses_avg"
+            ],
+            "ORDER": "courses_avg"
+        }
+    },
+    "isQueryValid": false,
+    "result": "Not implemented."
+}

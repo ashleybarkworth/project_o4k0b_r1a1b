@@ -1,0 +1,50 @@
+{
+    "title": "SELECT dept, avg, instructor WHERE (...) avg < 30 ORDER BY dept",
+    "query": {
+        "WHERE": {
+            "OR": [
+                {
+                    "AND": [
+                        {
+                            "IS": {
+                                "courses_dept": "nurs"
+                            }
+                        },
+                        {
+                            "IS": {
+                                "courses_instructor": "affleck, frances;foster, paula;jackson, cathryn;jetha, farah;mcburney, sheila mary;rea, gail;segaric, cheryl"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "AND": [
+                        {
+                            "LT": {
+                                "courses_avg": 30
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "OPTIONS": {
+            "COLUMNS": [
+                "courses_dept",
+                "courses_avg",
+                "courses_instructor"
+            ],
+            "ORDER": "courses_dept"
+        }
+    },
+    "isQueryValid": true,
+    "result":[
+        {"courses_dept":"busi","courses_avg":4,"courses_instructor":""},
+        {"courses_dept":"busi","courses_avg":4,"courses_instructor":""},
+        {"courses_dept":"fopr","courses_avg":4.5,"courses_instructor":"bendickson, dennis"},
+        {"courses_dept":"frst","courses_avg":0,"courses_instructor":""},{"courses_dept":"lfs","courses_avg":0,"courses_instructor":""},
+        {"courses_dept":"lfs","courses_avg":0,"courses_instructor":""},
+        {"courses_dept":"nurs","courses_avg":85.02,"courses_instructor":"affleck, frances;foster, paula;jackson, cathryn;jetha, farah;mcburney, sheila mary;rea, gail;segaric, cheryl"},
+        {"courses_dept":"wood","courses_avg":1,"courses_instructor":""}
+    ]
+}

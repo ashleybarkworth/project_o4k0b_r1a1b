@@ -1,0 +1,19 @@
+{
+    "title": "Malformed query - MCOMPARISON on string",
+    "query": {
+        "WHERE": {
+            "GT": {
+                "courses_dept": "cpsc"
+            }
+        },
+        "OPTIONS": {
+            "COLUMNS": [
+                "courses_dept",
+                "courses_avg"
+            ],
+            "ORDER": "courses_avg"
+        }
+    },
+    "isQueryValid": false,
+    "result": "Not implemented"
+}

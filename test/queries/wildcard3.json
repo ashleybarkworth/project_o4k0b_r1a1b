@@ -1,0 +1,44 @@
+{
+    "title": "SELECT dept, avg WHERE avg > 90 AND dept = '*cpsc*' ORDER BY avg",
+    "query": {
+        "WHERE": {
+            "AND": [
+                {
+                    "GT": {
+                        "courses_fail": 37
+                    }
+                },
+                {
+                    "IS": {
+                        "courses_dept": "*g*"
+                    }
+                }
+            ]
+        },
+        "OPTIONS": {
+            "COLUMNS": [
+                "courses_dept",
+                "courses_avg"
+            ],
+            "ORDER": "courses_avg"
+        }
+    },
+    "isQueryValid": true,
+    "result":[
+        {"courses_dept":"geob","courses_avg":66.04},
+        {"courses_dept":"geob","courses_avg":66.43},
+        {"courses_dept":"geob","courses_avg":67.38},
+        {"courses_dept":"geob","courses_avg":67.4},
+        {"courses_dept":"geob","courses_avg":67.95},
+        {"courses_dept":"geog","courses_avg":67.96},
+        {"courses_dept":"engl","courses_avg":71.49},
+        {"courses_dept":"engl","courses_avg":71.51},
+        {"courses_dept":"engl","courses_avg":71.71},
+        {"courses_dept":"engl","courses_avg":71.91},
+        {"courses_dept":"engl","courses_avg":72.02},
+        {"courses_dept":"engl","courses_avg":72.59},
+        {"courses_dept":"engl","courses_avg":72.91},
+        {"courses_dept":"engl","courses_avg":73.17}
+    ]
+}
+

@@ -1,0 +1,24 @@
+{
+    "title": "Malformed query - multiple key:number pairs in MCOMPARISON",
+    "query": {
+        "WHERE": {
+            "LT": {
+                "courses_pass": 5,
+                "courses_avg": 20
+            }
+        },
+        "OPTIONS": {
+            "COLUMNS": [
+                "courses_dept",
+                "courses_avg",
+                "courses_pass",
+                "courses_fail"
+            ],
+            "ORDER": "courses_avg"
+        }
+    },
+    "isQueryValid": false,
+    "result": "Not implemented."
+}
+
+

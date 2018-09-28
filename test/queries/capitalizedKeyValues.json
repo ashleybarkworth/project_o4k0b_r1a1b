@@ -1,0 +1,33 @@
+{
+    "title": "SELECT dept, avg, instructor WHERE dept = NURS AND avg < 50 ORDER BY avg",
+    "query": {
+        "WHERE": {
+            "OR": [
+                {
+                    "AND": [
+                        {
+                            "IS": {
+                                "courses_dept": "NURS"
+                            }
+                        },
+                        {
+                            "LT":{
+                                "courses_avg": 50
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "OPTIONS": {
+            "COLUMNS": [
+                "courses_dept",
+                "courses_avg",
+                "courses_instructor"
+            ],
+            "ORDER": "courses_avg"
+        }
+    },
+    "isQueryValid": true,
+    "result":[]
+}

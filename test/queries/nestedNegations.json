@@ -1,0 +1,38 @@
+{
+    "title": "Test multiple nested negations",
+    "query": {
+        "WHERE": {
+            "AND": [
+                {
+                "NOT": {
+                    "NOT": {
+                        "NOT": {
+                            "NOT": {
+                                "GT": {
+                                    "courses_avg": 95
+                                }
+                            }
+                        }
+                    }
+                }
+                },
+                {
+                    "IS": {
+                        "courses_dept": "adhe"
+                    }
+                }
+            ]
+        },
+        "OPTIONS": {
+            "COLUMNS": [
+                "courses_dept",
+                "courses_avg"
+            ],
+            "ORDER": "courses_avg"
+        }
+    },
+    "isQueryValid": true,
+    "result":[
+        {"courses_dept":"adhe", "courses_avg":96.11}
+    ]
+}
