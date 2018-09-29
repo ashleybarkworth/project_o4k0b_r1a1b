@@ -172,7 +172,9 @@ describe("InsightFacade PerformQuery", () => {
                         } catch (err) {
                             response = err;
                         } finally {
-                            if (test.isQueryValid) {
+                            if (test.isQueryValid && shouldBeOrdered(test)) {
+                                expect(response).to.deep.equal(test.result);
+                            } else if (test.isQueryValid) {
                                 expect(response).to.have.deep.members(test.result as any[]);
                             } else {
                                 expect(response).to.be.instanceOf(InsightError);
@@ -183,3 +185,7 @@ describe("InsightFacade PerformQuery", () => {
         });
     });
 });
+
+function shouldBeOrdered(testQuery: ITestQuery): boolean {
+    return (testQuery.query.hasOwnProperty("OPTIONS") && testQuery.query["OPTIONS"].hasOwnProperty("ORDER"));
+}

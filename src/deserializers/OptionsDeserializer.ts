@@ -31,7 +31,7 @@ export class OptionsDeserializer {
             if (!columns.includes(order)) {
                 throw new InsightError("Trying to order by a value not in columns");
             }
-            ioptions["order"] = order.split("_")[1];
+            ioptions["order"] = order;
         }
         return ioptions;
     }

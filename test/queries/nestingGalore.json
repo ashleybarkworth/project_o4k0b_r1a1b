@@ -29,8 +29,7 @@
                 "courses_id",
                 "courses_title",
                 "courses_instructor"
-            ],
-            "ORDER": "courses_title"
+            ]
         }
     },
     "isQueryValid": true,

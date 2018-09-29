@@ -19,59 +19,6 @@ export default class InsightFacade implements IInsightFacade {
 
     constructor() {
         Log.trace("InsightFacadeImpl::init()");
-
-        // // TODO inserting test data here
-        // this.loadedDataSets = [{
-        //     id: "courses", sections: [
-        //         {
-        //             id: "101",
-        //             dept: "span",
-        //             avg: 98,
-        //             instructor: "",
-        //             title: "Intro to Spanish",
-        //             pass: 400,
-        //             fail: 50,
-        //             audit: 5,
-        //             uuid: "testb",
-        //             year: 2014
-        //         },
-        //         {
-        //             id: "310",
-        //             dept: "cpsc",
-        //             avg: 50,
-        //             instructor: "Reid Holmes",
-        //             title: "Software Something",
-        //             pass: 200,
-        //             fail: 20,
-        //             audit: 2,
-        //             uuid: "testa",
-        //             year: 2017
-        //         },
-        //         {
-        //             id: "420b",
-        //             dept: "poli",
-        //             avg: 30,
-        //             instructor: "Cool person",
-        //             title: "",
-        //             pass: 30,
-        //             fail: 1,
-        //             audit: 0,
-        //             uuid: "testc",
-        //             year: 2014
-        //         },
-        //         {
-        //             id: "301",
-        //             dept: "cpsc",
-        //             avg: 80,
-        //             instructor: "John",
-        //             title: "Title",
-        //             pass: 100,
-        //             fail: 5,
-        //             audit: 0,
-        //             uuid: "tesd",
-        //             year: 2017
-        //         }]
-        // }];
     }
 
     // TODO ashley throw InsightErrors for various reasons addDataset can fail
@@ -152,24 +99,30 @@ export default class InsightFacade implements IInsightFacade {
         return new Promise<any[]>((resolve, reject) => {
             if (query == null || query === undefined ||
                 !query.hasOwnProperty("WHERE") || !query.hasOwnProperty("OPTIONS")) {
-                throw new InsightError("Invalid query");
+                let insightError = new InsightError("Invalid query");
+                reject(insightError);
+                throw insightError;
             }
-
-            let options: IOptions = new OptionsDeserializer().deserialize(query.OPTIONS);
-            let datasetToQuery = this.getDataSetToQuery(options.key);
-            let filter: IFilter = new FilterDeserializer(options.key).deserialize(query.WHERE);
-            let result: any[] = [];
-            for (let section of datasetToQuery.sections) {
-                if (filter.validCourseSection(section)) {
-                    let entry: any = {};
-                    options.columns.forEach((key) => entry[options.key + "_" + key] = section[key]);
-                    result.push(entry);
+            try {
+                let options: IOptions = new OptionsDeserializer().deserialize(query.OPTIONS);
+                let datasetToQuery = this.getDataSetToQuery(options.key);
+                let filter: IFilter = new FilterDeserializer(options.key).deserialize(query.WHERE);
+                let result: any[] = [];
+                for (let section of datasetToQuery.sections) {
+                    if (filter.validCourseSection(section)) {
+                        let entry: any = {};
+                        options.columns.forEach((key) => entry[options.key + "_" + key] = section[key]);
+                        result.push(entry);
+                    }
                 }
+                if (options.order !== undefined) {
+                    result.sort((secA, secB) => secA[options.order] <= secB[options.order] ? -1 : 1);
+                }
+                resolve(result);
+            } catch (err) {
+                reject(new InsightError(err));
+                throw err;
             }
-            if (options.order !== undefined) {
-                result.sort((secA, secB) => secA[options.order] < secB[options.order] ? -1 : 1);
-            }
-            resolve(result);
         });
     }
 
