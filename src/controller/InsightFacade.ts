@@ -95,39 +95,46 @@ export default class InsightFacade implements IInsightFacade {
         });
     }
 
-    public removeDataset(id: string): Promise < string > {
+    public removeDataset(id: string): Promise<string> {
         return Promise.reject("Not implemented.");
     }
 
     public performQuery(query: any): Promise<any[]> {
         return new Promise<any[]>((resolve, reject) => {
-            if (query == null || query === undefined ||
-                !query.hasOwnProperty("WHERE") || !query.hasOwnProperty("OPTIONS")) {
-                let insightError = new InsightError("Invalid query");
-                reject(insightError);
-                throw insightError;
-            }
-            try {
-                let options: IOptions = new OptionsDeserializer().deserialize(query.OPTIONS);
-                let datasetToQuery = this.getDataSetToQuery(options.key);
-                let filter: IFilter = new FilterDeserializer(options.key).deserialize(query.WHERE);
-                let result: any[] = [];
-                for (let section of datasetToQuery.sections) {
-                    if (filter.validCourseSection(section)) {
-                        let entry: any = {};
-                        options.columns.forEach((key) => entry[options.key + "_" + key] = section[key]);
-                        result.push(entry);
+                try {
+                    if (query == null || query === undefined ||
+                        !query.hasOwnProperty("WHERE") || !query.hasOwnProperty("OPTIONS")) {
+                        throw new InsightError("Invalid query");
                     }
+
+                    // Transform raw body into an IOptions and IFilter object; grab the dataset as soon as we know which
+                    // key we're looking for so that we can fail fast.
+                    let options: IOptions = new OptionsDeserializer().deserialize(query.OPTIONS);
+                    let datasetToQuery = this.getDataSetToQuery(options.key);
+                    let filter: IFilter = new FilterDeserializer(options.key).deserialize(query.WHERE);
+
+                    // Loop through the dataset and use the filter object to determine which sections should be included
+                    let result: any[] = [];
+                    for (let section of datasetToQuery.sections) {
+                        if (filter.validCourseSection(section)) {
+                            // This section should be included in the results. We determine which properties to include
+                            // based on the OPTIONS.COLUMNS field, which gives the keys to include
+                            let entry: any = {};
+                            options.columns.forEach((key) => entry[options.key + "_" + key] = section[key]);
+                            result.push(entry);
+                        }
+                    }
+                    // Sort our results if necessary
+                    if (options.order !== undefined) {
+                        result.sort((secA, secB) => secA[options.order] <= secB[options.order] ? -1 : 1);
+                    }
+                    resolve(result);
+                } catch (err) {
+                    reject(new InsightError(err));
+                    throw err;
                 }
-                if (options.order !== undefined) {
-                    result.sort((secA, secB) => secA[options.order] <= secB[options.order] ? -1 : 1);
-                }
-                resolve(result);
-            } catch (err) {
-                reject(new InsightError(err));
-                throw err;
             }
-        });
+        );
     }
 
     /**
@@ -213,7 +220,21 @@ export default class InsightFacade implements IInsightFacade {
         return datasetToQuery;
     }
 
-    public listDatasets(): Promise < InsightDataset[] > {
-        return Promise.reject("Not implemented.");
+    public listDatasets(): Promise<InsightDataset[]> {
+        // TODO load from disk
+        return new Promise<InsightDataset[]>((resolve, reject) => {
+            try {
+                resolve(loadedDataSets.map((ds) => {
+                    return {
+                        id: ds.id,
+                        kind: InsightDatasetKind.Courses, // TODO lol
+                        numRows: ds.sections.length,
+                    }  as
+                        InsightDataset;
+                }));
+            } catch (err) {
+                reject(err);
+            }
+        });
     }
 }
