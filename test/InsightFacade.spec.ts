@@ -26,6 +26,13 @@ describe("InsightFacade Add/Remove Dataset", function () {
     const datasetsToLoad: { [id: string]: string } = {
         courses: "./test/data/courses.zip",
         courses2: "./test/data/courses2.zip",
+        coursesJPEG: "./test/data/coursesJPEG.zip",
+        notCoursesFolder: "./test/data/notCoursesFolder.zip",
+        oneCourseContainsInvalidJSON: "./test/data/oneCourseContainsInvalidJSON.zip",
+        oneCourseHasNoValidSections: "./test/data/oneCourseHasNoValidSections.zip",
+        rooms: "./test/data/rooms.zip",
+        someCoursesWithInvalidSections: "./test/data/someCoursesWithInvalidSections.zip",
+        zeroValidCourseSections: "./test/data/zeroValidCourseSections.zip"
     };
 
     let insightFacade: InsightFacade;

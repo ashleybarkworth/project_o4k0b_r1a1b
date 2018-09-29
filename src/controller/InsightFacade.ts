@@ -26,12 +26,24 @@ export default class InsightFacade implements IInsightFacade {
     // TODO ashley don't code at midnight
     public addDataset(id: string, content: string, kind: InsightDatasetKind): Promise <string[]> {
         let promises: any[] = [];
+        let path: string = "./src/data/";
         return new Promise<string[]>((resolve, reject) => {
             // For now, room types are not allowed
             if (kind !== InsightDatasetKind.Courses) {
-                reject("Invalid InsightDataset kind");
+                reject(new InsightError("Invalid dataset kind"));
+            } else if (!id || id.length === 0) {
+                reject(new InsightError("Dataset id is null, undefined or empty"));
             } else {
-                // TODO ashley add load dataset from disk
+                fs.readdir(path, function (err, files) {
+                    if (err) {
+                        reject(new InsightError("Couldn't retrieve files in /data directory"));
+                    } else {
+                        let datasetExists: boolean = Boolean(files.map((file) =>
+                            file.split(".").slice(0, -1).join("."))
+                            .find((fileName) => fileName === id));
+                        if (datasetExists) { reject(new InsightError("Dataset with this id already exists")); }
+                    }
+                });
                 const jsZip = new JSZip();
                 jsZip.loadAsync(content, {base64: true}).then(function (zip) {
                     if (Object.keys(zip.folder("courses").files).length === 0) {
@@ -49,46 +61,59 @@ export default class InsightFacade implements IInsightFacade {
                             try {
                                 parsedJSON = JSON.parse(fileData[i]);
                             } catch (err) {
-                                reject(["Invalid JSON"]);
+                                continue; // TODO check if a file can contain invalid JSON?
                             }
                             for (const c of parsedJSON.result) {
-                                const courseId: string = c.Course;
-                                const dept: string = c.Subject;
-                                const avg: number = c.Avg;
-                                const instructor: string = c.Professor;
-                                const title: string = c.Title;
-                                const pass: number = c.Pass;
-                                const fail: number = c.Fail;
-                                const audit: number = c.Audit;
-                                const uuid: string = String(c.id);
-                                const year: number = Number(c.Year);
+                                try {
+                                    const courseId: string = c.Course;
+                                    const dept: string = c.Subject;
+                                    const avg: number = c.Avg;
+                                    const instructor: string = c.Professor;
+                                    const title: string = c.Title;
+                                    const pass: number = c.Pass;
+                                    const fail: number = c.Fail;
+                                    const audit: number = c.Audit;
+                                    const uuid: string = String(c.id);
+                                    const year: number = Number(c.Year);
 
-                                const courseSection: ICourseSection = {
-                                    id: courseId,
-                                    dept,
-                                    avg,
-                                    instructor,
-                                    title,
-                                    pass,
-                                    fail,
-                                    audit,
-                                    uuid,
-                                    year
-                                };
-                                courseSections.push(courseSection);
+                                    const courseSection: ICourseSection = {
+                                        id: courseId,
+                                        dept,
+                                        avg,
+                                        instructor,
+                                        title,
+                                        pass,
+                                        fail,
+                                        audit,
+                                        uuid,
+                                        year
+                                    };
+                                    courseSections.push(courseSection);
+                                } catch (err) {
+                                    continue;
+                                }
+
                             }
                         }
 
-                        fs.writeFile("./data/" + id + ".json", JSON.stringify(fileData), function (err) {
+                        if (courseSections.length === 0) {
+                            reject(new InsightError("Dataset contains no valid course sections"));
+                        }
+
+                        if (!fs.existsSync(path)) {
+                            fs.mkdirSync(path);
+                        }
+
+                        fs.writeFile(path + id + ".json" , JSON.stringify(fileData), function (err) {
                             if (err) {
-                                reject(new InsightError());
+                                reject(new InsightError("Error persisting dataset to disk"));
                             }
                         });
 
                         let dataset: IFullDataset = {id, sections: courseSections};
                         loadedDataSets.push(dataset);
-                        resolve(loadedDataSets
-                            .map((courseDataset: IFullDataset) => courseDataset.id));
+
+                        resolve(loadedDataSets.map((courseDataset: IFullDataset) => courseDataset.id));
                     }).catch( function () {
                         reject(new InsightError());
                     });
