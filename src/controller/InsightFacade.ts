@@ -15,6 +15,7 @@ import {OptionsDeserializer} from "../deserializers/OptionsDeserializer";
  */
 
 const loadedDataSets: IFullDataset[] = [];
+const path = "./src/data";
 
 export default class InsightFacade implements IInsightFacade {
 
@@ -24,7 +25,7 @@ export default class InsightFacade implements IInsightFacade {
 
     public addDataset(id: string, content: string, kind: InsightDatasetKind): Promise <string[]> {
         let promises: any[] = [];
-        let path: string = "./src/data/";
+        let self = this;
         return new Promise<string[]>((resolve, reject) => {
             // For now, room types are not allowed
             if (kind !== InsightDatasetKind.Courses) {
@@ -56,77 +57,15 @@ export default class InsightFacade implements IInsightFacade {
                         let promise: any = zip.files[fileName].async("text");
                         promises.push(promise);
                     });
-                    Promise.all(promises).then(function (fileData) {
-                        let courseSections: ICourseSection[] = [];
-                        for (let i = 1; i < fileData.length; i++) {
-                            let parsedJSON: any;
-                            try {
-                                parsedJSON = JSON.parse(fileData[i]);
-                            } catch (err) {
-                                continue;
-                            }
-                            for (const c of parsedJSON.result) {
-                                try {
-                                    const courseId: string = typeof c.Course === "string" ? c.Course : undefined;
-                                    const dept: string = typeof c.Subject === "string" ? c.Subject : undefined;
-                                    const avg: number = typeof c.Avg === "number" ? c.Avg : undefined;
-                                    const instructor: string = typeof c.Professor === "string"
-                                        ? c.Professor : undefined;
-                                    const title: string = typeof c.Title === "string" ? c.Title : undefined;
-                                    const pass: number = typeof c.Pass === "number" ? c.Pass : undefined;
-                                    const fail: number = typeof c.Fail === "number" ? c.Fail : undefined;
-                                    const audit: number = typeof c.Audit === "number" ? c.Audit : undefined;
-                                    const uuid: string = typeof c.id === "number" ? String(c.id) : undefined;
-                                    const year: number = typeof c.Year === "string" ? Number(c.Year) : undefined;
-
-                                    const courseSection: ICourseSection = {
-                                        id: courseId,
-                                        dept,
-                                        avg,
-                                        instructor,
-                                        title,
-                                        pass,
-                                        fail,
-                                        audit,
-                                        uuid,
-                                        year
-                                    };
-
-                                    let noNullProperties: boolean = Object.values(courseSection)
-                                        .every((property) => property != null);
-
-                                    if (noNullProperties) {
-                                        courseSections.push(courseSection);
-                                    }
-                                } catch (err) { // continue to next course section if any errors occur
-                                    continue;
-                                }
-
-                            }
-                        }
-
-                        if (courseSections.length === 0) {
-                            let err = new InsightError("Dataset contains no valid course sections");
+                    Promise.all(promises).then((fileData) => {
+                        try {
+                            let dataset: IFullDataset = self.addCourseSectionsToDataSet(id, fileData);
+                            self.persistDataSet(id, dataset);
+                            resolve(loadedDataSets.map((courseDataset: IFullDataset) => courseDataset.id));
+                        } catch (err) {
                             reject(err);
                             throw err;
-                        } else {
-                            if (!fs.existsSync(path)) {
-                                fs.mkdirSync(path);
-                            }
-
-                            let dataset: IFullDataset = {id, sections: courseSections};
-                            loadedDataSets.push(dataset);
-
-                            let datasetContent: string = JSON.stringify(dataset);
-
-                            fs.writeFile(path + id + ".json" , datasetContent, function (err) {
-                                if (err) {
-                                    reject(new InsightError("Error persisting dataset to disk"));
-                                }
-                            });
                         }
-
-                        resolve(loadedDataSets.map((courseDataset: IFullDataset) => courseDataset.id));
                     }).catch( function (err) {
                         reject(new InsightError(err));
                         throw err;
@@ -170,6 +109,79 @@ export default class InsightFacade implements IInsightFacade {
             } catch (err) {
                 reject(new InsightError(err));
                 throw err;
+            }
+        });
+    }
+
+    private addCourseSectionsToDataSet(id: string, fileData: any): IFullDataset {
+        let courseSections: ICourseSection[] = [];
+        for (let i = 1; i < fileData.length; i++) {
+            let parsedJSON: any;
+            try {
+                parsedJSON = JSON.parse(fileData[i]);
+            } catch (err) {
+                continue;
+            }
+            for (const c of parsedJSON.result) {
+                try {
+                    const courseId: string = typeof c.Course === "string" ? c.Course : undefined;
+                    const dept: string = typeof c.Subject === "string" ? c.Subject : undefined;
+                    const avg: number = typeof c.Avg === "number" ? c.Avg : undefined;
+                    const instructor: string = typeof c.Professor === "string"
+                        ? c.Professor : undefined;
+                    const title: string = typeof c.Title === "string" ? c.Title : undefined;
+                    const pass: number = typeof c.Pass === "number" ? c.Pass : undefined;
+                    const fail: number = typeof c.Fail === "number" ? c.Fail : undefined;
+                    const audit: number = typeof c.Audit === "number" ? c.Audit : undefined;
+                    const uuid: string = typeof c.id === "number" ? String(c.id) : undefined;
+                    const year: number = typeof c.Year === "string" ? Number(c.Year) : undefined;
+
+                    const courseSection: ICourseSection = {
+                        id: courseId,
+                        dept,
+                        avg,
+                        instructor,
+                        title,
+                        pass,
+                        fail,
+                        audit,
+                        uuid,
+                        year
+                    };
+
+                    let noNullProperties: boolean = Object.values(courseSection)
+                        .every((property) => property != null);
+
+                    if (noNullProperties) {
+                        courseSections.push(courseSection);
+                    }
+                } catch (err) { // continue to next course section if any errors occur
+                    continue;
+                }
+
+            }
+        }
+
+        if (courseSections.length === 0) {
+            throw new InsightError("Dataset contains no valid course sections");
+        } else {
+            let dataset: IFullDataset = {id, sections: courseSections};
+            loadedDataSets.push(dataset);
+
+            return dataset;
+        }
+    }
+
+    private persistDataSet(id: string, dataset: IFullDataset) {
+        if (!fs.existsSync(path)) {
+            fs.mkdirSync(path);
+        }
+
+        let datasetContent: string = JSON.stringify(dataset);
+
+        fs.writeFile(path + id + ".json" , datasetContent, function (err) {
+            if (err) {
+                throw new InsightError("Error persisting dataset to disk");
             }
         });
     }
