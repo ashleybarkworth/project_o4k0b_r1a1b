@@ -102,6 +102,17 @@ export default class InsightFacade implements IInsightFacade {
                 reject(err);
                 throw err;
             }
+
+            let datasetIndex: number = loadedDataSets.findIndex((dataset) => dataset.id === id);
+
+            if (datasetIndex === -1) {
+                let err = new NotFoundError("No dataset with that id added yet");
+                reject(err);
+                throw err;
+            } else {
+                loadedDataSets.splice(datasetIndex, 1);
+            }
+
             fs.readdir(path, function (err, files) {
                 if (err) {
                     reject(new InsightError(err));
