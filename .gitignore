@@ -4,6 +4,7 @@
 
 node_modules/
 coverage/
+src/controller/data
 src/*.js
 src/*.map
 src/**/*.js

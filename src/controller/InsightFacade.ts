@@ -35,7 +35,9 @@ export default class InsightFacade implements IInsightFacade {
             if (kind !== InsightDatasetKind.Courses) {
                 reject(new InsightError("Invalid dataset kind"));
             } else if (!id || id.length === 0) {
-                reject(new InsightError("Dataset id is null, undefined or empty"));
+                let err = new InsightError("Dataset id is null, undefined or empty");
+                reject(err);
+                throw err;
             } else {
                 fs.readdir(path, function (err, files) {
                     if (err) {
