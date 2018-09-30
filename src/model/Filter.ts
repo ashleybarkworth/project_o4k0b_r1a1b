@@ -1,5 +1,4 @@
 import {ICourseSection} from "./IFullDataset";
-import {InsightError} from "../controller/IInsightFacade";
 
 /**
  * Each query contains a single filter which determines which course sections to include in the results.
@@ -57,23 +56,19 @@ export class SComparison implements IFilter {
      */
     public validCourseSection(courseSection: ICourseSection): boolean {
         let val = courseSection[this.key];
-        if (typeof val !== "string" && !(val instanceof String)) {
-            throw new InsightError("Something went very wrong"); // We already validated this in Deserializer
-        }
-        let stringVal = val as string;
         let hasStartAsterisk: boolean = this.searchText.startsWith("*");
         let hasEndAsterisk: boolean = this.searchText.endsWith("*");
 
         // Remove the asterisks from the search text
         let text: string = this.searchText.replace(new RegExp("\\*", "g"), "");
         if (!hasStartAsterisk && !hasEndAsterisk) {
-            return text === stringVal;          // If there are no wildcards, we need an exact match
+            return text === val;          // If there are no wildcards, we need an exact match
         } else if (!hasEndAsterisk) {
-            return stringVal.endsWith(text);    // Wilcard at the beginning, so match the end of the text
+            return val.endsWith(text);    // Wilcard at the beginning, so match the end of the text
         } else if (!hasStartAsterisk) {
-            return stringVal.startsWith(text);  // Wildcard at the end, so match the beginning of the text
+            return val.startsWith(text);  // Wildcard at the end, so match the beginning of the text
         } else {
-            return stringVal.includes(text);    // Wildcards on both sides, text just needs to appear somewhere
+            return val.includes(text);    // Wildcards on both sides, text just needs to appear somewhere
         }
     }
 }
@@ -103,9 +98,6 @@ export abstract class MComparator implements IFilter {
 
     public validCourseSection(courseSection: ICourseSection): boolean {
         let val = courseSection[this.key];
-        if (typeof(val) !== "number") {
-            throw new InsightError("Something went very wrong"); // Already validated this in the deserializer.
-        }
         let valAsNum = val as number;
         return this.comparison(valAsNum); // Comes from subclass
     }

@@ -48,7 +48,6 @@ export class FilterDeserializer {
             case "NOT":
                 return this.deserializeNegation(filter[key]);
         }
-        throw new InsightError("Something went very wrong!"); // We already checked this on line 34
     }
 
     /*
@@ -96,7 +95,6 @@ export class FilterDeserializer {
             case "GT":
                 return new GtComparator(key, val);
         }
-        throw new InsightError("Uh oh");
     }
 
     /*
