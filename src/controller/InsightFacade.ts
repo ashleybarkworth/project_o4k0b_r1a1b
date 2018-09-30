@@ -102,8 +102,7 @@ export default class InsightFacade implements IInsightFacade {
     public performQuery(query: any): Promise<any[]> {
         return new Promise<any[]>((resolve, reject) => {
                 try {
-                    if (query == null || query === undefined ||
-                        !query.hasOwnProperty("WHERE") || !query.hasOwnProperty("OPTIONS")) {
+                    if (query == null || !query.hasOwnProperty("WHERE") || !query.hasOwnProperty("OPTIONS")) {
                         throw new InsightError("Invalid query");
                     }
 
