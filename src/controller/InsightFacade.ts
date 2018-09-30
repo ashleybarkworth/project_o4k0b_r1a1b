@@ -131,9 +131,9 @@ export default class InsightFacade implements IInsightFacade {
     }
 
     /**
-     * Parses the file content from the zip into valid course sections, then creates and returns a
-     * new dataset with the given id and course sections. Any invalid course sections or invalid course files
-     * (e.g. files containing invalid JSON) are ignored. A valid dataset must contain at least one valid
+     * Parses file content from the zip into valid course sections, then creates and returns a
+     * new dataset with these course sections and the given ID. Any invalid course sections or invalid course files
+     * (e.g., files containing invalid JSON) are ignored. A valid dataset must contain at least one valid
      * course section, or an InsightError is thrown.
      *
      * In order for a course section to be valid, it must:
