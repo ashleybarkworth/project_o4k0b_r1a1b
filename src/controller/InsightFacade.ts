@@ -15,12 +15,16 @@ import {OptionsDeserializer} from "../deserializers/OptionsDeserializer";
  */
 
 const loadedDataSets: IFullDataset[] = [];
-const path = "./src/data";
+const path = "./src/data/";
 
 export default class InsightFacade implements IInsightFacade {
 
     constructor() {
         Log.trace("InsightFacadeImpl::init()");
+
+        if (!fs.existsSync(path)) {
+            fs.mkdirSync(path);
+        }
     }
 
     public addDataset(id: string, content: string, kind: InsightDatasetKind): Promise <string[]> {
@@ -60,7 +64,14 @@ export default class InsightFacade implements IInsightFacade {
                     Promise.all(promises).then((fileData) => {
                         try {
                             let dataset: IFullDataset = self.addCourseSectionsToDataSet(id, fileData);
-                            self.persistDataSet(id, dataset);
+
+                            let datasetContent: string = JSON.stringify(dataset);
+
+                            fs.writeFile(path + id + ".json" , datasetContent, function (err) {
+                                if (err) {
+                                    throw new InsightError("Error persisting dataset to disk");
+                                }
+                            });
                             resolve(loadedDataSets.map((courseDataset: IFullDataset) => courseDataset.id));
                         } catch (err) {
                             reject(err);
@@ -170,20 +181,6 @@ export default class InsightFacade implements IInsightFacade {
 
             return dataset;
         }
-    }
-
-    private persistDataSet(id: string, dataset: IFullDataset) {
-        if (!fs.existsSync(path)) {
-            fs.mkdirSync(path);
-        }
-
-        let datasetContent: string = JSON.stringify(dataset);
-
-        fs.writeFile(path + id + ".json" , datasetContent, function (err) {
-            if (err) {
-                throw new InsightError("Error persisting dataset to disk");
-            }
-        });
     }
 
     private getDataSetToQuery(key: string) {
