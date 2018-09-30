@@ -8,13 +8,14 @@ import {IFilter} from "../model/Filter.js";
 import {FilterDeserializer} from "../deserializers/FilterDeserializer";
 import {OptionsDeserializer} from "../deserializers/OptionsDeserializer";
 
-let loadedDataSets: IFullDataset[] = [];
-
 /**
  * This is the main programmatic entry point for the project.
  * Method documentation is in IInsightFacade
  *
  */
+
+const loadedDataSets: IFullDataset[] = [];
+
 export default class InsightFacade implements IInsightFacade {
 
     constructor() {
@@ -40,16 +41,19 @@ export default class InsightFacade implements IInsightFacade {
                     } else {
                         let datasetExists: boolean = Boolean(files.map((file) =>
                             file.split(".").slice(0, -1).join("."))
-                            .find((fileName) => fileName === id));
+                            .find((fileName) => fileName === id)
+                            || !loadedDataSets.every((dataset) => dataset.id !== id));
                         if (datasetExists) { reject(new InsightError("Dataset with this id already exists")); }
                     }
                 });
                 const jsZip = new JSZip();
                 jsZip.loadAsync(content, {base64: true}).then(function (zip) {
-                    if (Object.keys(zip.folder("courses").files).length === 0) {
-                        reject("ZIP file is empty");
+                    const courseDirectory: string = "courses/.*";
+                    let files = Object.keys(zip.files).filter((directory) => directory.match(courseDirectory));
+                    if (files.length === 0) {
+                        reject(new InsightError("No files found in courses folder"));
                     }
-                    Object.keys(zip.folder("courses").files).forEach(function (fileName) {
+                    files.forEach(function (fileName) {
                         let promise: any = zip.files[fileName].async("text");
                         promises.push(promise);
                     });
@@ -88,7 +92,13 @@ export default class InsightFacade implements IInsightFacade {
                                         uuid,
                                         year
                                     };
-                                    courseSections.push(courseSection);
+
+                                    let noNullProperties: boolean = Object.values(courseSection)
+                                        .every((property) => property != null);
+
+                                    if (noNullProperties) {
+                                        courseSections.push(courseSection);
+                                    }
                                 } catch (err) {
                                     continue;
                                 }
@@ -98,20 +108,22 @@ export default class InsightFacade implements IInsightFacade {
 
                         if (courseSections.length === 0) {
                             reject(new InsightError("Dataset contains no valid course sections"));
-                        }
-
-                        if (!fs.existsSync(path)) {
-                            fs.mkdirSync(path);
-                        }
-
-                        fs.writeFile(path + id + ".json" , JSON.stringify(fileData), function (err) {
-                            if (err) {
-                                reject(new InsightError("Error persisting dataset to disk"));
+                        } else {
+                            if (!fs.existsSync(path)) {
+                                fs.mkdirSync(path);
                             }
-                        });
 
-                        let dataset: IFullDataset = {id, sections: courseSections};
-                        loadedDataSets.push(dataset);
+                            let dataset: IFullDataset = {id, sections: courseSections};
+                            loadedDataSets.push(dataset);
+
+                            let datasetContent: string = JSON.stringify(dataset);
+
+                            fs.writeFile(path + id + ".json" , datasetContent, function (err) {
+                                if (err) {
+                                    reject(new InsightError("Error persisting dataset to disk"));
+                                }
+                            });
+                        }
 
                         resolve(loadedDataSets.map((courseDataset: IFullDataset) => courseDataset.id));
                     }).catch( function () {
