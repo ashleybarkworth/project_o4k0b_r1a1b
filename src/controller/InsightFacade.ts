@@ -15,7 +15,7 @@ import {OptionsDeserializer} from "../deserializers/OptionsDeserializer";
  */
 
 const loadedDataSets: IFullDataset[] = [];
-const path = "./src/data/";
+const path = "./data/";
 
 export default class InsightFacade implements IInsightFacade {
 
