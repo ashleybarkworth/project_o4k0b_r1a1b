@@ -33,7 +33,9 @@ export default class InsightFacade implements IInsightFacade {
         return new Promise<string[]>((resolve, reject) => {
             // For now, room types are not allowed
             if (kind !== InsightDatasetKind.Courses) {
-                reject(new InsightError("Invalid dataset kind"));
+                let err = new InsightError("Invalid dataset kind");
+                reject(err);
+                throw err;
             } else if (!id || id.length === 0) {
                 let err = new InsightError("Dataset id is null, undefined or empty");
                 reject(err);
@@ -41,7 +43,9 @@ export default class InsightFacade implements IInsightFacade {
             } else {
                 fs.readdir(path, function (err, files) {
                     if (err) {
-                        reject(new InsightError("Couldn't retrieve files in /data directory"));
+                        err = new InsightError("Couldn't retrieve files in /data directory");
+                        reject(err);
+                        throw err;
                     } else {
                         let datasetExists: boolean = Boolean(files.map((file) =>
                             file.split(".").slice(0, -1).join("."))
@@ -126,6 +130,22 @@ export default class InsightFacade implements IInsightFacade {
         });
     }
 
+    /**
+     * Parses the file content from the zip into valid course sections, then creates and returns a
+     * new dataset with the given id and course sections. Any invalid course sections or invalid course files
+     * (e.g. files containing invalid JSON) are ignored. A valid dataset must contain at least one valid
+     * course section, or an InsightError is thrown.
+     *
+     * In order for a course section to be valid, it must:
+     *  1. Contain all of the following keys: Course, Subject, Avg, Professor, Title, Pass, Fail, Audit, id, Year
+     *  2. Key value types must match the type in the corresponding ICourseSection field (with the exception of
+     *  Year and id)
+     *
+     * @param id        the id of the dataset we are adding, e.g. 'courses'
+     * @param fileData  the file content
+     * @return          the added dataset
+     * @throws          InsightError if the dataset contains no valid course sections
+     */
     private addCourseSectionsToDataSet(id: string, fileData: any): IFullDataset {
         let courseSections: ICourseSection[] = [];
         for (let i = 1; i < fileData.length; i++) {
