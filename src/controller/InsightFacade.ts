@@ -22,9 +22,6 @@ export default class InsightFacade implements IInsightFacade {
         Log.trace("InsightFacadeImpl::init()");
     }
 
-    // TODO ashley throw InsightErrors for various reasons addDataset can fail
-    // TODO ashley this code is gross, create method for create course sections/clean it up
-    // TODO ashley don't code at midnight
     public addDataset(id: string, content: string, kind: InsightDatasetKind): Promise <string[]> {
         let promises: any[] = [];
         let path: string = "./src/data/";
@@ -51,7 +48,9 @@ export default class InsightFacade implements IInsightFacade {
                     const courseDirectory: string = "courses/.*";
                     let files = Object.keys(zip.files).filter((directory) => directory.match(courseDirectory));
                     if (files.length === 0) {
-                        reject(new InsightError("No files found in courses folder"));
+                        let err = new InsightError("No files found in courses folder");
+                        reject(err);
+                        throw err;
                     }
                     files.forEach(function (fileName) {
                         let promise: any = zip.files[fileName].async("text");
@@ -60,25 +59,25 @@ export default class InsightFacade implements IInsightFacade {
                     Promise.all(promises).then(function (fileData) {
                         let courseSections: ICourseSection[] = [];
                         for (let i = 1; i < fileData.length; i++) {
-                            // TODO ashley check if course section is empty, invalid values (number/string mismatch)
                             let parsedJSON: any;
                             try {
                                 parsedJSON = JSON.parse(fileData[i]);
                             } catch (err) {
-                                continue; // TODO check if a file can contain invalid JSON?
+                                continue;
                             }
                             for (const c of parsedJSON.result) {
                                 try {
-                                    const courseId: string = c.Course;
-                                    const dept: string = c.Subject;
-                                    const avg: number = c.Avg;
-                                    const instructor: string = c.Professor;
-                                    const title: string = c.Title;
-                                    const pass: number = c.Pass;
-                                    const fail: number = c.Fail;
-                                    const audit: number = c.Audit;
-                                    const uuid: string = String(c.id);
-                                    const year: number = Number(c.Year);
+                                    const courseId: string = typeof c.Course === "string" ? c.Course : undefined;
+                                    const dept: string = typeof c.Subject === "string" ? c.Subject : undefined;
+                                    const avg: number = typeof c.Avg === "number" ? c.Avg : undefined;
+                                    const instructor: string = typeof c.Professor === "string"
+                                        ? c.Professor : undefined;
+                                    const title: string = typeof c.Title === "string" ? c.Title : undefined;
+                                    const pass: number = typeof c.Pass === "number" ? c.Pass : undefined;
+                                    const fail: number = typeof c.Fail === "number" ? c.Fail : undefined;
+                                    const audit: number = typeof c.Audit === "number" ? c.Audit : undefined;
+                                    const uuid: string = typeof c.id === "number" ? String(c.id) : undefined;
+                                    const year: number = typeof c.Year === "string" ? Number(c.Year) : undefined;
 
                                     const courseSection: ICourseSection = {
                                         id: courseId,
@@ -99,7 +98,7 @@ export default class InsightFacade implements IInsightFacade {
                                     if (noNullProperties) {
                                         courseSections.push(courseSection);
                                     }
-                                } catch (err) {
+                                } catch (err) { // continue to next course section if any errors occur
                                     continue;
                                 }
 
@@ -107,7 +106,9 @@ export default class InsightFacade implements IInsightFacade {
                         }
 
                         if (courseSections.length === 0) {
-                            reject(new InsightError("Dataset contains no valid course sections"));
+                            let err = new InsightError("Dataset contains no valid course sections");
+                            reject(err);
+                            throw err;
                         } else {
                             if (!fs.existsSync(path)) {
                                 fs.mkdirSync(path);
@@ -126,11 +127,13 @@ export default class InsightFacade implements IInsightFacade {
                         }
 
                         resolve(loadedDataSets.map((courseDataset: IFullDataset) => courseDataset.id));
-                    }).catch( function () {
-                        reject(new InsightError());
+                    }).catch( function (err) {
+                        reject(new InsightError(err));
+                        throw err;
                     });
-                }).catch(function (err: any) {
-                    reject(new InsightError());
+                }).catch(function (err) {
+                    reject(new InsightError(err));
+                    throw err;
                 });
             }
         });
