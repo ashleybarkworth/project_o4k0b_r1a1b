@@ -1,5 +1,5 @@
 import Log from "../Util";
-import {IInsightFacade, InsightDataset, InsightDatasetKind, InsightError} from "./IInsightFacade";
+import {IInsightFacade, InsightDataset, InsightDatasetKind, InsightError, NotFoundError} from "./IInsightFacade";
 import {ICourseSection, IFullDataset} from "../model/IFullDataset";
 import * as JSZip from "jszip";
 import * as fs from "fs";
@@ -95,8 +95,35 @@ export default class InsightFacade implements IInsightFacade {
         });
     }
 
-    public removeDataset(id: string): Promise<string> {
-        return Promise.reject("Not implemented.");
+    public removeDataset(id: string): Promise <string> {
+        return new Promise<string>(function (resolve, reject) {
+            if (id == null) {
+                let err = new InsightError("Null or undefined id");
+                reject(err);
+                throw err;
+            }
+            fs.readdir(path, function (err, files) {
+                if (err) {
+                    reject(new InsightError(err));
+                    throw err;
+                }
+
+                if (!files.includes(id + ".json")) {
+                    err = new NotFoundError("No dataset with that id added yet");
+                    reject(err);
+                    return;
+                } else {
+                    fs.unlink(path + id + ".json", (error) => {
+                        if (error) {
+                            err = new InsightError("Error removing dataset from disk");
+                            reject(err);
+                            throw err;
+                        }
+                        resolve(id);
+                    });
+                }
+            });
+        });
     }
 
     public performQuery(query: any): Promise<any[]> {
