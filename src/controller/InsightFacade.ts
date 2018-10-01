@@ -15,7 +15,6 @@ import {fileExists} from "ts-node";
  *
  */
 
-const loadedDataSets: IFullDataset[] = [];
 const path = "./data/";
 
 export default class InsightFacade implements IInsightFacade {
