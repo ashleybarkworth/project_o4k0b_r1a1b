@@ -32,7 +32,8 @@ describe("InsightFacade Add/Remove Dataset", function () {
         oneCourseHasNoValidSections: "./test/data/oneCourseHasNoValidSections.zip",
         rooms: "./test/data/rooms.zip",
         someCoursesWithInvalidSections: "./test/data/someCoursesWithInvalidSections.zip",
-        zeroValidCourseSections: "./test/data/zeroValidCourseSections.zip"
+        zeroValidCourseSections: "./test/data/zeroValidCourseSections.zip",
+        yaml: "./test/data/yaml.zip",
     };
 
     let insightFacade: InsightFacade;
@@ -212,6 +213,18 @@ describe("InsightFacade Add/Remove Dataset", function () {
             response = err;
         } finally {
             expect(response).to.be.a.instanceOf(InsightError);
+        }
+    });
+
+    it("Should reject a yaml course", async () => {
+        const id: string = "yaml";
+        let response: string[];
+        try {
+            response = await insightFacade.addDataset(id, datasets[id], InsightDatasetKind.Courses);
+        } catch (err) {
+            response = err;
+        } finally {
+            expect(response).to.be.instanceOf(InsightError);
         }
     });
 
