@@ -4,7 +4,7 @@ import {ICourseSection, IFullDataset} from "../model/IFullDataset";
 import * as JSZip from "jszip";
 import * as fs from "fs";
 import {IOptions} from "../model/Options";
-import {IFilter} from "../model/Filter.js";
+import {IFilter} from "../model/Filter";
 import {FilterDeserializer} from "../deserializers/FilterDeserializer";
 import {OptionsDeserializer} from "../deserializers/OptionsDeserializer";
 
@@ -114,6 +114,7 @@ export default class InsightFacade implements IInsightFacade {
 
                     // Loop through the dataset and use the filter object to determine which sections should be included
                     let result: any[] = [];
+                    let resultCount: number = 0;
                     for (let section of datasetToQuery.sections) {
                         if (filter.validCourseSection(section)) {
                             // This section should be included in the results. We determine which properties to include
@@ -121,6 +122,10 @@ export default class InsightFacade implements IInsightFacade {
                             let entry: any = {};
                             options.columns.forEach((key) => entry[options.key + "_" + key] = section[key]);
                             result.push(entry);
+                            resultCount++;
+                            if (resultCount > 5000) {
+                                throw new InsightError("Too many results");
+                            }
                         }
                     }
                     // Sort our results if necessary

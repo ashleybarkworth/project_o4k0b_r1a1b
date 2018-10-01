@@ -1,0 +1,15 @@
+{
+    "title": "Too many results",
+    "query": {
+        "WHERE": {
+        },
+        "OPTIONS": {
+            "COLUMNS": [
+                "courses_dept",
+                "courses_avg"
+            ]
+        }
+    },
+    "isQueryValid": false,
+    "result": "Throws InsightError (too many queries)"
+}
