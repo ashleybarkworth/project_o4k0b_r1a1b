@@ -227,11 +227,19 @@ export default class InsightFacade implements IInsightFacade {
     }
 
     private fileExists(id: string) {
-        return this.loadedDataSets.some((ds) => ds.id === id) || fs.existsSync(path + id + ".json");
+        return fs.existsSync(path + id + ".json");
+    }
+
+    private loadAllDatasetsFromDisk() {
+        if (fs.existsSync(path)) {
+            let files = fs.readdirSync(path);
+            files.map((file) => file.replace(".json", ""))
+                .forEach((filename) => this.loadDataSetFromDisk(filename));
+        }
     }
 
     private loadDataSetFromDisk(id: string) {
-        if (!fileExists(id)) {
+        if (!this.fileExists(id)) {
             let data = fs.readFileSync(path + id + ".json", "utf8");
             let dataset: IFullDataset = JSON.parse(data);
             this.loadedDataSets.push(dataset);
@@ -250,13 +258,13 @@ export default class InsightFacade implements IInsightFacade {
     }
 
     public listDatasets(): Promise<InsightDataset[]> {
-        // TODO load from disk
         return new Promise<InsightDataset[]>((resolve, reject) => {
             try {
+                this.loadAllDatasetsFromDisk();
                 resolve(this.loadedDataSets.map((ds) => {
                     return {
                         id: ds.id,
-                        kind: InsightDatasetKind.Courses, // TODO lol
+                        kind: InsightDatasetKind.Courses,
                         numRows: ds.sections.length,
                     }  as
                         InsightDataset;
