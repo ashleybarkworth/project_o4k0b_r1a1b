@@ -99,11 +99,15 @@ export default class InsightFacade implements IInsightFacade {
 
             self.memoryCache.removeDataSet(id);
 
-            if (fs.existsSync(path + id + ".json")) {
-                fs.unlinkSync(path + id + ".json");
-                resolve(id);
-            } else {
-                reject(new NotFoundError("No dataset with that id added yet"));
+            try {
+                if (fs.existsSync(path + id + ".json")) {
+                    fs.unlinkSync(path + id + ".json");
+                    resolve(id);
+                } else {
+                    reject(new NotFoundError("No dataset with that id added yet"));
+                }
+            } catch (err) {
+                reject(new InsightError(err));
             }
         });
     }
@@ -257,15 +261,19 @@ export default class InsightFacade implements IInsightFacade {
 
     public listDatasets(): Promise<InsightDataset[]> {
         return new Promise<InsightDataset[]>((resolve, reject) => {
-            this.loadAllDatasetsFromDisk();
-            resolve(this.memoryCache.getLoadedDataSets().map((ds) => {
-                return {
-                    id: ds.id,
-                    kind: InsightDatasetKind.Courses,
-                    numRows: ds.sections.length,
-                }  as
-                    InsightDataset;
-            }));
+            try {
+                this.loadAllDatasetsFromDisk();
+                resolve(this.memoryCache.getLoadedDataSets().map((ds) => {
+                    return {
+                        id: ds.id,
+                        kind: InsightDatasetKind.Courses,
+                        numRows: ds.sections.length,
+                    }  as
+                        InsightDataset;
+                }));
+            } catch (err) {
+                reject(new InsightError(err));
+            }
         });
     }
 }
