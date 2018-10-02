@@ -17,6 +17,8 @@ export interface ITestQuery {
     filename: string;  // This is injected when reading the file
 }
 
+const dataDirectoryPath = "./data/";
+
 describe("InsightFacade Add/Remove Dataset", function () {
     // Reference any datasets you've added to test/data here and they will
     // automatically be loaded in the Before All hook.
@@ -95,6 +97,7 @@ describe("InsightFacade Add/Remove Dataset", function () {
             response = err;
         } finally {
             expect(response).to.have.length(1);
+            expect(fs.existsSync(dataDirectoryPath + id + ".json")).to.eq(true);
         }
     });
 
@@ -119,6 +122,7 @@ describe("InsightFacade Add/Remove Dataset", function () {
             response = err;
         } finally {
             expect(response).to.have.length(2);
+            expect(fs.existsSync(dataDirectoryPath + id + ".json")).to.eq(true);
         }
     });
 
@@ -143,6 +147,7 @@ describe("InsightFacade Add/Remove Dataset", function () {
             response = err;
         } finally {
             expect(response).to.have.length(3);
+            expect(fs.existsSync(dataDirectoryPath + id + ".json")).to.eq(true);
         }
 
     });
@@ -157,6 +162,7 @@ describe("InsightFacade Add/Remove Dataset", function () {
             response = err;
         } finally {
             expect(response).to.have.length(4);
+            expect(fs.existsSync(dataDirectoryPath + id + ".json")).to.eq(true);
         }
 
     });
@@ -171,6 +177,7 @@ describe("InsightFacade Add/Remove Dataset", function () {
             response = err;
         } finally {
             expect(response).to.have.length(5);
+            expect(fs.existsSync(dataDirectoryPath + id + ".json")).to.eq(true);
         }
 
     });
@@ -185,6 +192,7 @@ describe("InsightFacade Add/Remove Dataset", function () {
             response = err;
         } finally {
             expect(response).to.have.length(6);
+            expect(fs.existsSync(dataDirectoryPath + id + ".json")).to.eq(true);
         }
 
     });
@@ -433,6 +441,7 @@ describe("InsightFacade Add/Remove Dataset", function () {
             response = err;
         } finally {
             expect(response).to.deep.equal(id);
+            expect(fs.existsSync(dataDirectoryPath + id + ".json")).to.eq(false);
         }
     });
 
@@ -585,7 +594,7 @@ describe("Tests that require mucking around with the state", () => {
     insightFacade.setMemoryCache(memoryCache);
 
     // Start with a clean slate
-    beforeEach(async function () {
+    before(async function () {
         const allSets: InsightDataset[] = await insightFacade.listDatasets();
         await allSets.forEach(async (v) => await insightFacade.removeDataset(v.id));
     });
@@ -604,8 +613,15 @@ describe("Tests that require mucking around with the state", () => {
         expect(resp).does.not.have.length(0);
     });
 
-    it("List datasets with no datasets", async function () {
-        fs.rmdirSync("./data/");
+    it("List datasets load from disk", async function () {
+        memoryCache.removeDataSet("courses");
+        let result: InsightDataset[] = await insightFacade.listDatasets();
+        expect(result).to.have.length(1);
+    });
+
+    it("List datasets, no ./data directory", async function () {
+        await insightFacade.removeDataset("courses");
+        fs.rmdirSync(dataDirectoryPath);
         let result: InsightDataset[] = await insightFacade.listDatasets();
         expect(result).to.have.length(0);
     });
