@@ -1,5 +1,5 @@
 import {
-    AndComparison,
+    AndComparison, EmptyFilter,
     EqComparator, GtComparator,
     IFilter,
     LogicComparison,
@@ -8,6 +8,7 @@ import {
     OrComparison, SComparison
 } from "../model/Filter";
 import {InsightError} from "../controller/IInsightFacade";
+import Log from "../Util";
 
 export class FilterDeserializer {
     private filters: string[] = ["AND", "OR", "LT", "GT", "EQ", "IS", "NOT"];
@@ -30,8 +31,11 @@ export class FilterDeserializer {
             throw new InsightError("Malformed filter!");
         }
         let keys: string[] = Object.keys(filter);
+        if (keys.length === 0) {
+            return new EmptyFilter();
+        }
         // The filter should contain one top-level key, e.g. "LT" or "AND" or "EQ"
-        if (keys.length === 0 || keys.length > 1 || !this.filters.includes(keys[0])) {
+        if (keys.length > 1 || !this.filters.includes(keys[0])) {
             throw new InsightError("Invalid filter");
         }
         let key = keys[0];
@@ -50,16 +54,27 @@ export class FilterDeserializer {
         }
     }
 
+    private deserializeNoEmpty(filter: any): IFilter {
+        if (filter == null || filter === undefined || Array.isArray(filter)) {
+            throw new InsightError("Malformed filter!");
+        }
+        let keys: string[] = Object.keys(filter);
+        if (keys.length === 0) {
+            throw new InsightError("Filter is empty!");
+        }
+        return this.deserialize(filter);
+    }
+
     /*
     A LogicComparison contains nothing but an array of inner filters
      */
     private deserializeLogicComparison(filterBody: any, kind: string): LogicComparison {
         // Must be an array, and must have at least one value
-        if (!Array.isArray(filterBody || filterBody.length < 1)) {
+        if (!Array.isArray(filterBody) || filterBody.length < 1) {
             throw new InsightError("Passed a non-array value or an empty array into a logic comparison");
         }
         // Deserialize each of the inner filters
-        let innerFilters: IFilter[] = filterBody.map((filter: any) => this.deserialize(filter));
+        let innerFilters: IFilter[] = filterBody.map((filter: any) => this.deserializeNoEmpty(filter));
         return kind === "AND" ? new AndComparison(innerFilters) : new OrComparison(innerFilters);
     }
 
@@ -101,7 +116,7 @@ export class FilterDeserializer {
     A Negation contains a single internal filter.
      */
     private deserializeNegation(filterBody: any) {
-        let innerFilter: IFilter = this.deserialize(filterBody);
+        let innerFilter: IFilter = this.deserializeNoEmpty(filterBody);
         return new Negation(innerFilter);
     }
 
@@ -142,9 +157,6 @@ export class FilterDeserializer {
     ICourseSection property, return the key. Also validate that the id is valid for this dataset.
      */
     private getKey(keyAndId: any) {
-        if (typeof(keyAndId) !== "string") {
-            throw new InsightError("Non-string passed into key");
-        }
         let split = keyAndId.split("_");
         if (split.length !== 2) {
             throw new InsightError("Invalid key");

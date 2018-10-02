@@ -1,0 +1,19 @@
+{
+    "title": "Dataset doesn't exist",
+    "query": {
+        "WHERE": {
+            "GT": {
+                "blah_avg":97
+            }
+        },
+        "OPTIONS": {
+            "COLUMNS": [
+                "blah_dept",
+                "blah_avg"
+            ],
+            "ORDER": "blah_avg"
+        }
+    },
+    "isQueryValid": false,
+    "result": "No"
+}

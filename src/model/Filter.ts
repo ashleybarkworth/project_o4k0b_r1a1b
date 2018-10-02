@@ -15,6 +15,15 @@ export interface IFilter {
 }
 
 /**
+ * Special case for an empty WHERE block
+ */
+export class EmptyFilter implements IFilter {
+    public validCourseSection(courseSection: ICourseSection): boolean {
+        return true;
+    }
+}
+
+/**
  * An implementation of the IFilter interface corresponding to the NOT filter.
  */
 export class Negation implements IFilter {

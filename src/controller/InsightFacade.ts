@@ -8,6 +8,7 @@ import {IFilter} from "../model/Filter";
 import {FilterDeserializer} from "../deserializers/FilterDeserializer";
 import {OptionsDeserializer} from "../deserializers/OptionsDeserializer";
 import {fileExists} from "ts-node";
+import {MemoryCache} from "./MemoryCache";
 
 /**
  * This is the main programmatic entry point for the project.
@@ -18,13 +19,18 @@ import {fileExists} from "ts-node";
 const path = "./data/";
 
 export default class InsightFacade implements IInsightFacade {
-    private loadedDataSets: IFullDataset[];
+    private memoryCache: MemoryCache;
 
     constructor() {
         Log.trace("InsightFacadeImpl::init()");
 
         this.makeDataDirectoryIfNecessary();
-        this.loadedDataSets = [];
+        this.memoryCache = new MemoryCache();
+    }
+
+    // FOR TESTING ONLY!!!! DO NOT USE ME!
+    public setMemoryCache(memoryCache: MemoryCache) {
+        this.memoryCache = memoryCache;
     }
 
     public addDataset(id: string, content: string, kind: InsightDatasetKind): Promise<string[]> {
@@ -49,7 +55,8 @@ export default class InsightFacade implements IInsightFacade {
                         let dataset: IFullDataset = self.addCourseSectionsToDataSet(id, fileData);
                         let datasetContent: string = JSON.stringify(dataset);
                         fs.writeFileSync(path + id + ".json", datasetContent);
-                        resolve(self.loadedDataSets.map((courseDataset: IFullDataset) => courseDataset.id));
+                        resolve(self.memoryCache.getLoadedDataSets()
+                            .map((courseDataset: IFullDataset) => courseDataset.id));
                     }).catch(function (err) {
                         reject(new InsightError(err));
                     });
@@ -90,21 +97,13 @@ export default class InsightFacade implements IInsightFacade {
                 return;
             }
 
-            let datasetPosition: number = self.loadedDataSets.findIndex((dataset) => dataset.id === id);
+            self.memoryCache.removeDataSet(id);
 
-            if (datasetPosition !== -1) {
-                self.loadedDataSets.splice(datasetPosition, 1);
-            }
-
-            try {
-                if (fs.existsSync(path + id + ".json")) {
-                    fs.unlinkSync(path + id + ".json");
-                    resolve(id);
-                } else {
-                    reject(new NotFoundError("No dataset with that id added yet"));
-                }
-            } catch (err) {
-                throw new InsightError(err);
+            if (fs.existsSync(path + id + ".json")) {
+                fs.unlinkSync(path + id + ".json");
+                resolve(id);
+            } else {
+                reject(new NotFoundError("No dataset with that id added yet"));
             }
         });
     }
@@ -209,7 +208,6 @@ export default class InsightFacade implements IInsightFacade {
                         courseSections.push(courseSection);
                     }
                 } catch (err) { // continue to next course section if any errors occur
-                    continue;
                 }
 
             }
@@ -219,7 +217,7 @@ export default class InsightFacade implements IInsightFacade {
             throw new InsightError("Dataset contains no valid course sections");
         } else {
             let dataset: IFullDataset = {id, sections: courseSections};
-            this.loadedDataSets.push(dataset);
+            this.memoryCache.addLoadedDataSet(dataset);
 
             return dataset;
         }
@@ -238,18 +236,19 @@ export default class InsightFacade implements IInsightFacade {
     }
 
     private loadDataSetFromDisk(id: string) {
-        if (!this.fileExists(id)) {
+        if (!this.memoryCache.containsId(id) && this.fileExists(id)) {
+            Log.info("Found file on disk but not in memory; loading now");
             let data = fs.readFileSync(path + id + ".json", "utf8");
             let dataset: IFullDataset = JSON.parse(data);
-            this.loadedDataSets.push(dataset);
+            this.memoryCache.addLoadedDataSet(dataset);
         }
     }
 
     private getDataSetToQuery(key: string) {
-        if (!this.loadedDataSets.some((ds) => ds.id === key)) {
+        if (!this.memoryCache.containsId(key)) {
             this.loadDataSetFromDisk(key);
         }
-        let datasetToQuery: IFullDataset = this.loadedDataSets.find((ds) => ds.id === key);
+        let datasetToQuery: IFullDataset = this.memoryCache.getByKey(key);
         if (datasetToQuery === undefined) {
             throw new InsightError("Couldn't find a dataset with that id");
         }
@@ -258,19 +257,15 @@ export default class InsightFacade implements IInsightFacade {
 
     public listDatasets(): Promise<InsightDataset[]> {
         return new Promise<InsightDataset[]>((resolve, reject) => {
-            try {
-                this.loadAllDatasetsFromDisk();
-                resolve(this.loadedDataSets.map((ds) => {
-                    return {
-                        id: ds.id,
-                        kind: InsightDatasetKind.Courses,
-                        numRows: ds.sections.length,
-                    }  as
-                        InsightDataset;
-                }));
-            } catch (err) {
-                reject(err);
-            }
+            this.loadAllDatasetsFromDisk();
+            resolve(this.memoryCache.getLoadedDataSets().map((ds) => {
+                return {
+                    id: ds.id,
+                    kind: InsightDatasetKind.Courses,
+                    numRows: ds.sections.length,
+                }  as
+                    InsightDataset;
+            }));
         });
     }
 }

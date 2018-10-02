@@ -1,14 +1,11 @@
 import {expect} from "chai";
 
-import {
-    InsightDataset,
-    InsightDatasetKind,
-    InsightError,
-    NotFoundError
-} from "../src/controller/IInsightFacade";
+import {InsightDataset, InsightDatasetKind, InsightError, NotFoundError} from "../src/controller/IInsightFacade";
 import InsightFacade from "../src/controller/InsightFacade";
 import Log from "../src/Util";
 import TestUtil from "./TestUtil";
+import {MemoryCache} from "../src/controller/MemoryCache";
+import * as fs from "fs";
 
 // This should match the JSON schema described in test/query.schema.json
 // except 'filename' which is injected when the file is read.
@@ -34,6 +31,7 @@ describe("InsightFacade Add/Remove Dataset", function () {
         someCoursesWithInvalidSections: "./test/data/someCoursesWithInvalidSections.zip",
         zeroValidCourseSections: "./test/data/zeroValidCourseSections.zip",
         yaml: "./test/data/yaml.zip",
+        oneValidOneInvalidDueToTypeMismatch: "./test/data/oneValidOneInvalidDueToTypeMismatch.zip",
     };
 
     let insightFacade: InsightFacade;
@@ -173,6 +171,20 @@ describe("InsightFacade Add/Remove Dataset", function () {
             response = err;
         } finally {
             expect(response).to.have.length(5);
+        }
+
+    });
+
+    it("One section invalid due to type mismatch, other is valid", async () => {
+        const id: string = "oneValidOneInvalidDueToTypeMismatch";
+        let response: string[];
+
+        try {
+            response = await insightFacade.addDataset(id, datasets[id], InsightDatasetKind.Courses);
+        } catch (err) {
+            response = err;
+        } finally {
+            expect(response).to.have.length(6);
         }
 
     });
@@ -431,6 +443,7 @@ describe("InsightFacade Add/Remove Dataset", function () {
         try {
             response = await insightFacade.removeDataset(id);
         } catch (err) {
+            Log.warn("We got an error");
             response = err;
         } finally {
             expect(response).to.be.instanceOf(NotFoundError);
@@ -444,6 +457,7 @@ describe("InsightFacade Add/Remove Dataset", function () {
         try {
             response = await insightFacade.removeDataset(id);
         } catch (err) {
+            Log.error("We got an error");
             response = err;
         } finally {
             expect(response).to.be.instanceOf(InsightError);
@@ -543,25 +557,57 @@ describe("InsightFacade PerformQuery", () => {
     it("Should run test queries", function () {
         describe("Dynamic InsightFacade PerformQuery tests", function () {
             for (const test of testQueries) {
-                    it(`[${test.filename}] ${test.title}`, async function () {
-                        let response: any[];
+                it(`[${test.filename}] ${test.title}`, async function () {
+                    let response: any[];
 
-                        try {
-                            response = await insightFacade.performQuery(test.query);
-                        } catch (err) {
-                            response = err;
-                        } finally {
-                            if (test.isQueryValid && shouldBeOrdered(test)) {
-                                expect(response).to.deep.equal(test.result);
-                            } else if (test.isQueryValid) {
-                                expect(response).to.have.deep.members(test.result as any[]);
-                            } else {
-                                expect(response).to.be.instanceOf(InsightError);
-                            }
+                    try {
+                        response = await insightFacade.performQuery(test.query);
+                    } catch (err) {
+                        response = err;
+                    } finally {
+                        if (test.isQueryValid && shouldBeOrdered(test)) {
+                            expect(response).to.deep.equal(test.result);
+                        } else if (test.isQueryValid) {
+                            expect(response).to.have.deep.members(test.result as any[]);
+                        } else {
+                            expect(response).to.be.instanceOf(InsightError);
                         }
-                    });
-                }
+                    }
+                });
+            }
         });
+    });
+});
+
+describe("Tests that require mucking around with the state", () => {
+    let insightFacade = new InsightFacade();
+    let memoryCache = new MemoryCache(); // Lets us test some edge cases to create this separately
+    insightFacade.setMemoryCache(memoryCache);
+
+    // Start with a clean slate
+    beforeEach(async function () {
+        const allSets: InsightDataset[] = await insightFacade.listDatasets();
+        await allSets.forEach(async (v) => await insightFacade.removeDataset(v.id));
+    });
+
+    it("Test loading from disk for a query", async function () {
+
+        let dataset;
+        await TestUtil.readFileAsync("./test/data/courses.zip").then((buf) => {
+                dataset = buf.toString("base64");
+            }
+        );
+        await insightFacade.addDataset("courses", dataset, InsightDatasetKind.Courses);
+        memoryCache.removeDataSet("courses");
+        let resp = await
+            insightFacade.performQuery({WHERE: {LT: {courses_avg: 1}}, OPTIONS: {COLUMNS: ["courses_dept"]}});
+        expect(resp).does.not.have.length(0);
+    });
+
+    it("List datasets with no datasets", async function () {
+        fs.rmdirSync("./data/");
+        let result: InsightDataset[] = await insightFacade.listDatasets();
+        expect(result).to.have.length(0);
     });
 });
 
