@@ -7,7 +7,6 @@ import {IOptions} from "../model/Options";
 import {IFilter} from "../model/Filter";
 import {FilterDeserializer} from "../deserializers/FilterDeserializer";
 import {OptionsDeserializer} from "../deserializers/OptionsDeserializer";
-import {fileExists} from "ts-node";
 import {MemoryCache} from "./MemoryCache";
 
 /**
@@ -128,8 +127,8 @@ export default class InsightFacade implements IInsightFacade {
                     // Loop through the dataset and use the filter object to determine which sections should be included
                     let result: any[] = [];
                     let resultCount: number = 0;
-                    for (let section of datasetToQuery.sections) {
-                        if (filter.validCourseSection(section)) {
+                    for (let section of datasetToQuery.entries) {
+                        if (filter.validEntry(section as ICourseSection)) { // TODO update to work with rooms
                             // This section should be included in the results. We determine which properties to include
                             // based on the OPTIONS.COLUMNS field, which gives the keys to include
                             let entry: any = {};
@@ -220,7 +219,7 @@ export default class InsightFacade implements IInsightFacade {
         if (courseSections.length === 0) {
             throw new InsightError("Dataset contains no valid course sections");
         } else {
-            let dataset: IFullDataset = {id, sections: courseSections};
+            let dataset: IFullDataset = {id, kind: InsightDatasetKind.Courses, entries: courseSections};
             this.memoryCache.addLoadedDataSet(dataset);
 
             return dataset;
@@ -267,7 +266,7 @@ export default class InsightFacade implements IInsightFacade {
                     return {
                         id: ds.id,
                         kind: InsightDatasetKind.Courses,
-                        numRows: ds.sections.length,
+                        numRows: ds.entries.length,
                     }  as
                         InsightDataset;
                 }));

@@ -4,8 +4,7 @@
 
 node_modules/
 coverage/
-data/
-!test/data
+/data/
 src/*.js
 src/*.map
 src/**/*.js

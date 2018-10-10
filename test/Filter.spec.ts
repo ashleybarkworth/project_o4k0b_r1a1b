@@ -26,7 +26,7 @@ describe("Simple deserialize tests", () => {
         };
         let filterDeserializer: FilterDeserializer = new FilterDeserializer("courses");
         let filter: IFilter = filterDeserializer.deserialize(query);
-        expect(filter.validCourseSection(courseSection)).to.be.eq(true);
+        expect(filter.validEntry(courseSection)).to.be.eq(true);
         expect(filter).to.be.instanceOf(GtComparator);
     });
     it("Should deserialize a simple AND query", () => {
@@ -49,9 +49,9 @@ describe("Simple deserialize tests", () => {
         let filterDeserializer: FilterDeserializer = new FilterDeserializer("courses");
         let filter: IFilter = filterDeserializer.deserialize(query);
         expect(filter).to.be.instanceOf(AndComparison);
-        expect(filter.validCourseSection(courseSection)).to.be.eq(true);
+        expect(filter.validEntry(courseSection)).to.be.eq(true);
         courseSection.avg = 0;
-        expect(filter.validCourseSection(courseSection)).to.be.eq(false);
+        expect(filter.validEntry(courseSection)).to.be.eq(false);
         courseSection.avg = 50;
     });
     it("Should deserialize an OR query", () => {
@@ -72,6 +72,6 @@ describe("Simple deserialize tests", () => {
         let filterDeserializer: FilterDeserializer = new FilterDeserializer("courses");
         let filter: IFilter = filterDeserializer.deserialize(query);
         expect(filter).to.be.instanceOf(OrComparison);
-        expect(filter.validCourseSection(courseSection)).to.be.eq(true);
+        expect(filter.validEntry(courseSection)).to.be.eq(true);
     });
 });

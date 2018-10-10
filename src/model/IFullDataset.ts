@@ -1,4 +1,13 @@
-export interface ICourseSection {
+import {InsightDatasetKind} from "../controller/IInsightFacade";
+
+export interface IDataSetEntry {
+}
+
+export interface IRoom extends IDataSetEntry {
+    // TODO
+}
+
+export interface ICourseSection extends IDataSetEntry {
     id: string;
     dept: string;
     avg: number;
@@ -14,5 +23,6 @@ export interface ICourseSection {
 
 export interface IFullDataset {
     id: string;
-    sections: ICourseSection[];
+    kind: InsightDatasetKind;
+    entries: IDataSetEntry[];
 }

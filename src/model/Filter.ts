@@ -11,7 +11,7 @@ export interface IFilter {
      * @param courseSection the course section to validate; cannot be null or undefined.
      * @returns true if the course section is valid, false otherwise
      */
-    validCourseSection(courseSection: ICourseSection): boolean;
+    validEntry(courseSection: ICourseSection): boolean;
 }
 
 /**
@@ -33,8 +33,8 @@ export class Negation implements IFilter {
         this.innerFilter = filter;
     }
 
-    public validCourseSection(courseSection: ICourseSection): boolean {
-        return !this.innerFilter.validCourseSection(courseSection); // Negate the result of the inner filter
+    public validEntry(courseSection: ICourseSection): boolean {
+        return !this.innerFilter.validEntry(courseSection); // Negate the result of the inner filter
     }
 }
 
@@ -63,7 +63,7 @@ export class SComparison implements IFilter {
      * @inheritDoc
      * Return true if the value of the property with key this.key matches this.searchText.
      */
-    public validCourseSection(courseSection: ICourseSection): boolean {
+    public validEntry(courseSection: ICourseSection): boolean {
         let val = courseSection[this.key];
         let hasStartAsterisk: boolean = this.searchText.startsWith("*");
         let hasEndAsterisk: boolean = this.searchText.endsWith("*");
@@ -105,7 +105,7 @@ export abstract class MComparator implements IFilter {
         this.comparison = comparison;
     }
 
-    public validCourseSection(courseSection: ICourseSection): boolean {
+    public validEntry(courseSection: ICourseSection): boolean {
         let val = courseSection[this.key];
         let valAsNum = val as number;
         return this.comparison(valAsNum); // Comes from subclass
@@ -145,7 +145,7 @@ export class EqComparator extends MComparator {
 export abstract class LogicComparison implements IFilter {
     private innerFilters: IFilter[];
     /**
-     * A function which takes in the results of calling validCourseSection on each of the inner functions, and
+     * A function which takes in the results of calling validEntry on each of the inner functions, and
      * returns the result of the logic comparison. Set by the subclass.
      */
     private boolCombine: (a: boolean, b: boolean) => boolean;
@@ -155,9 +155,9 @@ export abstract class LogicComparison implements IFilter {
         this.boolCombine = boolCombine;
     }
 
-    public validCourseSection(courseSection: ICourseSection): boolean {
+    public validEntry(courseSection: ICourseSection): boolean {
         return this.innerFilters
-            .map((filter) => filter.validCourseSection(courseSection))
+            .map((filter) => filter.validEntry(courseSection))
             .reduce(this.boolCombine);
     }
 }
