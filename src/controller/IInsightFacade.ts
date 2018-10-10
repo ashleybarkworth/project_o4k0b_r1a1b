@@ -9,6 +9,16 @@ export enum InsightDatasetKind {
     Rooms = "rooms",
 }
 
+export enum NodeType {
+    Document = "#document",
+    Section = "section",
+    HTML = "html",
+    Div = "div",
+    Head = "head",
+    Body = "body",
+    Table = "table"
+}
+
 export interface InsightDataset {
     id: string;
     kind: InsightDatasetKind;

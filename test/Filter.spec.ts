@@ -26,7 +26,11 @@ describe("Simple deserialize tests", () => {
             }
         };
         let filterDeserializer: FilterDeserializer = new FilterDeserializer("courses");
+<<<<<<< HEAD
         let filter: IFilter = filterDeserializer.deserialize(query, InsightDatasetKind.Courses);
+=======
+        let filter: IFilter = filterDeserializer.deserialize(query);
+>>>>>>> added parseBuildings + parseBuilding
         expect(filter.validEntry(courseSection)).to.be.eq(true);
         expect(filter).to.be.instanceOf(GtComparator);
     });

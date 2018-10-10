@@ -1,6 +1,13 @@
 import Log from "../Util";
-import {IInsightFacade, InsightDataset, InsightDatasetKind, InsightError, NotFoundError} from "./IInsightFacade";
-import {ICourseSection, IFullDataset} from "../model/IFullDataset";
+import {
+    IInsightFacade,
+    InsightDataset,
+    InsightDatasetKind,
+    InsightError,
+    NodeType,
+    NotFoundError
+} from "./IInsightFacade";
+import {ICourseSection, IDataSetEntry, IFullDataset, IRoom} from "../model/IFullDataset";
 import * as JSZip from "jszip";
 import * as fs from "fs";
 import {QueryDeserializer} from "../deserializers/QueryDeserializer";
@@ -33,43 +40,176 @@ export default class InsightFacade implements IInsightFacade {
 
     public addDataset(id: string, content: string, kind: InsightDatasetKind): Promise<string[]> {
         let promises: any[] = [];
+
         let self = this;
         return new Promise<string[]>((resolve, reject) => {
             try {
                 this.validateAddDatasetInputs(id, kind);
                 this.makeDataDirectoryIfNecessary();
                 const jsZip = new JSZip();
-                jsZip.loadAsync(content, {base64: true}).then(function (zip) {
-                    const courseDirectory: string = "courses/.*";
-                    let files = Object.keys(zip.files).filter((directory) => directory.match(courseDirectory));
-                    if (files.length === 0) {
-                        throw new InsightError("No files found in courses folder");
-                    }
-                    files.forEach(function (fileName) {
-                        let promise: any = zip.files[fileName].async("text");
-                        promises.push(promise);
-                    });
-                    Promise.all(promises).then((fileData) => {
-                        let dataset: IFullDataset = self.addCourseSectionsToDataSet(id, fileData);
-                        let datasetContent: string = JSON.stringify(dataset);
-                        fs.writeFileSync(path + id + ".json", datasetContent);
-                        resolve(self.memoryCache.getLoadedDataSets()
-                            .map((courseDataset: IFullDataset) => courseDataset.id));
-                    }).catch(function (err) {
-                        reject(new InsightError(err));
-                    });
-                }).catch(function (err) {
-                    reject(new InsightError(err));
-                });
-            } catch (err) {
-                reject(new InsightError(err));
+                switch (kind) {
+                    case "courses":
+                        jsZip.loadAsync(content, {base64: true}).then(function (zip) {
+                            const courseDirectory: string = "courses/.*";
+                            let files = Object.keys(zip.files).filter((directory) => directory.match(courseDirectory));
+                            if (files.length === 0) {
+                                throw new InsightError("No files found in courses folder");
+                            }
+                            files.forEach(function (fileName) {
+                                let promise: any = zip.files[fileName].async("text");
+                                promises.push(promise);
+                            });
+                            Promise.all(promises).then((fileData) => {
+                                let dataset: IFullDataset = self.addCourseSectionsToDataSet(id, fileData);
+                                let datasetContent: string = JSON.stringify(dataset);
+                                fs.writeFileSync(path + id + ".json", datasetContent);
+                                resolve(self.memoryCache.getLoadedDataSets()
+                                    .map((courseDataset: IFullDataset) => courseDataset.id));
+                            }).catch(function (err) {
+                                reject(new InsightError(err));
+                            });
+                        }).catch(function (err) {
+                            reject(new InsightError(err));
+                        });
+                        break;
+                    case "rooms":
+                        jsZip.loadAsync(content, {base64: true}).then(async function (zip) {
+                            const courseDirectory: string = "campus/discover/buildings-and-classrooms/";
+                            let index = jsZip.file("index.htm");
+                            let buildings: string[];
+                            await index.async("text").then((indexHTML) => {
+                                // const root: AST.Default.Node = parse5.parse(indexHTML)
+                                // as parse5.AST.Default.Document;
+                                buildings = self.parseIndex(indexHTML);
+                                // let table: Node = self.findBuildingTable(root);
+                                // let table: any = self.findBuildingTable(root);
+                                // Log.test(table.toString());
+                            });
+                            let files = Object.keys(zip.files).filter((directory) => directory.match(courseDirectory)
+                                && buildings.includes(directory.replace(courseDirectory, "")));
+                            if (files.length === 0) {
+                                throw new InsightError("No files found in courses folder");
+                            }
+                            files.forEach(function (fileName) {
+                                let promise: any = zip.files[fileName].async("text");
+                                promises.push(promise);
+                            });
+                            Promise.all(promises).then((fileData) => {
+                                Log.test("ROOMS");
+                                self.parseBuildings(fileData, id);
+                            }).catch(function (err) {
+                                Log.test(err);
+                                reject(err);
+                                throw err;
+                            });
+                            // Log.test(html);
+                        });
+                }
+        } catch (err) {
+            throw err;
+        }
+    });
+    }
+
+    private parseBuildings(fileData: any[], id: string) {
+        let rooms: IDataSetEntry[] = [];
+        for (let file of fileData) {
+            const root = parse5.parse(file) as parse5.AST.Default.Document;
+            const table: any = this.findBuildingTable(root);
+            let tBody: AST.Default.ParentNode;
+
+            for (let child of table.childNodes) {
+                if (child.nodeName === "tbody") {
+                    tBody = child as AST.Default.ParentNode;
+                }
             }
-        });
+
+            const tableRows: any[] = tBody.childNodes.filter((child) => child.nodeName === "tr");
+
+            for (let row of tableRows) {
+                // let room: IDataSetEntry = this.parseRoom(row);
+                this.parseRoom(row);
+            }
+        }
+    }
+
+    private parseRoom(roomData: any) {
+        for (let cell of roomData) {
+            Log.test(parse5.serialize(cell));
+        }
+    }
+
+    private parseIndex(html: string) {
+        const root: any = parse5.parse(html) as parse5.AST.Default.Document;
+        const table: any = this.findBuildingTable(root);
+        const buildingCodes = this.getBuildingCodes(table);
+        return buildingCodes;
+    }
+
+    private getBuildingCodes(table: any) {
+        let codes: string[] = [];
+        let tBody: AST.Default.ParentNode;
+
+        for (let child of table.childNodes) {
+            if (child.nodeName === "tbody") {
+                tBody = child as AST.Default.ParentNode;
+            }
+        }
+
+        for (let c of tBody.childNodes) {
+            if (c.nodeName === "tr") {
+                const row: any = c;
+                for (let cell of row.childNodes) {
+                    if (cell.nodeName === "td") {
+                        if (cell.attrs[0].value === "views-field views-field-field-building-code") {
+                            let buildingCode: string = cell.childNodes[0].value.trim();
+                            codes.push(buildingCode);
+                        }
+                    }
+                }
+            }
+        }
+        return codes;
+    }
+
+    private findBuildingTable(node: any) {
+        if (!node) {
+            return null;
+        }
+
+        let tableNode: any = null;
+        let nodeType: string = node.nodeName;
+        const childNodes: any[] = node.childNodes;
+
+        if (!childNodes || childNodes.length === 0) {
+            tableNode = nodeType === NodeType.Table ? node : null;
+        } else {
+            switch (nodeType) {
+                case NodeType.Table:
+                    tableNode =  node;
+                    break;
+                case NodeType.Document:
+                case NodeType.HTML:
+                case NodeType.Head:
+                case NodeType.Body:
+                case NodeType.Div:
+                case NodeType.Section:
+                    if (childNodes) {
+                        for (let child of childNodes) {
+                            tableNode = this.findBuildingTable(child) == null ?
+                                tableNode : this.findBuildingTable(child);
+                        }
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+        return tableNode;
     }
 
     private validateAddDatasetInputs(id: string, kind: InsightDatasetKind) {
-        // For now, room types are not allowed
-        if (kind !== InsightDatasetKind.Courses) {
+        if (kind !==  InsightDatasetKind.Courses && kind !== InsightDatasetKind.Rooms) {
             throw new InsightError("Invalid dataset kind");
         }
         if (!id || id.length === 0) {
@@ -183,6 +323,7 @@ export default class InsightFacade implements IInsightFacade {
                         courseSections.push(courseSection);
                     }
                 } catch (err) { // continue to next course section if any errors occur
+                    continue;
                 }
 
             }
@@ -193,7 +334,6 @@ export default class InsightFacade implements IInsightFacade {
         } else {
             let dataset: IFullDataset = {id, kind: InsightDatasetKind.Courses, entries: courseSections};
             this.memoryCache.addLoadedDataSet(dataset);
-
             return dataset;
         }
     }

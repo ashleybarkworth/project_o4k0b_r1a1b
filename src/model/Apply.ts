@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import {IDataSetEntry} from "./IFullDataset";
 import {Decimal} from "decimal.js";
 
@@ -79,5 +80,15 @@ export class Average extends Apply {
             let sum: Decimal = lst.reduce((val: number, res: Decimal) => new Decimal(val).add(res), new Decimal(0));
             return Number((sum.toNumber() / lst.length).toFixed(2));
         });
+=======
+import {ICourseSection} from "./IFullDataset";
+
+export abstract class IApply {
+    private field: string;
+    private func: (val: any, res: any) => number;
+
+    public apply(group: ICourseSection[]): number {
+        return group.map((dataset) => dataset[this.field]).reduce(this.func);
+>>>>>>> added parseBuildings + parseBuilding
     }
 }
