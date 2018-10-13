@@ -76,7 +76,7 @@ export class FilterDeserializer {
             throw new InsightError("Passed a non-array value or an empty array into a logic comparison");
         }
         // Deserialize each of the inner filters
-        let innerFilters: IFilter[] = filterBody.map((filter: any) => this.deserialize(filter, datasetKind));
+        let innerFilters: IFilter[] = filterBody.map((filter: any) => this.deserializeNoEmpty(filter, datasetKind));
         return kind === "AND" ? new AndComparison(innerFilters) : new OrComparison(innerFilters);
     }
 
