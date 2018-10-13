@@ -1,11 +1,10 @@
 import Log from "../Util";
 import {IInsightFacade, InsightDataset, InsightDatasetKind, InsightError, NotFoundError} from "./IInsightFacade";
-import {ICourseSection, IDataSetEntry, IFullDataset} from "../model/IFullDataset";
+import {ICourseSection, IFullDataset} from "../model/IFullDataset";
 import * as JSZip from "jszip";
 import * as fs from "fs";
 import {QueryDeserializer} from "../deserializers/QueryDeserializer";
 import {IQuery} from "../model/Query";
-import {QueryPerformerService} from "../service/QueryPerformerService";
 import {MemoryCache} from "./MemoryCache";
 import {QueryPerformer} from "../service/QueryPerformer";
 

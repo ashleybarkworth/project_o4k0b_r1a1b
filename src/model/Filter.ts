@@ -18,7 +18,7 @@ export interface IFilter {
  * Special case for an empty WHERE block
  */
 export class EmptyFilter implements IFilter {
-    public validCourseSection(courseSection: ICourseSection): boolean {
+    public validEntry(entry: IDataSetEntry): boolean {
         return true;
     }
 }

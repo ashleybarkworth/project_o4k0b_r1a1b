@@ -1,5 +1,5 @@
 import {
-    AndComparison,
+    AndComparison, EmptyFilter,
     EqComparator,
     GtComparator,
     IFilter,
@@ -10,8 +10,6 @@ import {
     OrComparison,
     SComparison
 } from "../model/Filter";
-import {InsightError} from "../controller/IInsightFacade";
-import Log from "../Util";
 import {InsightDatasetKind, InsightError} from "../controller/IInsightFacade";
 import {DeserializingUtils} from "./DeserializingUtils";
 
@@ -46,7 +44,7 @@ export class FilterDeserializer {
         switch (key) {
             case "AND":
             case "OR":
-                return this.deserializeLogicComparison(filter[key], key, datasetKind);
+                return this.deserializeLogicComp(filter[key], key, datasetKind);
             case "LT":
             case "GT":
             case "EQ":
@@ -58,7 +56,7 @@ export class FilterDeserializer {
         }
     }
 
-    private deserializeNoEmpty(filter: any): IFilter {
+    private deserializeNoEmpty(filter: any, kind: InsightDatasetKind): IFilter {
         if (filter == null || filter === undefined || Array.isArray(filter)) {
             throw new InsightError("Malformed filter!");
         }
@@ -66,13 +64,13 @@ export class FilterDeserializer {
         if (keys.length === 0) {
             throw new InsightError("Filter is empty!");
         }
-        return this.deserialize(filter);
+        return this.deserialize(filter, kind);
     }
 
     /*
     A LogicComparison contains nothing but an array of inner filters
      */
-    private deserializeLogicComparison(filterBody: any, kind: string, datasetKind: InsightDatasetKind): LogicComparison {
+    private deserializeLogicComp(filterBody: any, kind: string, datasetKind: InsightDatasetKind): LogicComparison {
         // Must be an array, and must have at least one value
         if (!Array.isArray(filterBody || filterBody.length < 1)) {
             throw new InsightError("Passed a non-array value or an empty array into a logic comparison");
