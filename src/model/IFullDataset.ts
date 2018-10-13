@@ -1,10 +1,11 @@
 import {InsightDatasetKind} from "../controller/IInsightFacade";
 
 export interface IDataSetEntry {
+    [key: string]: any;
 }
 
 export interface IRoom extends IDataSetEntry {
-    // TODO
+    [key: string]: any;
 }
 
 export interface ICourseSection extends IDataSetEntry {

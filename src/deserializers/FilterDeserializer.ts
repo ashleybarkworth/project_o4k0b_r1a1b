@@ -1,19 +1,23 @@
 import {
-    AndComparison, EmptyFilter,
-    EqComparator, GtComparator,
+    AndComparison,
+    EqComparator,
+    GtComparator,
     IFilter,
     LogicComparison,
     LtComparator,
-    MComparator, Negation,
-    OrComparison, SComparison
+    MComparator,
+    Negation,
+    OrComparison,
+    SComparison
 } from "../model/Filter";
 import {InsightError} from "../controller/IInsightFacade";
 import Log from "../Util";
+import {InsightDatasetKind, InsightError} from "../controller/IInsightFacade";
+import {DeserializingUtils} from "./DeserializingUtils";
 
 export class FilterDeserializer {
     private filters: string[] = ["AND", "OR", "LT", "GT", "EQ", "IS", "NOT"];
-    private validNumberTypeKeys = ["avg", "pass", "fail", "audit", "year"];
-    private validStringTypeKeys: string[] = ["dept", "id", "instructor", "title", "uuid"];
+
     private datasetKey: string;
 
     constructor(datsetKey: string) {
@@ -26,7 +30,7 @@ export class FilterDeserializer {
      * @throws InsightError if the object doesn't correspond to a valid instance of IFilter
      * @return the IFilter object
      */
-    public deserialize(filter: any): IFilter {
+    public deserialize(filter: any, datasetKind: InsightDatasetKind): IFilter {
         if (filter == null || filter === undefined || Array.isArray(filter)) {
             throw new InsightError("Malformed filter!");
         }
@@ -42,15 +46,15 @@ export class FilterDeserializer {
         switch (key) {
             case "AND":
             case "OR":
-                return this.deserializeLogicComparison(filter[key], key);
+                return this.deserializeLogicComparison(filter[key], key, datasetKind);
             case "LT":
             case "GT":
             case "EQ":
-                return this.deserializeMComparator(filter[key], key);
+                return this.deserializeMComparator(filter[key], key, datasetKind);
             case "IS":
-                return this.deserializeSComparison(filter[key]);
+                return this.deserializeSComparison(filter[key], datasetKind);
             case "NOT":
-                return this.deserializeNegation(filter[key]);
+                return this.deserializeNegation(filter[key], datasetKind);
         }
     }
 
@@ -68,13 +72,13 @@ export class FilterDeserializer {
     /*
     A LogicComparison contains nothing but an array of inner filters
      */
-    private deserializeLogicComparison(filterBody: any, kind: string): LogicComparison {
+    private deserializeLogicComparison(filterBody: any, kind: string, datasetKind: InsightDatasetKind): LogicComparison {
         // Must be an array, and must have at least one value
-        if (!Array.isArray(filterBody) || filterBody.length < 1) {
+        if (!Array.isArray(filterBody || filterBody.length < 1)) {
             throw new InsightError("Passed a non-array value or an empty array into a logic comparison");
         }
         // Deserialize each of the inner filters
-        let innerFilters: IFilter[] = filterBody.map((filter: any) => this.deserializeNoEmpty(filter));
+        let innerFilters: IFilter[] = filterBody.map((filter: any) => this.deserialize(filter, datasetKind));
         return kind === "AND" ? new AndComparison(innerFilters) : new OrComparison(innerFilters);
     }
 
@@ -84,7 +88,7 @@ export class FilterDeserializer {
         ICourseSection property with a numeric value.
     -   The value is a number that will be compared against the course section property corresponding to the key.
      */
-    private deserializeMComparator(filterBody: any, kind: string): MComparator {
+    private deserializeMComparator(filterBody: any, kind: string, datasetKind: InsightDatasetKind): MComparator {
         let keys: string[] = Object.keys(filterBody);
         // Should contain exactly one top-level key/value pair.
         if (keys.length === 0 || keys.length > 1) {
@@ -92,12 +96,16 @@ export class FilterDeserializer {
         }
         let keyAndId = keys[0];                 // In the form id_key
         let val: any = filterBody[keyAndId];    // Get the value from the key/value pair
-        let key = this.getKey(keyAndId);        // Extract the key from id_key (and validate it)
+        let key = DeserializingUtils.getKey(keyAndId, this.datasetKey, datasetKind); // Extract the key from id_key
 
         // Check the key corresponds to an ICourseSection property with a numeric value
-        if (!this.validNumberTypeKeys.includes(key)) {
+        if (datasetKind === InsightDatasetKind.Courses && !DeserializingUtils.validCourseNumberTypeKeys.includes(key)) {
             throw new InsightError("Passed non-numeric column key to MComparator");
         }
+        if (datasetKind === InsightDatasetKind.Rooms && !DeserializingUtils.validRoomNumberTypeKeys.includes(key)) {
+            throw new InsightError("Passed non-numeric column key to MComparator");
+        }
+
         // Check we are comparing against a numeric value
         if (typeof(val) !== "number") {
             throw new InsightError("Attempted to pass a non-number value into MComparator");
@@ -115,8 +123,8 @@ export class FilterDeserializer {
     /*
     A Negation contains a single internal filter.
      */
-    private deserializeNegation(filterBody: any) {
-        let innerFilter: IFilter = this.deserializeNoEmpty(filterBody);
+    private deserializeNegation(filterBody: any, datasetKind: InsightDatasetKind) {
+        let innerFilter: IFilter = this.deserializeNoEmpty(filterBody, datasetKind);
         return new Negation(innerFilter);
     }
 
@@ -126,7 +134,7 @@ export class FilterDeserializer {
         ICourseSection property with a string value.
     -   The value is a string of the form `[*]? [^*]* [*]?`.
      */
-    private deserializeSComparison(filterBody: any) {
+    private deserializeSComparison(filterBody: any, datasetKind: InsightDatasetKind) {
         let keys: string[] = Object.keys(filterBody);
         // Should contain exactly one top-level key/value pair.
         if (keys.length === 0 || keys.length > 1) {
@@ -134,13 +142,16 @@ export class FilterDeserializer {
         }
         let keyAndId = keys[0];                          // In the form id_key
         let searchString: any = filterBody[keyAndId];    // Get the value from the key/value pair
-        let key = this.getKey(keyAndId);                 // Extract the key from id_key (and validate it)
+        let key = DeserializingUtils.getKey(keyAndId, this.datasetKey, datasetKind);   // Extract the key from id_key
 
         if (typeof searchString !== "string") {
             throw new InsightError("Tried to pass a non-string value into scomparison");
         }
 
-        if (!this.validStringTypeKeys.includes(key)) {
+        if (datasetKind === InsightDatasetKind.Courses && !DeserializingUtils.validCourseStringTypeKeys.includes(key)) {
+            throw new InsightError("Passed invalid column key into SComparison");
+        }
+        if (datasetKind === InsightDatasetKind.Rooms && !DeserializingUtils.validRoomStringTypeKeys.includes(key)) {
             throw new InsightError("Passed invalid column key into SComparison");
         }
 
@@ -150,25 +161,5 @@ export class FilterDeserializer {
         }
 
         return new SComparison(key, searchString);
-    }
-
-    /*
-    Given a string of the form id_key, where id is the dataset id, and key must correspond to a valid
-    ICourseSection property, return the key. Also validate that the id is valid for this dataset.
-     */
-    private getKey(keyAndId: any) {
-        let split = keyAndId.split("_");
-        if (split.length !== 2) {
-            throw new InsightError("Invalid key");
-        }
-        let datasetId = split[0];
-        let key = split[1];
-        if (this.datasetKey !== datasetId) {
-            throw new InsightError("Mismatching dataset ids within query");
-        }
-        if (!this.validStringTypeKeys.includes(key) && !this.validNumberTypeKeys.includes(key)) {
-            throw new InsightError("Invalid key");
-        }
-        return key;
     }
 }

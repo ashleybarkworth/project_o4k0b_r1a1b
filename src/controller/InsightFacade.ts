@@ -1,12 +1,11 @@
 import Log from "../Util";
 import {IInsightFacade, InsightDataset, InsightDatasetKind, InsightError, NotFoundError} from "./IInsightFacade";
-import {ICourseSection, IFullDataset} from "../model/IFullDataset";
+import {ICourseSection, IDataSetEntry, IFullDataset} from "../model/IFullDataset";
 import * as JSZip from "jszip";
 import * as fs from "fs";
-import {IOptions} from "../model/Options";
-import {IFilter} from "../model/Filter";
-import {FilterDeserializer} from "../deserializers/FilterDeserializer";
-import {OptionsDeserializer} from "../deserializers/OptionsDeserializer";
+import {QueryDeserializer} from "../deserializers/QueryDeserializer";
+import {IQuery} from "../model/Query";
+import {QueryPerformerService} from "../service/QueryPerformerService";
 import {MemoryCache} from "./MemoryCache";
 
 /**
@@ -114,36 +113,9 @@ export default class InsightFacade implements IInsightFacade {
     public performQuery(query: any): Promise<any[]> {
         return new Promise<any[]>((resolve, reject) => {
                 try {
-                    if (query == null || !query.hasOwnProperty("WHERE") || !query.hasOwnProperty("OPTIONS")) {
-                        throw new InsightError("Invalid query");
-                    }
-
-                    // Transform raw body into an IOptions and IFilter object; grab the dataset as soon as we know which
-                    // key we're looking for so that we can fail fast.
-                    let options: IOptions = new OptionsDeserializer().deserialize(query.OPTIONS);
-                    let datasetToQuery = this.getDataSetToQuery(options.key);
-                    let filter: IFilter = new FilterDeserializer(options.key).deserialize(query.WHERE);
-
-                    // Loop through the dataset and use the filter object to determine which sections should be included
-                    let result: any[] = [];
-                    let resultCount: number = 0;
-                    for (let section of datasetToQuery.entries) {
-                        if (filter.validEntry(section as ICourseSection)) { // TODO update to work with rooms
-                            // This section should be included in the results. We determine which properties to include
-                            // based on the OPTIONS.COLUMNS field, which gives the keys to include
-                            let entry: any = {};
-                            options.columns.forEach((key) => entry[options.key + "_" + key] = section[key]);
-                            result.push(entry);
-                            resultCount++;
-                            if (resultCount > 5000) {
-                                throw new InsightError("Too many results");
-                            }
-                        }
-                    }
-                    // Sort our results if necessary
-                    if (options.order !== undefined) {
-                        result.sort((secA, secB) => secA[options.order] <= secB[options.order] ? -1 : 1);
-                    }
+                    let iquery: IQuery = new QueryDeserializer().deserialize(query);
+                    let datasetToQuery = this.getDataSetToQuery(iquery.options.key);
+                    let result: any[] = new QueryPerformerService().performQuery(iquery, datasetToQuery);
                     resolve(result);
                 } catch (err) {
                     reject(new InsightError(err));

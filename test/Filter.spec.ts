@@ -2,6 +2,7 @@ import {expect} from "chai";
 import {FilterDeserializer} from "../src/deserializers/FilterDeserializer";
 import {AndComparison, GtComparator, IFilter, OrComparison} from "../src/model/Filter.js";
 import {ICourseSection} from "../src/model/IFullDataset";
+import {InsightDatasetKind} from "../src/controller/IInsightFacade";
 
 describe("Simple deserialize tests", () => {
 
@@ -25,7 +26,7 @@ describe("Simple deserialize tests", () => {
             }
         };
         let filterDeserializer: FilterDeserializer = new FilterDeserializer("courses");
-        let filter: IFilter = filterDeserializer.deserialize(query);
+        let filter: IFilter = filterDeserializer.deserialize(query, InsightDatasetKind.Courses);
         expect(filter.validEntry(courseSection)).to.be.eq(true);
         expect(filter).to.be.instanceOf(GtComparator);
     });
@@ -47,7 +48,7 @@ describe("Simple deserialize tests", () => {
             ]
         };
         let filterDeserializer: FilterDeserializer = new FilterDeserializer("courses");
-        let filter: IFilter = filterDeserializer.deserialize(query);
+        let filter: IFilter = filterDeserializer.deserialize(query, InsightDatasetKind.Courses);
         expect(filter).to.be.instanceOf(AndComparison);
         expect(filter.validEntry(courseSection)).to.be.eq(true);
         courseSection.avg = 0;
@@ -70,7 +71,7 @@ describe("Simple deserialize tests", () => {
             ]
         };
         let filterDeserializer: FilterDeserializer = new FilterDeserializer("courses");
-        let filter: IFilter = filterDeserializer.deserialize(query);
+        let filter: IFilter = filterDeserializer.deserialize(query, InsightDatasetKind.Courses);
         expect(filter).to.be.instanceOf(OrComparison);
         expect(filter.validEntry(courseSection)).to.be.eq(true);
     });
