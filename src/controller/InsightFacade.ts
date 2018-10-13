@@ -7,6 +7,7 @@ import {QueryDeserializer} from "../deserializers/QueryDeserializer";
 import {IQuery} from "../model/Query";
 import {QueryPerformerService} from "../service/QueryPerformerService";
 import {MemoryCache} from "./MemoryCache";
+import {QueryPerformer} from "../service/QueryPerformer";
 
 /**
  * This is the main programmatic entry point for the project.
@@ -115,7 +116,7 @@ export default class InsightFacade implements IInsightFacade {
                 try {
                     let iquery: IQuery = new QueryDeserializer().deserialize(query);
                     let datasetToQuery = this.getDataSetToQuery(iquery.options.key);
-                    let result: any[] = new QueryPerformerService().performQuery(iquery, datasetToQuery);
+                    let result: any[] = new QueryPerformer().performQuery(iquery, datasetToQuery);
                     resolve(result);
                 } catch (err) {
                     reject(new InsightError(err));

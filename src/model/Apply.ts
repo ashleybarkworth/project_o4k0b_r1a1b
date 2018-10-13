@@ -60,9 +60,7 @@ export class Count extends Apply {
 export class Average extends Apply {
     constructor(name: string, field: string) {
         super(name, field, (lst) => {
-            let sum: Decimal = lst.reduce((val: number, res: Decimal) => {
-                return new Decimal(val).add(res);
-            });
+            let sum: Decimal = lst.reduce((val: number, res: Decimal) => new Decimal(val).add(res), new Decimal(0));
             return Number((sum.toNumber() / lst.length).toFixed(2));
         });
     }

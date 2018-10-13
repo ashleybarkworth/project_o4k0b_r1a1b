@@ -28,6 +28,7 @@ export class OptionsDeserializer {
             ioptions.columns = this.getColumnsMatchingTransformations(columns);
             ioptions.kind = this.transformations.kind;
             ioptions.key = this.transformations.key;
+            ioptions.transformations = this.transformations;
         }
         let numberOfObjectKeys = Object.keys(options).length;
         if (numberOfObjectKeys === 2) {

@@ -46,7 +46,7 @@ export class TransformationsDeserializer {
             }
             let column = applyBody[token];
             let key = DeserializingUtils.getKey(column, this.datasetKey, this.kind);
-            result.push(this.createNewApply(applyName, token, key));
+            result.push(TransformationsDeserializer.createNewApply(applyName, token, key));
         }
         let names = result.map((a) => a.getName());
         if (new Set(names).size !== names.length) {
@@ -55,7 +55,7 @@ export class TransformationsDeserializer {
         return result;
     }
 
-    private createNewApply(applyName: string, token: string, key: string) {
+    private static createNewApply(applyName: string, token: string, key: string) {
         switch (token) {
             case "AVG":
                 return new Average(applyName, key);
