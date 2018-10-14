@@ -87,7 +87,7 @@ export class OptionsDeserializer {
             DeserializingUtils.objectContainsKey(order, "dir", "ORDER");
             DeserializingUtils.objectContainsKey(order, "keys", "ORDER");
             let dir = order["dir"];
-            if (!Object.values(SortDirection).includes("DIR")) {
+            if (!Object.values(SortDirection).includes(dir)) {
                 throw new InsightError("Invalid sort direction");
             }
             let keys: string[] = order["keys"];

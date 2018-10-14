@@ -22,6 +22,6 @@ export interface IOrder {
 }
 
 export enum SortDirection {
-    UP,
-    DOWN
+    UP = "UP",
+    DOWN = "DOWN"
 }
