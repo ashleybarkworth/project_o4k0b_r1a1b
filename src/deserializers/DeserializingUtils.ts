@@ -55,6 +55,8 @@ export class DeserializingUtils {
             return InsightDatasetKind.Rooms;
         } else if (this.validCourseKeys.includes(key)) {
             return InsightDatasetKind.Courses;
+        } else {
+            throw new InsightError("Unrecognized key");
         }
     }
 
