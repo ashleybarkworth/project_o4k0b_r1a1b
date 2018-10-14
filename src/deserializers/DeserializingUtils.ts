@@ -60,10 +60,10 @@ export class DeserializingUtils {
         }
     }
 
-    public static objectContainsExactlyOneKey(obj: any, name: string) {
+    public static objectContainsNKeys(obj: any, n: number, name: string) {
         let keys = Object.keys(obj);
-        if (keys.length === 0 || keys.length > 1) {
-            throw new InsightError(name + " is not an object containing exactly one key");
+        if (keys.length !== n) {
+            throw new InsightError(name + " is not an object containing exactly " + n + " keys");
         }
     }
 

@@ -1,5 +1,5 @@
 import {InsightDatasetKind, InsightError} from "../controller/IInsightFacade";
-import {IOptions, ITransformations} from "../model/Options";
+import {IOptions, IOrder, ITransformations, SortDirection} from "../model/Options";
 import {DeserializingUtils} from "./DeserializingUtils";
 
 export class OptionsDeserializer {
@@ -71,13 +71,37 @@ export class OptionsDeserializer {
         return datasetId;
     }
 
-    private static getOrder(options: any, columns: string[]): string {
+    private static getOrder(options: any, columns: string[]): IOrder {
         DeserializingUtils.objectContainsKey(options, "ORDER", "OPTIONS");
         let order = options.ORDER;
-        if (!columns.includes(order)) {
-            throw new InsightError("Trying to order by a value not in columns");
+        if (typeof order === "string") {
+            if (!columns.includes(order)) {
+                throw new InsightError("Trying to order by a value not in columns");
+            }
+            return {
+                dir: SortDirection.UP,
+                keys: [order]
+            };
+        } else {
+            DeserializingUtils.objectContainsNKeys(order, 2, "ORDER");
+            DeserializingUtils.objectContainsKey(order, "dir", "ORDER");
+            DeserializingUtils.objectContainsKey(order, "keys", "ORDER");
+            let dir = order["dir"];
+            if (!Object.values(SortDirection).includes("DIR")) {
+                throw new InsightError("Invalid sort direction");
+            }
+            let keys: string[] = order["keys"];
+            keys.forEach((key) => {
+                if (!columns.includes(key)) {
+                    throw new InsightError("Trying to order by a value not in columns");
+                }
+            });
+            return {
+                dir,
+                keys
+            };
+
         }
-        return order;
     }
 
     private static getColumns(options: any): string[] {

@@ -1,5 +1,5 @@
 import {ITransformations} from "../model/Options";
-import {Apply, Average, Count, Max, Min, SimpleApply, Sum} from "../model/Apply";
+import {Apply, Average, Count, Max, Min, Sum} from "../model/Apply";
 import {InsightDatasetKind, InsightError} from "../controller/IInsightFacade";
 import {DeserializingUtils} from "./DeserializingUtils";
 
@@ -36,17 +36,17 @@ export class TransformationsDeserializer {
         DeserializingUtils.objectIsNonEmptyArray(rawJson, "APPLIES");
         let result: Apply[] = [];
         for (let apply of rawJson) {
-            DeserializingUtils.objectContainsExactlyOneKey(apply, "APPLY");
+            DeserializingUtils.objectContainsNKeys(apply, 1, "APPLY");
             let applyName = Object.keys(apply)[0];
             let applyBody = apply[applyName];
-            DeserializingUtils.objectContainsExactlyOneKey(applyBody, applyName);
+            DeserializingUtils.objectContainsNKeys(applyBody, 1, applyName);
             let token = Object.keys(applyBody)[0];
             if (!this.applyTokens.includes(token)) {
                 throw new InsightError("Invalid token");
             }
             let column = applyBody[token];
             let key = DeserializingUtils.getKey(column, this.datasetKey, this.kind);
-            result.push(TransformationsDeserializer.createNewApply(applyName, token, key));
+            result.push(this.createNewApply(applyName, token, key));
         }
         let names = result.map((a) => a.getName());
         if (new Set(names).size !== names.length) {
@@ -55,18 +55,43 @@ export class TransformationsDeserializer {
         return result;
     }
 
-    private static createNewApply(applyName: string, token: string, key: string) {
+    private createNewApply(applyName: string, token: string, key: string) {
         switch (token) {
             case "AVG":
+                this.validateKeyIsNumberAndOfCorrectKind(key);
                 return new Average(applyName, key);
             case "MIN":
+                this.validateKeyIsNumberAndOfCorrectKind(key);
                 return new Min(applyName, key);
             case "MAX":
+                this.validateKeyIsNumberAndOfCorrectKind(key);
                 return new Max(applyName, key);
             case "COUNT":
+                this.validateKeyIsNumberAndOfCorrectKind(key);
                 return new Count(applyName, key);
             case "SUM":
+                this.validateKeyOfCorrectKind(key);
                 return new Sum(applyName, key);
+        }
+    }
+
+    private validateKeyIsNumberAndOfCorrectKind(key: string) {
+        if (this.kind === InsightDatasetKind.Courses) {
+            return DeserializingUtils.validCourseNumberTypeKeys.includes(key);
+        } else if (this.kind === InsightDatasetKind.Rooms) {
+            return DeserializingUtils.validRoomNumberTypeKeys.includes(key);
+        } else {
+            throw new InsightError("Unrecognized kind");
+        }
+    }
+
+    private validateKeyOfCorrectKind(key: string) {
+        if (this.kind === InsightDatasetKind.Courses) {
+            return DeserializingUtils.validCourseKeys.includes(key);
+        } else if (this.kind === InsightDatasetKind.Rooms) {
+            return DeserializingUtils.validRoomKeys.includes(key);
+        } else {
+            throw new InsightError("Unrecognized kind");
         }
     }
 }

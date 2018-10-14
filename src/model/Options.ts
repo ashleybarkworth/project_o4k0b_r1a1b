@@ -5,7 +5,7 @@ export interface IOptions {
     key: string;
     kind: InsightDatasetKind;
     columns: string[];
-    order?: string;
+    order?: IOrder;
     transformations?: ITransformations;
 }
 
@@ -14,4 +14,14 @@ export interface ITransformations {
     apply: Apply[];
     key: string;
     kind: InsightDatasetKind;
+}
+
+export interface IOrder {
+    dir: SortDirection;
+    keys: string[];
+}
+
+export enum SortDirection {
+    UP,
+    DOWN
 }

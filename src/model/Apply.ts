@@ -18,7 +18,7 @@ export abstract class Apply {
     }
 
     /**
-     * TODO make this a good comment
+     * An apply is a function that is applied to a group of dataset entries and produces a number.
      * @param group the dataset entries to consider. Cannot be empty.
      */
     public apply(group: IDataSetEntry[]): number {
@@ -32,31 +32,47 @@ export abstract class SimpleApply extends Apply {
     }
 }
 
+/**
+ * Gets the maximum value of a numeric field
+ */
 export class Max extends SimpleApply {
     constructor(name: string, field: string) {
         super(name, field, (val: number, res: number) => Math.max(val, res));
     }
 }
 
+/**
+ * Gets the minimum value of a numeric field
+ */
 export class Min extends SimpleApply {
     constructor(name: string, field: string) {
         super(name, field, (val: number, res: number) => Math.min(val, res));
     }
 }
 
+/**
+ * Gets the sum of all values of a numeric field
+ */
 export class Sum extends SimpleApply {
     constructor(name: string, field: string) {
         super(name, field, (val: number, res: number) => val + res);
     }
 }
 
+/**
+ * Counts the number of unique values of a field
+ */
 export class Count extends Apply {
-    // TODO
     constructor(name: string, field: string) {
-        super(name, field, undefined);
+        super(name, field, (lst) => {
+            return new Set(lst).size;
+        });
     }
 }
 
+/**
+ * Gets the average of all values of a numeric field
+ */
 export class Average extends Apply {
     constructor(name: string, field: string) {
         super(name, field, (lst) => {

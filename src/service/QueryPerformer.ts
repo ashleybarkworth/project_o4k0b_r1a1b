@@ -1,8 +1,7 @@
 import {IQuery} from "../model/Query";
 import {IDataSetEntry, IFullDataset} from "../model/IFullDataset";
 import {InsightError} from "../controller/IInsightFacade";
-import {IOptions} from "../model/Options";
-import Log from "../Util";
+import {IOptions, SortDirection} from "../model/Options";
 
 export class QueryPerformer {
 
@@ -35,7 +34,15 @@ export class QueryPerformer {
 
     private sortResultsIfNecessary(options: IOptions, result: any[]) {
         if (options.order !== undefined) {
-            result.sort((secA, secB) => secA[options.order] <= secB[options.order] ? -1 : 1);
+            let sortFunc: (a: IDataSetEntry, b: IDataSetEntry) => boolean = (a: IDataSetEntry, b: IDataSetEntry) => {
+                for (let key of options.order.keys) {
+                    if (a[key] !== b[key]) {
+                        return options.order.dir === SortDirection.UP ? a[key] < b[key] : b[key] < a[key];
+                    }
+                }
+                return true; // if all are equal, break ties arbitrarily
+            };
+            result.sort((a, b) => sortFunc(a, b) ? -1 : 1);
         }
     }
 

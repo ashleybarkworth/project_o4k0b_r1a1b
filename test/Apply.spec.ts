@@ -1,5 +1,5 @@
 import {expect} from "chai";
-import {Apply, Average, Max, Min, Sum} from "../src/model/Apply";
+import {Apply, Average, Count, Max, Min, Sum} from "../src/model/Apply";
 import {ICourseSection} from "../src/model/IFullDataset";
 import {ITransformations} from "../src/model/Options";
 import {TransformationsDeserializer} from "../src/deserializers/TransformationsDeserializer";
@@ -32,7 +32,7 @@ let courseSections: ICourseSection[] = [
     },
     {
         id: "310",
-        dept: "cpsc",
+        dept: "span",
         avg: 90,
         instructor: "Reid Holmes",
         title: "Software Something",
@@ -44,7 +44,7 @@ let courseSections: ICourseSection[] = [
     },
     {
         id: "310",
-        dept: "cpsc",
+        dept: "adhe",
         avg: 10,
         instructor: "Reid Holmes",
         title: "Software Something",
@@ -78,7 +78,10 @@ describe("Test Apply", function () {
         expect(sumApply.apply(courseSections)).to.eq(800);
     });
 
-    // TODO count, don't really understand specification there
+    it("Test count apply", function () {
+        let count: Apply = new Count("overallCount", "dept");
+        expect(count.apply(courseSections)).to.eq(3);
+    });
 
     it("Test average", function () {
         let apply: Apply = new Average("overallAverage", "audit");
