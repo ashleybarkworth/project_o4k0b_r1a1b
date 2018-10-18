@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import {ITransformations} from "../model/Options";
 import {Apply, Average, Count, Max, Min, Sum} from "../model/Apply";
 import {InsightDatasetKind, InsightError} from "../controller/IInsightFacade";
@@ -74,14 +73,6 @@ export class TransformationsDeserializer {
                 this.validateKeyOfCorrectKind(key);
                 return new Sum(applyName, key);
         }
-=======
-import {Transformations} from "../model/Transformations";
-
-export class TransformationsDeserializer {
-
-    public deserialize(rawJson: any): Transformations {
-        return null; // TODO
->>>>>>> added parseBuildings + parseBuilding
     }
 
     private validateKeyIsNumberAndOfCorrectKind(key: string) {

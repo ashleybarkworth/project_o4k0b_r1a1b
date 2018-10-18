@@ -34,6 +34,7 @@ describe("InsightFacade Add/Remove Dataset", function () {
         zeroValidCourseSections: "./test/data/zeroValidCourseSections.zip",
         yaml: "./test/data/yaml.zip",
         oneValidOneInvalidDueToTypeMismatch: "./test/data/oneValidOneInvalidDueToTypeMismatch.zip",
+        roomsWithUnlinkedBuilding: "./test/data/roomsWithUnlinkedBuilding.zip",
     };
 
     let insightFacade: InsightFacade;
@@ -96,7 +97,7 @@ describe("InsightFacade Add/Remove Dataset", function () {
         } catch (err) {
             response = err;
         } finally {
-            expect(response).to.have.length(1);
+            expect(response).to.include.deep.members(["courses"]);
             expect(fs.existsSync(dataDirectoryPath + id + ".json")).to.eq(true);
         }
     });
@@ -112,7 +113,7 @@ describe("InsightFacade Add/Remove Dataset", function () {
         }
     });
 
-    it("Should add a second valid dataset", async () => {
+    it("Should add a valid rooms dataset", async () => {
         const id: string = "rooms";
         let response: string[];
 
@@ -121,7 +122,21 @@ describe("InsightFacade Add/Remove Dataset", function () {
         } catch (err) {
             response = err;
         } finally {
-            expect(response).to.have.length(2);
+            expect(response).to.include.deep.members(["courses", "rooms"]);
+            expect(fs.existsSync(dataDirectoryPath + id + ".json")).to.eq(true);
+        }
+    });
+
+    it("Should add a valid rooms dataset with an unlinked building", async () => {
+        const id: string = "roomsWithUnlinkedBuilding";
+        let response: string[];
+
+        try {
+            response = await insightFacade.addDataset(id, datasets[id], InsightDatasetKind.Rooms);
+        } catch (err) {
+            response = err;
+        } finally {
+            expect(response).to.have.deep.members(["courses", "rooms", "roomsWithUnlinkedBuilding"]);
             expect(fs.existsSync(dataDirectoryPath + id + ".json")).to.eq(true);
         }
     });
@@ -133,7 +148,8 @@ describe("InsightFacade Add/Remove Dataset", function () {
         } catch (err) {
             response = err;
         } finally {
-            expect(response).to.have.length(2);
+            expect(response).to.have.deep.property("[0].id", "courses");
+            expect(response).to.have.deep.property("[1].id", "rooms");
         }
     });
 
@@ -146,7 +162,7 @@ describe("InsightFacade Add/Remove Dataset", function () {
         } catch (err) {
             response = err;
         } finally {
-            expect(response).to.have.length(3);
+            expect(response).to.include.deep.members(["courses", "rooms", "someCoursesWithInvalidSections"]);
             expect(fs.existsSync(dataDirectoryPath + id + ".json")).to.eq(true);
         }
 
@@ -161,7 +177,8 @@ describe("InsightFacade Add/Remove Dataset", function () {
         } catch (err) {
             response = err;
         } finally {
-            expect(response).to.have.length(4);
+            expect(response).to.include.deep.members(["courses", "rooms", "someCoursesWithInvalidSections",
+            "oneCourseHasNoValidSections"]);
             expect(fs.existsSync(dataDirectoryPath + id + ".json")).to.eq(true);
         }
 
@@ -176,7 +193,8 @@ describe("InsightFacade Add/Remove Dataset", function () {
         } catch (err) {
             response = err;
         } finally {
-            expect(response).to.have.length(5);
+            expect(response).to.include.deep.members(["courses", "rooms", "someCoursesWithInvalidSections",
+                "oneCourseHasNoValidSections", "oneCourseContainsInvalidJSON"]);
             expect(fs.existsSync(dataDirectoryPath + id + ".json")).to.eq(true);
         }
 
@@ -191,7 +209,8 @@ describe("InsightFacade Add/Remove Dataset", function () {
         } catch (err) {
             response = err;
         } finally {
-            expect(response).to.have.length(6);
+            expect(response).to.include.deep.members(["courses", "rooms", "someCoursesWithInvalidSections",
+                "oneCourseHasNoValidSections", "oneCourseContainsInvalidJSON", "oneValidOneInvalidDueToTypeMismatch"]);
             expect(fs.existsSync(dataDirectoryPath + id + ".json")).to.eq(true);
         }
 

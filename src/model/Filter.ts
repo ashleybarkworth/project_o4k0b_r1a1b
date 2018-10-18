@@ -11,22 +11,14 @@ export interface IFilter {
      * @param entry the dataset entry to validate; cannot be null or undefined.
      * @returns true if the dataset entry is valid, false otherwise
      */
-<<<<<<< HEAD
     validEntry(entry: IDataSetEntry): boolean;
-=======
-    validEntry(courseSection: ICourseSection): boolean;
->>>>>>> added parseBuildings + parseBuilding
 }
 
 /**
  * Special case for an empty WHERE block
  */
 export class EmptyFilter implements IFilter {
-<<<<<<< HEAD
     public validEntry(entry: IDataSetEntry): boolean {
-=======
-    public validEntry(courseSection: ICourseSection): boolean {
->>>>>>> added parseBuildings + parseBuilding
         return true;
     }
 }
@@ -41,13 +33,8 @@ export class Negation implements IFilter {
         this.innerFilter = filter;
     }
 
-<<<<<<< HEAD
     public validEntry(entry: IDataSetEntry): boolean {
         return !this.innerFilter.validEntry(entry); // Negate the result of the inner filter
-=======
-    public validEntry(courseSection: ICourseSection): boolean {
-        return !this.innerFilter.validEntry(courseSection); // Negate the result of the inner filter
->>>>>>> added parseBuildings + parseBuilding
     }
 }
 
@@ -76,13 +63,8 @@ export class SComparison implements IFilter {
      * @inheritDoc
      * Return true if the value of the property with key this.key matches this.searchText.
      */
-<<<<<<< HEAD
     public validEntry(entry: IDataSetEntry): boolean {
         let val = entry[this.key];
-=======
-    public validEntry(courseSection: ICourseSection): boolean {
-        let val = courseSection[this.key];
->>>>>>> added parseBuildings + parseBuilding
         let hasStartAsterisk: boolean = this.searchText.startsWith("*");
         let hasEndAsterisk: boolean = this.searchText.endsWith("*");
 
@@ -123,13 +105,8 @@ export abstract class MComparator implements IFilter {
         this.comparison = comparison;
     }
 
-<<<<<<< HEAD
     public validEntry(entry: IDataSetEntry): boolean {
         let val = entry[this.key];
-=======
-    public validEntry(courseSection: ICourseSection): boolean {
-        let val = courseSection[this.key];
->>>>>>> added parseBuildings + parseBuilding
         let valAsNum = val as number;
         return this.comparison(valAsNum); // Comes from subclass
     }
@@ -178,15 +155,9 @@ export abstract class LogicComparison implements IFilter {
         this.boolCombine = boolCombine;
     }
 
-<<<<<<< HEAD
     public validEntry(entry: IDataSetEntry): boolean {
         return this.innerFilters
             .map((filter) => filter.validEntry(entry))
-=======
-    public validEntry(courseSection: ICourseSection): boolean {
-        return this.innerFilters
-            .map((filter) => filter.validEntry(courseSection))
->>>>>>> added parseBuildings + parseBuilding
             .reduce(this.boolCombine);
     }
 }

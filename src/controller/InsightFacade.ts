@@ -5,15 +5,19 @@ import {
     InsightDatasetKind,
     InsightError,
     NodeType,
-    NotFoundError
+    NotFoundError,
+    RoomDescriptor
 } from "./IInsightFacade";
 import {ICourseSection, IDataSetEntry, IFullDataset, IRoom} from "../model/IFullDataset";
 import * as JSZip from "jszip";
 import * as fs from "fs";
+import * as parse5 from "parse5";
 import {QueryDeserializer} from "../deserializers/QueryDeserializer";
 import {IQuery} from "../model/Query";
 import {MemoryCache} from "./MemoryCache";
+
 import {QueryPerformer} from "../service/QueryPerformer";
+import {GeolocationFinder} from "../GeolocationFinder";
 
 /**
  * This is the main programmatic entry point for the project.
@@ -73,36 +77,9 @@ export default class InsightFacade implements IInsightFacade {
                         });
                         break;
                     case "rooms":
-                        jsZip.loadAsync(content, {base64: true}).then(async function (zip) {
-                            const courseDirectory: string = "campus/discover/buildings-and-classrooms/";
-                            let index = jsZip.file("index.htm");
-                            let buildings: string[];
-                            await index.async("text").then((indexHTML) => {
-                                // const root: AST.Default.Node = parse5.parse(indexHTML)
-                                // as parse5.AST.Default.Document;
-                                buildings = self.parseIndex(indexHTML);
-                                // let table: Node = self.findBuildingTable(root);
-                                // let table: any = self.findBuildingTable(root);
-                                // Log.test(table.toString());
-                            });
-                            let files = Object.keys(zip.files).filter((directory) => directory.match(courseDirectory)
-                                && buildings.includes(directory.replace(courseDirectory, "")));
-                            if (files.length === 0) {
-                                throw new InsightError("No files found in courses folder");
-                            }
-                            files.forEach(function (fileName) {
-                                let promise: any = zip.files[fileName].async("text");
-                                promises.push(promise);
-                            });
-                            Promise.all(promises).then((fileData) => {
-                                Log.test("ROOMS");
-                                self.parseBuildings(fileData, id);
-                            }).catch(function (err) {
-                                Log.test(err);
-                                reject(err);
-                                throw err;
-                            });
-                            // Log.test(html);
+                        self.parseBuildings(jsZip, content, id).then( () => {
+                            resolve(self.memoryCache.getLoadedDataSets()
+                                .map((courseDataset: IFullDataset) => courseDataset.id));
                         });
                 }
         } catch (err) {
@@ -111,60 +88,188 @@ export default class InsightFacade implements IInsightFacade {
     });
     }
 
-    private parseBuildings(fileData: any[], id: string) {
-        let rooms: IDataSetEntry[] = [];
-        for (let file of fileData) {
-            const root = parse5.parse(file) as parse5.AST.Default.Document;
-            const table: any = this.findBuildingTable(root);
-            let tBody: AST.Default.ParentNode;
-
-            for (let child of table.childNodes) {
-                if (child.nodeName === "tbody") {
-                    tBody = child as AST.Default.ParentNode;
+    private parseBuildings(jsZip: any, content: string, id: string): Promise<IFullDataset> {
+        let self = this;
+        let promises: any[] = [];
+        let rooms: IRoom[] = [];
+        return new Promise<IFullDataset>((resolve, reject) => {
+            jsZip.loadAsync(content, {base64: true}).then(async function (zip: any) {
+                const courseDirectory: string = "campus/discover/buildings-and-classrooms/";
+                let index = jsZip.file("index.htm");
+                let buildingCodes: string[] = [];
+                await index.async("text").then((indexHTML: any) => {
+                    buildingCodes = self.parseIndex(indexHTML);
+                });
+                let files = Object.keys(zip.files).filter((directory) => directory.match(courseDirectory)
+                    && buildingCodes.includes(directory.replace(courseDirectory, "")));
+                if (files.length === 0) {
+                    throw new InsightError("No files found in courses folder");
                 }
-            }
+                files.forEach(function (fileName) {
+                    let promise: any = zip.files[fileName].async("text");
+                    promises.push(promise);
+                });
 
-            const tableRows: any[] = tBody.childNodes.filter((child) => child.nodeName === "tr");
+                let buildingPromises: any[] = [];
+                Promise.all(promises).then((fileData) => {
+                    for (let file of fileData) {
+                        let buildingRooms = self.getAllRoomsFromBuilding(rooms, file, id);
+                        buildingPromises.push(buildingRooms);
+                    }
 
-            for (let row of tableRows) {
-                // let room: IDataSetEntry = this.parseRoom(row);
-                this.parseRoom(row);
-            }
-        }
+                    if (rooms.length === 0) {
+                        throw new InsightError("Dataset contains no valid course sections");
+                    } else {
+                        Promise.all(buildingPromises).then(() => {
+                            let dataset: IFullDataset = {
+                                id,
+                                kind: InsightDatasetKind.Rooms,
+                                entries: rooms,
+                            };
+
+                            self.memoryCache.addLoadedDataSet(dataset);
+                            let datasetContent: string = JSON.stringify(dataset);
+                            fs.writeFileSync(path + id + ".json", datasetContent);
+                            resolve(dataset);
+                        });
+                    }
+                });
+
+            }).catch (function (err: any) {
+                reject(err);
+                throw err;
+            });
+        });
     }
 
-    private parseRoom(roomData: any) {
-        for (let cell of roomData) {
-            Log.test(parse5.serialize(cell));
+    private getAllRoomsFromBuilding(rooms: IRoom[], file: any, id: string): Promise<IRoom[]> {
+        return new Promise<IRoom[]>((resolve, reject) => {
+            const root = parse5.parse(file) as parse5.Document;
+            const tBody: any = this.getTableBody(root, "views-table cols-5 table");
+
+            let buildingInfo: any = this.getElementById(root, "building-info");
+
+            if (buildingInfo) {
+                let roomFullName: string = buildingInfo["childNodes"][1]["childNodes"][0]["childNodes"][0].value;
+                let roomShortName: string = "";
+                let address: string = buildingInfo["childNodes"][3]["childNodes"][0]["childNodes"][0].value;
+
+                const latLonInfo = new GeolocationFinder();
+
+                latLonInfo.getLatLonPair(address).then((info) => {
+                    let lat: number = info.lat;
+                    let lon: number = info.lon;
+                    let tableRows: any[];
+                    if (tBody) {
+                        tableRows = this.getTableRows(tBody);
+                    }
+
+                    if (tableRows) {
+                        for (let row of tableRows) {
+                            let room: IRoom = this.parseRoom(row, roomFullName, roomShortName, address, lat, lon);
+                            if (this.noNullProperties(room)) {
+                                rooms.push(room);
+                            }
+                        }
+                    }
+                    resolve(rooms);
+                }).catch((err: any) => {
+                    reject(err);
+                    throw err;
+                });
+            }
+        });
+    }
+
+    private noNullProperties(entry: IDataSetEntry): boolean {
+        return Object.values(entry).every((property) => property != null);
+    }
+
+    private parseRoom(roomData: any, fullName: string, shortName: string, address: string,
+                      lat: number, lon: number): IRoom {
+
+        let room: IRoom;
+        let cells: any[] = roomData["childNodes"];
+        cells = cells.filter((child) => child["nodeName"] === NodeType.Cell);
+
+        const roomNumber: number = Number(this.getRoomFieldByDescriptor(cells, RoomDescriptor.Number));
+        const capacity: string = this.getRoomFieldByDescriptor(cells, RoomDescriptor.Capacity);
+        const furniture: string = this.getRoomFieldByDescriptor(cells, RoomDescriptor.Furniture);
+        const type: string = this.getRoomFieldByDescriptor(cells, RoomDescriptor.Type);
+        const href: string = this.getRoomFieldByDescriptor(cells, RoomDescriptor.Href);
+
+        room = {
+            fullname: fullName,
+            shortname: shortName,
+            number: roomNumber,
+            name: shortName.concat("_", String(roomNumber)),
+            address,
+            lat,
+            lon,
+            seats: capacity,
+            type,
+            furniture,
+            href,
+        };
+        return room;
+    }
+
+    private getRoomFieldByDescriptor(cells: any[], descriptor: RoomDescriptor): any {
+        if (!cells) {
+            return null;
         }
+
+        let targetNode: any;
+        for (let cell of cells) {
+            let attributes: any[] = cell["attrs"];
+            for (let attribute of attributes) {
+                const classAttr = attribute["value"];
+                if (classAttr === descriptor) {
+                    targetNode = cell;
+                }
+            }
+        }
+
+        if (descriptor === RoomDescriptor.Number || descriptor === RoomDescriptor.Href) {
+            let child: any = targetNode["childNodes"].filter((c: any) => c["nodeName"] === NodeType.Hyperlink)[0];
+            let fieldValue: any;
+            if (descriptor === RoomDescriptor.Href) {
+                fieldValue = child["attrs"].filter((a: any) => a["name"] = "href")[0].value.trim();
+            } else {
+                fieldValue = child["childNodes"].filter((a: any) => a["nodeName"] = "#text")[0].value;
+            }
+            return fieldValue;
+        } else if (descriptor === RoomDescriptor.Furniture || descriptor === RoomDescriptor.Capacity ||
+            descriptor === RoomDescriptor.Type) {
+            let child: any = targetNode["childNodes"].filter((c: any) => c["nodeName"] === NodeType.Text)[0];
+            return child.value.trim();
+        }
+
     }
 
     private parseIndex(html: string) {
-        const root: any = parse5.parse(html) as parse5.AST.Default.Document;
-        const table: any = this.findBuildingTable(root);
-        const buildingCodes = this.getBuildingCodes(table);
+        const document = parse5.parse(html);
+        const tBody = this.getTableBody(document, "views-table cols-5 table");
+        const buildingCodes = this.getBuildingCodes(tBody);
         return buildingCodes;
     }
 
-    private getBuildingCodes(table: any) {
+    private getBuildingCodes(tBody: any) {
         let codes: string[] = [];
-        let tBody: AST.Default.ParentNode;
 
-        for (let child of table.childNodes) {
-            if (child.nodeName === "tbody") {
-                tBody = child as AST.Default.ParentNode;
-            }
+        if (!tBody) {
+            throw new InsightError("Unexpected error - no body found in table");
         }
 
-        for (let c of tBody.childNodes) {
-            if (c.nodeName === "tr") {
-                const row: any = c;
-                for (let cell of row.childNodes) {
-                    if (cell.nodeName === "td") {
-                        if (cell.attrs[0].value === "views-field views-field-field-building-code") {
-                            let buildingCode: string = cell.childNodes[0].value.trim();
-                            codes.push(buildingCode);
-                        }
+        const tableRows = this.getTableRows(tBody);
+
+        if (tableRows) {
+            for (let row of tableRows) {
+                const tableCells = this.getRowCells(row);
+                for (let cell of tableCells) {
+                    if (cell["attrs"][0].value === "views-field views-field-field-building-code") {
+                        let buildingCode: string = cell["childNodes"][0].value.trim();
+                        codes.push(buildingCode);
                     }
                 }
             }
@@ -172,40 +277,83 @@ export default class InsightFacade implements IInsightFacade {
         return codes;
     }
 
-    private findBuildingTable(node: any) {
+    private getTableRows(tBody: any) {
+        let children: any[] = tBody["childNodes"];
+
+        if (children) {
+            return children.filter((child) => child["nodeName"] === NodeType.Row);
+        }
+    }
+
+    private getRowCells(row: any) {
+        let children: any[] = row["childNodes"];
+
+        if (children) {
+            return children.filter((child) => child["nodeName"] === NodeType.Cell);
+        }
+    }
+
+    private getTableBody(node: any, id: string): any {
+        let element: any = null;
+
         if (!node) {
-            return null;
+            return element;
         }
 
-        let tableNode: any = null;
-        let nodeType: string = node.nodeName;
+        let nodeType: NodeType = node.nodeName;
         const childNodes: any[] = node.childNodes;
 
-        if (!childNodes || childNodes.length === 0) {
-            tableNode = nodeType === NodeType.Table ? node : null;
+        if (nodeType === NodeType.Table) {
+            let nodeId: string;
+            let nodeAttributes: any[] = node["attrs"];
+            if (nodeAttributes && nodeAttributes[0] && nodeAttributes[0].value) {
+                nodeId = nodeAttributes[0].value;
+            }
+
+            if (nodeId === id) {
+                let tBody: any = node["childNodes"].filter((child: any) => child["nodeName"] === NodeType.TBody)[0];
+                return tBody;
+            }
         } else {
-            switch (nodeType) {
-                case NodeType.Table:
-                    tableNode =  node;
-                    break;
-                case NodeType.Document:
-                case NodeType.HTML:
-                case NodeType.Head:
-                case NodeType.Body:
-                case NodeType.Div:
-                case NodeType.Section:
-                    if (childNodes) {
-                        for (let child of childNodes) {
-                            tableNode = this.findBuildingTable(child) == null ?
-                                tableNode : this.findBuildingTable(child);
-                        }
+            if (childNodes && childNodes.length > 0) {
+                for (let child of childNodes) {
+                    if (this.getTableBody(child, id)) {
+                        return this.getTableBody(child, id);
                     }
-                    break;
-                default:
-                    break;
+                }
             }
         }
-        return tableNode;
+
+        return element;
+    }
+
+    private getElementById(node: any, id: string): any {
+        let element: any = null;
+
+        if (!node) {
+            return element;
+        }
+
+        let nodeId: string = "";
+        let nodeAttributes: any[] = node["attrs"];
+        if (nodeAttributes && nodeAttributes[0] && nodeAttributes[0].value) {
+            nodeId = nodeAttributes[0].value;
+        }
+
+        const childNodes: any[] = node["childNodes"];
+
+        if (nodeId === id) {
+            return node;
+        } else {
+            if (childNodes && childNodes.length > 0) {
+                for (let child of childNodes) {
+                    if (this.getElementById(child, id)) {
+                        return this.getElementById(child, id);
+                    }
+                }
+            }
+        }
+        return element;
     }
 
     private validateAddDatasetInputs(id: string, kind: InsightDatasetKind) {
@@ -316,10 +464,7 @@ export default class InsightFacade implements IInsightFacade {
                         year
                     };
 
-                    let noNullProperties: boolean = Object.values(courseSection)
-                        .every((property) => property != null);
-
-                    if (noNullProperties) {
+                    if (this.noNullProperties(courseSection)) {
                         courseSections.push(courseSection);
                     }
                 } catch (err) { // continue to next course section if any errors occur

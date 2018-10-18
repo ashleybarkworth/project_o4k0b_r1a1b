@@ -12,11 +12,26 @@ export enum InsightDatasetKind {
 export enum NodeType {
     Document = "#document",
     Section = "section",
+    Comment = "#comment",
+    Text = "#text",
+    Hyperlink = "a",
     HTML = "html",
     Div = "div",
     Head = "head",
     Body = "body",
-    Table = "table"
+    Table = "table",
+    THead = "thead",
+    TBody = "tbody",
+    Row = "tr",
+    Cell = "td"
+}
+
+export enum RoomDescriptor {
+    Number = "views-field views-field-field-room-number",
+    Capacity = "views-field views-field-field-room-capacity",
+    Furniture = "views-field views-field-field-room-furniture",
+    Type = "views-field views-field-field-room-type",
+    Href = "views-field views-field-nothing",
 }
 
 export interface InsightDataset {
