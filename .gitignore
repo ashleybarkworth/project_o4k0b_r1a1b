@@ -4,11 +4,6 @@
 
 node_modules/
 coverage/
-<<<<<<< HEAD
-=======
-data/
-!test/data
->>>>>>> added parseBuildings + parseBuilding
 /data/
 src/*.js
 src/*.map

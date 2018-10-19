@@ -4,7 +4,7 @@ import {
     InsightDataset,
     InsightDatasetKind,
     InsightError,
-    NodeType,
+    ElementType,
     NotFoundError,
     RoomDescriptor
 } from "./IInsightFacade";
@@ -189,7 +189,7 @@ export default class InsightFacade implements IInsightFacade {
 
         let room: IRoom;
         let cells: any[] = roomData["childNodes"];
-        cells = cells.filter((child) => child["nodeName"] === NodeType.Cell);
+        cells = cells.filter((child) => child["nodeName"] === ElementType.Cell);
 
         const roomNumber: number = Number(this.getRoomFieldByDescriptor(cells, RoomDescriptor.Number));
         const capacity: string = this.getRoomFieldByDescriptor(cells, RoomDescriptor.Capacity);
@@ -231,7 +231,7 @@ export default class InsightFacade implements IInsightFacade {
         }
 
         if (descriptor === RoomDescriptor.Number || descriptor === RoomDescriptor.Href) {
-            let child: any = targetNode["childNodes"].filter((c: any) => c["nodeName"] === NodeType.Hyperlink)[0];
+            let child: any = targetNode["childNodes"].filter((c: any) => c["nodeName"] === ElementType.Hyperlink)[0];
             let fieldValue: any;
             if (descriptor === RoomDescriptor.Href) {
                 fieldValue = child["attrs"].filter((a: any) => a["name"] = "href")[0].value.trim();
@@ -241,7 +241,7 @@ export default class InsightFacade implements IInsightFacade {
             return fieldValue;
         } else if (descriptor === RoomDescriptor.Furniture || descriptor === RoomDescriptor.Capacity ||
             descriptor === RoomDescriptor.Type) {
-            let child: any = targetNode["childNodes"].filter((c: any) => c["nodeName"] === NodeType.Text)[0];
+            let child: any = targetNode["childNodes"].filter((c: any) => c["nodeName"] === ElementType.Text)[0];
             return child.value.trim();
         }
 
@@ -280,7 +280,7 @@ export default class InsightFacade implements IInsightFacade {
         let children: any[] = tBody["childNodes"];
 
         if (children) {
-            return children.filter((child) => child["nodeName"] === NodeType.Row);
+            return children.filter((child) => child["nodeName"] === ElementType.Row);
         }
     }
 
@@ -288,7 +288,7 @@ export default class InsightFacade implements IInsightFacade {
         let children: any[] = row["childNodes"];
 
         if (children) {
-            return children.filter((child) => child["nodeName"] === NodeType.Cell);
+            return children.filter((child) => child["nodeName"] === ElementType.Cell);
         }
     }
 
@@ -299,10 +299,10 @@ export default class InsightFacade implements IInsightFacade {
             return element;
         }
 
-        let nodeType: NodeType = node.nodeName;
+        let nodeType: ElementType = node.nodeName;
         const childNodes: any[] = node.childNodes;
 
-        if (nodeType === NodeType.Table) {
+        if (nodeType === ElementType.Table) {
             let nodeId: string;
             let nodeAttributes: any[] = node["attrs"];
             if (nodeAttributes && nodeAttributes[0] && nodeAttributes[0].value) {
@@ -310,7 +310,7 @@ export default class InsightFacade implements IInsightFacade {
             }
 
             if (nodeId === id) {
-                let tBody: any = node["childNodes"].filter((child: any) => child["nodeName"] === NodeType.TBody)[0];
+                let tBody: any = node["childNodes"].filter((child: any) => child["nodeName"] === ElementType.TBody)[0];
                 return tBody;
             }
         } else {

@@ -9,18 +9,10 @@ export enum InsightDatasetKind {
     Rooms = "rooms",
 }
 
-export enum NodeType {
-    Document = "#document",
-    Section = "section",
-    Comment = "#comment",
+export enum ElementType {
     Text = "#text",
     Hyperlink = "a",
-    HTML = "html",
-    Div = "div",
-    Head = "head",
-    Body = "body",
     Table = "table",
-    THead = "thead",
     TBody = "tbody",
     Row = "tr",
     Cell = "td"
