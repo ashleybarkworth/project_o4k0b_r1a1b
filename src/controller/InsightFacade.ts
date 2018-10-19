@@ -151,7 +151,6 @@ export default class InsightFacade implements IInsightFacade {
 
             if (buildingInfo) {
                 let roomFullName: string = buildingInfo["childNodes"][1]["childNodes"][0]["childNodes"][0].value;
-                let roomShortName: string = "";
                 let address: string = buildingInfo["childNodes"][3]["childNodes"][0]["childNodes"][0].value;
 
                 const latLonInfo = new GeolocationFinder();
@@ -166,7 +165,7 @@ export default class InsightFacade implements IInsightFacade {
 
                     if (tableRows) {
                         for (let row of tableRows) {
-                            let room: IRoom = this.parseRoom(row, roomFullName, roomShortName, address, lat, lon);
+                            let room: IRoom = this.parseRoom(row, roomFullName, address, lat, lon);
                             if (this.noNullProperties(room)) {
                                 rooms.push(room);
                             }
@@ -185,7 +184,7 @@ export default class InsightFacade implements IInsightFacade {
         return Object.values(entry).every((property) => property != null);
     }
 
-    private parseRoom(roomData: any, fullName: string, shortName: string, address: string,
+    private parseRoom(roomData: any, fullName: string, address: string,
                       lat: number, lon: number): IRoom {
 
         let room: IRoom;
@@ -197,6 +196,7 @@ export default class InsightFacade implements IInsightFacade {
         const furniture: string = this.getRoomFieldByDescriptor(cells, RoomDescriptor.Furniture);
         const type: string = this.getRoomFieldByDescriptor(cells, RoomDescriptor.Type);
         const href: string = this.getRoomFieldByDescriptor(cells, RoomDescriptor.Href);
+        const shortName: string = href.split("/").pop().split("-")[0];
 
         room = {
             fullname: fullName,
@@ -250,8 +250,7 @@ export default class InsightFacade implements IInsightFacade {
     private parseIndex(html: string) {
         const document = parse5.parse(html);
         const tBody = this.getTableBody(document, "views-table cols-5 table");
-        const buildingCodes = this.getBuildingCodes(tBody);
-        return buildingCodes;
+        return this.getBuildingCodes(tBody);
     }
 
     private getBuildingCodes(tBody: any) {
