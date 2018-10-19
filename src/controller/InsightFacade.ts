@@ -113,26 +113,26 @@ export default class InsightFacade implements IInsightFacade {
                 let buildingPromises: any[] = [];
                 Promise.all(promises).then((fileData) => {
                     for (let file of fileData) {
-                        let buildingRooms = self.getAllRoomsFromBuilding(rooms, file, id);
+                        let buildingRooms = self.getAllRoomsFromBuilding(rooms, file);
                         buildingPromises.push(buildingRooms);
                     }
 
-                    if (rooms.length === 0) {
-                        throw new InsightError("Dataset contains no valid course sections");
-                    } else {
-                        Promise.all(buildingPromises).then(() => {
-                            let dataset: IFullDataset = {
-                                id,
-                                kind: InsightDatasetKind.Rooms,
-                                entries: rooms,
-                            };
+                    Promise.all(buildingPromises).then(() => {
 
-                            self.memoryCache.addLoadedDataSet(dataset);
-                            let datasetContent: string = JSON.stringify(dataset);
-                            fs.writeFileSync(path + id + ".json", datasetContent);
-                            resolve(dataset);
-                        });
-                    }
+                        if (rooms.length === 0) {
+                            throw new InsightError("Dataset contains no valid rooms");
+                        }
+                        let dataset: IFullDataset = {
+                            id,
+                            kind: InsightDatasetKind.Rooms,
+                            entries: rooms,
+                        };
+
+                        self.memoryCache.addLoadedDataSet(dataset);
+                        let datasetContent: string = JSON.stringify(dataset);
+                        fs.writeFileSync(path + id + ".json", datasetContent);
+                        resolve(dataset);
+                    });
                 });
 
             }).catch (function (err: any) {
@@ -142,7 +142,7 @@ export default class InsightFacade implements IInsightFacade {
         });
     }
 
-    private getAllRoomsFromBuilding(rooms: IRoom[], file: any, id: string): Promise<IRoom[]> {
+    private getAllRoomsFromBuilding(rooms: IRoom[], file: any): Promise<IRoom[]> {
         return new Promise<IRoom[]>((resolve, reject) => {
             const root = parse5.parse(file) as parse5.Document;
             const tBody: any = this.getTableBody(root, "views-table cols-5 table");

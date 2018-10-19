@@ -110,6 +110,7 @@ describe("InsightFacade Add/Remove Dataset", function () {
             response = err;
         } finally {
             expect(response).to.have.length(1);
+            expect(response).to.have.property("0").to.have.property("id").that.deep.equals( "courses");
         }
     });
 
@@ -127,6 +128,19 @@ describe("InsightFacade Add/Remove Dataset", function () {
         }
     });
 
+    it("Should list multiple datasets if more than one has been added", async () => {
+        let response: InsightDataset[];
+        try {
+            response = await insightFacade.listDatasets();
+        } catch (err) {
+            response = err;
+        } finally {
+            expect(response).to.have.length(2);
+            expect(response).to.have.property("0").to.have.property("id").that.deep.equals( "courses");
+            expect(response).to.have.property("1").to.have.property("id").that.deep.equals( "rooms");
+        }
+    });
+
     it("Should add a valid rooms dataset with an unlinked building", async () => {
         const id: string = "roomsWithUnlinkedBuilding";
         let response: string[];
@@ -138,18 +152,6 @@ describe("InsightFacade Add/Remove Dataset", function () {
         } finally {
             expect(response).to.have.deep.members(["courses", "rooms", "roomsWithUnlinkedBuilding"]);
             expect(fs.existsSync(dataDirectoryPath + id + ".json")).to.eq(true);
-        }
-    });
-
-    it("Should list multiple datasets if more than one has been added", async () => {
-        let response: InsightDataset[];
-        try {
-            response = await insightFacade.listDatasets();
-        } catch (err) {
-            response = err;
-        } finally {
-            expect(response).to.have.deep.property("[0].id", "courses");
-            expect(response).to.have.deep.property("[1].id", "rooms");
         }
     });
 
