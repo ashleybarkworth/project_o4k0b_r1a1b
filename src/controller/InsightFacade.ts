@@ -191,8 +191,8 @@ export default class InsightFacade implements IInsightFacade {
         let cells: any[] = roomData["childNodes"];
         cells = cells.filter((child) => child["nodeName"] === ElementType.Cell);
 
-        const roomNumber: number = Number(this.getRoomFieldByDescriptor(cells, RoomDescriptor.Number));
-        const capacity: string = this.getRoomFieldByDescriptor(cells, RoomDescriptor.Capacity);
+        const roomNumber: string = this.getRoomFieldByDescriptor(cells, RoomDescriptor.Number);
+        const capacity: number = Number(this.getRoomFieldByDescriptor(cells, RoomDescriptor.Capacity));
         const furniture: string = this.getRoomFieldByDescriptor(cells, RoomDescriptor.Furniture);
         const type: string = this.getRoomFieldByDescriptor(cells, RoomDescriptor.Type);
         const href: string = this.getRoomFieldByDescriptor(cells, RoomDescriptor.Href);
@@ -521,7 +521,7 @@ export default class InsightFacade implements IInsightFacade {
                 resolve(this.memoryCache.getLoadedDataSets().map((ds) => {
                     return {
                         id: ds.id,
-                        kind: InsightDatasetKind.Courses,
+                        kind: ds.kind,
                         numRows: ds.entries.length,
                     }  as
                         InsightDataset;
