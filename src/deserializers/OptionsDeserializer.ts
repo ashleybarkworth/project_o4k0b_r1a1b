@@ -91,6 +91,7 @@ export class OptionsDeserializer {
                 throw new InsightError("Invalid sort direction");
             }
             let keys: string[] = order["keys"];
+            DeserializingUtils.objectIsNonEmptyArray(keys, "KEYS");
             keys.forEach((key) => {
                 if (!columns.includes(key)) {
                     throw new InsightError("Trying to order by a value not in columns");

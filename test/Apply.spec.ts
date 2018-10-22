@@ -45,12 +45,12 @@ let courseSections: ICourseSection[] = [
     {
         id: "310",
         dept: "adhe",
-        avg: 10,
+        avg: 11.1118,
         instructor: "Reid Holmes",
         title: "Software Something",
         pass: 200,
         fail: 20,
-        audit: 2,
+        audit: 1,
         uuid: "testa",
         year: 2017
     }
@@ -69,13 +69,17 @@ describe("Test Apply", function () {
     });
 
     it("Test min apply", function () {
-        let minApply: Apply = new Min("overallMin", "avg");
-        expect(minApply.apply(courseSections)).to.eq(10);
+        let minApply: Apply = new Min("minAudit", "audit");
+        expect(minApply.apply(courseSections)).to.eq(1);
     });
 
     it("Test sum apply", function () {
         let sumApply: Apply = new Sum("overallSum", "pass");
-        expect(sumApply.apply(courseSections)).to.eq(800);
+        let result = sumApply.apply(courseSections);
+        expect(result).to.eq(800);
+
+        let roundingApply = new Sum("sum2", "avg");
+        expect(roundingApply.apply(courseSections)).to.eq(211.11);
     });
 
     it("Test count apply", function () {
@@ -85,7 +89,7 @@ describe("Test Apply", function () {
 
     it("Test average", function () {
         let apply: Apply = new Average("overallAverage", "audit");
-        expect(apply.apply(courseSections)).to.eq(2);
+        expect(apply.apply(courseSections)).to.eq(1.75);
     });
 });
 

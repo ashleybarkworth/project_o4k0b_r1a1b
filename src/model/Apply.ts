@@ -53,9 +53,11 @@ export class Min extends SimpleApply {
 /**
  * Gets the sum of all values of a numeric field
  */
-export class Sum extends SimpleApply {
+export class Sum extends Apply {
     constructor(name: string, field: string) {
-        super(name, field, (val: number, res: number) => val + res);
+        super(name, field, (lst) => {
+            return Number(lst.reduce((val, res) => val + res).toFixed(2));
+        });
     }
 }
 

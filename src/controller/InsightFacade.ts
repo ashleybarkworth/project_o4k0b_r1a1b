@@ -448,7 +448,12 @@ export default class InsightFacade implements IInsightFacade {
                     const fail: number = typeof c.Fail === "number" ? c.Fail : undefined;
                     const audit: number = typeof c.Audit === "number" ? c.Audit : undefined;
                     const uuid: string = typeof c.id === "number" ? String(c.id) : undefined;
-                    const year: number = typeof c.Year === "string" ? Number(c.Year) : undefined;
+                    let year: number;
+                    if (typeof c.Section === "string" && c.Section === "overall") {
+                        year = 1900;
+                    } else {
+                        year = typeof c.Year === "string" ? Number(c.Year) : undefined;
+                    }
 
                     const courseSection: ICourseSection = {
                         id: courseId,
