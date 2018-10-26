@@ -1,6 +1,10 @@
 import * as http from "http";
 
-export class HttpRequest {
+export interface IHttpRequest {
+    get(url: string): Promise<any>;
+}
+
+export class HttpRequest implements IHttpRequest {
 
     /*
      * Acknowledgement: This method borrows heavily from the example at https://davidwalsh.name/nodejs-http-request
