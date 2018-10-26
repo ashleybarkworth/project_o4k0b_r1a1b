@@ -33,11 +33,14 @@ export class TransformationsDeserializer {
     }
 
     private deserializeApplies(rawJson: any): Apply[] {
-        DeserializingUtils.objectIsNonEmptyArray(rawJson, "APPLIES");
+        DeserializingUtils.objectIsArray(rawJson, "APPLIES");
         let result: Apply[] = [];
         for (let apply of rawJson) {
             DeserializingUtils.objectContainsNKeys(apply, 1, "APPLY");
             let applyName = Object.keys(apply)[0];
+            if (applyName.includes("_")) {
+                throw new InsightError("Invalid apply name");
+            }
             let applyBody = apply[applyName];
             DeserializingUtils.objectContainsNKeys(applyBody, 1, applyName);
             let token = Object.keys(applyBody)[0];

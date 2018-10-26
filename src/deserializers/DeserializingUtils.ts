@@ -73,6 +73,12 @@ export class DeserializingUtils {
         }
     }
 
+    public static objectIsArray(obj: any, name: string) {
+        if (!Array.isArray(obj)) {
+            throw new InsightError(name + " is not an array");
+        }
+    }
+
     public static objectContainsKey(obj: any, key: string, name: string) {
         if (!Object.keys(obj).includes(key)) {
             throw new InsightError(name + " did not contain key " + key);
