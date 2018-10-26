@@ -1,0 +1,68 @@
+{
+    "title": "underscore in apply key",
+    "query": {
+        "WHERE": {
+            "GT": {
+                "courses_avg": 94
+            }
+        },
+        "OPTIONS": {
+            "COLUMNS": [
+                "courses_dept",
+                "courses_instructor",
+                "avgAvg",
+                "countFail",
+                "maxPass",
+                "maxFail",
+                "minYear"
+            ],
+            "ORDER": {
+                "dir": "DOWN",
+                "keys": [
+                    "courses_dept",
+                    "courses_instructor",
+                    "avgAvg",
+                    "countFail",
+                    "maxPass",
+                    "maxFail",
+                    "minYear"
+                ]
+            }
+        },
+        "TRANSFORMATIONS": {
+            "GROUP": [
+                "courses_dept",
+                "courses_instructor"
+            ],
+            "APPLY": [
+                {
+                    "avgAvg": {
+                        "AVG": null
+                    }
+                },
+                {
+                    "countFail": {
+                        "COUNT": "courses_fail"
+                    }
+                },
+                {
+                    "maxPass": {
+                        "MAX": "courses_pass"
+                    }
+                },
+                {
+                    "maxFail": {
+                        "MAX": "courses_fail"
+                    }
+                },
+                {
+                    "minYear": {
+                        "MIN": "courses_year"
+                    }
+                }
+            ]
+        }
+    },
+    "isQueryValid": false,
+    "result": "nope"
+}

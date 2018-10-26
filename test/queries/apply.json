@@ -1,0 +1,1761 @@
+{
+    "title": "empty apply",
+    "query": {
+        "WHERE": {
+            "GT": {
+                "courses_avg": 94
+            }
+        },
+        "OPTIONS": {
+            "COLUMNS": [
+                "courses_dept",
+                "courses_instructor",
+                "avgAvg",
+                "countFail",
+                "maxPass",
+                "maxFail",
+                "minYear"
+            ],
+            "ORDER": {
+                "dir": "DOWN",
+                "keys": [
+                    "courses_dept",
+                    "courses_instructor",
+                    "avgAvg",
+                    "countFail",
+                    "maxPass",
+                    "maxFail",
+                    "minYear"
+                ]
+            }
+        },
+        "TRANSFORMATIONS": {
+            "GROUP": [
+                "courses_dept",
+                "courses_instructor"
+            ],
+            "APPLY": [
+                {
+                    "avgAvg": {
+                        "AVG": "courses_avg"
+                    }
+                },
+                {
+                    "countFail": {
+                        "COUNT": "courses_fail"
+                    }
+                },
+                {
+                    "maxPass": {
+                        "MAX": "courses_pass"
+                    }
+                },
+                {
+                    "maxFail": {
+                        "MAX": "courses_fail"
+                    }
+                },
+                {
+                    "minYear": {
+                        "MIN": "courses_year"
+                    }
+                }
+            ]
+        }
+    },
+    "isQueryValid": true,
+    "result": [
+        {
+            "courses_dept": "thtr",
+            "courses_instructor": "mclean, jayson",
+            "avgAvg": 95.2,
+            "countFail": 1,
+            "maxPass": 15,
+            "maxFail": 0,
+            "minYear": 2011
+        },
+        {
+            "courses_dept": "thtr",
+            "courses_instructor": "",
+            "avgAvg": 95.2,
+            "countFail": 1,
+            "maxPass": 15,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "surg",
+            "courses_instructor": "",
+            "avgAvg": 94.25,
+            "countFail": 1,
+            "maxPass": 8,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "stat",
+            "courses_instructor": "zamar, ruben",
+            "avgAvg": 94.7,
+            "countFail": 1,
+            "maxPass": 10,
+            "maxFail": 0,
+            "minYear": 2014
+        },
+        {
+            "courses_dept": "stat",
+            "courses_instructor": "",
+            "avgAvg": 94.7,
+            "countFail": 1,
+            "maxPass": 10,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "spph",
+            "courses_instructor": "sobolev, boris",
+            "avgAvg": 94.6,
+            "countFail": 1,
+            "maxPass": 54,
+            "maxFail": 0,
+            "minYear": 2009
+        },
+        {
+            "courses_dept": "spph",
+            "courses_instructor": "pourbohloul, babak",
+            "avgAvg": 95.75,
+            "countFail": 1,
+            "maxPass": 4,
+            "maxFail": 0,
+            "minYear": 2013
+        },
+        {
+            "courses_dept": "spph",
+            "courses_instructor": "oviedo-joekes, eugenia",
+            "avgAvg": 94.36,
+            "countFail": 1,
+            "maxPass": 11,
+            "maxFail": 0,
+            "minYear": 2015
+        },
+        {
+            "courses_dept": "spph",
+            "courses_instructor": "kishchenko, svetlana",
+            "avgAvg": 96.8,
+            "countFail": 1,
+            "maxPass": 5,
+            "maxFail": 0,
+            "minYear": 2010
+        },
+        {
+            "courses_dept": "spph",
+            "courses_instructor": "frankish, charles james",
+            "avgAvg": 95.01,
+            "countFail": 1,
+            "maxPass": 56,
+            "maxFail": 0,
+            "minYear": 2009
+        },
+        {
+            "courses_dept": "spph",
+            "courses_instructor": "frank, erica",
+            "avgAvg": 98.98,
+            "countFail": 1,
+            "maxPass": 82,
+            "maxFail": 0,
+            "minYear": 2015
+        },
+        {
+            "courses_dept": "spph",
+            "courses_instructor": "",
+            "avgAvg": 95.83,
+            "countFail": 1,
+            "maxPass": 92,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "sowk",
+            "courses_instructor": "kealy, david",
+            "avgAvg": 94.56,
+            "countFail": 1,
+            "maxPass": 9,
+            "maxFail": 0,
+            "minYear": 2009
+        },
+        {
+            "courses_dept": "sowk",
+            "courses_instructor": "gill, deana",
+            "avgAvg": 96.01,
+            "countFail": 1,
+            "maxPass": 15,
+            "maxFail": 0,
+            "minYear": 2014
+        },
+        {
+            "courses_dept": "sowk",
+            "courses_instructor": "clark, natalie",
+            "avgAvg": 95,
+            "countFail": 1,
+            "maxPass": 4,
+            "maxFail": 0,
+            "minYear": 2015
+        },
+        {
+            "courses_dept": "sowk",
+            "courses_instructor": "bryson, stephanie;o'connor, deborah;stainton, timothy;sullivan, t richard;tester, frank",
+            "avgAvg": 96.15,
+            "countFail": 1,
+            "maxPass": 27,
+            "maxFail": 0,
+            "minYear": 2012
+        },
+        {
+            "courses_dept": "sowk",
+            "courses_instructor": "",
+            "avgAvg": 95.47,
+            "countFail": 1,
+            "maxPass": 27,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "rhsc",
+            "courses_instructor": "",
+            "avgAvg": 95,
+            "countFail": 1,
+            "maxPass": 6,
+            "maxFail": 0,
+            "minYear": 2009
+        },
+        {
+            "courses_dept": "psyc",
+            "courses_instructor": "wagner, john",
+            "avgAvg": 95,
+            "countFail": 1,
+            "maxPass": 4,
+            "maxFail": 0,
+            "minYear": 2007
+        },
+        {
+            "courses_dept": "psyc",
+            "courses_instructor": "sochting, ingrid",
+            "avgAvg": 95.75,
+            "countFail": 1,
+            "maxPass": 4,
+            "maxFail": 0,
+            "minYear": 2015
+        },
+        {
+            "courses_dept": "psyc",
+            "courses_instructor": "de longis, anita",
+            "avgAvg": 95.5,
+            "countFail": 1,
+            "maxPass": 8,
+            "maxFail": 0,
+            "minYear": 2010
+        },
+        {
+            "courses_dept": "psyc",
+            "courses_instructor": "",
+            "avgAvg": 95.35,
+            "countFail": 1,
+            "maxPass": 8,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "plan",
+            "courses_instructor": "dorcey, anthony h j",
+            "avgAvg": 95.53,
+            "countFail": 1,
+            "maxPass": 19,
+            "maxFail": 0,
+            "minYear": 2010
+        },
+        {
+            "courses_dept": "plan",
+            "courses_instructor": "",
+            "avgAvg": 95.53,
+            "countFail": 1,
+            "maxPass": 19,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "phys",
+            "courses_instructor": "zhitnitsky, ariel",
+            "avgAvg": 94.7,
+            "countFail": 1,
+            "maxPass": 10,
+            "maxFail": 0,
+            "minYear": 2010
+        },
+        {
+            "courses_dept": "phys",
+            "courses_instructor": "stamp, philip c",
+            "avgAvg": 95.43,
+            "countFail": 1,
+            "maxPass": 7,
+            "maxFail": 0,
+            "minYear": 2015
+        },
+        {
+            "courses_dept": "phys",
+            "courses_instructor": "reinsberg, stefan",
+            "avgAvg": 94.5,
+            "countFail": 1,
+            "maxPass": 4,
+            "maxFail": 0,
+            "minYear": 2010
+        },
+        {
+            "courses_dept": "phys",
+            "courses_instructor": "",
+            "avgAvg": 94.88,
+            "countFail": 1,
+            "maxPass": 10,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "phth",
+            "courses_instructor": "",
+            "avgAvg": 94.84,
+            "countFail": 1,
+            "maxPass": 81,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "phrm",
+            "courses_instructor": "leung, larry",
+            "avgAvg": 94.23,
+            "countFail": 1,
+            "maxPass": 218,
+            "maxFail": 0,
+            "minYear": 2015
+        },
+        {
+            "courses_dept": "phrm",
+            "courses_instructor": "",
+            "avgAvg": 94.23,
+            "countFail": 1,
+            "maxPass": 218,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "phil",
+            "courses_instructor": "jackson, howard",
+            "avgAvg": 96,
+            "countFail": 1,
+            "maxPass": 1,
+            "maxFail": 0,
+            "minYear": 2010
+        },
+        {
+            "courses_dept": "phar",
+            "courses_instructor": "lalji, fawziah;seto, katherine",
+            "avgAvg": 94.81,
+            "countFail": 1,
+            "maxPass": 121,
+            "maxFail": 0,
+            "minYear": 2014
+        },
+        {
+            "courses_dept": "phar",
+            "courses_instructor": "",
+            "avgAvg": 94.87,
+            "countFail": 1,
+            "maxPass": 200,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "pcth",
+            "courses_instructor": "",
+            "avgAvg": 96,
+            "countFail": 1,
+            "maxPass": 1,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "obst",
+            "courses_instructor": "",
+            "avgAvg": 95,
+            "countFail": 1,
+            "maxPass": 1,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "nurs",
+            "courses_instructor": "phillips, craig",
+            "avgAvg": 95,
+            "countFail": 1,
+            "maxPass": 9,
+            "maxFail": 0,
+            "minYear": 2010
+        },
+        {
+            "courses_dept": "nurs",
+            "courses_instructor": "mccuaig, fairleth",
+            "avgAvg": 94.21,
+            "countFail": 1,
+            "maxPass": 14,
+            "maxFail": 0,
+            "minYear": 2011
+        },
+        {
+            "courses_dept": "nurs",
+            "courses_instructor": "macphee, maura",
+            "avgAvg": 94.15,
+            "countFail": 1,
+            "maxPass": 120,
+            "maxFail": 0,
+            "minYear": 2014
+        },
+        {
+            "courses_dept": "nurs",
+            "courses_instructor": "krist, jennifer;mccuaig, fairleth",
+            "avgAvg": 95.29,
+            "countFail": 1,
+            "maxPass": 14,
+            "maxFail": 0,
+            "minYear": 2013
+        },
+        {
+            "courses_dept": "nurs",
+            "courses_instructor": "krist, jennifer",
+            "avgAvg": 97.42,
+            "countFail": 1,
+            "maxPass": 14,
+            "maxFail": 0,
+            "minYear": 2012
+        },
+        {
+            "courses_dept": "nurs",
+            "courses_instructor": "harding, jillian",
+            "avgAvg": 95.03,
+            "countFail": 1,
+            "maxPass": 16,
+            "maxFail": 0,
+            "minYear": 2014
+        },
+        {
+            "courses_dept": "nurs",
+            "courses_instructor": "burrows, marlene;harding, jillian;krist, jennifer;mccuaig, fairleth",
+            "avgAvg": 98.02,
+            "countFail": 1,
+            "maxPass": 17,
+            "maxFail": 0,
+            "minYear": 2013
+        },
+        {
+            "courses_dept": "nurs",
+            "courses_instructor": "burrows, marlene",
+            "avgAvg": 95.07,
+            "countFail": 1,
+            "maxPass": 17,
+            "maxFail": 0,
+            "minYear": 2013
+        },
+        {
+            "courses_dept": "nurs",
+            "courses_instructor": "brew, nancy",
+            "avgAvg": 96.48,
+            "countFail": 1,
+            "maxPass": 15,
+            "maxFail": 0,
+            "minYear": 2010
+        },
+        {
+            "courses_dept": "nurs",
+            "courses_instructor": "",
+            "avgAvg": 96.2,
+            "countFail": 1,
+            "maxPass": 120,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "musc",
+            "courses_instructor": "langager, graeme",
+            "avgAvg": 94.88,
+            "countFail": 1,
+            "maxPass": 7,
+            "maxFail": 0,
+            "minYear": 2010
+        },
+        {
+            "courses_dept": "musc",
+            "courses_instructor": "konoval, michael brandon",
+            "avgAvg": 94.25,
+            "countFail": 1,
+            "maxPass": 4,
+            "maxFail": 0,
+            "minYear": 2009
+        },
+        {
+            "courses_dept": "musc",
+            "courses_instructor": "girard, jonathan",
+            "avgAvg": 95.94,
+            "countFail": 1,
+            "maxPass": 8,
+            "maxFail": 0,
+            "minYear": 2012
+        },
+        {
+            "courses_dept": "musc",
+            "courses_instructor": "",
+            "avgAvg": 95.28,
+            "countFail": 1,
+            "maxPass": 9,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "mtrl",
+            "courses_instructor": "dixon, david",
+            "avgAvg": 95.63,
+            "countFail": 1,
+            "maxPass": 6,
+            "maxFail": 0,
+            "minYear": 2010
+        },
+        {
+            "courses_dept": "mtrl",
+            "courses_instructor": "",
+            "avgAvg": 95.42,
+            "countFail": 1,
+            "maxPass": 6,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "mine",
+            "courses_instructor": "veiga, marcello",
+            "avgAvg": 96.59,
+            "countFail": 1,
+            "maxPass": 34,
+            "maxFail": 0,
+            "minYear": 2012
+        },
+        {
+            "courses_dept": "mine",
+            "courses_instructor": "dunbar, w scott",
+            "avgAvg": 95.18,
+            "countFail": 1,
+            "maxPass": 9,
+            "maxFail": 0,
+            "minYear": 2009
+        },
+        {
+            "courses_dept": "mine",
+            "courses_instructor": "",
+            "avgAvg": 94.89,
+            "countFail": 1,
+            "maxPass": 45,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "midw",
+            "courses_instructor": "tba",
+            "avgAvg": 94.08,
+            "countFail": 1,
+            "maxPass": 13,
+            "maxFail": 0,
+            "minYear": 2011
+        },
+        {
+            "courses_dept": "midw",
+            "courses_instructor": "mcrae, lorna",
+            "avgAvg": 96.5,
+            "countFail": 1,
+            "maxPass": 14,
+            "maxFail": 0,
+            "minYear": 2012
+        },
+        {
+            "courses_dept": "midw",
+            "courses_instructor": "",
+            "avgAvg": 94.72,
+            "countFail": 1,
+            "maxPass": 20,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "micb",
+            "courses_instructor": "kion, tracy",
+            "avgAvg": 94.17,
+            "countFail": 1,
+            "maxPass": 6,
+            "maxFail": 0,
+            "minYear": 2015
+        },
+        {
+            "courses_dept": "micb",
+            "courses_instructor": "",
+            "avgAvg": 94.17,
+            "countFail": 1,
+            "maxPass": 6,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "medg",
+            "courses_instructor": "clarke, lorne",
+            "avgAvg": 94.7,
+            "countFail": 1,
+            "maxPass": 20,
+            "maxFail": 0,
+            "minYear": 2007
+        },
+        {
+            "courses_dept": "medg",
+            "courses_instructor": "",
+            "avgAvg": 94.7,
+            "countFail": 1,
+            "maxPass": 20,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "math",
+            "courses_instructor": "wei, juncheng",
+            "avgAvg": 96.25,
+            "countFail": 1,
+            "maxPass": 4,
+            "maxFail": 0,
+            "minYear": 2015
+        },
+        {
+            "courses_dept": "math",
+            "courses_instructor": "slade, gordon",
+            "avgAvg": 94.67,
+            "countFail": 1,
+            "maxPass": 6,
+            "maxFail": 0,
+            "minYear": 2011
+        },
+        {
+            "courses_dept": "math",
+            "courses_instructor": "nagata, k wayne",
+            "avgAvg": 94.33,
+            "countFail": 1,
+            "maxPass": 6,
+            "maxFail": 0,
+            "minYear": 2015
+        },
+        {
+            "courses_dept": "math",
+            "courses_instructor": "nachmias, asaf",
+            "avgAvg": 96.83,
+            "countFail": 1,
+            "maxPass": 6,
+            "maxFail": 0,
+            "minYear": 2011
+        },
+        {
+            "courses_dept": "math",
+            "courses_instructor": "murugan, mathav",
+            "avgAvg": 95.67,
+            "countFail": 1,
+            "maxPass": 3,
+            "maxFail": 0,
+            "minYear": 2015
+        },
+        {
+            "courses_dept": "math",
+            "courses_instructor": "laba, izabella",
+            "avgAvg": 97.09,
+            "countFail": 1,
+            "maxPass": 11,
+            "maxFail": 0,
+            "minYear": 2010
+        },
+        {
+            "courses_dept": "math",
+            "courses_instructor": "karu, kalle",
+            "avgAvg": 96.96,
+            "countFail": 1,
+            "maxPass": 21,
+            "maxFail": 0,
+            "minYear": 2009
+        },
+        {
+            "courses_dept": "math",
+            "courses_instructor": "gordon, julia yulia",
+            "avgAvg": 95.11,
+            "countFail": 1,
+            "maxPass": 9,
+            "maxFail": 0,
+            "minYear": 2007
+        },
+        {
+            "courses_dept": "math",
+            "courses_instructor": "gomez, jose",
+            "avgAvg": 99.78,
+            "countFail": 1,
+            "maxPass": 9,
+            "maxFail": 0,
+            "minYear": 2009
+        },
+        {
+            "courses_dept": "math",
+            "courses_instructor": "fraser, ailana",
+            "avgAvg": 97.25,
+            "countFail": 1,
+            "maxPass": 4,
+            "maxFail": 0,
+            "minYear": 2016
+        },
+        {
+            "courses_dept": "math",
+            "courses_instructor": "adem, alejandro",
+            "avgAvg": 94.17,
+            "countFail": 1,
+            "maxPass": 6,
+            "maxFail": 0,
+            "minYear": 2013
+        },
+        {
+            "courses_dept": "math",
+            "courses_instructor": "",
+            "avgAvg": 96.03,
+            "countFail": 1,
+            "maxPass": 21,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "libr",
+            "courses_instructor": "farrell, adam",
+            "avgAvg": 96.1,
+            "countFail": 1,
+            "maxPass": 10,
+            "maxFail": 0,
+            "minYear": 2015
+        },
+        {
+            "courses_dept": "libr",
+            "courses_instructor": "",
+            "avgAvg": 96.1,
+            "countFail": 1,
+            "maxPass": 10,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "kin",
+            "courses_instructor": "",
+            "avgAvg": 94.95,
+            "countFail": 2,
+            "maxPass": 121,
+            "maxFail": 1,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "hgse",
+            "courses_instructor": "tba",
+            "avgAvg": 94.5,
+            "countFail": 1,
+            "maxPass": 20,
+            "maxFail": 0,
+            "minYear": 2013
+        },
+        {
+            "courses_dept": "hgse",
+            "courses_instructor": "",
+            "avgAvg": 95.12,
+            "countFail": 1,
+            "maxPass": 21,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "frst",
+            "courses_instructor": "timko, joleen",
+            "avgAvg": 96.36,
+            "countFail": 1,
+            "maxPass": 11,
+            "maxFail": 0,
+            "minYear": 2015
+        },
+        {
+            "courses_dept": "frst",
+            "courses_instructor": "",
+            "avgAvg": 96.36,
+            "countFail": 1,
+            "maxPass": 11,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "fipr",
+            "courses_instructor": "wenzek, rob",
+            "avgAvg": 96.4,
+            "countFail": 1,
+            "maxPass": 20,
+            "maxFail": 0,
+            "minYear": 2015
+        },
+        {
+            "courses_dept": "fipr",
+            "courses_instructor": "",
+            "avgAvg": 96.4,
+            "countFail": 1,
+            "maxPass": 20,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "etec",
+            "courses_instructor": "petrina, stephen",
+            "avgAvg": 95.63,
+            "countFail": 1,
+            "maxPass": 19,
+            "maxFail": 0,
+            "minYear": 2013
+        },
+        {
+            "courses_dept": "etec",
+            "courses_instructor": "milner-bolotin, marina",
+            "avgAvg": 95.58,
+            "countFail": 1,
+            "maxPass": 26,
+            "maxFail": 0,
+            "minYear": 2013
+        },
+        {
+            "courses_dept": "etec",
+            "courses_instructor": "marker, michael",
+            "avgAvg": 95.63,
+            "countFail": 1,
+            "maxPass": 21,
+            "maxFail": 0,
+            "minYear": 2011
+        },
+        {
+            "courses_dept": "etec",
+            "courses_instructor": "janes, diane",
+            "avgAvg": 94.42,
+            "countFail": 1,
+            "maxPass": 19,
+            "maxFail": 0,
+            "minYear": 2012
+        },
+        {
+            "courses_dept": "etec",
+            "courses_instructor": "feng, francis",
+            "avgAvg": 94.81,
+            "countFail": 1,
+            "maxPass": 21,
+            "maxFail": 0,
+            "minYear": 2011
+        },
+        {
+            "courses_dept": "etec",
+            "courses_instructor": "cho, sunah",
+            "avgAvg": 94.5,
+            "countFail": 1,
+            "maxPass": 17,
+            "maxFail": 0,
+            "minYear": 2014
+        },
+        {
+            "courses_dept": "etec",
+            "courses_instructor": "alam, matiul",
+            "avgAvg": 94.05,
+            "countFail": 1,
+            "maxPass": 22,
+            "maxFail": 0,
+            "minYear": 2013
+        },
+        {
+            "courses_dept": "etec",
+            "courses_instructor": "",
+            "avgAvg": 95.36,
+            "countFail": 1,
+            "maxPass": 40,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "epse",
+            "courses_instructor": "zumbo, bruno",
+            "avgAvg": 94.55,
+            "countFail": 1,
+            "maxPass": 21,
+            "maxFail": 0,
+            "minYear": 2007
+        },
+        {
+            "courses_dept": "epse",
+            "courses_instructor": "yorke, erin",
+            "avgAvg": 94.75,
+            "countFail": 1,
+            "maxPass": 16,
+            "maxFail": 0,
+            "minYear": 2014
+        },
+        {
+            "courses_dept": "epse",
+            "courses_instructor": "wu, amery",
+            "avgAvg": 94.65,
+            "countFail": 1,
+            "maxPass": 22,
+            "maxFail": 0,
+            "minYear": 2012
+        },
+        {
+            "courses_dept": "epse",
+            "courses_instructor": "wilk, diana",
+            "avgAvg": 97.41,
+            "countFail": 1,
+            "maxPass": 17,
+            "maxFail": 0,
+            "minYear": 2011
+        },
+        {
+            "courses_dept": "epse",
+            "courses_instructor": "white, aaron",
+            "avgAvg": 94.08,
+            "countFail": 1,
+            "maxPass": 26,
+            "maxFail": 0,
+            "minYear": 2014
+        },
+        {
+            "courses_dept": "epse",
+            "courses_instructor": "weber, rachel",
+            "avgAvg": 94.65,
+            "countFail": 1,
+            "maxPass": 8,
+            "maxFail": 0,
+            "minYear": 2013
+        },
+        {
+            "courses_dept": "epse",
+            "courses_instructor": "vadeboncoeur, jennifer",
+            "avgAvg": 94.53,
+            "countFail": 1,
+            "maxPass": 12,
+            "maxFail": 0,
+            "minYear": 2009
+        },
+        {
+            "courses_dept": "epse",
+            "courses_instructor": "stockman, james",
+            "avgAvg": 95.47,
+            "countFail": 1,
+            "maxPass": 36,
+            "maxFail": 0,
+            "minYear": 2011
+        },
+        {
+            "courses_dept": "epse",
+            "courses_instructor": "stock, richard",
+            "avgAvg": 94.4,
+            "countFail": 1,
+            "maxPass": 35,
+            "maxFail": 0,
+            "minYear": 2013
+        },
+        {
+            "courses_dept": "epse",
+            "courses_instructor": "smith, gillian",
+            "avgAvg": 95.13,
+            "countFail": 1,
+            "maxPass": 32,
+            "maxFail": 0,
+            "minYear": 2010
+        },
+        {
+            "courses_dept": "epse",
+            "courses_instructor": "romero, amber",
+            "avgAvg": 95.15,
+            "countFail": 1,
+            "maxPass": 20,
+            "maxFail": 0,
+            "minYear": 2011
+        },
+        {
+            "courses_dept": "epse",
+            "courses_instructor": "porath, marion",
+            "avgAvg": 95.75,
+            "countFail": 1,
+            "maxPass": 22,
+            "maxFail": 0,
+            "minYear": 2007
+        },
+        {
+            "courses_dept": "epse",
+            "courses_instructor": "missiaen, sharon anne",
+            "avgAvg": 94.5,
+            "countFail": 1,
+            "maxPass": 8,
+            "maxFail": 0,
+            "minYear": 2007
+        },
+        {
+            "courses_dept": "epse",
+            "courses_instructor": "mercer, sterett",
+            "avgAvg": 94.56,
+            "countFail": 1,
+            "maxPass": 9,
+            "maxFail": 0,
+            "minYear": 2011
+        },
+        {
+            "courses_dept": "epse",
+            "courses_instructor": "mcquarrie, maureen",
+            "avgAvg": 95.58,
+            "countFail": 1,
+            "maxPass": 19,
+            "maxFail": 0,
+            "minYear": 2013
+        },
+        {
+            "courses_dept": "epse",
+            "courses_instructor": "mceachern hughes, tammy",
+            "avgAvg": 95.5,
+            "countFail": 1,
+            "maxPass": 22,
+            "maxFail": 0,
+            "minYear": 2015
+        },
+        {
+            "courses_dept": "epse",
+            "courses_instructor": "lo, chih shen",
+            "avgAvg": 94.24,
+            "countFail": 1,
+            "maxPass": 21,
+            "maxFail": 0,
+            "minYear": 2015
+        },
+        {
+            "courses_dept": "epse",
+            "courses_instructor": "levinson, tami",
+            "avgAvg": 95.17,
+            "countFail": 1,
+            "maxPass": 9,
+            "maxFail": 0,
+            "minYear": 2015
+        },
+        {
+            "courses_dept": "epse",
+            "courses_instructor": "kishor, nand",
+            "avgAvg": 95.2,
+            "countFail": 1,
+            "maxPass": 20,
+            "maxFail": 0,
+            "minYear": 2007
+        },
+        {
+            "courses_dept": "epse",
+            "courses_instructor": "karres, debora",
+            "avgAvg": 94.88,
+            "countFail": 1,
+            "maxPass": 16,
+            "maxFail": 0,
+            "minYear": 2010
+        },
+        {
+            "courses_dept": "epse",
+            "courses_instructor": "jordan, elizabeth",
+            "avgAvg": 94.15,
+            "countFail": 1,
+            "maxPass": 20,
+            "maxFail": 0,
+            "minYear": 2010
+        },
+        {
+            "courses_dept": "epse",
+            "courses_instructor": "heikkila, mary",
+            "avgAvg": 94.53,
+            "countFail": 1,
+            "maxPass": 33,
+            "maxFail": 0,
+            "minYear": 2012
+        },
+        {
+            "courses_dept": "epse",
+            "courses_instructor": "grow, laura",
+            "avgAvg": 96.81,
+            "countFail": 1,
+            "maxPass": 29,
+            "maxFail": 0,
+            "minYear": 2011
+        },
+        {
+            "courses_dept": "epse",
+            "courses_instructor": "gaster, sean",
+            "avgAvg": 96.9,
+            "countFail": 1,
+            "maxPass": 29,
+            "maxFail": 0,
+            "minYear": 2014
+        },
+        {
+            "courses_dept": "epse",
+            "courses_instructor": "ford, laurie",
+            "avgAvg": 94.94,
+            "countFail": 1,
+            "maxPass": 16,
+            "maxFail": 0,
+            "minYear": 2007
+        },
+        {
+            "courses_dept": "epse",
+            "courses_instructor": "ervin, ruth",
+            "avgAvg": 96.21,
+            "countFail": 1,
+            "maxPass": 24,
+            "maxFail": 0,
+            "minYear": 2015
+        },
+        {
+            "courses_dept": "epse",
+            "courses_instructor": "ercikan, kadriye",
+            "avgAvg": 94.5,
+            "countFail": 1,
+            "maxPass": 10,
+            "maxFail": 0,
+            "minYear": 2007
+        },
+        {
+            "courses_dept": "epse",
+            "courses_instructor": "el khatib, lara",
+            "avgAvg": 94.16,
+            "countFail": 1,
+            "maxPass": 43,
+            "maxFail": 0,
+            "minYear": 2012
+        },
+        {
+            "courses_dept": "epse",
+            "courses_instructor": "curle, deirdre;jordan, elizabeth;norman, nancy",
+            "avgAvg": 94.05,
+            "countFail": 1,
+            "maxPass": 19,
+            "maxFail": 0,
+            "minYear": 2011
+        },
+        {
+            "courses_dept": "epse",
+            "courses_instructor": "cole, kenneth",
+            "avgAvg": 97.57,
+            "countFail": 1,
+            "maxPass": 19,
+            "maxFail": 0,
+            "minYear": 2009
+        },
+        {
+            "courses_dept": "epse",
+            "courses_instructor": "chan, eric",
+            "avgAvg": 95.86,
+            "countFail": 1,
+            "maxPass": 14,
+            "maxFail": 0,
+            "minYear": 2011
+        },
+        {
+            "courses_dept": "epse",
+            "courses_instructor": "champion, kathleen",
+            "avgAvg": 94.48,
+            "countFail": 1,
+            "maxPass": 36,
+            "maxFail": 0,
+            "minYear": 2009
+        },
+        {
+            "courses_dept": "epse",
+            "courses_instructor": "cannon, joanna",
+            "avgAvg": 98.45,
+            "countFail": 1,
+            "maxPass": 11,
+            "maxFail": 0,
+            "minYear": 2011
+        },
+        {
+            "courses_dept": "epse",
+            "courses_instructor": "both, pauline;ervin, ruth",
+            "avgAvg": 94.88,
+            "countFail": 1,
+            "maxPass": 25,
+            "maxFail": 0,
+            "minYear": 2014
+        },
+        {
+            "courses_dept": "epse",
+            "courses_instructor": "amaral, deborah;ford, laurie",
+            "avgAvg": 97.39,
+            "countFail": 1,
+            "maxPass": 9,
+            "maxFail": 0,
+            "minYear": 2009
+        },
+        {
+            "courses_dept": "epse",
+            "courses_instructor": "amaral, deborah",
+            "avgAvg": 94.23,
+            "countFail": 1,
+            "maxPass": 22,
+            "maxFail": 0,
+            "minYear": 2007
+        },
+        {
+            "courses_dept": "epse",
+            "courses_instructor": "",
+            "avgAvg": 95.37,
+            "countFail": 1,
+            "maxPass": 58,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "eece",
+            "courses_instructor": "dommel, hermann",
+            "avgAvg": 94.71,
+            "countFail": 1,
+            "maxPass": 14,
+            "maxFail": 0,
+            "minYear": 2015
+        },
+        {
+            "courses_dept": "eece",
+            "courses_instructor": "coria, lino",
+            "avgAvg": 98.75,
+            "countFail": 1,
+            "maxPass": 12,
+            "maxFail": 0,
+            "minYear": 2009
+        },
+        {
+            "courses_dept": "eece",
+            "courses_instructor": "",
+            "avgAvg": 96.73,
+            "countFail": 1,
+            "maxPass": 14,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "educ",
+            "courses_instructor": "morgan, tannis",
+            "avgAvg": 97.5,
+            "countFail": 1,
+            "maxPass": 14,
+            "maxFail": 0,
+            "minYear": 2015
+        },
+        {
+            "courses_dept": "educ",
+            "courses_instructor": "henry, annette",
+            "avgAvg": 94.75,
+            "countFail": 1,
+            "maxPass": 12,
+            "maxFail": 0,
+            "minYear": 2016
+        },
+        {
+            "courses_dept": "educ",
+            "courses_instructor": "adler, james douglas;scott, sandra",
+            "avgAvg": 95.02,
+            "countFail": 1,
+            "maxPass": 31,
+            "maxFail": 0,
+            "minYear": 2013
+        },
+        {
+            "courses_dept": "edst",
+            "courses_instructor": "vanwynsberghe, robert",
+            "avgAvg": 96.46,
+            "countFail": 1,
+            "maxPass": 13,
+            "maxFail": 0,
+            "minYear": 2013
+        },
+        {
+            "courses_dept": "edst",
+            "courses_instructor": "rocha perkerwicz, samuel",
+            "avgAvg": 94.06,
+            "countFail": 1,
+            "maxPass": 16,
+            "maxFail": 0,
+            "minYear": 2015
+        },
+        {
+            "courses_dept": "edst",
+            "courses_instructor": "marker, michael",
+            "avgAvg": 94.99,
+            "countFail": 1,
+            "maxPass": 14,
+            "maxFail": 0,
+            "minYear": 2010
+        },
+        {
+            "courses_dept": "edst",
+            "courses_instructor": "",
+            "avgAvg": 95.1,
+            "countFail": 1,
+            "maxPass": 16,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "edcp",
+            "courses_instructor": "pinar, william",
+            "avgAvg": 94.52,
+            "countFail": 1,
+            "maxPass": 14,
+            "maxFail": 0,
+            "minYear": 2011
+        },
+        {
+            "courses_dept": "edcp",
+            "courses_instructor": "petrina, stephen",
+            "avgAvg": 95,
+            "countFail": 1,
+            "maxPass": 19,
+            "maxFail": 0,
+            "minYear": 2013
+        },
+        {
+            "courses_dept": "edcp",
+            "courses_instructor": "magee, theresa",
+            "avgAvg": 95.58,
+            "countFail": 1,
+            "maxPass": 19,
+            "maxFail": 0,
+            "minYear": 2012
+        },
+        {
+            "courses_dept": "edcp",
+            "courses_instructor": "",
+            "avgAvg": 94.9,
+            "countFail": 1,
+            "maxPass": 19,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "econ",
+            "courses_instructor": "gallipoli, giovanni",
+            "avgAvg": 95,
+            "countFail": 1,
+            "maxPass": 3,
+            "maxFail": 0,
+            "minYear": 2016
+        },
+        {
+            "courses_dept": "econ",
+            "courses_instructor": "",
+            "avgAvg": 95,
+            "countFail": 1,
+            "maxPass": 3,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "dent",
+            "courses_instructor": "",
+            "avgAvg": 94.33,
+            "countFail": 1,
+            "maxPass": 6,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "crwr",
+            "courses_instructor": "tregebov, rhea",
+            "avgAvg": 94.33,
+            "countFail": 1,
+            "maxPass": 3,
+            "maxFail": 0,
+            "minYear": 2013
+        },
+        {
+            "courses_dept": "crwr",
+            "courses_instructor": "taylor, timothy",
+            "avgAvg": 96,
+            "countFail": 1,
+            "maxPass": 1,
+            "maxFail": 0,
+            "minYear": 2014
+        },
+        {
+            "courses_dept": "crwr",
+            "courses_instructor": "svendsen, linda jane",
+            "avgAvg": 94.75,
+            "countFail": 1,
+            "maxPass": 2,
+            "maxFail": 0,
+            "minYear": 2013
+        },
+        {
+            "courses_dept": "crwr",
+            "courses_instructor": "medved, maureen",
+            "avgAvg": 95.5,
+            "countFail": 1,
+            "maxPass": 1,
+            "maxFail": 0,
+            "minYear": 2013
+        },
+        {
+            "courses_dept": "crwr",
+            "courses_instructor": "maillard, keith",
+            "avgAvg": 96.67,
+            "countFail": 1,
+            "maxPass": 2,
+            "maxFail": 0,
+            "minYear": 2012
+        },
+        {
+            "courses_dept": "crwr",
+            "courses_instructor": "graefe, sara",
+            "avgAvg": 95,
+            "countFail": 1,
+            "maxPass": 2,
+            "maxFail": 0,
+            "minYear": 2014
+        },
+        {
+            "courses_dept": "crwr",
+            "courses_instructor": "grady, albert wayne",
+            "avgAvg": 98,
+            "countFail": 1,
+            "maxPass": 1,
+            "maxFail": 0,
+            "minYear": 2013
+        },
+        {
+            "courses_dept": "crwr",
+            "courses_instructor": "galloway, steve",
+            "avgAvg": 95.22,
+            "countFail": 1,
+            "maxPass": 3,
+            "maxFail": 0,
+            "minYear": 2013
+        },
+        {
+            "courses_dept": "crwr",
+            "courses_instructor": "campbell, deborah",
+            "avgAvg": 95.32,
+            "countFail": 1,
+            "maxPass": 12,
+            "maxFail": 0,
+            "minYear": 2012
+        },
+        {
+            "courses_dept": "crwr",
+            "courses_instructor": "acheson, alison",
+            "avgAvg": 95,
+            "countFail": 1,
+            "maxPass": 1,
+            "maxFail": 0,
+            "minYear": 2015
+        },
+        {
+            "courses_dept": "crwr",
+            "courses_instructor": "",
+            "avgAvg": 94.61,
+            "countFail": 1,
+            "maxPass": 41,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "cpsc",
+            "courses_instructor": "carenini, giuseppe",
+            "avgAvg": 94.5,
+            "countFail": 1,
+            "maxPass": 6,
+            "maxFail": 0,
+            "minYear": 2007
+        },
+        {
+            "courses_dept": "cpsc",
+            "courses_instructor": "",
+            "avgAvg": 94.83,
+            "countFail": 1,
+            "maxPass": 6,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "comm",
+            "courses_instructor": "ghement, isabella",
+            "avgAvg": 94.6,
+            "countFail": 1,
+            "maxPass": 18,
+            "maxFail": 0,
+            "minYear": 2007
+        },
+        {
+            "courses_dept": "comm",
+            "courses_instructor": "",
+            "avgAvg": 94.6,
+            "countFail": 1,
+            "maxPass": 18,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "cnps",
+            "courses_instructor": "weinberg, mark",
+            "avgAvg": 95.36,
+            "countFail": 1,
+            "maxPass": 14,
+            "maxFail": 0,
+            "minYear": 2011
+        },
+        {
+            "courses_dept": "cnps",
+            "courses_instructor": "smith, gillian",
+            "avgAvg": 94.56,
+            "countFail": 1,
+            "maxPass": 9,
+            "maxFail": 0,
+            "minYear": 2014
+        },
+        {
+            "courses_dept": "cnps",
+            "courses_instructor": "schultz, izabela",
+            "avgAvg": 94.6,
+            "countFail": 1,
+            "maxPass": 5,
+            "maxFail": 0,
+            "minYear": 2014
+        },
+        {
+            "courses_dept": "cnps",
+            "courses_instructor": "owens, rhea",
+            "avgAvg": 95.78,
+            "countFail": 1,
+            "maxPass": 9,
+            "maxFail": 0,
+            "minYear": 2015
+        },
+        {
+            "courses_dept": "cnps",
+            "courses_instructor": "neault, roberta a",
+            "avgAvg": 97.47,
+            "countFail": 1,
+            "maxPass": 15,
+            "maxFail": 0,
+            "minYear": 2009
+        },
+        {
+            "courses_dept": "cnps",
+            "courses_instructor": "munteanu, mircea",
+            "avgAvg": 94.62,
+            "countFail": 1,
+            "maxPass": 20,
+            "maxFail": 0,
+            "minYear": 2012
+        },
+        {
+            "courses_dept": "cnps",
+            "courses_instructor": "cox, daniel",
+            "avgAvg": 97.76,
+            "countFail": 1,
+            "maxPass": 18,
+            "maxFail": 0,
+            "minYear": 2012
+        },
+        {
+            "courses_dept": "cnps",
+            "courses_instructor": "carter, john",
+            "avgAvg": 95.13,
+            "countFail": 1,
+            "maxPass": 23,
+            "maxFail": 0,
+            "minYear": 2012
+        },
+        {
+            "courses_dept": "cnps",
+            "courses_instructor": "",
+            "avgAvg": 95.07,
+            "countFail": 1,
+            "maxPass": 37,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "civl",
+            "courses_instructor": "ventura, carlos estuardo",
+            "avgAvg": 96.27,
+            "countFail": 1,
+            "maxPass": 15,
+            "maxFail": 0,
+            "minYear": 2012
+        },
+        {
+            "courses_dept": "civl",
+            "courses_instructor": "",
+            "avgAvg": 96.27,
+            "countFail": 1,
+            "maxPass": 15,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "chbe",
+            "courses_instructor": "hatzikiriakos, savvas",
+            "avgAvg": 94.75,
+            "countFail": 1,
+            "maxPass": 4,
+            "maxFail": 0,
+            "minYear": 2015
+        },
+        {
+            "courses_dept": "chbe",
+            "courses_instructor": "gopaluni, bhushan",
+            "avgAvg": 95.42,
+            "countFail": 1,
+            "maxPass": 16,
+            "maxFail": 0,
+            "minYear": 2013
+        },
+        {
+            "courses_dept": "chbe",
+            "courses_instructor": "",
+            "avgAvg": 95.2,
+            "countFail": 1,
+            "maxPass": 16,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "cell",
+            "courses_instructor": "loewen, christopher;nabi, ivan robert",
+            "avgAvg": 94.4,
+            "countFail": 1,
+            "maxPass": 5,
+            "maxFail": 0,
+            "minYear": 2010
+        },
+        {
+            "courses_dept": "cell",
+            "courses_instructor": "",
+            "avgAvg": 94.4,
+            "countFail": 1,
+            "maxPass": 5,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "ceen",
+            "courses_instructor": "mazzi, eric",
+            "avgAvg": 94.27,
+            "countFail": 1,
+            "maxPass": 15,
+            "maxFail": 0,
+            "minYear": 2013
+        },
+        {
+            "courses_dept": "bmeg",
+            "courses_instructor": "hodgson, antony",
+            "avgAvg": 95.15,
+            "countFail": 1,
+            "maxPass": 13,
+            "maxFail": 0,
+            "minYear": 2012
+        },
+        {
+            "courses_dept": "bmeg",
+            "courses_instructor": "dumont, guy a",
+            "avgAvg": 95,
+            "countFail": 1,
+            "maxPass": 2,
+            "maxFail": 0,
+            "minYear": 2014
+        },
+        {
+            "courses_dept": "bmeg",
+            "courses_instructor": "",
+            "avgAvg": 95.08,
+            "countFail": 1,
+            "maxPass": 13,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "biol",
+            "courses_instructor": "bohlmann, jorg",
+            "avgAvg": 94.33,
+            "countFail": 1,
+            "maxPass": 27,
+            "maxFail": 0,
+            "minYear": 2015
+        },
+        {
+            "courses_dept": "biol",
+            "courses_instructor": "",
+            "avgAvg": 94.33,
+            "countFail": 1,
+            "maxPass": 27,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "audi",
+            "courses_instructor": "adelman, sharon",
+            "avgAvg": 96.9,
+            "countFail": 1,
+            "maxPass": 10,
+            "maxFail": 0,
+            "minYear": 2012
+        },
+        {
+            "courses_dept": "audi",
+            "courses_instructor": "",
+            "avgAvg": 95.26,
+            "countFail": 1,
+            "maxPass": 10,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "arst",
+            "courses_instructor": "",
+            "avgAvg": 96.94,
+            "countFail": 1,
+            "maxPass": 16,
+            "maxFail": 0,
+            "minYear": 1900
+        },
+        {
+            "courses_dept": "apsc",
+            "courses_instructor": "wassink, berend",
+            "avgAvg": 95.16,
+            "countFail": 1,
+            "maxPass": 20,
+            "maxFail": 0,
+            "minYear": 2007
+        },
+        {
+            "courses_dept": "adhe",
+            "courses_instructor": "bishundayal, deonarine",
+            "avgAvg": 96.11,
+            "countFail": 1,
+            "maxPass": 27,
+            "maxFail": 0,
+            "minYear": 2015
+        },
+        {
+            "courses_dept": "aanb",
+            "courses_instructor": "",
+            "avgAvg": 94.44,
+            "countFail": 1,
+            "maxPass": 9,
+            "maxFail": 0,
+            "minYear": 1900
+        }
+    ]
+}
