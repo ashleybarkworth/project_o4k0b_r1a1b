@@ -1,0 +1,45 @@
+{"title": "columns key not in groups",
+    "query": {
+        "WHERE": {
+            "GT": {
+                "courses_avg": 90
+            }
+        },
+        "OPTIONS": {
+            "COLUMNS": [
+                "courses_title",
+                "courses_avg"
+            ],
+            "ORDER": {
+                "dir": "DOWN",
+                "keys": [
+                    "courses_title"
+                ]
+            }
+        },
+        "TRANSFORMATIONS": {
+            "GROUP": [
+                "courses_title"
+            ],
+            "APPLY": [
+                {
+                    "overallAvg": {
+                        "AVG": "courses_avg"
+                    }
+                },
+                {
+                    "maxAudit": {
+                        "MAX": "courses_audit"
+                    }
+                },
+                {
+                    "averagePass": {
+                        "AVG": "courses_pass"
+                    }
+                }
+            ]
+        }
+    },
+    "isQueryValid": false,
+    "result": ""
+}

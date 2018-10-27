@@ -1,0 +1,229 @@
+{
+    "title": "sort on multiple keys",
+    "query": {
+        "WHERE": {
+            "LT": {
+                "rooms_seats": 100
+            }
+        },
+        "OPTIONS": {
+            "COLUMNS": [
+                "rooms_shortname",
+                "minLat",
+                "lonSum"
+            ],
+            "ORDER": {
+                "dir": "DOWN",
+                "keys": [
+                    "lonSum",
+                    "minLat"
+                ]
+            }
+        },
+        "TRANSFORMATIONS": {
+            "GROUP": [
+                "rooms_shortname"
+            ],
+            "APPLY": [
+                {
+                    "lonSum": {
+                        "SUM": "rooms_lon"
+                    }
+                },
+                {
+                    "minLat": {
+                        "MIN": "rooms_lat"
+                    }
+                }
+            ]
+        }
+    },
+    "isQueryValid": true,
+    "result": [
+        {
+            "rooms_shortname": "IONA",
+            "minLat": 49.27106,
+            "lonSum": -123.25
+        },
+        {
+            "rooms_shortname": "ESB",
+            "minLat": 49.26274,
+            "lonSum": -123.25
+        },
+        {
+            "rooms_shortname": "EOSM",
+            "minLat": 49.26228,
+            "lonSum": -123.25
+        },
+        {
+            "rooms_shortname": "MGYM",
+            "minLat": 49.2663,
+            "lonSum": -246.49
+        },
+        {
+            "rooms_shortname": "CHBE",
+            "minLat": 49.26228,
+            "lonSum": -246.49
+        },
+        {
+            "rooms_shortname": "OSBO",
+            "minLat": 49.26047,
+            "lonSum": -246.49
+        },
+        {
+            "rooms_shortname": "BRKX",
+            "minLat": 49.26862,
+            "lonSum": -246.5
+        },
+        {
+            "rooms_shortname": "AUDX",
+            "minLat": 49.2666,
+            "lonSum": -246.51
+        },
+        {
+            "rooms_shortname": "CHEM",
+            "minLat": 49.2659,
+            "lonSum": -246.51
+        },
+        {
+            "rooms_shortname": "LSK",
+            "minLat": 49.26545,
+            "lonSum": -246.51
+        },
+        {
+            "rooms_shortname": "DMP",
+            "minLat": 49.26125,
+            "lonSum": -369.74
+        },
+        {
+            "rooms_shortname": "HEBB",
+            "minLat": 49.2661,
+            "lonSum": -369.75
+        },
+        {
+            "rooms_shortname": "HENN",
+            "minLat": 49.26627,
+            "lonSum": -369.76
+        },
+        {
+            "rooms_shortname": "BIOL",
+            "minLat": 49.26479,
+            "lonSum": -369.76
+        },
+        {
+            "rooms_shortname": "FORW",
+            "minLat": 49.26176,
+            "lonSum": -369.76
+        },
+        {
+            "rooms_shortname": "MCLD",
+            "minLat": 49.26176,
+            "lonSum": -493
+        },
+        {
+            "rooms_shortname": "ANSO",
+            "minLat": 49.26958,
+            "lonSum": -493.03
+        },
+        {
+            "rooms_shortname": "UCLL",
+            "minLat": 49.26867,
+            "lonSum": -493.03
+        },
+        {
+            "rooms_shortname": "CEME",
+            "minLat": 49.26273,
+            "lonSum": -616.24
+        },
+        {
+            "rooms_shortname": "ALRD",
+            "minLat": 49.2699,
+            "lonSum": -616.27
+        },
+        {
+            "rooms_shortname": "SPPH",
+            "minLat": 49.2642,
+            "lonSum": -739.49
+        },
+        {
+            "rooms_shortname": "FNH",
+            "minLat": 49.26414,
+            "lonSum": -739.5
+        },
+        {
+            "rooms_shortname": "LASR",
+            "minLat": 49.26767,
+            "lonSum": -739.53
+        },
+        {
+            "rooms_shortname": "GEOG",
+            "minLat": 49.26605,
+            "lonSum": -739.54
+        },
+        {
+            "rooms_shortname": "MATH",
+            "minLat": 49.266463,
+            "lonSum": -862.79
+        },
+        {
+            "rooms_shortname": "SOWK",
+            "minLat": 49.2643,
+            "lonSum": -862.79
+        },
+        {
+            "rooms_shortname": "PCOH",
+            "minLat": 49.264,
+            "lonSum": -986.05
+        },
+        {
+            "rooms_shortname": "PHRM",
+            "minLat": 49.26229,
+            "lonSum": -1109.19
+        },
+        {
+            "rooms_shortname": "FSC",
+            "minLat": 49.26044,
+            "lonSum": -1109.24
+        },
+        {
+            "rooms_shortname": "WOOD",
+            "minLat": 49.26478,
+            "lonSum": -1355.71
+        },
+        {
+            "rooms_shortname": "IBLC",
+            "minLat": 49.26766,
+            "lonSum": -1972.03
+        },
+        {
+            "rooms_shortname": "MCML",
+            "minLat": 49.26114,
+            "lonSum": -2218.5
+        },
+        {
+            "rooms_shortname": "SWNG",
+            "minLat": 49.26293,
+            "lonSum": -2218.58
+        },
+        {
+            "rooms_shortname": "ORCH",
+            "minLat": 49.26048,
+            "lonSum": -2588.24
+        },
+        {
+            "rooms_shortname": "SCRF",
+            "minLat": 49.26398,
+            "lonSum": -2588.32
+        },
+        {
+            "rooms_shortname": "ANGU",
+            "minLat": 49.26486,
+            "lonSum": -3327.85
+        },
+        {
+            "rooms_shortname": "BUCH",
+            "minLat": 49.26826,
+            "lonSum": -6655.75
+        }
+    ]
+}

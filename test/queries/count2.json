@@ -1,0 +1,129 @@
+{
+    "title": "count 2",
+    "query": {
+        "WHERE": {
+            "IS": {
+                "rooms_number": "2*"
+            }
+        },
+        "OPTIONS": {
+            "COLUMNS": [
+                "rooms_shortname",
+                "uniqueSeats"
+            ],
+            "ORDER": {
+                "dir": "UP",
+                "keys": [
+                    "rooms_shortname"
+                ]
+            }
+        },
+        "TRANSFORMATIONS": {
+            "GROUP": [
+                "rooms_shortname"
+            ],
+            "APPLY": [
+                {
+                    "uniqueSeats": {
+                        "COUNT": "rooms_seats"
+                    }
+                }
+            ]
+        }
+    },
+    "isQueryValid": true,
+    "result": [
+        {
+            "rooms_shortname": "ANGU",
+            "uniqueSeats": 10
+        },
+        {
+            "rooms_shortname": "ANSO",
+            "uniqueSeats": 4
+        },
+        {
+            "rooms_shortname": "BIOL",
+            "uniqueSeats": 3
+        },
+        {
+            "rooms_shortname": "BRKX",
+            "uniqueSeats": 2
+        },
+        {
+            "rooms_shortname": "DMP",
+            "uniqueSeats": 1
+        },
+        {
+            "rooms_shortname": "ESB",
+            "uniqueSeats": 1
+        },
+        {
+            "rooms_shortname": "FNH",
+            "uniqueSeats": 1
+        },
+        {
+            "rooms_shortname": "GEOG",
+            "uniqueSeats": 5
+        },
+        {
+            "rooms_shortname": "HENN",
+            "uniqueSeats": 3
+        },
+        {
+            "rooms_shortname": "IBLC",
+            "uniqueSeats": 4
+        },
+        {
+            "rooms_shortname": "LASR",
+            "uniqueSeats": 1
+        },
+        {
+            "rooms_shortname": "LSK",
+            "uniqueSeats": 2
+        },
+        {
+            "rooms_shortname": "MATH",
+            "uniqueSeats": 3
+        },
+        {
+            "rooms_shortname": "MCLD",
+            "uniqueSeats": 5
+        },
+        {
+            "rooms_shortname": "MCML",
+            "uniqueSeats": 1
+        },
+        {
+            "rooms_shortname": "MGYM",
+            "uniqueSeats": 2
+        },
+        {
+            "rooms_shortname": "OSBO",
+            "uniqueSeats": 2
+        },
+        {
+            "rooms_shortname": "SCRF",
+            "uniqueSeats": 4
+        },
+        {
+            "rooms_shortname": "SOWK",
+            "uniqueSeats": 2
+        },
+        {
+            "rooms_shortname": "SRC",
+            "uniqueSeats": 1
+        },
+        {
+            "rooms_shortname": "SWNG",
+            "uniqueSeats": 1
+        },
+        {
+            "rooms_shortname": "WESB",
+            "uniqueSeats": 1
+        },
+        {
+            "rooms_shortname": "WOOD",
+            "uniqueSeats": 1
+        }
+    ]
+}

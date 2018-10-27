@@ -31,7 +31,8 @@ export class OptionsDeserializer {
             ioptions.transformations = this.transformations;
         }
         let numberOfObjectKeys = Object.keys(options).length;
-        if (numberOfObjectKeys === 2) {
+        if (numberOfObjectKeys > 1) {
+            DeserializingUtils.objectContainsNKeys(options, 2, "OPTIONS");
             ioptions["order"] = OptionsDeserializer.getOrder(options, columns);
         }
         return ioptions;

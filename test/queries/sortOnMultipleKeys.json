@@ -18,7 +18,8 @@
                 "keys": [
                     "maxAudit",
                     "overallAvg",
-                    "averagePass"
+                    "averagePass",
+                    "courses_title"
                 ]
             }
         },
@@ -48,3628 +49,3628 @@
     "isQueryValid": true,
     "result": [
         {
-            "averagePass": 56.5,
             "courses_title": "machine learn i",
+            "overallAvg": 90.88,
             "maxAudit": 21,
-            "overallAvg": 90.88
+            "averagePass": 56.5
         },
         {
-            "averagePass": 5.5,
             "courses_title": "eval src evidenc",
+            "overallAvg": 93.2,
             "maxAudit": 10,
-            "overallAvg": 93.2
+            "averagePass": 5.5
         },
         {
-            "averagePass": 9,
             "courses_title": "rsrch methdlgy",
+            "overallAvg": 94.44,
             "maxAudit": 9,
-            "overallAvg": 94.44
+            "averagePass": 9
         },
         {
-            "averagePass": 14.25,
             "courses_title": "mult des anal rs",
+            "overallAvg": 93.19,
             "maxAudit": 9,
-            "overallAvg": 93.19
+            "averagePass": 14.25
         },
         {
-            "averagePass": 15,
             "courses_title": "hier lin modelng",
+            "overallAvg": 93.52,
             "maxAudit": 8,
-            "overallAvg": 93.52
+            "averagePass": 15
         },
         {
-            "averagePass": 7,
             "courses_title": "rehab learning",
+            "overallAvg": 92.21,
             "maxAudit": 7,
-            "overallAvg": 92.21
+            "averagePass": 7
         },
         {
-            "averagePass": 4,
             "courses_title": "meas in practice",
+            "overallAvg": 91.25,
             "maxAudit": 7,
-            "overallAvg": 91.25
+            "averagePass": 4
         },
         {
-            "averagePass": 5.5,
             "courses_title": "labour economics",
+            "overallAvg": 91.73,
             "maxAudit": 6,
-            "overallAvg": 91.73
+            "averagePass": 5.5
         },
         {
-            "averagePass": 7,
             "courses_title": "curr hist contxt",
+            "overallAvg": 92.21,
             "maxAudit": 5,
-            "overallAvg": 92.21
+            "averagePass": 7
         },
         {
-            "averagePass": 6.2,
             "courses_title": "spc tpcs macroec",
+            "overallAvg": 92.41,
             "maxAudit": 4,
-            "overallAvg": 92.41
+            "averagePass": 6.2
         },
         {
-            "averagePass": 18.65,
             "courses_title": "cor des ed res",
+            "overallAvg": 93.45,
             "maxAudit": 3,
-            "overallAvg": 93.45
+            "averagePass": 18.65
         },
         {
-            "averagePass": 19.33,
             "courses_title": "intr hindi-urdu",
+            "overallAvg": 92.48,
             "maxAudit": 3,
-            "overallAvg": 92.48
+            "averagePass": 19.33
         },
         {
-            "averagePass": 8.14,
             "courses_title": "cross-cltr cnsl",
+            "overallAvg": 92.09,
             "maxAudit": 3,
-            "overallAvg": 92.09
+            "averagePass": 8.14
         },
         {
-            "averagePass": 5,
             "courses_title": "appl heterog cat",
+            "overallAvg": 91.8,
             "maxAudit": 3,
-            "overallAvg": 91.8
+            "averagePass": 5
         },
         {
-            "averagePass": 16.67,
             "courses_title": "concepts in onco",
+            "overallAvg": 91.6,
             "maxAudit": 3,
-            "overallAvg": 91.6
+            "averagePass": 16.67
         },
         {
-            "averagePass": 18.58,
             "courses_title": "intr stat rs edu",
+            "overallAvg": 91.55,
             "maxAudit": 3,
-            "overallAvg": 91.55
+            "averagePass": 18.58
         },
         {
-            "averagePass": 9.33,
             "courses_title": "fn & educ change",
+            "overallAvg": 93.75,
             "maxAudit": 2,
-            "overallAvg": 93.75
+            "averagePass": 9.33
         },
         {
-            "averagePass": 10.95,
             "courses_title": "com hlth prom",
+            "overallAvg": 93.45,
             "maxAudit": 2,
-            "overallAvg": 93.45
+            "averagePass": 10.95
         },
         {
-            "averagePass": 27.67,
             "courses_title": "exp des anl ed",
+            "overallAvg": 93.44,
             "maxAudit": 2,
-            "overallAvg": 93.44
+            "averagePass": 27.67
         },
         {
-            "averagePass": 6,
             "courses_title": "thry&rs soc cont",
+            "overallAvg": 93,
             "maxAudit": 2,
-            "overallAvg": 93
+            "averagePass": 6
         },
         {
-            "averagePass": 2,
             "courses_title": "behav economics",
+            "overallAvg": 93,
             "maxAudit": 2,
-            "overallAvg": 93
+            "averagePass": 2
         },
         {
-            "averagePass": 6.67,
             "courses_title": "adlt psychpathlg",
+            "overallAvg": 92.88,
             "maxAudit": 2,
-            "overallAvg": 92.88
+            "averagePass": 6.67
         },
         {
-            "averagePass": 9,
             "courses_title": "qual mth res des",
+            "overallAvg": 92.78,
             "maxAudit": 2,
-            "overallAvg": 92.78
+            "averagePass": 9
         },
         {
-            "averagePass": 2,
             "courses_title": "ad top vlsi desg",
+            "overallAvg": 92.5,
             "maxAudit": 2,
-            "overallAvg": 92.5
+            "averagePass": 2
         },
         {
-            "averagePass": 14.2,
             "courses_title": "directed study",
+            "overallAvg": 92.16,
             "maxAudit": 2,
-            "overallAvg": 92.16
+            "averagePass": 14.2
         },
         {
-            "averagePass": 14,
             "courses_title": "power syst dynam",
+            "overallAvg": 91.9,
             "maxAudit": 2,
-            "overallAvg": 91.9
+            "averagePass": 14
         },
         {
-            "averagePass": 4,
             "courses_title": "sem hum mtr perf",
+            "overallAvg": 91.88,
             "maxAudit": 2,
-            "overallAvg": 91.88
+            "averagePass": 4
         },
         {
-            "averagePass": 19,
             "courses_title": "seismic rsp strc",
+            "overallAvg": 91.78,
             "maxAudit": 2,
-            "overallAvg": 91.78
+            "averagePass": 19
         },
         {
-            "averagePass": 13.5,
             "courses_title": "mthds asymp anal",
+            "overallAvg": 91.62,
             "maxAudit": 2,
-            "overallAvg": 91.62
+            "averagePass": 13.5
         },
         {
-            "averagePass": 2,
             "courses_title": "market structure",
+            "overallAvg": 91.5,
             "maxAudit": 2,
-            "overallAvg": 91.5
+            "averagePass": 2
         },
         {
-            "averagePass": 28.26,
             "courses_title": "curric iss&thry",
+            "overallAvg": 91.37,
             "maxAudit": 2,
-            "overallAvg": 91.37
+            "averagePass": 28.26
         },
         {
-            "averagePass": 21,
             "courses_title": "urb dsgn thr&met",
+            "overallAvg": 91.36,
             "maxAudit": 2,
-            "overallAvg": 91.36
+            "averagePass": 21
         },
         {
-            "averagePass": 17.29,
             "courses_title": "genome analysis",
+            "overallAvg": 91.16,
             "maxAudit": 2,
-            "overallAvg": 91.16
+            "averagePass": 17.29
         },
         {
-            "averagePass": 8,
             "courses_title": "mech erth quake",
+            "overallAvg": 91.13,
             "maxAudit": 2,
-            "overallAvg": 91.13
+            "averagePass": 8
         },
         {
-            "averagePass": 14.5,
             "courses_title": "microelectromech",
+            "overallAvg": 91.01,
             "maxAudit": 2,
-            "overallAvg": 91.01
+            "averagePass": 14.5
         },
         {
-            "averagePass": 2,
             "courses_title": "bayesn dcsn anl",
+            "overallAvg": 91,
             "maxAudit": 2,
-            "overallAvg": 91
+            "averagePass": 2
         },
         {
-            "averagePass": 10.33,
             "courses_title": "pertrb diff equa",
+            "overallAvg": 90.96,
             "maxAudit": 2,
-            "overallAvg": 90.96
+            "averagePass": 10.33
         },
         {
-            "averagePass": 12.2,
             "courses_title": "ch&ad psyco-path",
+            "overallAvg": 90.8,
             "maxAudit": 2,
-            "overallAvg": 90.8
+            "averagePass": 12.2
         },
         {
-            "averagePass": 6,
             "courses_title": "network analysis",
+            "overallAvg": 90.69,
             "maxAudit": 2,
-            "overallAvg": 90.69
+            "averagePass": 6
         },
         {
-            "averagePass": 23.33,
             "courses_title": "iss public hlth",
+            "overallAvg": 90.59,
             "maxAudit": 2,
-            "overallAvg": 90.59
+            "averagePass": 23.33
         },
         {
-            "averagePass": 12,
             "courses_title": "comm networks",
+            "overallAvg": 90.33,
             "maxAudit": 2,
-            "overallAvg": 90.33
+            "averagePass": 12
         },
         {
-            "averagePass": 17,
             "courses_title": "trad adult edu",
+            "overallAvg": 90.06,
             "maxAudit": 2,
-            "overallAvg": 90.06
+            "averagePass": 17
         },
         {
-            "averagePass": 10,
             "courses_title": "acad libraries",
+            "overallAvg": 96.1,
             "maxAudit": 1,
-            "overallAvg": 96.1
+            "averagePass": 10
         },
         {
-            "averagePass": 11,
             "courses_title": "sbst use addictn",
+            "overallAvg": 94.36,
             "maxAudit": 1,
-            "overallAvg": 94.36
+            "averagePass": 11
         },
         {
-            "averagePass": 7,
             "courses_title": "dev neuropsych",
+            "overallAvg": 94.34,
             "maxAudit": 1,
-            "overallAvg": 94.34
+            "averagePass": 7
         },
         {
-            "averagePass": 6,
             "courses_title": "intr dyn systems",
+            "overallAvg": 94.33,
             "maxAudit": 1,
-            "overallAvg": 94.33
+            "averagePass": 6
         },
         {
-            "averagePass": 5.33,
             "courses_title": "math mdl com dis",
+            "overallAvg": 93.96,
             "maxAudit": 1,
-            "overallAvg": 93.96
+            "averagePass": 5.33
         },
         {
-            "averagePass": 50.08,
             "courses_title": "educ stds autism",
+            "overallAvg": 93.84,
             "maxAudit": 1,
-            "overallAvg": 93.84
+            "averagePass": 50.08
         },
         {
-            "averagePass": 10,
             "courses_title": "adu edu pro",
+            "overallAvg": 93.4,
             "maxAudit": 1,
-            "overallAvg": 93.4
+            "averagePass": 10
         },
         {
-            "averagePass": 11.5,
             "courses_title": "dynam struct 2",
+            "overallAvg": 93.39,
             "maxAudit": 1,
-            "overallAvg": 93.39
+            "averagePass": 11.5
         },
         {
-            "averagePass": 5.75,
             "courses_title": "functional analy",
+            "overallAvg": 93.17,
             "maxAudit": 1,
-            "overallAvg": 93.17
+            "averagePass": 5.75
         },
         {
-            "averagePass": 7.67,
             "courses_title": "diff geometry i",
+            "overallAvg": 93.05,
             "maxAudit": 1,
-            "overallAvg": 93.05
+            "averagePass": 7.67
         },
         {
-            "averagePass": 7.5,
             "courses_title": "prt diff equa i",
+            "overallAvg": 93.02,
             "maxAudit": 1,
-            "overallAvg": 93.02
+            "averagePass": 7.5
         },
         {
-            "averagePass": 30.47,
             "courses_title": "surv bhvr dis ch",
+            "overallAvg": 92.87,
             "maxAudit": 1,
-            "overallAvg": 92.87
+            "averagePass": 30.47
         },
         {
-            "averagePass": 11,
             "courses_title": "fdns highr educ",
+            "overallAvg": 92.73,
             "maxAudit": 1,
-            "overallAvg": 92.73
+            "averagePass": 11
         },
         {
-            "averagePass": 8.17,
             "courses_title": "quant fld theory",
+            "overallAvg": 92.65,
             "maxAudit": 1,
-            "overallAvg": 92.65
+            "averagePass": 8.17
         },
         {
-            "averagePass": 15,
             "courses_title": "org&admin hi edu",
+            "overallAvg": 92.61,
             "maxAudit": 1,
-            "overallAvg": 92.61
+            "averagePass": 15
         },
         {
-            "averagePass": 18,
             "courses_title": "basic princ meas",
+            "overallAvg": 92.57,
             "maxAudit": 1,
-            "overallAvg": 92.57
+            "averagePass": 18
         },
         {
-            "averagePass": 8.67,
             "courses_title": "spec tpcs kin",
+            "overallAvg": 92.56,
             "maxAudit": 1,
-            "overallAvg": 92.56
+            "averagePass": 8.67
         },
         {
-            "averagePass": 22.2,
             "courses_title": "intrv ch&ad bh d",
+            "overallAvg": 92.54,
             "maxAudit": 1,
-            "overallAvg": 92.54
+            "averagePass": 22.2
         },
         {
-            "averagePass": 5,
             "courses_title": "mch tool str&vib",
+            "overallAvg": 92.5,
             "maxAudit": 1,
-            "overallAvg": 92.5
+            "averagePass": 5
         },
         {
-            "averagePass": 6.5,
             "courses_title": "meas health care",
+            "overallAvg": 92.42,
             "maxAudit": 1,
-            "overallAvg": 92.42
+            "averagePass": 6.5
         },
         {
-            "averagePass": 7.2,
             "courses_title": "probability i",
+            "overallAvg": 92.39,
             "maxAudit": 1,
-            "overallAvg": 92.39
+            "averagePass": 7.2
         },
         {
-            "averagePass": 10,
             "courses_title": "third-year russ",
+            "overallAvg": 92.3,
             "maxAudit": 1,
-            "overallAvg": 92.3
+            "averagePass": 10
         },
         {
-            "averagePass": 14,
             "courses_title": "counsl adolescnt",
+            "overallAvg": 92.27,
             "maxAudit": 1,
-            "overallAvg": 92.27
+            "averagePass": 14
         },
         {
-            "averagePass": 10.14,
             "courses_title": "pr mental health",
+            "overallAvg": 92.2,
             "maxAudit": 1,
-            "overallAvg": 92.2
+            "averagePass": 10.14
         },
         {
-            "averagePass": 14,
             "courses_title": "landsc plan&mgmt",
+            "overallAvg": 92.07,
             "maxAudit": 1,
-            "overallAvg": 92.07
+            "averagePass": 14
         },
         {
-            "averagePass": 6,
             "courses_title": "semicon thy appl",
+            "overallAvg": 92,
             "maxAudit": 1,
-            "overallAvg": 92
+            "averagePass": 6
         },
         {
-            "averagePass": 3,
             "courses_title": "topics plnt bioc",
+            "overallAvg": 92,
             "maxAudit": 1,
-            "overallAvg": 92
+            "averagePass": 3
         },
         {
-            "averagePass": 9.75,
             "courses_title": "fluor microscpy",
+            "overallAvg": 91.91,
             "maxAudit": 1,
-            "overallAvg": 91.91
+            "averagePass": 9.75
         },
         {
-            "averagePass": 20,
             "courses_title": "quantum elctrdyn",
+            "overallAvg": 91.85,
             "maxAudit": 1,
-            "overallAvg": 91.85
+            "averagePass": 20
         },
         {
-            "averagePass": 25.33,
             "courses_title": "prog pln & eval",
+            "overallAvg": 91.83,
             "maxAudit": 1,
-            "overallAvg": 91.83
+            "averagePass": 25.33
         },
         {
-            "averagePass": 12.29,
             "courses_title": "family counsl ii",
+            "overallAvg": 91.8,
             "maxAudit": 1,
-            "overallAvg": 91.8
+            "averagePass": 12.29
         },
         {
-            "averagePass": 6.75,
             "courses_title": "tpcs sociol educ",
+            "overallAvg": 91.69,
             "maxAudit": 1,
-            "overallAvg": 91.69
+            "averagePass": 6.75
         },
         {
-            "averagePass": 8,
             "courses_title": "crystal structre",
+            "overallAvg": 91.56,
             "maxAudit": 1,
-            "overallAvg": 91.56
+            "averagePass": 8
         },
         {
-            "averagePass": 12,
             "courses_title": "cond matter ii",
+            "overallAvg": 91.5,
             "maxAudit": 1,
-            "overallAvg": 91.5
+            "averagePass": 12
         },
         {
-            "averagePass": 8,
             "courses_title": "real analysis ii",
+            "overallAvg": 91.38,
             "maxAudit": 1,
-            "overallAvg": 91.38
+            "averagePass": 8
         },
         {
-            "averagePass": 6,
             "courses_title": "stat mth hydrlgy",
+            "overallAvg": 91.17,
             "maxAudit": 1,
-            "overallAvg": 91.17
+            "averagePass": 6
         },
         {
-            "averagePass": 4.67,
             "courses_title": "self-tuning ctrl",
+            "overallAvg": 91.15,
             "maxAudit": 1,
-            "overallAvg": 91.15
+            "averagePass": 4.67
         },
         {
-            "averagePass": 16.4,
             "courses_title": "anat phys stats",
+            "overallAvg": 90.95,
             "maxAudit": 1,
-            "overallAvg": 90.95
+            "averagePass": 16.4
         },
         {
-            "averagePass": 12.5,
             "courses_title": "aural rehb i",
+            "overallAvg": 90.92,
             "maxAudit": 1,
-            "overallAvg": 90.92
+            "averagePass": 12.5
         },
         {
-            "averagePass": 21,
             "courses_title": "stat meth hd bio",
+            "overallAvg": 90.9,
             "maxAudit": 1,
-            "overallAvg": 90.9
+            "averagePass": 21
         },
         {
-            "averagePass": 8,
             "courses_title": "adv microsys des",
+            "overallAvg": 90.88,
             "maxAudit": 1,
-            "overallAvg": 90.88
+            "averagePass": 8
         },
         {
-            "averagePass": 15,
             "courses_title": "high ed pol",
+            "overallAvg": 90.87,
             "maxAudit": 1,
-            "overallAvg": 90.87
+            "averagePass": 15
         },
         {
-            "averagePass": 11,
             "courses_title": "grn nanoelec dev",
+            "overallAvg": 90.85,
             "maxAudit": 1,
-            "overallAvg": 90.85
+            "averagePass": 11
         },
         {
-            "averagePass": 23.25,
             "courses_title": "soc wrk & justce",
+            "overallAvg": 90.8,
             "maxAudit": 1,
-            "overallAvg": 90.8
+            "averagePass": 23.25
         },
         {
-            "averagePass": 22.17,
             "courses_title": "stdy educ organ",
+            "overallAvg": 90.8,
             "maxAudit": 1,
-            "overallAvg": 90.8
+            "averagePass": 22.17
         },
         {
-            "averagePass": 12.5,
             "courses_title": "biolgy of cancer",
+            "overallAvg": 90.76,
             "maxAudit": 1,
-            "overallAvg": 90.76
+            "averagePass": 12.5
         },
         {
-            "averagePass": 10.2,
             "courses_title": "expl methodology",
+            "overallAvg": 90.69,
             "maxAudit": 1,
-            "overallAvg": 90.69
+            "averagePass": 10.2
         },
         {
-            "averagePass": 11,
             "courses_title": "directed reading",
+            "overallAvg": 90.67,
             "maxAudit": 1,
-            "overallAvg": 90.67
+            "averagePass": 11
         },
         {
-            "averagePass": 9,
             "courses_title": "comp comm protcl",
+            "overallAvg": 90.67,
             "maxAudit": 1,
-            "overallAvg": 90.67
+            "averagePass": 9
         },
         {
-            "averagePass": 16.6,
             "courses_title": "biol p hlth prac",
+            "overallAvg": 90.6,
             "maxAudit": 1,
-            "overallAvg": 90.6
+            "averagePass": 16.6
         },
         {
-            "averagePass": 25,
             "courses_title": "min eco fin",
+            "overallAvg": 90.52,
             "maxAudit": 1,
-            "overallAvg": 90.52
+            "averagePass": 25
         },
         {
-            "averagePass": 7,
             "courses_title": "diag img & rdoph",
+            "overallAvg": 90.43,
             "maxAudit": 1,
-            "overallAvg": 90.43
+            "averagePass": 7
         },
         {
-            "averagePass": 10.5,
             "courses_title": "membrane str&fnc",
+            "overallAvg": 90.29,
             "maxAudit": 1,
-            "overallAvg": 90.29
+            "averagePass": 10.5
         },
         {
-            "averagePass": 82,
             "courses_title": "work int health",
+            "overallAvg": 98.98,
             "maxAudit": 0,
-            "overallAvg": 98.98
+            "averagePass": 82
         },
         {
-            "averagePass": 11,
             "courses_title": "dev el sk df&hrd",
+            "overallAvg": 98.45,
             "maxAudit": 0,
-            "overallAvg": 98.45
+            "averagePass": 11
         },
         {
-            "averagePass": 16,
             "courses_title": "aud&non-txt arch",
+            "overallAvg": 96.94,
             "maxAudit": 0,
-            "overallAvg": 96.94
+            "averagePass": 16
         },
         {
-            "averagePass": 4,
             "courses_title": "ubc chamb string",
+            "overallAvg": 96.5,
             "maxAudit": 0,
-            "overallAvg": 96.5
+            "averagePass": 4
         },
         {
-            "averagePass": 20,
             "courses_title": "mo pict prod i",
+            "overallAvg": 96.4,
             "maxAudit": 0,
-            "overallAvg": 96.4
+            "averagePass": 20
         },
         {
-            "averagePass": 11,
             "courses_title": "ds intl forstry",
+            "overallAvg": 96.36,
             "maxAudit": 0,
-            "overallAvg": 96.36
+            "averagePass": 11
         },
         {
-            "averagePass": 13.5,
             "courses_title": "algb geometry i",
+            "overallAvg": 96.24,
             "maxAudit": 0,
-            "overallAvg": 96.24
+            "averagePass": 13.5
         },
         {
-            "averagePass": 21,
             "courses_title": "social analysis",
+            "overallAvg": 96.04,
             "maxAudit": 0,
-            "overallAvg": 96.04
+            "averagePass": 21
         },
         {
-            "averagePass": 14.33,
             "courses_title": "fam nrs pract",
+            "overallAvg": 95.99,
             "maxAudit": 0,
-            "overallAvg": 95.99
+            "averagePass": 14.33
         },
         {
-            "averagePass": 9,
             "courses_title": "tech for vis imp",
+            "overallAvg": 95.67,
             "maxAudit": 0,
-            "overallAvg": 95.67
+            "averagePass": 9
         },
         {
-            "averagePass": 5,
             "courses_title": "hydrmtllgcl rctr",
+            "overallAvg": 95.63,
             "maxAudit": 0,
-            "overallAvg": 95.63
+            "averagePass": 5
         },
         {
-            "averagePass": 61.33,
             "courses_title": "sociocult determ",
+            "overallAvg": 95.54,
             "maxAudit": 0,
-            "overallAvg": 95.54
+            "averagePass": 61.33
         },
         {
-            "averagePass": 15,
             "courses_title": "tchg st visl imp",
+            "overallAvg": 95.27,
             "maxAudit": 0,
-            "overallAvg": 95.27
+            "averagePass": 15
         },
         {
-            "averagePass": 7,
             "courses_title": "algb topology i",
+            "overallAvg": 95.21,
             "maxAudit": 0,
-            "overallAvg": 95.21
+            "averagePass": 7
         },
         {
-            "averagePass": 9,
             "courses_title": "schl counselling",
+            "overallAvg": 95.17,
             "maxAudit": 0,
-            "overallAvg": 95.17
+            "averagePass": 9
         },
         {
-            "averagePass": 14.57,
             "courses_title": "cl pro prim care",
+            "overallAvg": 95.12,
             "maxAudit": 0,
-            "overallAvg": 95.12
+            "averagePass": 14.57
         },
         {
-            "averagePass": 13.75,
             "courses_title": "phyl asp phy act",
+            "overallAvg": 95.07,
             "maxAudit": 0,
-            "overallAvg": 95.07
+            "averagePass": 13.75
         },
         {
-            "averagePass": 9,
             "courses_title": "mntl hlth concrn",
+            "overallAvg": 95,
             "maxAudit": 0,
-            "overallAvg": 95
+            "averagePass": 9
         },
         {
-            "averagePass": 2,
             "courses_title": "master eng proj",
+            "overallAvg": 95,
             "maxAudit": 0,
-            "overallAvg": 95
+            "averagePass": 2
         },
         {
-            "averagePass": 1,
             "courses_title": "m.sc major essay",
+            "overallAvg": 95,
             "maxAudit": 0,
-            "overallAvg": 95
+            "averagePass": 1
         },
         {
-            "averagePass": 12,
             "courses_title": "coaching effctv",
+            "overallAvg": 94.92,
             "maxAudit": 0,
-            "overallAvg": 94.92
+            "averagePass": 12
         },
         {
-            "averagePass": 9,
             "courses_title": "multimedia sys",
+            "overallAvg": 94.88,
             "maxAudit": 0,
-            "overallAvg": 94.88
+            "averagePass": 9
         },
         {
-            "averagePass": 79.5,
             "courses_title": "clin make iv",
+            "overallAvg": 94.84,
             "maxAudit": 0,
-            "overallAvg": 94.84
+            "averagePass": 79.5
         },
         {
-            "averagePass": 13,
             "courses_title": "survlnc&monitrng",
+            "overallAvg": 94.75,
             "maxAudit": 0,
-            "overallAvg": 94.75
+            "averagePass": 13
         },
         {
-            "averagePass": 4,
             "courses_title": "ths prop: biotec",
+            "overallAvg": 94.75,
             "maxAudit": 0,
-            "overallAvg": 94.75
+            "averagePass": 4
         },
         {
-            "averagePass": 9.67,
             "courses_title": "harmonic anal i",
+            "overallAvg": 94.66,
             "maxAudit": 0,
-            "overallAvg": 94.66
+            "averagePass": 9.67
         },
         {
-            "averagePass": 16.57,
             "courses_title": "able&creatv lrnr",
+            "overallAvg": 94.52,
             "maxAudit": 0,
-            "overallAvg": 94.52
+            "averagePass": 16.57
         },
         {
-            "averagePass": 20,
             "courses_title": "frst ntns rsorcs",
+            "overallAvg": 94.5,
             "maxAudit": 0,
-            "overallAvg": 94.5
+            "averagePass": 20
         },
         {
-            "averagePass": 6,
             "courses_title": "computl ling 1",
+            "overallAvg": 94.5,
             "maxAudit": 0,
-            "overallAvg": 94.5
+            "averagePass": 6
         },
         {
-            "averagePass": 7.67,
             "courses_title": "algebra ii",
+            "overallAvg": 94.44,
             "maxAudit": 0,
-            "overallAvg": 94.44
+            "averagePass": 7.67
         },
         {
-            "averagePass": 6,
             "courses_title": "cr-fc grwth&dev",
+            "overallAvg": 94.33,
             "maxAudit": 0,
-            "overallAvg": 94.33
+            "averagePass": 6
         },
         {
-            "averagePass": 4.83,
             "courses_title": "ubc singers",
+            "overallAvg": 94.33,
             "maxAudit": 0,
-            "overallAvg": 94.33
+            "averagePass": 4.83
         },
         {
-            "averagePass": 14.11,
             "courses_title": "eth&profl issues",
+            "overallAvg": 94.3,
             "maxAudit": 0,
-            "overallAvg": 94.3
+            "averagePass": 14.11
         },
         {
-            "averagePass": 8.5,
             "courses_title": "mt-anl qnt rs sy",
+            "overallAvg": 94.3,
             "maxAudit": 0,
-            "overallAvg": 94.3
+            "averagePass": 8.5
         },
         {
-            "averagePass": 218,
             "courses_title": "phrm in practc 1",
+            "overallAvg": 94.23,
             "maxAudit": 0,
-            "overallAvg": 94.23
+            "averagePass": 218
         },
         {
-            "averagePass": 22.5,
             "courses_title": "tech math sci",
+            "overallAvg": 94.21,
             "maxAudit": 0,
-            "overallAvg": 94.21
+            "averagePass": 22.5
         },
         {
-            "averagePass": 120,
             "courses_title": "ldrshp, ethics",
+            "overallAvg": 94.15,
             "maxAudit": 0,
-            "overallAvg": 94.15
+            "averagePass": 120
         },
         {
-            "averagePass": 5.8,
             "courses_title": "health psych",
+            "overallAvg": 94.14,
             "maxAudit": 0,
-            "overallAvg": 94.14
+            "averagePass": 5.8
         },
         {
-            "averagePass": 6.13,
             "courses_title": "thesis",
+            "overallAvg": 94.12,
             "maxAudit": 0,
-            "overallAvg": 94.12
+            "averagePass": 6.13
         },
         {
-            "averagePass": 14.25,
             "courses_title": "stats methlgy i",
+            "overallAvg": 94.06,
             "maxAudit": 0,
-            "overallAvg": 94.06
+            "averagePass": 14.25
         },
         {
-            "averagePass": 18.75,
             "courses_title": "islnd wild mgmt",
+            "overallAvg": 94.03,
             "maxAudit": 0,
-            "overallAvg": 94.03
+            "averagePass": 18.75
         },
         {
-            "averagePass": 18,
             "courses_title": "chldren&families",
+            "overallAvg": 94,
             "maxAudit": 0,
-            "overallAvg": 94
+            "averagePass": 18
         },
         {
-            "averagePass": 4,
             "courses_title": "fisheries mngmt",
+            "overallAvg": 94,
             "maxAudit": 0,
-            "overallAvg": 94
+            "averagePass": 4
         },
         {
-            "averagePass": 1,
             "courses_title": "msn major essay",
+            "overallAvg": 94,
             "maxAudit": 0,
-            "overallAvg": 94
+            "averagePass": 1
         },
         {
-            "averagePass": 120,
             "courses_title": "prev spts inj i",
+            "overallAvg": 93.94,
             "maxAudit": 0,
-            "overallAvg": 93.94
+            "averagePass": 120
         },
         {
-            "averagePass": 11.29,
             "courses_title": "acad assess schl",
+            "overallAvg": 93.92,
             "maxAudit": 0,
-            "overallAvg": 93.92
+            "averagePass": 11.29
         },
         {
-            "averagePass": 35.33,
             "courses_title": "electronics lab",
+            "overallAvg": 93.91,
             "maxAudit": 0,
-            "overallAvg": 93.91
+            "averagePass": 35.33
         },
         {
-            "averagePass": 13.5,
             "courses_title": "adlt edu pract",
+            "overallAvg": 93.91,
             "maxAudit": 0,
-            "overallAvg": 93.91
+            "averagePass": 13.5
         },
         {
-            "averagePass": 15,
             "courses_title": "nat resrce mngmt",
+            "overallAvg": 93.9,
             "maxAudit": 0,
-            "overallAvg": 93.9
+            "averagePass": 15
         },
         {
-            "averagePass": 34.63,
             "courses_title": "intro excp child",
+            "overallAvg": 93.88,
             "maxAudit": 0,
-            "overallAvg": 93.88
+            "averagePass": 34.63
         },
         {
-            "averagePass": 10.08,
             "courses_title": "audi prctcm iv",
+            "overallAvg": 93.85,
             "maxAudit": 0,
-            "overallAvg": 93.85
+            "averagePass": 10.08
         },
         {
-            "averagePass": 24.8,
             "courses_title": "prin behav anlys",
+            "overallAvg": 93.76,
             "maxAudit": 0,
-            "overallAvg": 93.76
+            "averagePass": 24.8
         },
         {
-            "averagePass": 20,
             "courses_title": "crit apprais lit",
+            "overallAvg": 93.75,
             "maxAudit": 0,
-            "overallAvg": 93.75
+            "averagePass": 20
         },
         {
-            "averagePass": 19,
             "courses_title": "assess lrn diffi",
+            "overallAvg": 93.75,
             "maxAudit": 0,
-            "overallAvg": 93.75
+            "averagePass": 19
         },
         {
-            "averagePass": 1.5,
             "courses_title": "log & crit think",
+            "overallAvg": 93.75,
             "maxAudit": 0,
-            "overallAvg": 93.75
+            "averagePass": 1.5
         },
         {
-            "averagePass": 22,
             "courses_title": "syst rev hlth rs",
+            "overallAvg": 93.73,
             "maxAudit": 0,
-            "overallAvg": 93.73
+            "averagePass": 22
         },
         {
-            "averagePass": 32,
             "courses_title": "kinder curriclm",
+            "overallAvg": 93.72,
             "maxAudit": 0,
-            "overallAvg": 93.72
+            "averagePass": 32
         },
         {
-            "averagePass": 10.25,
             "courses_title": "cur dev e df&hrd",
+            "overallAvg": 93.67,
             "maxAudit": 0,
-            "overallAvg": 93.67
+            "averagePass": 10.25
         },
         {
-            "averagePass": 3,
             "courses_title": "grad prac",
+            "overallAvg": 93.67,
             "maxAudit": 0,
-            "overallAvg": 93.67
+            "averagePass": 3
         },
         {
-            "averagePass": 2.5,
             "courses_title": "intro musc thry",
+            "overallAvg": 93.63,
             "maxAudit": 0,
-            "overallAvg": 93.63
+            "averagePass": 2.5
         },
         {
-            "averagePass": 7,
             "courses_title": "mgmt sc meth",
+            "overallAvg": 93.61,
             "maxAudit": 0,
-            "overallAvg": 93.61
+            "averagePass": 7
         },
         {
-            "averagePass": 17,
             "courses_title": "dsgn&anl smp&sub",
+            "overallAvg": 93.59,
             "maxAudit": 0,
-            "overallAvg": 93.59
+            "averagePass": 17
         },
         {
-            "averagePass": 11.38,
             "courses_title": "coll&uni teachng",
+            "overallAvg": 93.56,
             "maxAudit": 0,
-            "overallAvg": 93.56
+            "averagePass": 11.38
         },
         {
-            "averagePass": 4,
             "courses_title": "linear vibrtns",
+            "overallAvg": 93.5,
             "maxAudit": 0,
-            "overallAvg": 93.5
+            "averagePass": 4
         },
         {
-            "averagePass": 5.2,
             "courses_title": "eth & prof clin",
+            "overallAvg": 93.49,
             "maxAudit": 0,
-            "overallAvg": 93.49
+            "averagePass": 5.2
         },
         {
-            "averagePass": 15,
             "courses_title": "adv geotechnics",
+            "overallAvg": 93.47,
             "maxAudit": 0,
-            "overallAvg": 93.47
+            "averagePass": 15
         },
         {
-            "averagePass": 18.47,
             "courses_title": "indig, tech&ed",
+            "overallAvg": 93.46,
             "maxAudit": 0,
-            "overallAvg": 93.46
+            "averagePass": 18.47
         },
         {
-            "averagePass": 148,
             "courses_title": "hist poplr music",
+            "overallAvg": 93.45,
             "maxAudit": 0,
-            "overallAvg": 93.45
+            "averagePass": 148
         },
         {
-            "averagePass": 20.35,
             "courses_title": "prgm devl cnsl",
+            "overallAvg": 93.45,
             "maxAudit": 0,
-            "overallAvg": 93.45
+            "averagePass": 20.35
         },
         {
-            "averagePass": 15.8,
             "courses_title": "cnsl mat cr prov",
+            "overallAvg": 93.43,
             "maxAudit": 0,
-            "overallAvg": 93.43
+            "averagePass": 15.8
         },
         {
-            "averagePass": 17,
             "courses_title": "hlth & soc care",
+            "overallAvg": 93.42,
             "maxAudit": 0,
-            "overallAvg": 93.42
+            "averagePass": 17
         },
         {
-            "averagePass": 21.5,
             "courses_title": "comm disorders",
+            "overallAvg": 93.41,
             "maxAudit": 0,
-            "overallAvg": 93.41
+            "averagePass": 21.5
         },
         {
-            "averagePass": 135.13,
             "courses_title": "admn of injectns",
+            "overallAvg": 93.35,
             "maxAudit": 0,
-            "overallAvg": 93.35
+            "averagePass": 135.13
         },
         {
-            "averagePass": 9.13,
             "courses_title": "orch repertoire",
+            "overallAvg": 93.33,
             "maxAudit": 0,
-            "overallAvg": 93.33
+            "averagePass": 9.13
         },
         {
-            "averagePass": 29,
             "courses_title": "quantum mech ii",
+            "overallAvg": 93.31,
             "maxAudit": 0,
-            "overallAvg": 93.31
+            "averagePass": 29
         },
         {
-            "averagePass": 30,
             "courses_title": "home ec: 2nd ii",
+            "overallAvg": 93.3,
             "maxAudit": 0,
-            "overallAvg": 93.3
+            "averagePass": 30
         },
         {
-            "averagePass": 10,
             "courses_title": "audi adv prc ii",
+            "overallAvg": 93.22,
             "maxAudit": 0,
-            "overallAvg": 93.22
+            "averagePass": 10
         },
         {
-            "averagePass": 35,
             "courses_title": "lang dev life",
+            "overallAvg": 93.2,
             "maxAudit": 0,
-            "overallAvg": 93.2
+            "averagePass": 35
         },
         {
-            "averagePass": 17,
             "courses_title": "contem players",
+            "overallAvg": 93.2,
             "maxAudit": 0,
-            "overallAvg": 93.2
+            "averagePass": 17
         },
         {
-            "averagePass": 10.71,
             "courses_title": "prep writ career",
+            "overallAvg": 93.2,
             "maxAudit": 0,
-            "overallAvg": 93.2
+            "averagePass": 10.71
         },
         {
-            "averagePass": 8,
             "courses_title": "probability ii",
+            "overallAvg": 93.2,
             "maxAudit": 0,
-            "overallAvg": 93.2
+            "averagePass": 8
         },
         {
-            "averagePass": 5,
             "courses_title": "hlth tech asmnt",
+            "overallAvg": 93.2,
             "maxAudit": 0,
-            "overallAvg": 93.2
+            "averagePass": 5
         },
         {
-            "averagePass": 106.67,
             "courses_title": "ldrshp ethcs pol",
+            "overallAvg": 93.14,
             "maxAudit": 0,
-            "overallAvg": 93.14
+            "averagePass": 106.67
         },
         {
-            "averagePass": 11.5,
             "courses_title": "pediatric audio",
+            "overallAvg": 93.12,
             "maxAudit": 0,
-            "overallAvg": 93.12
+            "averagePass": 11.5
         },
         {
-            "averagePass": 46.67,
             "courses_title": "incl bl vis-imp",
+            "overallAvg": 93.1,
             "maxAudit": 0,
-            "overallAvg": 93.1
+            "averagePass": 46.67
         },
         {
-            "averagePass": 11.5,
             "courses_title": "phyl ms aud func",
+            "overallAvg": 93.06,
             "maxAudit": 0,
-            "overallAvg": 93.06
+            "averagePass": 11.5
         },
         {
-            "averagePass": 28,
             "courses_title": "tops public plcy",
+            "overallAvg": 93.04,
             "maxAudit": 0,
-            "overallAvg": 93.04
+            "averagePass": 28
         },
         {
-            "averagePass": 18.9,
             "courses_title": "crit spec ed",
+            "overallAvg": 93.04,
             "maxAudit": 0,
-            "overallAvg": 93.04
+            "averagePass": 18.9
         },
         {
-            "averagePass": 12,
             "courses_title": "std in sign lang",
+            "overallAvg": 93.03,
             "maxAudit": 0,
-            "overallAvg": 93.03
+            "averagePass": 12
         },
         {
-            "averagePass": 11.5,
             "courses_title": "med tech project",
+            "overallAvg": 93.03,
             "maxAudit": 0,
-            "overallAvg": 93.03
+            "averagePass": 11.5
         },
         {
-            "averagePass": 26.5,
             "courses_title": "sem in autism",
+            "overallAvg": 93.01,
             "maxAudit": 0,
-            "overallAvg": 93.01
+            "averagePass": 26.5
         },
         {
-            "averagePass": 13,
             "courses_title": "tec comm skls ii",
+            "overallAvg": 93,
             "maxAudit": 0,
-            "overallAvg": 93
+            "averagePass": 13
         },
         {
-            "averagePass": 8.25,
             "courses_title": "cad algrthm i cr",
+            "overallAvg": 93,
             "maxAudit": 0,
-            "overallAvg": 93
+            "averagePass": 8.25
         },
         {
-            "averagePass": 4,
-            "courses_title": "adv std min area",
-            "maxAudit": 0,
-            "overallAvg": 93
-        },
-        {
-            "averagePass": 4,
             "courses_title": "perinatal epidem",
+            "overallAvg": 93,
             "maxAudit": 0,
-            "overallAvg": 93
+            "averagePass": 4
         },
         {
-            "averagePass": 4,
             "courses_title": "ecol plnt bioch",
+            "overallAvg": 93,
             "maxAudit": 0,
-            "overallAvg": 93
+            "averagePass": 4
         },
         {
-            "averagePass": 19,
+            "courses_title": "adv std min area",
+            "overallAvg": 93,
+            "maxAudit": 0,
+            "averagePass": 4
+        },
+        {
             "courses_title": "augmt&alt comm",
+            "overallAvg": 92.95,
             "maxAudit": 0,
-            "overallAvg": 92.95
+            "averagePass": 19
         },
         {
-            "averagePass": 8,
             "courses_title": "thermodynamics",
+            "overallAvg": 92.94,
             "maxAudit": 0,
-            "overallAvg": 92.94
+            "averagePass": 8
         },
         {
-            "averagePass": 2.25,
             "courses_title": "msc thesis",
+            "overallAvg": 92.94,
             "maxAudit": 0,
-            "overallAvg": 92.94
+            "averagePass": 2.25
         },
         {
-            "averagePass": 9,
-            "courses_title": "combinatorial op",
-            "maxAudit": 0,
-            "overallAvg": 92.89
-        },
-        {
-            "averagePass": 9,
             "courses_title": "mtrl manufact",
+            "overallAvg": 92.89,
             "maxAudit": 0,
-            "overallAvg": 92.89
+            "averagePass": 9
         },
         {
-            "averagePass": 14.21,
+            "courses_title": "combinatorial op",
+            "overallAvg": 92.89,
+            "maxAudit": 0,
+            "averagePass": 9
+        },
+        {
             "courses_title": "thy cognt assess",
+            "overallAvg": 92.88,
             "maxAudit": 0,
-            "overallAvg": 92.88
+            "averagePass": 14.21
         },
         {
-            "averagePass": 6,
             "courses_title": "ital lit cult",
+            "overallAvg": 92.88,
             "maxAudit": 0,
-            "overallAvg": 92.88
+            "averagePass": 6
         },
         {
-            "averagePass": 31,
             "courses_title": "obsv&doc erly ch",
+            "overallAvg": 92.87,
             "maxAudit": 0,
-            "overallAvg": 92.87
+            "averagePass": 31
         },
         {
-            "averagePass": 30.35,
             "courses_title": "classroom mgmt",
+            "overallAvg": 92.87,
             "maxAudit": 0,
-            "overallAvg": 92.87
+            "averagePass": 30.35
         },
         {
-            "averagePass": 9,
             "courses_title": "dev scale&measur",
+            "overallAvg": 92.84,
             "maxAudit": 0,
-            "overallAvg": 92.84
+            "averagePass": 9
         },
         {
-            "averagePass": 6,
             "courses_title": "rsch surgical pr",
+            "overallAvg": 92.83,
             "maxAudit": 0,
-            "overallAvg": 92.83
+            "averagePass": 6
         },
         {
-            "averagePass": 6,
             "courses_title": "env phil & educ",
+            "overallAvg": 92.83,
             "maxAudit": 0,
-            "overallAvg": 92.83
+            "averagePass": 6
         },
         {
-            "averagePass": 13.33,
             "courses_title": "txt pol& id cdev",
+            "overallAvg": 92.82,
             "maxAudit": 0,
-            "overallAvg": 92.82
+            "averagePass": 13.33
         },
         {
-            "averagePass": 11.33,
             "courses_title": "lie theory i",
+            "overallAvg": 92.81,
             "maxAudit": 0,
-            "overallAvg": 92.81
+            "averagePass": 11.33
         },
         {
-            "averagePass": 10.67,
             "courses_title": "info tech&archvs",
+            "overallAvg": 92.81,
             "maxAudit": 0,
-            "overallAvg": 92.81
+            "averagePass": 10.67
         },
         {
-            "averagePass": 15,
             "courses_title": "prof prct larc",
+            "overallAvg": 92.8,
             "maxAudit": 0,
-            "overallAvg": 92.8
+            "averagePass": 15
         },
         {
-            "averagePass": 10.67,
             "courses_title": "ind skl vis imp",
+            "overallAvg": 92.78,
             "maxAudit": 0,
-            "overallAvg": 92.78
+            "averagePass": 10.67
         },
         {
-            "averagePass": 16.5,
             "courses_title": "scenery prod i",
+            "overallAvg": 92.77,
             "maxAudit": 0,
-            "overallAvg": 92.77
+            "averagePass": 16.5
         },
         {
-            "averagePass": 13.05,
             "courses_title": "specific lrn dis",
+            "overallAvg": 92.77,
             "maxAudit": 0,
-            "overallAvg": 92.77
+            "averagePass": 13.05
         },
         {
-            "averagePass": 4,
             "courses_title": "mth&mdl ptrl&gch",
+            "overallAvg": 92.75,
             "maxAudit": 0,
-            "overallAvg": 92.75
+            "averagePass": 4
         },
         {
-            "averagePass": 5.67,
             "courses_title": "complex analy",
+            "overallAvg": 92.69,
             "maxAudit": 0,
-            "overallAvg": 92.69
+            "averagePass": 5.67
         },
         {
-            "averagePass": 12,
             "courses_title": "vocal techniques",
+            "overallAvg": 92.67,
             "maxAudit": 0,
-            "overallAvg": 92.67
+            "averagePass": 12
         },
         {
-            "averagePass": 18.67,
             "courses_title": "trends & topics",
+            "overallAvg": 92.64,
             "maxAudit": 0,
-            "overallAvg": 92.64
+            "averagePass": 18.67
         },
         {
-            "averagePass": 16,
             "courses_title": "thry&prc prg evl",
+            "overallAvg": 92.63,
             "maxAudit": 0,
-            "overallAvg": 92.63
+            "averagePass": 16
         },
         {
-            "averagePass": 16,
             "courses_title": "rdngs orch rep",
+            "overallAvg": 92.63,
             "maxAudit": 0,
-            "overallAvg": 92.63
+            "averagePass": 16
         },
         {
-            "averagePass": 8,
             "courses_title": "meas thry&integr",
+            "overallAvg": 92.63,
             "maxAudit": 0,
-            "overallAvg": 92.63
+            "averagePass": 8
         },
         {
-            "averagePass": 21.44,
             "courses_title": "tch'g hghly able",
+            "overallAvg": 92.62,
             "maxAudit": 0,
-            "overallAvg": 92.62
+            "averagePass": 21.44
         },
         {
-            "averagePass": 9.25,
             "courses_title": "prof,eth&lgl iss",
+            "overallAvg": 92.61,
             "maxAudit": 0,
-            "overallAvg": 92.61
+            "averagePass": 9.25
         },
         {
-            "averagePass": 5,
             "courses_title": "adv comp archtct",
+            "overallAvg": 92.6,
             "maxAudit": 0,
-            "overallAvg": 92.6
+            "averagePass": 5
         },
         {
-            "averagePass": 5.67,
             "courses_title": "research problem",
+            "overallAvg": 92.57,
             "maxAudit": 0,
-            "overallAvg": 92.57
+            "averagePass": 5.67
         },
         {
-            "averagePass": 36.2,
             "courses_title": "dev wkshp/sem",
+            "overallAvg": 92.56,
             "maxAudit": 0,
-            "overallAvg": 92.56
+            "averagePass": 36.2
         },
         {
-            "averagePass": 14.58,
             "courses_title": "",
+            "overallAvg": 92.56,
             "maxAudit": 0,
-            "overallAvg": 92.56
+            "averagePass": 14.58
         },
         {
-            "averagePass": 6,
             "courses_title": "thry of automata",
+            "overallAvg": 92.55,
             "maxAudit": 0,
-            "overallAvg": 92.55
+            "averagePass": 6
         },
         {
-            "averagePass": 23.88,
             "courses_title": "curric issu",
+            "overallAvg": 92.54,
             "maxAudit": 0,
-            "overallAvg": 92.54
+            "averagePass": 23.88
         },
         {
-            "averagePass": 19,
             "courses_title": "eng mtls lab",
+            "overallAvg": 92.51,
             "maxAudit": 0,
-            "overallAvg": 92.51
+            "averagePass": 19
         },
         {
-            "averagePass": 9,
             "courses_title": "sem sociol educ",
+            "overallAvg": 92.5,
             "maxAudit": 0,
-            "overallAvg": 92.5
+            "averagePass": 9
         },
         {
-            "averagePass": 8,
             "courses_title": "intro sanskrit",
+            "overallAvg": 92.5,
             "maxAudit": 0,
-            "overallAvg": 92.5
+            "averagePass": 8
         },
         {
-            "averagePass": 4,
             "courses_title": "solid earth sci",
+            "overallAvg": 92.5,
             "maxAudit": 0,
-            "overallAvg": 92.5
+            "averagePass": 4
         },
         {
-            "averagePass": 1.43,
             "courses_title": "ms thesis",
+            "overallAvg": 92.5,
             "maxAudit": 0,
-            "overallAvg": 92.5
+            "averagePass": 1.43
         },
         {
-            "averagePass": 16.33,
             "courses_title": "appl hlth serv",
+            "overallAvg": 92.48,
             "maxAudit": 0,
-            "overallAvg": 92.48
+            "averagePass": 16.33
         },
         {
-            "averagePass": 20.53,
             "courses_title": "ed prg hghly abl",
+            "overallAvg": 92.47,
             "maxAudit": 0,
-            "overallAvg": 92.47
+            "averagePass": 20.53
         },
         {
-            "averagePass": 22,
             "courses_title": "case res&analys",
+            "overallAvg": 92.45,
             "maxAudit": 0,
-            "overallAvg": 92.45
+            "averagePass": 22
         },
         {
-            "averagePass": 11,
             "courses_title": "amplification ii",
+            "overallAvg": 92.45,
             "maxAudit": 0,
-            "overallAvg": 92.45
+            "averagePass": 11
         },
         {
-            "averagePass": 9.33,
             "courses_title": "soc-psych fndtns",
+            "overallAvg": 92.45,
             "maxAudit": 0,
-            "overallAvg": 92.45
+            "averagePass": 9.33
         },
         {
-            "averagePass": 7,
             "courses_title": "fdmt inj biomech",
+            "overallAvg": 92.43,
             "maxAudit": 0,
-            "overallAvg": 92.43
+            "averagePass": 7
         },
         {
-            "averagePass": 7,
             "courses_title": "advancd span iii",
+            "overallAvg": 92.42,
             "maxAudit": 0,
-            "overallAvg": 92.42
+            "averagePass": 7
         },
         {
-            "averagePass": 5,
             "courses_title": "adv rad biophys",
+            "overallAvg": 92.42,
             "maxAudit": 0,
-            "overallAvg": 92.42
+            "averagePass": 5
         },
         {
-            "averagePass": 20.5,
             "courses_title": "adv human gene",
+            "overallAvg": 92.4,
             "maxAudit": 0,
-            "overallAvg": 92.4
+            "averagePass": 20.5
         },
         {
-            "averagePass": 5,
-            "courses_title": "complex analy i",
-            "maxAudit": 0,
-            "overallAvg": 92.4
-        },
-        {
-            "averagePass": 5,
             "courses_title": "gen&cell therapy",
+            "overallAvg": 92.4,
             "maxAudit": 0,
-            "overallAvg": 92.4
+            "averagePass": 5
         },
         {
-            "averagePass": 4.6,
+            "courses_title": "complex analy i",
+            "overallAvg": 92.4,
+            "maxAudit": 0,
+            "averagePass": 5
+        },
+        {
             "courses_title": "intro psychthrpy",
+            "overallAvg": 92.4,
             "maxAudit": 0,
-            "overallAvg": 92.4
+            "averagePass": 4.6
         },
         {
-            "averagePass": 4.08,
             "courses_title": "msc major essay",
+            "overallAvg": 92.4,
             "maxAudit": 0,
-            "overallAvg": 92.4
+            "averagePass": 4.08
         },
         {
-            "averagePass": 7,
             "courses_title": "surgical rsrch",
+            "overallAvg": 92.39,
             "maxAudit": 0,
-            "overallAvg": 92.39
+            "averagePass": 7
         },
         {
-            "averagePass": 18.57,
             "courses_title": "career planning",
+            "overallAvg": 92.37,
             "maxAudit": 0,
-            "overallAvg": 92.37
+            "averagePass": 18.57
         },
         {
-            "averagePass": 14,
             "courses_title": "socl&emtl assess",
+            "overallAvg": 92.37,
             "maxAudit": 0,
-            "overallAvg": 92.37
+            "averagePass": 14
         },
         {
-            "averagePass": 9.14,
             "courses_title": "kin project",
+            "overallAvg": 92.37,
             "maxAudit": 0,
-            "overallAvg": 92.37
+            "averagePass": 9.14
         },
         {
-            "averagePass": 22,
             "courses_title": "costume constr",
+            "overallAvg": 92.36,
             "maxAudit": 0,
-            "overallAvg": 92.36
+            "averagePass": 22
         },
         {
-            "averagePass": 11,
             "courses_title": "animal dvl gntcs",
+            "overallAvg": 92.36,
             "maxAudit": 0,
-            "overallAvg": 92.36
+            "averagePass": 11
         },
         {
-            "averagePass": 4.67,
             "courses_title": "pulmonry pthphyl",
+            "overallAvg": 92.35,
             "maxAudit": 0,
-            "overallAvg": 92.35
+            "averagePass": 4.67
         },
         {
-            "averagePass": 21,
             "courses_title": "soc & econ measu",
+            "overallAvg": 92.34,
             "maxAudit": 0,
-            "overallAvg": 92.34
+            "averagePass": 21
         },
         {
-            "averagePass": 19.33,
             "courses_title": "ict educ ethics",
+            "overallAvg": 92.34,
             "maxAudit": 0,
-            "overallAvg": 92.34
+            "averagePass": 19.33
         },
         {
-            "averagePass": 17.38,
             "courses_title": "prg child sp lrn",
+            "overallAvg": 92.32,
             "maxAudit": 0,
-            "overallAvg": 92.32
+            "averagePass": 17.38
         },
         {
-            "averagePass": 10,
             "courses_title": "urbn trans systm",
+            "overallAvg": 92.3,
             "maxAudit": 0,
-            "overallAvg": 92.3
+            "averagePass": 10
         },
         {
-            "averagePass": 14,
             "courses_title": "clinical clerkship",
+            "overallAvg": 92.29,
             "maxAudit": 0,
-            "overallAvg": 92.29
+            "averagePass": 14
         },
         {
-            "averagePass": 24.32,
             "courses_title": "res mthd in educ",
+            "overallAvg": 92.27,
             "maxAudit": 0,
-            "overallAvg": 92.27
+            "averagePass": 24.32
         },
         {
-            "averagePass": 11,
             "courses_title": "frst busn enterp",
+            "overallAvg": 92.27,
             "maxAudit": 0,
-            "overallAvg": 92.27
+            "averagePass": 11
         },
         {
-            "averagePass": 54.4,
             "courses_title": "an meth epid res",
+            "overallAvg": 92.26,
             "maxAudit": 0,
-            "overallAvg": 92.26
+            "averagePass": 54.4
         },
         {
-            "averagePass": 60,
             "courses_title": "problty & stat",
+            "overallAvg": 92.25,
             "maxAudit": 0,
-            "overallAvg": 92.25
+            "averagePass": 60
         },
         {
-            "averagePass": 8,
             "courses_title": "cultural studies",
+            "overallAvg": 92.25,
             "maxAudit": 0,
-            "overallAvg": 92.25
+            "averagePass": 8
         },
         {
-            "averagePass": 6,
             "courses_title": "honours thesis",
+            "overallAvg": 92.25,
             "maxAudit": 0,
-            "overallAvg": 92.25
+            "averagePass": 6
         },
         {
-            "averagePass": 4,
             "courses_title": "sem theor",
+            "overallAvg": 92.25,
             "maxAudit": 0,
-            "overallAvg": 92.25
+            "averagePass": 4
         },
         {
-            "averagePass": 11.6,
             "courses_title": "hearing sci ii",
+            "overallAvg": 92.24,
             "maxAudit": 0,
-            "overallAvg": 92.24
+            "averagePass": 11.6
         },
         {
-            "averagePass": 8.5,
             "courses_title": "prob-bsd lrn bio",
+            "overallAvg": 92.24,
             "maxAudit": 0,
-            "overallAvg": 92.24
+            "averagePass": 8.5
         },
         {
-            "averagePass": 10.5,
             "courses_title": "educ theories",
+            "overallAvg": 92.23,
             "maxAudit": 0,
-            "overallAvg": 92.23
+            "averagePass": 10.5
         },
         {
-            "averagePass": 20.75,
             "courses_title": "rsc trd edu admn",
+            "overallAvg": 92.22,
             "maxAudit": 0,
-            "overallAvg": 92.22
+            "averagePass": 20.75
         },
         {
-            "averagePass": 14.75,
             "courses_title": "adv hlth assess",
+            "overallAvg": 92.22,
             "maxAudit": 0,
-            "overallAvg": 92.22
+            "averagePass": 14.75
         },
         {
-            "averagePass": 9,
             "courses_title": "ind peo frst lnd",
+            "overallAvg": 92.22,
             "maxAudit": 0,
-            "overallAvg": 92.22
+            "averagePass": 9
         },
         {
-            "averagePass": 5,
-            "courses_title": "algebra i",
-            "maxAudit": 0,
-            "overallAvg": 92.2
-        },
-        {
-            "averagePass": 5,
             "courses_title": "contxt ed policy",
+            "overallAvg": 92.2,
             "maxAudit": 0,
-            "overallAvg": 92.2
+            "averagePass": 5
         },
         {
-            "averagePass": 31.21,
+            "courses_title": "algebra i",
+            "overallAvg": 92.2,
+            "maxAudit": 0,
+            "averagePass": 5
+        },
+        {
             "courses_title": "lrn'g disablties",
+            "overallAvg": 92.19,
             "maxAudit": 0,
-            "overallAvg": 92.19
+            "averagePass": 31.21
         },
         {
-            "averagePass": 19,
             "courses_title": "tpcs path rsrch",
+            "overallAvg": 92.19,
             "maxAudit": 0,
-            "overallAvg": 92.19
+            "averagePass": 19
         },
         {
-            "averagePass": 7.5,
             "courses_title": "tpc cytosk&cl mo",
+            "overallAvg": 92.19,
             "maxAudit": 0,
-            "overallAvg": 92.19
+            "averagePass": 7.5
         },
         {
-            "averagePass": 6,
             "courses_title": "sem medical anth",
+            "overallAvg": 92.19,
             "maxAudit": 0,
-            "overallAvg": 92.19
+            "averagePass": 6
         },
         {
-            "averagePass": 35.2,
             "courses_title": "exptl med method",
+            "overallAvg": 92.17,
             "maxAudit": 0,
-            "overallAvg": 92.17
+            "averagePass": 35.2
         },
         {
-            "averagePass": 48,
             "courses_title": "intro tech prod",
+            "overallAvg": 92.15,
             "maxAudit": 0,
-            "overallAvg": 92.15
+            "averagePass": 48
         },
         {
-            "averagePass": 25.63,
             "courses_title": "hn dev: inf-adlt",
+            "overallAvg": 92.14,
             "maxAudit": 0,
-            "overallAvg": 92.14
+            "averagePass": 25.63
         },
         {
-            "averagePass": 7,
             "courses_title": "genetics& ethics",
+            "overallAvg": 92.14,
             "maxAudit": 0,
-            "overallAvg": 92.14
+            "averagePass": 7
         },
         {
-            "averagePass": 24,
             "courses_title": "as in s&s disord",
+            "overallAvg": 92.13,
             "maxAudit": 0,
-            "overallAvg": 92.13
+            "averagePass": 24
         },
         {
-            "averagePass": 10.6,
             "courses_title": "curric as&interv",
+            "overallAvg": 92.13,
             "maxAudit": 0,
-            "overallAvg": 92.13
+            "averagePass": 10.6
         },
         {
-            "averagePass": 17,
             "courses_title": "micb eco genomic",
+            "overallAvg": 92.12,
             "maxAudit": 0,
-            "overallAvg": 92.12
+            "averagePass": 17
         },
         {
-            "averagePass": 11.5,
             "courses_title": "admn ldrshp nurs",
+            "overallAvg": 92.12,
             "maxAudit": 0,
-            "overallAvg": 92.12
+            "averagePass": 11.5
         },
         {
-            "averagePass": 11,
             "courses_title": "project & report",
+            "overallAvg": 92.1,
             "maxAudit": 0,
-            "overallAvg": 92.1
+            "averagePass": 11
         },
         {
-            "averagePass": 49,
             "courses_title": "imprv pblic hlth",
+            "overallAvg": 92.08,
             "maxAudit": 0,
-            "overallAvg": 92.08
+            "averagePass": 49
         },
         {
-            "averagePass": 24,
             "courses_title": "math prblm slvng",
+            "overallAvg": 92.07,
             "maxAudit": 0,
-            "overallAvg": 92.07
+            "averagePass": 24
         },
         {
-            "averagePass": 5,
             "courses_title": "discourse & talk",
+            "overallAvg": 92.07,
             "maxAudit": 0,
-            "overallAvg": 92.07
+            "averagePass": 5
         },
         {
-            "averagePass": 218,
             "courses_title": "tech in hlthcare",
+            "overallAvg": 92.06,
             "maxAudit": 0,
-            "overallAvg": 92.06
+            "averagePass": 218
         },
         {
-            "averagePass": 80,
             "courses_title": "clinical dec ii",
+            "overallAvg": 92.04,
             "maxAudit": 0,
-            "overallAvg": 92.04
+            "averagePass": 80
         },
         {
-            "averagePass": 6.5,
             "courses_title": "nanosc model&sim",
+            "overallAvg": 92.03,
             "maxAudit": 0,
-            "overallAvg": 92.03
+            "averagePass": 6.5
         },
         {
-            "averagePass": 5.8,
             "courses_title": "tpc int-cel traf",
+            "overallAvg": 92.03,
             "maxAudit": 0,
-            "overallAvg": 92.03
+            "averagePass": 5.8
         },
         {
-            "averagePass": 3.33,
             "courses_title": "m.sc. thesis",
+            "overallAvg": 92.03,
             "maxAudit": 0,
-            "overallAvg": 92.03
+            "averagePass": 3.33
         },
         {
-            "averagePass": 30.33,
             "courses_title": "asmnt spec needs",
+            "overallAvg": 92.02,
             "maxAudit": 0,
-            "overallAvg": 92.02
+            "averagePass": 30.33
         },
         {
-            "averagePass": 24.93,
             "courses_title": "tech arts hum",
+            "overallAvg": 92.02,
             "maxAudit": 0,
-            "overallAvg": 92.02
+            "averagePass": 24.93
         },
         {
-            "averagePass": 8.05,
             "courses_title": "masters thesis",
+            "overallAvg": 92.01,
             "maxAudit": 0,
-            "overallAvg": 92.01
+            "averagePass": 8.05
         },
         {
-            "averagePass": 6,
             "courses_title": "py-sc asp ph act",
+            "overallAvg": 92,
             "maxAudit": 0,
-            "overallAvg": 92
+            "averagePass": 6
         },
         {
-            "averagePass": 5,
-            "courses_title": "bndry-lyr metrly",
-            "maxAudit": 0,
-            "overallAvg": 92
-        },
-        {
-            "averagePass": 5,
             "courses_title": "urbn engr m&m",
+            "overallAvg": 92,
             "maxAudit": 0,
-            "overallAvg": 92
+            "averagePass": 5
         },
         {
-            "averagePass": 4,
+            "courses_title": "bndry-lyr metrly",
+            "overallAvg": 92,
+            "maxAudit": 0,
+            "averagePass": 5
+        },
+        {
             "courses_title": "perinatl epidlgy",
+            "overallAvg": 92,
             "maxAudit": 0,
-            "overallAvg": 92
+            "averagePass": 4
         },
         {
-            "averagePass": 4,
             "courses_title": "fnd bdy dsgn:bsc",
+            "overallAvg": 92,
             "maxAudit": 0,
-            "overallAvg": 92
+            "averagePass": 4
         },
         {
-            "averagePass": 1,
             "courses_title": "proj mec studies",
+            "overallAvg": 92,
             "maxAudit": 0,
-            "overallAvg": 92
+            "averagePass": 1
         },
         {
-            "averagePass": 19,
             "courses_title": "ds tec ii sc c&p",
+            "overallAvg": 91.99,
             "maxAudit": 0,
-            "overallAvg": 91.99
+            "averagePass": 19
         },
         {
-            "averagePass": 118,
             "courses_title": "rl div hlth expr",
+            "overallAvg": 91.97,
             "maxAudit": 0,
-            "overallAvg": 91.97
+            "averagePass": 118
         },
         {
-            "averagePass": 116,
             "courses_title": "pln pe,sp&ex prg",
+            "overallAvg": 91.95,
             "maxAudit": 0,
-            "overallAvg": 91.95
+            "averagePass": 116
         },
         {
-            "averagePass": 15,
             "courses_title": "home/schl/cmnty",
+            "overallAvg": 91.93,
             "maxAudit": 0,
-            "overallAvg": 91.93
+            "averagePass": 15
         },
         {
-            "averagePass": 12,
             "courses_title": "cnt tme stchastc",
+            "overallAvg": 91.91,
             "maxAudit": 0,
-            "overallAvg": 91.91
+            "averagePass": 12
         },
         {
-            "averagePass": 25.67,
             "courses_title": "ecolg plant bioc",
+            "overallAvg": 91.9,
             "maxAudit": 0,
-            "overallAvg": 91.9
+            "averagePass": 25.67
         },
         {
-            "averagePass": 55.92,
             "courses_title": "typ atyp inf/ch",
+            "overallAvg": 91.89,
             "maxAudit": 0,
-            "overallAvg": 91.89
+            "averagePass": 55.92
         },
         {
-            "averagePass": 22.5,
             "courses_title": "sound design",
+            "overallAvg": 91.89,
             "maxAudit": 0,
-            "overallAvg": 91.89
+            "averagePass": 22.5
         },
         {
-            "averagePass": 21,
             "courses_title": "modl dynam systm",
+            "overallAvg": 91.88,
             "maxAudit": 0,
-            "overallAvg": 91.88
+            "averagePass": 21
         },
         {
-            "averagePass": 21,
             "courses_title": "tpcs appl biolgy",
+            "overallAvg": 91.86,
             "maxAudit": 0,
-            "overallAvg": 91.86
+            "averagePass": 21
         },
         {
-            "averagePass": 9.25,
             "courses_title": "adv immunogeneti",
+            "overallAvg": 91.86,
             "maxAudit": 0,
-            "overallAvg": 91.86
+            "averagePass": 9.25
         },
         {
-            "averagePass": 7,
             "courses_title": "tpcs app econ i",
+            "overallAvg": 91.86,
             "maxAudit": 0,
-            "overallAvg": 91.86
+            "averagePass": 7
         },
         {
-            "averagePass": 8.5,
             "courses_title": "curr iss oral hl",
+            "overallAvg": 91.84,
             "maxAudit": 0,
-            "overallAvg": 91.84
+            "averagePass": 8.5
         },
         {
-            "averagePass": 116,
             "courses_title": "practice praxis",
+            "overallAvg": 91.83,
             "maxAudit": 0,
-            "overallAvg": 91.83
+            "averagePass": 116
         },
         {
-            "averagePass": 23,
             "courses_title": "tpcs biomed eng",
+            "overallAvg": 91.83,
             "maxAudit": 0,
-            "overallAvg": 91.83
+            "averagePass": 23
         },
         {
-            "averagePass": 28,
             "courses_title": "stats methods",
+            "overallAvg": 91.82,
             "maxAudit": 0,
-            "overallAvg": 91.82
+            "averagePass": 28
         },
         {
-            "averagePass": 17,
             "courses_title": "sowk practice ii",
+            "overallAvg": 91.82,
             "maxAudit": 0,
-            "overallAvg": 91.82
+            "averagePass": 17
         },
         {
-            "averagePass": 15.17,
             "courses_title": "math operations",
+            "overallAvg": 91.82,
             "maxAudit": 0,
-            "overallAvg": 91.82
+            "averagePass": 15.17
         },
         {
-            "averagePass": 14.67,
             "courses_title": "cog lang proc ed",
+            "overallAvg": 91.82,
             "maxAudit": 0,
-            "overallAvg": 91.82
+            "averagePass": 14.67
         },
         {
-            "averagePass": 10,
             "courses_title": "audi prctcm iii",
+            "overallAvg": 91.81,
             "maxAudit": 0,
-            "overallAvg": 91.81
+            "averagePass": 10
         },
         {
-            "averagePass": 10,
             "courses_title": "fst ntns soc iss",
+            "overallAvg": 91.8,
             "maxAudit": 0,
-            "overallAvg": 91.8
+            "averagePass": 10
         },
         {
-            "averagePass": 6.67,
             "courses_title": "discrete math",
+            "overallAvg": 91.8,
             "maxAudit": 0,
-            "overallAvg": 91.8
+            "averagePass": 6.67
         },
         {
-            "averagePass": 56,
             "courses_title": "expermntl micb",
+            "overallAvg": 91.79,
             "maxAudit": 0,
-            "overallAvg": 91.79
+            "averagePass": 56
         },
         {
-            "averagePass": 50,
             "courses_title": "ed st dvl ds inc",
+            "overallAvg": 91.79,
             "maxAudit": 0,
-            "overallAvg": 91.79
+            "averagePass": 50
         },
         {
-            "averagePass": 19,
             "courses_title": "software eng",
+            "overallAvg": 91.79,
             "maxAudit": 0,
-            "overallAvg": 91.79
+            "averagePass": 19
         },
         {
-            "averagePass": 19,
             "courses_title": "clinical skills",
+            "overallAvg": 91.79,
             "maxAudit": 0,
-            "overallAvg": 91.79
+            "averagePass": 19
         },
         {
-            "averagePass": 14,
             "courses_title": "macroecon ii",
+            "overallAvg": 91.79,
             "maxAudit": 0,
-            "overallAvg": 91.79
+            "averagePass": 14
         },
         {
-            "averagePass": 17.67,
             "courses_title": "sem r prpty dv&p",
+            "overallAvg": 91.77,
             "maxAudit": 0,
-            "overallAvg": 91.77
+            "averagePass": 17.67
         },
         {
-            "averagePass": 6.5,
             "courses_title": "rs mth&sem orbi",
+            "overallAvg": 91.77,
             "maxAudit": 0,
-            "overallAvg": 91.77
+            "averagePass": 6.5
         },
         {
-            "averagePass": 5,
             "courses_title": "contemp players",
+            "overallAvg": 91.76,
             "maxAudit": 0,
-            "overallAvg": 91.76
+            "averagePass": 5
         },
         {
-            "averagePass": 24,
             "courses_title": "relativty & elec",
+            "overallAvg": 91.75,
             "maxAudit": 0,
-            "overallAvg": 91.75
+            "averagePass": 24
         },
         {
-            "averagePass": 10,
             "courses_title": "thr lng&lit rsrc",
+            "overallAvg": 91.75,
             "maxAudit": 0,
-            "overallAvg": 91.75
+            "averagePass": 10
         },
         {
-            "averagePass": 9.33,
             "courses_title": "comp animal phyl",
+            "overallAvg": 91.75,
             "maxAudit": 0,
-            "overallAvg": 91.75
+            "averagePass": 9.33
         },
         {
-            "averagePass": 4,
             "courses_title": "elem number thry",
+            "overallAvg": 91.75,
             "maxAudit": 0,
-            "overallAvg": 91.75
+            "averagePass": 4
         },
         {
-            "averagePass": 19.75,
             "courses_title": "hn dev, lrn, cul",
+            "overallAvg": 91.74,
             "maxAudit": 0,
-            "overallAvg": 91.74
+            "averagePass": 19.75
         },
         {
-            "averagePass": 11,
             "courses_title": "stat infrnce i",
+            "overallAvg": 91.73,
             "maxAudit": 0,
-            "overallAvg": 91.73
+            "averagePass": 11
         },
         {
-            "averagePass": 10.5,
             "courses_title": "item respns thry",
+            "overallAvg": 91.73,
             "maxAudit": 0,
-            "overallAvg": 91.73
+            "averagePass": 10.5
         },
         {
-            "averagePass": 123,
             "courses_title": "leis & disbl prs",
+            "overallAvg": 91.7,
             "maxAudit": 0,
-            "overallAvg": 91.7
+            "averagePass": 123
         },
         {
-            "averagePass": 27,
             "courses_title": "acquired lng dis",
+            "overallAvg": 91.69,
             "maxAudit": 0,
-            "overallAvg": 91.69
+            "averagePass": 27
         },
         {
-            "averagePass": 17.5,
             "courses_title": "eco-based mgmt",
+            "overallAvg": 91.68,
             "maxAudit": 0,
-            "overallAvg": 91.68
+            "averagePass": 17.5
         },
         {
-            "averagePass": 12,
             "courses_title": "crit anly sci ed",
+            "overallAvg": 91.67,
             "maxAudit": 0,
-            "overallAvg": 91.67
+            "averagePass": 12
         },
         {
-            "averagePass": 6,
             "courses_title": "fnc hmn ant h&n",
+            "overallAvg": 91.67,
             "maxAudit": 0,
-            "overallAvg": 91.67
+            "averagePass": 6
         },
         {
-            "averagePass": 33.32,
             "courses_title": "des tech",
+            "overallAvg": 91.66,
             "maxAudit": 0,
-            "overallAvg": 91.66
+            "averagePass": 33.32
         },
         {
-            "averagePass": 17.83,
             "courses_title": "adv int seminar",
+            "overallAvg": 91.65,
             "maxAudit": 0,
-            "overallAvg": 91.65
+            "averagePass": 17.83
         },
         {
-            "averagePass": 25.32,
             "courses_title": "constr strat",
+            "overallAvg": 91.63,
             "maxAudit": 0,
-            "overallAvg": 91.63
+            "averagePass": 25.32
         },
         {
-            "averagePass": 8,
             "courses_title": "serv for chld",
+            "overallAvg": 91.63,
             "maxAudit": 0,
-            "overallAvg": 91.63
+            "averagePass": 8
         },
         {
-            "averagePass": 21.17,
             "courses_title": "rev res curr&ped",
+            "overallAvg": 91.62,
             "maxAudit": 0,
-            "overallAvg": 91.62
+            "averagePass": 21.17
         },
         {
-            "averagePass": 5,
             "courses_title": "clinical res des",
+            "overallAvg": 91.6,
             "maxAudit": 0,
-            "overallAvg": 91.6
+            "averagePass": 5
         },
         {
-            "averagePass": 26.67,
             "courses_title": "food theor app",
+            "overallAvg": 91.56,
             "maxAudit": 0,
-            "overallAvg": 91.56
+            "averagePass": 26.67
         },
         {
-            "averagePass": 9,
             "courses_title": "num anly prtl df",
+            "overallAvg": 91.56,
             "maxAudit": 0,
-            "overallAvg": 91.56
+            "averagePass": 9
         },
         {
-            "averagePass": 9,
-            "courses_title": "adv tpcs stl str",
-            "maxAudit": 0,
-            "overallAvg": 91.56
-        },
-        {
-            "averagePass": 9,
             "courses_title": "cave mn sys: d&p",
+            "overallAvg": 91.56,
             "maxAudit": 0,
-            "overallAvg": 91.56
+            "averagePass": 9
         },
         {
-            "averagePass": 18.5,
+            "courses_title": "adv tpcs stl str",
+            "overallAvg": 91.56,
+            "maxAudit": 0,
+            "averagePass": 9
+        },
+        {
             "courses_title": "int sem in sw th",
+            "overallAvg": 91.55,
             "maxAudit": 0,
-            "overallAvg": 91.55
+            "averagePass": 18.5
         },
         {
-            "averagePass": 38.9,
             "courses_title": "career counselng",
+            "overallAvg": 91.53,
             "maxAudit": 0,
-            "overallAvg": 91.53
+            "averagePass": 38.9
         },
         {
-            "averagePass": 26,
             "courses_title": "sch lrc prog",
+            "overallAvg": 91.53,
             "maxAudit": 0,
-            "overallAvg": 91.53
+            "averagePass": 26
         },
         {
-            "averagePass": 16,
             "courses_title": "inst mthd chalng",
+            "overallAvg": 91.5,
             "maxAudit": 0,
-            "overallAvg": 91.5
+            "averagePass": 16
         },
         {
-            "averagePass": 6,
             "courses_title": "mth e: bynd erly",
+            "overallAvg": 91.5,
             "maxAudit": 0,
-            "overallAvg": 91.5
+            "averagePass": 6
         },
         {
-            "averagePass": 6,
             "courses_title": "endo micro-surg",
+            "overallAvg": 91.5,
             "maxAudit": 0,
-            "overallAvg": 91.5
+            "averagePass": 6
         },
         {
-            "averagePass": 4,
             "courses_title": "sc dsgn std i",
+            "overallAvg": 91.5,
             "maxAudit": 0,
-            "overallAvg": 91.5
+            "averagePass": 4
         },
         {
-            "averagePass": 4,
-            "courses_title": "dante's div com",
-            "maxAudit": 0,
-            "overallAvg": 91.5
-        },
-        {
-            "averagePass": 4,
             "courses_title": "power elec dsgn",
+            "overallAvg": 91.5,
             "maxAudit": 0,
-            "overallAvg": 91.5
+            "averagePass": 4
         },
         {
-            "averagePass": 4,
+            "courses_title": "dante's div com",
+            "overallAvg": 91.5,
+            "maxAudit": 0,
+            "averagePass": 4
+        },
+        {
             "courses_title": "behav assessment",
+            "overallAvg": 91.5,
             "maxAudit": 0,
-            "overallAvg": 91.5
+            "averagePass": 4
         },
         {
-            "averagePass": 13.5,
             "courses_title": "lit review ii",
+            "overallAvg": 91.49,
             "maxAudit": 0,
-            "overallAvg": 91.49
+            "averagePass": 13.5
         },
         {
-            "averagePass": 5.67,
             "courses_title": "pcol anaesthesia",
+            "overallAvg": 91.49,
             "maxAudit": 0,
-            "overallAvg": 91.49
+            "averagePass": 5.67
         },
         {
-            "averagePass": 21,
             "courses_title": "mus&mov elem c&p",
+            "overallAvg": 91.48,
             "maxAudit": 0,
-            "overallAvg": 91.48
+            "averagePass": 21
         },
         {
-            "averagePass": 10.28,
             "courses_title": "seminar",
+            "overallAvg": 91.48,
             "maxAudit": 0,
-            "overallAvg": 91.48
+            "averagePass": 10.28
         },
         {
-            "averagePass": 19,
             "courses_title": "hlth promo prac",
+            "overallAvg": 91.47,
             "maxAudit": 0,
-            "overallAvg": 91.47
+            "averagePass": 19
         },
         {
-            "averagePass": 17,
             "courses_title": "prob mgmt models",
+            "overallAvg": 91.47,
             "maxAudit": 0,
-            "overallAvg": 91.47
+            "averagePass": 17
         },
         {
-            "averagePass": 7.5,
             "courses_title": "prin chem separ",
+            "overallAvg": 91.47,
             "maxAudit": 0,
-            "overallAvg": 91.47
+            "averagePass": 7.5
         },
         {
-            "averagePass": 7,
             "courses_title": "bioanalyt chem",
+            "overallAvg": 91.47,
             "maxAudit": 0,
-            "overallAvg": 91.47
+            "averagePass": 7
         },
         {
-            "averagePass": 140,
             "courses_title": "desig & analys 2",
+            "overallAvg": 91.46,
             "maxAudit": 0,
-            "overallAvg": 91.46
+            "averagePass": 140
         },
         {
-            "averagePass": 2.33,
             "courses_title": "child's lit",
+            "overallAvg": 91.46,
             "maxAudit": 0,
-            "overallAvg": 91.46
+            "averagePass": 2.33
         },
         {
-            "averagePass": 26.45,
             "courses_title": "res meth educ",
+            "overallAvg": 91.44,
             "maxAudit": 0,
-            "overallAvg": 91.44
+            "averagePass": 26.45
         },
         {
-            "averagePass": 9,
             "courses_title": "adv conc rehb rs",
+            "overallAvg": 91.44,
             "maxAudit": 0,
-            "overallAvg": 91.44
+            "averagePass": 9
         },
         {
-            "averagePass": 7,
             "courses_title": "prof comms strat",
+            "overallAvg": 91.43,
             "maxAudit": 0,
-            "overallAvg": 91.43
+            "averagePass": 7
         },
         {
-            "averagePass": 10.5,
             "courses_title": "audi adv prc i",
+            "overallAvg": 91.42,
             "maxAudit": 0,
-            "overallAvg": 91.42
+            "averagePass": 10.5
         },
         {
-            "averagePass": 5,
             "courses_title": "cog/beh interven",
+            "overallAvg": 91.42,
             "maxAudit": 0,
-            "overallAvg": 91.42
+            "averagePass": 5
         },
         {
-            "averagePass": 10,
             "courses_title": "acous & art phon",
+            "overallAvg": 91.4,
             "maxAudit": 0,
-            "overallAvg": 91.4
+            "averagePass": 10
         },
         {
-            "averagePass": 5,
             "courses_title": "astronomical lab",
+            "overallAvg": 91.4,
             "maxAudit": 0,
-            "overallAvg": 91.4
+            "averagePass": 5
         },
         {
-            "averagePass": 32.19,
             "courses_title": "found ed tech",
+            "overallAvg": 91.39,
             "maxAudit": 0,
-            "overallAvg": 91.39
+            "averagePass": 32.19
         },
         {
-            "averagePass": 11,
             "courses_title": "hearng and noise",
+            "overallAvg": 91.38,
             "maxAudit": 0,
-            "overallAvg": 91.38
+            "averagePass": 11
         },
         {
-            "averagePass": 8,
             "courses_title": "forecasting mgmt",
+            "overallAvg": 91.38,
             "maxAudit": 0,
-            "overallAvg": 91.38
+            "averagePass": 8
         },
         {
-            "averagePass": 15,
             "courses_title": "bioenrgtc ph act",
+            "overallAvg": 91.37,
             "maxAudit": 0,
-            "overallAvg": 91.37
+            "averagePass": 15
         },
         {
-            "averagePass": 18,
             "courses_title": "econ thry ii",
+            "overallAvg": 91.36,
             "maxAudit": 0,
-            "overallAvg": 91.36
+            "averagePass": 18
         },
         {
-            "averagePass": 11,
             "courses_title": "top food nu hea",
+            "overallAvg": 91.36,
             "maxAudit": 0,
-            "overallAvg": 91.36
+            "averagePass": 11
         },
         {
-            "averagePass": 2.56,
             "courses_title": "master's thesis",
+            "overallAvg": 91.35,
             "maxAudit": 0,
-            "overallAvg": 91.35
+            "averagePass": 2.56
         },
         {
-            "averagePass": 27.5,
             "courses_title": "prin&meth rsch i",
+            "overallAvg": 91.33,
             "maxAudit": 0,
-            "overallAvg": 91.33
+            "averagePass": 27.5
         },
         {
-            "averagePass": 21,
             "courses_title": "sp-lg pth prc i",
+            "overallAvg": 91.33,
             "maxAudit": 0,
-            "overallAvg": 91.33
+            "averagePass": 21
         },
         {
-            "averagePass": 6,
             "courses_title": "cur iss ntr&dis",
+            "overallAvg": 91.33,
             "maxAudit": 0,
-            "overallAvg": 91.33
+            "averagePass": 6
         },
         {
-            "averagePass": 24.2,
             "courses_title": "hmec ii sec c&p",
+            "overallAvg": 91.32,
             "maxAudit": 0,
-            "overallAvg": 91.32
+            "averagePass": 24.2
         },
         {
-            "averagePass": 19,
             "courses_title": "adv tpcs tmbr st",
+            "overallAvg": 91.32,
             "maxAudit": 0,
-            "overallAvg": 91.32
+            "averagePass": 19
         },
         {
-            "averagePass": 13.6,
             "courses_title": "primary care iii",
+            "overallAvg": 91.31,
             "maxAudit": 0,
-            "overallAvg": 91.31
+            "averagePass": 13.6
         },
         {
-            "averagePass": 17.75,
             "courses_title": "motivation educ",
+            "overallAvg": 91.3,
             "maxAudit": 0,
-            "overallAvg": 91.3
+            "averagePass": 17.75
         },
         {
-            "averagePass": 12.38,
             "courses_title": "student seminar",
+            "overallAvg": 91.3,
             "maxAudit": 0,
-            "overallAvg": 91.3
+            "averagePass": 12.38
         },
         {
-            "averagePass": 6,
             "courses_title": "analyt num thry",
+            "overallAvg": 91.29,
             "maxAudit": 0,
-            "overallAvg": 91.29
+            "averagePass": 6
         },
         {
-            "averagePass": 11,
             "courses_title": "reas & dec-mking",
+            "overallAvg": 91.27,
             "maxAudit": 0,
-            "overallAvg": 91.27
+            "averagePass": 11
         },
         {
-            "averagePass": 27,
             "courses_title": "select libr res",
+            "overallAvg": 91.26,
             "maxAudit": 0,
-            "overallAvg": 91.26
+            "averagePass": 27
         },
         {
-            "averagePass": 16,
             "courses_title": "alg in bioin",
+            "overallAvg": 91.25,
             "maxAudit": 0,
-            "overallAvg": 91.25
+            "averagePass": 16
         },
         {
-            "averagePass": 8,
             "courses_title": "aborig pb health",
+            "overallAvg": 91.25,
             "maxAudit": 0,
-            "overallAvg": 91.25
+            "averagePass": 8
         },
         {
-            "averagePass": 6,
             "courses_title": "ptl dif eqn flud",
+            "overallAvg": 91.25,
             "maxAudit": 0,
-            "overallAvg": 91.25
+            "averagePass": 6
         },
         {
-            "averagePass": 4.5,
             "courses_title": "adv eng acoustcs",
+            "overallAvg": 91.25,
             "maxAudit": 0,
-            "overallAvg": 91.25
+            "averagePass": 4.5
         },
         {
-            "averagePass": 4,
             "courses_title": "elm prticle phys",
+            "overallAvg": 91.25,
             "maxAudit": 0,
-            "overallAvg": 91.25
+            "averagePass": 4
         },
         {
-            "averagePass": 21,
             "courses_title": "dgtl libraries",
+            "overallAvg": 91.24,
             "maxAudit": 0,
-            "overallAvg": 91.24
+            "averagePass": 21
         },
         {
-            "averagePass": 5,
             "courses_title": "masc thesis",
+            "overallAvg": 91.24,
             "maxAudit": 0,
-            "overallAvg": 91.24
+            "averagePass": 5
         },
         {
-            "averagePass": 57.67,
             "courses_title": "clin pharcknetcs",
+            "overallAvg": 91.23,
             "maxAudit": 0,
-            "overallAvg": 91.23
+            "averagePass": 57.67
         },
         {
-            "averagePass": 13,
             "courses_title": "database design",
+            "overallAvg": 91.23,
             "maxAudit": 0,
-            "overallAvg": 91.23
+            "averagePass": 13
         },
         {
-            "averagePass": 24,
             "courses_title": "plant genomics",
+            "overallAvg": 91.21,
             "maxAudit": 0,
-            "overallAvg": 91.21
+            "averagePass": 24
         },
         {
-            "averagePass": 20,
             "courses_title": "pain res & thera",
+            "overallAvg": 91.2,
             "maxAudit": 0,
-            "overallAvg": 91.2
+            "averagePass": 20
         },
         {
-            "averagePass": 15.33,
             "courses_title": "ethics mtrnycare",
+            "overallAvg": 91.2,
             "maxAudit": 0,
-            "overallAvg": 91.2
+            "averagePass": 15.33
         },
         {
-            "averagePass": 5,
             "courses_title": "2nd lang assess: c&e app",
+            "overallAvg": 91.2,
             "maxAudit": 0,
-            "overallAvg": 91.2
+            "averagePass": 5
         },
         {
-            "averagePass": 24.5,
             "courses_title": "dgtl img & text",
+            "overallAvg": 91.17,
             "maxAudit": 0,
-            "overallAvg": 91.17
+            "averagePass": 24.5
         },
         {
-            "averagePass": 13,
             "courses_title": "shpbld proj mgmt",
+            "overallAvg": 91.16,
             "maxAudit": 0,
-            "overallAvg": 91.16
+            "averagePass": 13
         },
         {
-            "averagePass": 5.33,
             "courses_title": "eng report",
+            "overallAvg": 91.16,
             "maxAudit": 0,
-            "overallAvg": 91.16
+            "averagePass": 5.33
         },
         {
-            "averagePass": 5,
             "courses_title": "systmtc pcol lab",
+            "overallAvg": 91.16,
             "maxAudit": 0,
-            "overallAvg": 91.16
+            "averagePass": 5
         },
         {
-            "averagePass": 24,
             "courses_title": "adv hum mole gen",
+            "overallAvg": 91.14,
             "maxAudit": 0,
-            "overallAvg": 91.14
+            "averagePass": 24
         },
         {
-            "averagePass": 7,
             "courses_title": "fsh econ & mgmnt",
+            "overallAvg": 91.14,
             "maxAudit": 0,
-            "overallAvg": 91.14
+            "averagePass": 7
         },
         {
-            "averagePass": 20.29,
             "courses_title": "phar care aborig",
+            "overallAvg": 91.13,
             "maxAudit": 0,
-            "overallAvg": 91.13
+            "averagePass": 20.29
         },
         {
-            "averagePass": 7.33,
             "courses_title": "implant therapy",
+            "overallAvg": 91.11,
             "maxAudit": 0,
-            "overallAvg": 91.11
+            "averagePass": 7.33
         },
         {
-            "averagePass": 50,
             "courses_title": "ord diff equtns",
+            "overallAvg": 91.1,
             "maxAudit": 0,
-            "overallAvg": 91.1
+            "averagePass": 50
         },
         {
-            "averagePass": 10,
             "courses_title": "perf study ii",
+            "overallAvg": 91.1,
             "maxAudit": 0,
-            "overallAvg": 91.1
+            "averagePass": 10
         },
         {
-            "averagePass": 23,
             "courses_title": "resource-bsd tch",
+            "overallAvg": 91.08,
             "maxAudit": 0,
-            "overallAvg": 91.08
+            "averagePass": 23
         },
         {
-            "averagePass": 12,
             "courses_title": "topcs macroecon",
+            "overallAvg": 91.08,
             "maxAudit": 0,
-            "overallAvg": 91.08
+            "averagePass": 12
         },
         {
-            "averagePass": 97,
             "courses_title": "mvmt exp yg chld",
+            "overallAvg": 91.07,
             "maxAudit": 0,
-            "overallAvg": 91.07
+            "averagePass": 97
         },
         {
-            "averagePass": 13.6,
             "courses_title": "tech comm skills",
+            "overallAvg": 91.07,
             "maxAudit": 0,
-            "overallAvg": 91.07
+            "averagePass": 13.6
         },
         {
-            "averagePass": 52,
             "courses_title": "drug safety",
+            "overallAvg": 91.06,
             "maxAudit": 0,
-            "overallAvg": 91.06
+            "averagePass": 52
         },
         {
-            "averagePass": 50,
             "courses_title": "adv steel design",
+            "overallAvg": 91.06,
             "maxAudit": 0,
-            "overallAvg": 91.06
+            "averagePass": 50
         },
         {
-            "averagePass": 18.5,
             "courses_title": "hlth srv res i",
+            "overallAvg": 91.06,
             "maxAudit": 0,
-            "overallAvg": 91.06
+            "averagePass": 18.5
         },
         {
-            "averagePass": 46.5,
             "courses_title": "soci environ",
+            "overallAvg": 91.05,
             "maxAudit": 0,
-            "overallAvg": 91.05
+            "averagePass": 46.5
         },
         {
-            "averagePass": 17.33,
             "courses_title": "lit review i",
+            "overallAvg": 91.04,
             "maxAudit": 0,
-            "overallAvg": 91.04
+            "averagePass": 17.33
         },
         {
-            "averagePass": 5,
             "courses_title": "assm intrv techn",
+            "overallAvg": 91.04,
             "maxAudit": 0,
-            "overallAvg": 91.04
+            "averagePass": 5
         },
         {
-            "averagePass": 20,
             "courses_title": "commnty & popltn",
+            "overallAvg": 91,
             "maxAudit": 0,
-            "overallAvg": 91
+            "averagePass": 20
         },
         {
-            "averagePass": 14.5,
             "courses_title": "biology research",
+            "overallAvg": 91,
             "maxAudit": 0,
-            "overallAvg": 91
+            "averagePass": 14.5
         },
         {
-            "averagePass": 12,
-            "courses_title": "air polutn cntrl",
-            "maxAudit": 0,
-            "overallAvg": 91
-        },
-        {
-            "averagePass": 12,
             "courses_title": "thy rea adu lea",
+            "overallAvg": 91,
             "maxAudit": 0,
-            "overallAvg": 91
+            "averagePass": 12
         },
         {
-            "averagePass": 8,
+            "courses_title": "air polutn cntrl",
+            "overallAvg": 91,
+            "maxAudit": 0,
+            "averagePass": 12
+        },
+        {
             "courses_title": "adv volcanology",
+            "overallAvg": 91,
             "maxAudit": 0,
-            "overallAvg": 91
+            "averagePass": 8
         },
         {
-            "averagePass": 6,
-            "courses_title": "adv field earth",
-            "maxAudit": 0,
-            "overallAvg": 91
-        },
-        {
-            "averagePass": 6,
             "courses_title": "major proj prt 1",
+            "overallAvg": 91,
             "maxAudit": 0,
-            "overallAvg": 91
+            "averagePass": 6
         },
         {
-            "averagePass": 6,
             "courses_title": "anly civl sys",
+            "overallAvg": 91,
             "maxAudit": 0,
-            "overallAvg": 91
+            "averagePass": 6
         },
         {
-            "averagePass": 5,
+            "courses_title": "adv field earth",
+            "overallAvg": 91,
+            "maxAudit": 0,
+            "averagePass": 6
+        },
+        {
             "courses_title": "plant molec lab",
+            "overallAvg": 91,
             "maxAudit": 0,
-            "overallAvg": 91
+            "averagePass": 5
         },
         {
-            "averagePass": 4,
             "courses_title": "adv quant design",
+            "overallAvg": 91,
             "maxAudit": 0,
-            "overallAvg": 91
+            "averagePass": 4
         },
         {
-            "averagePass": 3,
             "courses_title": "forest oper's i",
+            "overallAvg": 91,
             "maxAudit": 0,
-            "overallAvg": 91
+            "averagePass": 3
         },
         {
-            "averagePass": 2.67,
             "courses_title": "m.a. sc. thesis",
+            "overallAvg": 91,
             "maxAudit": 0,
-            "overallAvg": 91
+            "averagePass": 2.67
         },
         {
-            "averagePass": 2,
             "courses_title": "m.eng. grad papr",
+            "overallAvg": 91,
             "maxAudit": 0,
-            "overallAvg": 91
+            "averagePass": 2
         },
         {
-            "averagePass": 1,
             "courses_title": "sch adv rsrch pr",
+            "overallAvg": 91,
             "maxAudit": 0,
-            "overallAvg": 91
+            "averagePass": 1
         },
         {
-            "averagePass": 15.75,
             "courses_title": "tech mlc biol&ex",
+            "overallAvg": 90.99,
             "maxAudit": 0,
-            "overallAvg": 90.99
+            "averagePass": 15.75
         },
         {
-            "averagePass": 25.33,
             "courses_title": "tpcs flu disord",
+            "overallAvg": 90.97,
             "maxAudit": 0,
-            "overallAvg": 90.97
+            "averagePass": 25.33
         },
         {
-            "averagePass": 24.13,
             "courses_title": "com adult educ",
+            "overallAvg": 90.96,
             "maxAudit": 0,
-            "overallAvg": 90.96
+            "averagePass": 24.13
         },
         {
-            "averagePass": 15.33,
             "courses_title": "int thry counsel",
+            "overallAvg": 90.96,
             "maxAudit": 0,
-            "overallAvg": 90.96
+            "averagePass": 15.33
         },
         {
-            "averagePass": 22,
             "courses_title": "lang dev&dis sch",
+            "overallAvg": 90.95,
             "maxAudit": 0,
-            "overallAvg": 90.95
+            "averagePass": 22
         },
         {
-            "averagePass": 6.33,
             "courses_title": "clbrtv piano ii",
+            "overallAvg": 90.95,
             "maxAudit": 0,
-            "overallAvg": 90.95
+            "averagePass": 6.33
         },
         {
-            "averagePass": 29,
             "courses_title": "intro to pcol",
+            "overallAvg": 90.93,
             "maxAudit": 0,
-            "overallAvg": 90.93
+            "averagePass": 29
         },
         {
-            "averagePass": 17.5,
             "courses_title": "assess plan eval",
+            "overallAvg": 90.93,
             "maxAudit": 0,
-            "overallAvg": 90.93
+            "averagePass": 17.5
         },
         {
-            "averagePass": 14.17,
             "courses_title": "basic intvw skls",
+            "overallAvg": 90.92,
             "maxAudit": 0,
-            "overallAvg": 90.92
+            "averagePass": 14.17
         },
         {
-            "averagePass": 13,
             "courses_title": "hist anth thght",
+            "overallAvg": 90.92,
             "maxAudit": 0,
-            "overallAvg": 90.92
+            "averagePass": 13
         },
         {
-            "averagePass": 22.25,
             "courses_title": "qlt rsrch mthd",
+            "overallAvg": 90.91,
             "maxAudit": 0,
-            "overallAvg": 90.91
+            "averagePass": 22.25
         },
         {
-            "averagePass": 23.45,
             "courses_title": "appl lear theor",
+            "overallAvg": 90.9,
             "maxAudit": 0,
-            "overallAvg": 90.9
+            "averagePass": 23.45
         },
         {
-            "averagePass": 18.71,
             "courses_title": "group counsling",
+            "overallAvg": 90.9,
             "maxAudit": 0,
-            "overallAvg": 90.9
+            "averagePass": 18.71
         },
         {
-            "averagePass": 4.2,
             "courses_title": "graduating paper",
+            "overallAvg": 90.9,
             "maxAudit": 0,
-            "overallAvg": 90.9
+            "averagePass": 4.2
         },
         {
-            "averagePass": 59.5,
             "courses_title": "int field school",
+            "overallAvg": 90.89,
             "maxAudit": 0,
-            "overallAvg": 90.89
+            "averagePass": 59.5
         },
         {
-            "averagePass": 19,
             "courses_title": "adv can soc plcy",
+            "overallAvg": 90.89,
             "maxAudit": 0,
-            "overallAvg": 90.89
+            "averagePass": 19
         },
         {
-            "averagePass": 16,
             "courses_title": "pharcgy prm care",
+            "overallAvg": 90.88,
             "maxAudit": 0,
-            "overallAvg": 90.88
+            "averagePass": 16
         },
         {
-            "averagePass": 8,
             "courses_title": "dir fld st sp&ph",
+            "overallAvg": 90.88,
             "maxAudit": 0,
-            "overallAvg": 90.88
+            "averagePass": 8
         },
         {
-            "averagePass": 4,
             "courses_title": "endo lit rev ii",
+            "overallAvg": 90.88,
             "maxAudit": 0,
-            "overallAvg": 90.88
+            "averagePass": 4
         },
         {
-            "averagePass": 13.86,
             "courses_title": "ph d resrch sem",
+            "overallAvg": 90.86,
             "maxAudit": 0,
-            "overallAvg": 90.86
+            "averagePass": 13.86
         },
         {
-            "averagePass": 7,
             "courses_title": "tpcs cell comm",
+            "overallAvg": 90.86,
             "maxAudit": 0,
-            "overallAvg": 90.86
+            "averagePass": 7
         },
         {
-            "averagePass": 13.5,
             "courses_title": "counslng adults",
+            "overallAvg": 90.85,
             "maxAudit": 0,
-            "overallAvg": 90.85
+            "averagePass": 13.5
         },
         {
-            "averagePass": 11.75,
             "courses_title": "honours seminar",
+            "overallAvg": 90.84,
             "maxAudit": 0,
-            "overallAvg": 90.84
+            "averagePass": 11.75
         },
         {
-            "averagePass": 120.75,
             "courses_title": "pharm mgmt",
+            "overallAvg": 90.83,
             "maxAudit": 0,
-            "overallAvg": 90.83
+            "averagePass": 120.75
         },
         {
-            "averagePass": 12,
             "courses_title": "or microbi&immun",
+            "overallAvg": 90.83,
             "maxAudit": 0,
-            "overallAvg": 90.83
+            "averagePass": 12
         },
         {
-            "averagePass": 7.5,
             "courses_title": "stat sig proc",
+            "overallAvg": 90.83,
             "maxAudit": 0,
-            "overallAvg": 90.83
+            "averagePass": 7.5
         },
         {
-            "averagePass": 6,
             "courses_title": "rdtn dosimetry",
+            "overallAvg": 90.83,
             "maxAudit": 0,
-            "overallAvg": 90.83
+            "averagePass": 6
         },
         {
-            "averagePass": 6,
             "courses_title": "fin el heat tran",
+            "overallAvg": 90.83,
             "maxAudit": 0,
-            "overallAvg": 90.83
+            "averagePass": 6
         },
         {
-            "averagePass": 6,
             "courses_title": "dig comm&tpcs ag",
+            "overallAvg": 90.83,
             "maxAudit": 0,
-            "overallAvg": 90.83
+            "averagePass": 6
         },
         {
-            "averagePass": 79.5,
             "courses_title": "clinical dec i",
+            "overallAvg": 90.81,
             "maxAudit": 0,
-            "overallAvg": 90.81
+            "averagePass": 79.5
         },
         {
-            "averagePass": 31,
             "courses_title": "sup indg inftnts",
+            "overallAvg": 90.81,
             "maxAudit": 0,
-            "overallAvg": 90.81
+            "averagePass": 31
         },
         {
-            "averagePass": 15.67,
             "courses_title": "ldrship pub hlth",
+            "overallAvg": 90.81,
             "maxAudit": 0,
-            "overallAvg": 90.81
+            "averagePass": 15.67
         },
         {
-            "averagePass": 5,
             "courses_title": "intr mod diff ge",
+            "overallAvg": 90.81,
             "maxAudit": 0,
-            "overallAvg": 90.81
+            "averagePass": 5
         },
         {
-            "averagePass": 23,
             "courses_title": "phono intervent",
+            "overallAvg": 90.8,
             "maxAudit": 0,
-            "overallAvg": 90.8
+            "averagePass": 23
         },
         {
-            "averagePass": 11.5,
             "courses_title": "tech cel&dev bio",
+            "overallAvg": 90.79,
             "maxAudit": 0,
-            "overallAvg": 90.79
+            "averagePass": 11.5
         },
         {
-            "averagePass": 27.86,
             "courses_title": "role tcher guid",
+            "overallAvg": 90.75,
             "maxAudit": 0,
-            "overallAvg": 90.75
+            "averagePass": 27.86
         },
         {
-            "averagePass": 18.25,
             "courses_title": "qlt mthd ed psy",
+            "overallAvg": 90.75,
             "maxAudit": 0,
-            "overallAvg": 90.75
+            "averagePass": 18.25
         },
         {
-            "averagePass": 12,
             "courses_title": "t & l kind & prm",
+            "overallAvg": 90.75,
             "maxAudit": 0,
-            "overallAvg": 90.75
+            "averagePass": 12
         },
         {
-            "averagePass": 4,
-            "courses_title": "cardiovas path",
-            "maxAudit": 0,
-            "overallAvg": 90.75
-        },
-        {
-            "averagePass": 4,
-            "courses_title": "quant mech chem",
-            "maxAudit": 0,
-            "overallAvg": 90.75
-        },
-        {
-            "averagePass": 4,
             "courses_title": "ths: biotech tpc",
+            "overallAvg": 90.75,
             "maxAudit": 0,
-            "overallAvg": 90.75
+            "averagePass": 4
         },
         {
-            "averagePass": 4,
+            "courses_title": "quant mech chem",
+            "overallAvg": 90.75,
+            "maxAudit": 0,
+            "averagePass": 4
+        },
+        {
             "courses_title": "int nut fld stdy",
+            "overallAvg": 90.75,
             "maxAudit": 0,
-            "overallAvg": 90.75
+            "averagePass": 4
         },
         {
-            "averagePass": 94,
+            "courses_title": "cardiovas path",
+            "overallAvg": 90.75,
+            "maxAudit": 0,
+            "averagePass": 4
+        },
+        {
             "courses_title": "psnl soc dv adlt",
+            "overallAvg": 90.73,
             "maxAudit": 0,
-            "overallAvg": 90.73
+            "averagePass": 94
         },
         {
-            "averagePass": 8,
             "courses_title": "vid eth ed res",
+            "overallAvg": 90.73,
             "maxAudit": 0,
-            "overallAvg": 90.73
+            "averagePass": 8
         },
         {
-            "averagePass": 31.75,
             "courses_title": "info services i",
+            "overallAvg": 90.72,
             "maxAudit": 0,
-            "overallAvg": 90.72
+            "averagePass": 31.75
         },
         {
-            "averagePass": 18.38,
             "courses_title": "ldrshp educ org",
+            "overallAvg": 90.72,
             "maxAudit": 0,
-            "overallAvg": 90.72
+            "averagePass": 18.38
         },
         {
-            "averagePass": 10,
             "courses_title": "diag audio ii",
+            "overallAvg": 90.72,
             "maxAudit": 0,
-            "overallAvg": 90.72
+            "averagePass": 10
         },
         {
-            "averagePass": 22.75,
             "courses_title": "arch learn systs",
+            "overallAvg": 90.71,
             "maxAudit": 0,
-            "overallAvg": 90.71
+            "averagePass": 22.75
         },
         {
-            "averagePass": 14,
             "courses_title": "sem in botany",
+            "overallAvg": 90.71,
             "maxAudit": 0,
-            "overallAvg": 90.71
+            "averagePass": 14
         },
         {
-            "averagePass": 11.83,
             "courses_title": "adv conc pharmac",
+            "overallAvg": 90.71,
             "maxAudit": 0,
-            "overallAvg": 90.71
+            "averagePass": 11.83
         },
         {
-            "averagePass": 7,
             "courses_title": "land water semnr",
+            "overallAvg": 90.71,
             "maxAudit": 0,
-            "overallAvg": 90.71
+            "averagePass": 7
         },
         {
-            "averagePass": 7,
             "courses_title": "artif intell 2",
+            "overallAvg": 90.71,
             "maxAudit": 0,
-            "overallAvg": 90.71
+            "averagePass": 7
         },
         {
-            "averagePass": 90.33,
             "courses_title": "prev spts inj ii",
+            "overallAvg": 90.7,
             "maxAudit": 0,
-            "overallAvg": 90.7
+            "averagePass": 90.33
         },
         {
-            "averagePass": 10,
             "courses_title": "rdiothrpy phy ii",
+            "overallAvg": 90.7,
             "maxAudit": 0,
-            "overallAvg": 90.7
+            "averagePass": 10
         },
         {
-            "averagePass": 13,
             "courses_title": "min & soc",
+            "overallAvg": 90.69,
             "maxAudit": 0,
-            "overallAvg": 90.69
+            "averagePass": 13
         },
         {
-            "averagePass": 59,
             "courses_title": "chrn hlth iss",
+            "overallAvg": 90.68,
             "maxAudit": 0,
-            "overallAvg": 90.68
+            "averagePass": 59
         },
         {
-            "averagePass": 38,
             "courses_title": "mole & cell biol",
+            "overallAvg": 90.68,
             "maxAudit": 0,
-            "overallAvg": 90.68
+            "averagePass": 38
         },
         {
-            "averagePass": 28,
             "courses_title": "econometrics",
+            "overallAvg": 90.68,
             "maxAudit": 0,
-            "overallAvg": 90.68
+            "averagePass": 28
         },
         {
-            "averagePass": 25,
             "courses_title": "hazard anal food",
+            "overallAvg": 90.68,
             "maxAudit": 0,
-            "overallAvg": 90.68
+            "averagePass": 25
         },
         {
-            "averagePass": 15,
             "courses_title": "intr tch ch lit",
+            "overallAvg": 90.67,
             "maxAudit": 0,
-            "overallAvg": 90.67
+            "averagePass": 15
         },
         {
-            "averagePass": 12,
             "courses_title": "research in cnps",
+            "overallAvg": 90.67,
             "maxAudit": 0,
-            "overallAvg": 90.67
+            "averagePass": 12
         },
         {
-            "averagePass": 9,
             "courses_title": "rehab theory",
+            "overallAvg": 90.67,
             "maxAudit": 0,
-            "overallAvg": 90.67
+            "averagePass": 9
         },
         {
-            "averagePass": 3,
             "courses_title": "adv mineralogy",
+            "overallAvg": 90.67,
             "maxAudit": 0,
-            "overallAvg": 90.67
+            "averagePass": 3
         },
         {
-            "averagePass": 17,
             "courses_title": "rsrch evidence",
+            "overallAvg": 90.65,
             "maxAudit": 0,
-            "overallAvg": 90.65
+            "averagePass": 17
         },
         {
-            "averagePass": 11,
             "courses_title": "res tch & lrn sc",
+            "overallAvg": 90.64,
             "maxAudit": 0,
-            "overallAvg": 90.64
+            "averagePass": 11
         },
         {
-            "averagePass": 51.5,
             "courses_title": "can soci plcy",
+            "overallAvg": 90.63,
             "maxAudit": 0,
-            "overallAvg": 90.63
+            "averagePass": 51.5
         },
         {
-            "averagePass": 8,
             "courses_title": "educ prc nurs",
+            "overallAvg": 90.63,
             "maxAudit": 0,
-            "overallAvg": 90.63
+            "averagePass": 8
         },
         {
-            "averagePass": 6,
             "courses_title": "wavelets",
+            "overallAvg": 90.63,
             "maxAudit": 0,
-            "overallAvg": 90.63
+            "averagePass": 6
         },
         {
-            "averagePass": 29,
             "courses_title": "first nat soc is",
+            "overallAvg": 90.62,
             "maxAudit": 0,
-            "overallAvg": 90.62
+            "averagePass": 29
         },
         {
-            "averagePass": 80,
             "courses_title": "case integr i",
+            "overallAvg": 90.61,
             "maxAudit": 0,
-            "overallAvg": 90.61
+            "averagePass": 80
         },
         {
-            "averagePass": 14,
             "courses_title": "primary care ii",
+            "overallAvg": 90.61,
             "maxAudit": 0,
-            "overallAvg": 90.61
+            "averagePass": 14
         },
         {
-            "averagePass": 15,
             "courses_title": "qst, theor, mthd",
+            "overallAvg": 90.6,
             "maxAudit": 0,
-            "overallAvg": 90.6
+            "averagePass": 15
         },
         {
-            "averagePass": 5.5,
             "courses_title": "bibliog & resrch",
+            "overallAvg": 90.59,
             "maxAudit": 0,
-            "overallAvg": 90.59
+            "averagePass": 5.5
         },
         {
-            "averagePass": 21.67,
             "courses_title": "sp-lg pth pr iii",
+            "overallAvg": 90.57,
             "maxAudit": 0,
-            "overallAvg": 90.57
+            "averagePass": 21.67
         },
         {
-            "averagePass": 7,
-            "courses_title": "hlth & human sec",
-            "maxAudit": 0,
-            "overallAvg": 90.57
-        },
-        {
-            "averagePass": 7,
             "courses_title": "real analysis i",
+            "overallAvg": 90.57,
             "maxAudit": 0,
-            "overallAvg": 90.57
+            "averagePass": 7
         },
         {
-            "averagePass": 23.14,
+            "courses_title": "hlth & human sec",
+            "overallAvg": 90.57,
+            "maxAudit": 0,
+            "averagePass": 7
+        },
+        {
             "courses_title": "text tech",
+            "overallAvg": 90.56,
             "maxAudit": 0,
-            "overallAvg": 90.56
+            "averagePass": 23.14
         },
         {
-            "averagePass": 11.5,
             "courses_title": "soc detrmin hlth",
+            "overallAvg": 90.56,
             "maxAudit": 0,
-            "overallAvg": 90.56
+            "averagePass": 11.5
         },
         {
-            "averagePass": 11.33,
             "courses_title": "design & bioassy",
+            "overallAvg": 90.56,
             "maxAudit": 0,
-            "overallAvg": 90.56
+            "averagePass": 11.33
         },
         {
-            "averagePass": 9,
             "courses_title": "mth ed: crnt iss",
+            "overallAvg": 90.56,
             "maxAudit": 0,
-            "overallAvg": 90.56
+            "averagePass": 9
         },
         {
-            "averagePass": 4,
             "courses_title": "research seminar",
+            "overallAvg": 90.54,
             "maxAudit": 0,
-            "overallAvg": 90.54
+            "averagePass": 4
         },
         {
-            "averagePass": 60.33,
             "courses_title": "cs phar sci iv",
+            "overallAvg": 90.53,
             "maxAudit": 0,
-            "overallAvg": 90.53
+            "averagePass": 60.33
         },
         {
-            "averagePass": 6.5,
             "courses_title": "urbn restructing",
+            "overallAvg": 90.53,
             "maxAudit": 0,
-            "overallAvg": 90.53
+            "averagePass": 6.5
         },
         {
-            "averagePass": 22,
             "courses_title": "ldr adm aim educ",
+            "overallAvg": 90.5,
             "maxAudit": 0,
-            "overallAvg": 90.5
+            "averagePass": 22
         },
         {
-            "averagePass": 10,
             "courses_title": "energy enginring",
+            "overallAvg": 90.5,
             "maxAudit": 0,
-            "overallAvg": 90.5
+            "averagePass": 10
         },
         {
-            "averagePass": 4,
             "courses_title": "clin endo yr 2",
+            "overallAvg": 90.5,
             "maxAudit": 0,
-            "overallAvg": 90.5
+            "averagePass": 4
         },
         {
-            "averagePass": 5.67,
             "courses_title": "quant an fish i",
+            "overallAvg": 90.49,
             "maxAudit": 0,
-            "overallAvg": 90.49
+            "averagePass": 5.67
         },
         {
-            "averagePass": 21,
             "courses_title": "coast terr esyst",
+            "overallAvg": 90.48,
             "maxAudit": 0,
-            "overallAvg": 90.48
+            "averagePass": 21
         },
         {
-            "averagePass": 8.5,
             "courses_title": "mangmt info orgs",
+            "overallAvg": 90.47,
             "maxAudit": 0,
-            "overallAvg": 90.47
+            "averagePass": 8.5
         },
         {
-            "averagePass": 39,
             "courses_title": "compensation",
+            "overallAvg": 90.46,
             "maxAudit": 0,
-            "overallAvg": 90.46
+            "averagePass": 39
         },
         {
-            "averagePass": 13,
             "courses_title": "scene painting i",
+            "overallAvg": 90.46,
             "maxAudit": 0,
-            "overallAvg": 90.46
+            "averagePass": 13
         },
         {
-            "averagePass": 155,
             "courses_title": "biophys pharm i",
+            "overallAvg": 90.45,
             "maxAudit": 0,
-            "overallAvg": 90.45
+            "averagePass": 155
         },
         {
-            "averagePass": 11,
             "courses_title": "masc thesis dev",
+            "overallAvg": 90.45,
             "maxAudit": 0,
-            "overallAvg": 90.45
+            "averagePass": 11
         },
         {
-            "averagePass": 39,
             "courses_title": "size of things",
+            "overallAvg": 90.44,
             "maxAudit": 0,
-            "overallAvg": 90.44
+            "averagePass": 39
         },
         {
-            "averagePass": 25,
             "courses_title": "envr'tl lab anly",
+            "overallAvg": 90.44,
             "maxAudit": 0,
-            "overallAvg": 90.44
+            "averagePass": 25
         },
         {
-            "averagePass": 16.67,
             "courses_title": "lab expl earth",
+            "overallAvg": 90.44,
             "maxAudit": 0,
-            "overallAvg": 90.44
+            "averagePass": 16.67
         },
         {
-            "averagePass": 16,
             "courses_title": "econ, cont, fina",
+            "overallAvg": 90.44,
             "maxAudit": 0,
-            "overallAvg": 90.44
+            "averagePass": 16
         },
         {
-            "averagePass": 9,
             "courses_title": "teaching of psyc",
+            "overallAvg": 90.44,
             "maxAudit": 0,
-            "overallAvg": 90.44
+            "averagePass": 9
         },
         {
-            "averagePass": 7,
             "courses_title": "complex analysis",
+            "overallAvg": 90.43,
             "maxAudit": 0,
-            "overallAvg": 90.43
+            "averagePass": 7
         },
         {
-            "averagePass": 19,
             "courses_title": "oral pathology",
+            "overallAvg": 90.42,
             "maxAudit": 0,
-            "overallAvg": 90.42
+            "averagePass": 19
         },
         {
-            "averagePass": 13.5,
             "courses_title": "dyn mdl elec",
+            "overallAvg": 90.42,
             "maxAudit": 0,
-            "overallAvg": 90.42
+            "averagePass": 13.5
         },
         {
-            "averagePass": 28,
             "courses_title": "viral infec humn",
+            "overallAvg": 90.39,
             "maxAudit": 0,
-            "overallAvg": 90.39
+            "averagePass": 28
         },
         {
-            "averagePass": 28,
             "courses_title": "trns sys pl&anly",
+            "overallAvg": 90.39,
             "maxAudit": 0,
-            "overallAvg": 90.39
+            "averagePass": 28
         },
         {
-            "averagePass": 18,
             "courses_title": "costum constr ii",
+            "overallAvg": 90.39,
             "maxAudit": 0,
-            "overallAvg": 90.39
+            "averagePass": 18
         },
         {
-            "averagePass": 24,
             "courses_title": "disord sp prod",
+            "overallAvg": 90.38,
             "maxAudit": 0,
-            "overallAvg": 90.38
+            "averagePass": 24
         },
         {
-            "averagePass": 8,
             "courses_title": "hltcr systm anyl",
+            "overallAvg": 90.38,
             "maxAudit": 0,
-            "overallAvg": 90.38
+            "averagePass": 8
         },
         {
-            "averagePass": 18,
             "courses_title": "h gwaii cse stdy",
+            "overallAvg": 90.33,
             "maxAudit": 0,
-            "overallAvg": 90.33
+            "averagePass": 18
         },
         {
-            "averagePass": 12,
             "courses_title": "crt anly iss&mth",
+            "overallAvg": 90.33,
             "maxAudit": 0,
-            "overallAvg": 90.33
+            "averagePass": 12
         },
         {
-            "averagePass": 8.5,
             "courses_title": "adv tpcs mole bi",
+            "overallAvg": 90.33,
             "maxAudit": 0,
-            "overallAvg": 90.33
+            "averagePass": 8.5
         },
         {
-            "averagePass": 6,
-            "courses_title": "adv rock engnrng",
-            "maxAudit": 0,
-            "overallAvg": 90.33
-        },
-        {
-            "averagePass": 6,
             "courses_title": "test constructio",
+            "overallAvg": 90.33,
             "maxAudit": 0,
-            "overallAvg": 90.33
+            "averagePass": 6
         },
         {
-            "averagePass": 6,
             "courses_title": "sem reprd biol",
+            "overallAvg": 90.33,
             "maxAudit": 0,
-            "overallAvg": 90.33
+            "averagePass": 6
         },
         {
-            "averagePass": 6,
             "courses_title": "num tec oc,at&er",
+            "overallAvg": 90.33,
             "maxAudit": 0,
-            "overallAvg": 90.33
+            "averagePass": 6
         },
         {
-            "averagePass": 5,
+            "courses_title": "adv rock engnrng",
+            "overallAvg": 90.33,
+            "maxAudit": 0,
+            "averagePass": 6
+        },
+        {
             "courses_title": "basic russian ii",
+            "overallAvg": 90.33,
             "maxAudit": 0,
-            "overallAvg": 90.33
+            "averagePass": 5
         },
         {
-            "averagePass": 22,
             "courses_title": "intro rsrch educ",
+            "overallAvg": 90.32,
             "maxAudit": 0,
-            "overallAvg": 90.32
+            "averagePass": 22
         },
         {
-            "averagePass": 10,
             "courses_title": "honours essay",
+            "overallAvg": 90.3,
             "maxAudit": 0,
-            "overallAvg": 90.3
+            "averagePass": 10
         },
         {
-            "averagePass": 31,
             "courses_title": "org lrn res",
+            "overallAvg": 90.29,
             "maxAudit": 0,
-            "overallAvg": 90.29
+            "averagePass": 31
         },
         {
-            "averagePass": 14,
-            "courses_title": "res mthds kin",
-            "maxAudit": 0,
-            "overallAvg": 90.29
-        },
-        {
-            "averagePass": 14,
             "courses_title": "tech stat conslt",
+            "overallAvg": 90.29,
             "maxAudit": 0,
-            "overallAvg": 90.29
+            "averagePass": 14
         },
         {
-            "averagePass": 14,
+            "courses_title": "res mthds kin",
+            "overallAvg": 90.29,
+            "maxAudit": 0,
+            "averagePass": 14
+        },
+        {
             "courses_title": "adv gsat concept",
+            "overallAvg": 90.29,
             "maxAudit": 0,
-            "overallAvg": 90.29
+            "averagePass": 14
         },
         {
-            "averagePass": 7,
             "courses_title": "intermd sanskrit",
+            "overallAvg": 90.29,
             "maxAudit": 0,
-            "overallAvg": 90.29
+            "averagePass": 7
         },
         {
-            "averagePass": 7,
             "courses_title": "cntrl com dis",
+            "overallAvg": 90.29,
             "maxAudit": 0,
-            "overallAvg": 90.29
+            "averagePass": 7
         },
         {
-            "averagePass": 152,
             "courses_title": "pharmacokinetics",
+            "overallAvg": 90.26,
             "maxAudit": 0,
-            "overallAvg": 90.26
+            "averagePass": 152
         },
         {
-            "averagePass": 31,
             "courses_title": "transprt'n eng 2",
+            "overallAvg": 90.26,
             "maxAudit": 0,
-            "overallAvg": 90.26
+            "averagePass": 31
         },
         {
-            "averagePass": 120,
             "courses_title": "intro to conserv",
+            "overallAvg": 90.25,
             "maxAudit": 0,
-            "overallAvg": 90.25
+            "averagePass": 120
         },
         {
-            "averagePass": 24,
             "courses_title": "med lab toxiclgy",
+            "overallAvg": 90.25,
             "maxAudit": 0,
-            "overallAvg": 90.25
+            "averagePass": 24
         },
         {
-            "averagePass": 8,
             "courses_title": "optimiz eng syst",
+            "overallAvg": 90.25,
             "maxAudit": 0,
-            "overallAvg": 90.25
+            "averagePass": 8
         },
         {
-            "averagePass": 4,
-            "courses_title": "intro exper phys",
-            "maxAudit": 0,
-            "overallAvg": 90.25
-        },
-        {
-            "averagePass": 4,
-            "courses_title": "drugs &intercell",
-            "maxAudit": 0,
-            "overallAvg": 90.25
-        },
-        {
-            "averagePass": 4,
             "courses_title": "mltvar&vctr calc",
+            "overallAvg": 90.25,
             "maxAudit": 0,
-            "overallAvg": 90.25
+            "averagePass": 4
         },
         {
-            "averagePass": 4,
+            "courses_title": "intro exper phys",
+            "overallAvg": 90.25,
+            "maxAudit": 0,
+            "averagePass": 4
+        },
+        {
             "courses_title": "endo lit rev i",
+            "overallAvg": 90.25,
             "maxAudit": 0,
-            "overallAvg": 90.25
+            "averagePass": 4
         },
         {
-            "averagePass": 21,
+            "courses_title": "drugs &intercell",
+            "overallAvg": 90.25,
+            "maxAudit": 0,
+            "averagePass": 4
+        },
+        {
             "courses_title": "digtl med: intro",
+            "overallAvg": 90.24,
             "maxAudit": 0,
-            "overallAvg": 90.24
+            "averagePass": 21
         },
         {
-            "averagePass": 17,
             "courses_title": "complex fluids",
+            "overallAvg": 90.24,
             "maxAudit": 0,
-            "overallAvg": 90.24
+            "averagePass": 17
         },
         {
-            "averagePass": 11,
             "courses_title": "dta anl at,er&oc",
+            "overallAvg": 90.24,
             "maxAudit": 0,
-            "overallAvg": 90.24
+            "averagePass": 11
         },
         {
-            "averagePass": 13,
             "courses_title": "app mng scie i",
+            "overallAvg": 90.23,
             "maxAudit": 0,
-            "overallAvg": 90.23
+            "averagePass": 13
         },
         {
-            "averagePass": 46,
             "courses_title": "matrx struc anly",
+            "overallAvg": 90.22,
             "maxAudit": 0,
-            "overallAvg": 90.22
+            "averagePass": 46
         },
         {
-            "averagePass": 14,
             "courses_title": "aborignl forestr",
+            "overallAvg": 90.21,
             "maxAudit": 0,
-            "overallAvg": 90.21
+            "averagePass": 14
         },
         {
-            "averagePass": 10,
             "courses_title": "3d mdl cost est",
+            "overallAvg": 90.2,
             "maxAudit": 0,
-            "overallAvg": 90.2
+            "averagePass": 10
         },
         {
-            "averagePass": 5,
             "courses_title": "mech nat defrmtn",
+            "overallAvg": 90.2,
             "maxAudit": 0,
-            "overallAvg": 90.2
+            "averagePass": 5
         },
         {
-            "averagePass": 5,
             "courses_title": "adv geo fld dyn",
+            "overallAvg": 90.2,
             "maxAudit": 0,
-            "overallAvg": 90.2
+            "averagePass": 5
         },
         {
-            "averagePass": 27,
             "courses_title": "exer physolgy ii",
+            "overallAvg": 90.19,
             "maxAudit": 0,
-            "overallAvg": 90.19
+            "averagePass": 27
         },
         {
-            "averagePass": 21,
-            "courses_title": "jazz ensemble",
-            "maxAudit": 0,
-            "overallAvg": 90.19
-        },
-        {
-            "averagePass": 21,
             "courses_title": "montry thry pol",
+            "overallAvg": 90.19,
             "maxAudit": 0,
-            "overallAvg": 90.19
+            "averagePass": 21
         },
         {
-            "averagePass": 11,
+            "courses_title": "jazz ensemble",
+            "overallAvg": 90.19,
+            "maxAudit": 0,
+            "averagePass": 21
+        },
+        {
             "courses_title": "natural res econ",
+            "overallAvg": 90.18,
             "maxAudit": 0,
-            "overallAvg": 90.18
+            "averagePass": 11
         },
         {
-            "averagePass": 21,
             "courses_title": "adul educ",
+            "overallAvg": 90.17,
             "maxAudit": 0,
-            "overallAvg": 90.17
+            "averagePass": 21
         },
         {
-            "averagePass": 6,
             "courses_title": "fuel cell system",
+            "overallAvg": 90.17,
             "maxAudit": 0,
-            "overallAvg": 90.17
+            "averagePass": 6
         },
         {
-            "averagePass": 21,
             "courses_title": "dramaturgy",
+            "overallAvg": 90.14,
             "maxAudit": 0,
-            "overallAvg": 90.14
+            "averagePass": 21
         },
         {
-            "averagePass": 7,
             "courses_title": "adv compsit mtrl",
+            "overallAvg": 90.14,
             "maxAudit": 0,
-            "overallAvg": 90.14
+            "averagePass": 7
         },
         {
-            "averagePass": 16,
             "courses_title": "complex adapt sy",
+            "overallAvg": 90.13,
             "maxAudit": 0,
-            "overallAvg": 90.13
+            "averagePass": 16
         },
         {
-            "averagePass": 16,
             "courses_title": "adv int sem in sw th",
+            "overallAvg": 90.13,
             "maxAudit": 0,
-            "overallAvg": 90.13
+            "averagePass": 16
         },
         {
-            "averagePass": 25,
             "courses_title": "adv speech scie",
+            "overallAvg": 90.12,
             "maxAudit": 0,
-            "overallAvg": 90.12
+            "averagePass": 25
         },
         {
-            "averagePass": 132,
             "courses_title": "opt&dcs anl civl",
+            "overallAvg": 90.11,
             "maxAudit": 0,
-            "overallAvg": 90.11
+            "averagePass": 132
         },
         {
-            "averagePass": 9,
             "courses_title": "work & learning",
+            "overallAvg": 90.11,
             "maxAudit": 0,
-            "overallAvg": 90.11
+            "averagePass": 9
         },
         {
-            "averagePass": 10,
             "courses_title": "doctoral seminar",
+            "overallAvg": 90.1,
             "maxAudit": 0,
-            "overallAvg": 90.1
+            "averagePass": 10
         },
         {
-            "averagePass": 56,
             "courses_title": "health care team",
+            "overallAvg": 90.09,
             "maxAudit": 0,
-            "overallAvg": 90.09
+            "averagePass": 56
         },
         {
-            "averagePass": 13,
             "courses_title": "dentalhyg prac i",
+            "overallAvg": 90.08,
             "maxAudit": 0,
-            "overallAvg": 90.08
+            "averagePass": 13
         },
         {
-            "averagePass": 13,
             "courses_title": "art song int prf",
+            "overallAvg": 90.08,
             "maxAudit": 0,
-            "overallAvg": 90.08
+            "averagePass": 13
         },
         {
-            "averagePass": 12,
             "courses_title": "urban transport",
+            "overallAvg": 90.08,
             "maxAudit": 0,
-            "overallAvg": 90.08
+            "averagePass": 12
         },
         {
-            "averagePass": 16,
             "courses_title": "stat lit nursing",
+            "overallAvg": 90.06,
             "maxAudit": 0,
-            "overallAvg": 90.06
+            "averagePass": 16
         },
         {
-            "averagePass": 16,
             "courses_title": "soil dynamics",
+            "overallAvg": 90.06,
             "maxAudit": 0,
-            "overallAvg": 90.06
+            "averagePass": 16
         }
     ]
 }

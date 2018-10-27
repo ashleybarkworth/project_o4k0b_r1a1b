@@ -1,0 +1,44 @@
+{
+    "title": "extra options keys",
+    "query": {
+        "WHERE": {
+            "LT": {
+                "rooms_seats": 100
+            }
+        },
+        "OPTIONS": {
+            "COLUMNS": [
+                "rooms_shortname",
+                "minLat",
+                "lonSum"
+            ],
+            "ORDER": {
+                "boo": "BOO",
+                "dir": "DOWN",
+                "keys": [
+                    "lonSum",
+                    "minLat"
+                ]
+            }
+        },
+        "TRANSFORMATIONS": {
+            "GROUP": [
+                "rooms_shortname"
+            ],
+            "APPLY": [
+                {
+                    "lonSum": {
+                        "SUM": "rooms_lon"
+                    }
+                },
+                {
+                    "minLat": {
+                        "MIN": "rooms_lat"
+                    }
+                }
+            ]
+        }
+    },
+    "isQueryValid": false,
+    "result": "no good"
+}
