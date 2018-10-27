@@ -614,21 +614,7 @@ describe("Tests that require mucking around with the state", () => {
     let memoryCache = new MemoryCache(); // Lets us test some edge cases to create this separately
     insightFacade.setMemoryCache(memoryCache);
 
-    // Start with a clean slate
-    before(async function () {
-        const allSets: InsightDataset[] = await insightFacade.listDatasets();
-        await allSets.forEach(async (v) => await insightFacade.removeDataset(v.id));
-    });
-
     it("Test loading from disk for a query", async function () {
-
-        let dataset;
-        await TestUtil.readFileAsync("./test/data/courses.zip").then((buf) => {
-                dataset = buf.toString("base64");
-            }
-        );
-        await insightFacade.addDataset("courses", dataset, InsightDatasetKind.Courses);
-        memoryCache.removeDataSet("courses");
         let resp = await
             insightFacade.performQuery({WHERE: {LT: {courses_avg: 1}}, OPTIONS: {COLUMNS: ["courses_dept"]}});
         expect(resp).does.not.have.length(0);
@@ -637,14 +623,7 @@ describe("Tests that require mucking around with the state", () => {
     it("List datasets load from disk", async function () {
         memoryCache.removeDataSet("courses");
         let result: InsightDataset[] = await insightFacade.listDatasets();
-        expect(result).to.have.length(1);
-    });
-
-    it("List datasets, no ./data directory", async function () {
-        await insightFacade.removeDataset("courses");
-        fs.rmdirSync(dataDirectoryPath);
-        let result: InsightDataset[] = await insightFacade.listDatasets();
-        expect(result).to.have.length(0);
+        expect(result).not.to.have.length(0);
     });
 });
 

@@ -112,6 +112,6 @@ describe("Test deserialization", function () {
         expect(transformations.kind).to.eq(InsightDatasetKind.Courses);
         let apply: Apply = transformations.apply[0];
         expect(apply.getName()).to.deep.eq("overallAvg");
-        expect(apply.apply(courseSections)).to.eq(52.5);
+        expect(apply.apply(courseSections)).to.eq(52.78);
     });
 });
