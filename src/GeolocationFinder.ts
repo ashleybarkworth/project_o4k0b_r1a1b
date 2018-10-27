@@ -15,8 +15,8 @@ export class GeolocationFinder {
             this.httpRequest.get(this.baseRequestURL + escapedAddress)
                 .then((rawResponse) => {
                     let asJson: any = JSON.parse(rawResponse);
-                    if (Object.keys(asJson).includes("err")) {
-                        reject(new GeolocationError(asJson.err));
+                    if (Object.keys(asJson).includes("error")) {
+                        reject(new GeolocationError(asJson.error));
                     }
                     resolve({
                         lat: asJson.lat,

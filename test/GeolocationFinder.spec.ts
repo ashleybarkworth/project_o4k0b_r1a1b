@@ -46,9 +46,9 @@ class UnexpectedError implements IHttpRequest {
 class ErrorAsParameter implements IHttpRequest {
     public get(url: string): Promise<any> {
         return new Promise<any>((resolve, reject) => {
-            resolve({
+            resolve(JSON.stringify({
                 error: "Error message"
-            });
+            }));
         });
     }
 }
