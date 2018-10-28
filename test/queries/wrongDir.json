@@ -1,0 +1,28 @@
+{
+    "title": "invalid apply token",
+    "query": {
+        "WHERE": {
+            "IS": {
+                "rooms_number": "1*"
+            }
+        },
+        "OPTIONS": {
+            "COLUMNS": ["rooms_name"],
+            "ORDER":
+            {
+                "dir": "SIDEWAYS",
+                "keys": ["rooms_name"]
+            }
+        },
+        "TRANSFORMATIONS": {
+            "GROUP": ["rooms_name"],
+            "APPLY": [ {
+                "numberCount": {
+                    "COUNT": "rooms_number"
+                }
+            }]
+        }
+    },
+    "isQueryValid": false,
+    "result": "No"
+}

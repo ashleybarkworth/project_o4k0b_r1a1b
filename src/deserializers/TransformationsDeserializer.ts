@@ -70,30 +70,32 @@ export class TransformationsDeserializer {
                 this.validateKeyIsNumberAndOfCorrectKind(key);
                 return new Max(applyName, key);
             case "COUNT":
-                this.validateKeyIsNumberAndOfCorrectKind(key);
+                this.validateKeyOfCorrectKind(key);
                 return new Count(applyName, key);
             case "SUM":
-                this.validateKeyOfCorrectKind(key);
+                this.validateKeyIsNumberAndOfCorrectKind(key);
                 return new Sum(applyName, key);
         }
     }
 
     private validateKeyIsNumberAndOfCorrectKind(key: string) {
-        if (this.kind === InsightDatasetKind.Courses) {
-            return DeserializingUtils.validCourseNumberTypeKeys.includes(key);
-        } else if (this.kind === InsightDatasetKind.Rooms) {
-            return DeserializingUtils.validRoomNumberTypeKeys.includes(key);
-        } else {
+        let courseNumberType = DeserializingUtils.validCourseNumberTypeKeys.includes(key);
+        let roomNumberType = DeserializingUtils.validRoomNumberTypeKeys.includes(key);
+        if (this.kind === InsightDatasetKind.Courses && !courseNumberType) {
+            throw new InsightError("Key is not a valid numeric COURSES key");
+        } else if (this.kind === InsightDatasetKind.Rooms && !roomNumberType) {
+            throw new InsightError("Key is not a valid numeric ROOMS key");
+        } else if (this.kind !== InsightDatasetKind.Rooms && this.kind !== InsightDatasetKind.Courses) {
             throw new InsightError("Unrecognized kind");
         }
     }
 
     private validateKeyOfCorrectKind(key: string) {
-        if (this.kind === InsightDatasetKind.Courses) {
-            return DeserializingUtils.validCourseKeys.includes(key);
-        } else if (this.kind === InsightDatasetKind.Rooms) {
-            return DeserializingUtils.validRoomKeys.includes(key);
-        } else {
+        if (this.kind === InsightDatasetKind.Courses && !DeserializingUtils.validCourseKeys.includes(key)) {
+            throw new InsightError("Key is not a valid COURSES key");
+        } else if (this.kind === InsightDatasetKind.Rooms && !DeserializingUtils.validRoomKeys.includes(key)) {
+            throw new InsightError("Key is not a valid ROOMS key");
+        } else if (this.kind !== InsightDatasetKind.Rooms && this.kind !== InsightDatasetKind.Courses) {
             throw new InsightError("Unrecognized kind");
         }
     }

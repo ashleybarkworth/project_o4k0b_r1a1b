@@ -72,7 +72,7 @@ export class FilterDeserializer {
      */
     private deserializeLogicComp(filterBody: any, kind: string, datasetKind: InsightDatasetKind): LogicComparison {
         // Must be an array, and must have at least one value
-        if (!Array.isArray(filterBody || filterBody.length < 1)) {
+        if (!Array.isArray(filterBody ) || filterBody.length < 1) {
             throw new InsightError("Passed a non-array value or an empty array into a logic comparison");
         }
         // Deserialize each of the inner filters

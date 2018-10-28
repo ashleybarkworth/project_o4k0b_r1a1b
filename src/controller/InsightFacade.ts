@@ -405,6 +405,7 @@ export default class InsightFacade implements IInsightFacade {
                     let result: any[] = new QueryPerformer().performQuery(iquery, datasetToQuery);
                     resolve(result);
                 } catch (err) {
+                    // Log.error(err.message);
                     reject(new InsightError(err));
                 }
             }

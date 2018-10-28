@@ -61,8 +61,7 @@ export class DeserializingUtils {
     }
 
     public static objectContainsNKeys(obj: any, n: number, name: string) {
-        let keys = Object.keys(obj);
-        if (Array.isArray(obj) || ! (obj instanceof Object) || keys.length !== n) {
+        if (Array.isArray(obj) || ! (obj instanceof Object) || Object.keys(obj).length !== n) {
             throw new InsightError(name + " is not an object containing exactly " + n + " keys");
         }
     }
@@ -80,7 +79,7 @@ export class DeserializingUtils {
     }
 
     public static objectContainsKey(obj: any, key: string, name: string) {
-        if (!Object.keys(obj).includes(key)) {
+        if (Array.isArray(obj) || ! (obj instanceof Object) || !Object.keys(obj).includes(key)) {
             throw new InsightError(name + " did not contain key " + key);
         }
     }

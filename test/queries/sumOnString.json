@@ -1,0 +1,43 @@
+{
+    "title": "sort on multiple keys",
+    "query": {
+        "WHERE": {
+            "LT": {
+                "rooms_seats": 100
+            }
+        },
+        "OPTIONS": {
+            "COLUMNS": [
+                "rooms_shortname",
+                "typeSum",
+                "minLat"
+            ],
+            "ORDER": {
+                "dir": "DOWN",
+                "keys": [
+                    "typeSum",
+                    "minLat"
+                ]
+            }
+        },
+        "TRANSFORMATIONS": {
+            "GROUP": [
+                "rooms_shortname"
+            ],
+            "APPLY": [
+                {
+                    "typeSum": {
+                        "SUM": "rooms_type"
+                    }
+                },
+                {
+                    "minLat": {
+                        "MIN": "rooms_lat"
+                    }
+                }
+            ]
+        }
+    },
+    "isQueryValid": false,
+    "result": "no"
+}

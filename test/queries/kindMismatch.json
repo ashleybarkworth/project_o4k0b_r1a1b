@@ -1,0 +1,28 @@
+{
+    "title": "count",
+    "query": {
+        "WHERE": {
+            "IS": {
+                "courses_number": "1*"
+            }
+        },
+        "OPTIONS": {
+            "COLUMNS": ["courses_shortname", "numberCount"],
+            "ORDER":
+            {
+                "dir": "UP",
+                "keys": ["courses_shortname"]
+            }
+        },
+        "TRANSFORMATIONS": {
+            "GROUP": ["courses_shortname"],
+            "APPLY": [ {
+                "numberCount": {
+                    "COUNT": "courses_number"
+                }
+            }]
+        }
+    },
+    "isQueryValid": false,
+    "result": "type mismatch"
+}
