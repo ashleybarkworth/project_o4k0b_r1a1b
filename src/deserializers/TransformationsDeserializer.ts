@@ -33,7 +33,7 @@ export class TransformationsDeserializer {
     }
 
     private deserializeApplies(rawJson: any): Apply[] {
-        DeserializingUtils.objectIsNonEmptyArray(rawJson, "APPLIES");
+        DeserializingUtils.objectIsArray(rawJson, "APPLIES");
         let result: Apply[] = [];
         for (let apply of rawJson) {
             DeserializingUtils.objectContainsNKeys(apply, 1, "APPLY");
