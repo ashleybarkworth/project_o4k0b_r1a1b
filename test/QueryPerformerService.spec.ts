@@ -21,7 +21,7 @@ describe("Test group by", function () {
             name: "Adam",
             age: 23
         };
-        let result: any[][] = QueryPerformer.groupBy([objA, objB, objC, objD], ["age"]);
+        let result: any[][] = Object.values(QueryPerformer.groupBy([objA, objB, objC, objD], ["age"]));
         expect(result).to.have.length(2);
         expect(result).to.deep.include([{name: "George", age: 20}, {name: "Louis", age: 20}]);
         expect(result).to.deep.include([{name: "Emmy", age: 23}, {name: "Adam", age: 23}]);
@@ -59,7 +59,7 @@ describe("Test group by", function () {
             pet: "cat"
         };
         let arr = [george, emmy, louis, adam, jerry, kayla];
-        let result: any[][] = QueryPerformer.groupBy(arr, ["age", "pet"]);
+        let result: any[][] = Object.values(QueryPerformer.groupBy(arr, ["age", "pet"]));
         expect(result).to.have.length(4);
         expect(result).to.deep.include([louis, kayla]);
         expect(result).to.deep.include([george]);

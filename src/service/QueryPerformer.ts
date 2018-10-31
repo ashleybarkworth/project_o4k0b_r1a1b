@@ -16,8 +16,8 @@ export class QueryPerformer {
         if (transformations == null) {
             result = matchingSections.map((section) => this.getResult(query.options, section));
         } else {
-            let groups: IDataSetEntry[][] = QueryPerformer.groupBy(matchingSections, transformations.group);
-            let intermediary: any[] = groups.map((group) => {
+            let groups: any = QueryPerformer.groupBy(matchingSections, transformations.group);
+            let intermediary: any[] = Object.values(groups).map((group) => {
                 let intermediaryObj: any = {};
                 transformations.group.forEach((g) => intermediaryObj[g] = group[0][g]);
                 transformations.apply.forEach((a) => intermediaryObj[a.getName()] = a.apply(group));
@@ -62,14 +62,16 @@ export class QueryPerformer {
     /**
      * Takes in a list of objects and returns an array of those objects grouped by unique combinations of keys
      */
-    public static groupBy(list: any[], keys: string[]): any[][] {
-        let grouped: any[][] = [];
+    public static groupBy(list: any[], keys: string[]): any {
+        let grouped: any = {};
         for (let entry of list) {
-            let matching: number = grouped.findIndex((a) => keys.every((key) => a[0][key] === entry[key]));
-            if (matching !== -1) {
-                grouped[matching].push(entry);
+            let keyObject: any = {};
+            keys.forEach((key) => keyObject[key] = entry[key]);
+            let mapKey = JSON.stringify(keyObject);
+            if (grouped[mapKey] != null) {
+                grouped[mapKey].push(entry);
             } else {
-                grouped.push([entry]);
+                grouped[mapKey] = [entry];
             }
         }
         return grouped;

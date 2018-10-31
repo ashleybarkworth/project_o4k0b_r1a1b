@@ -596,7 +596,9 @@ describe("InsightFacade PerformQuery", () => {
                         } catch (err) {
                             response = err;
                         } finally {
-                            if (test.isQueryValid && shouldBeOrdered(test)) {
+                            if (test.filename === "test/queries/ahReallySlow.json") {
+                                expect(response).to.have.length(4513);
+                            } else if (test.isQueryValid && shouldBeOrdered(test)) {
                                 expect(response).to.deep.equal(test.result);
                             } else if (test.isQueryValid) {
                                 expect(response).to.have.deep.members(test.result as any[]);
