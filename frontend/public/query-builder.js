@@ -11,6 +11,10 @@ CampusExplorer.buildQuery = function () {
     let form = firstChildWithTag(tab, "FORM");
     query["WHERE"] = buildFilter(form);
     query["OPTIONS"] = buildOptions(form);
+    let transformations = buildTransformations(form);
+    if (transformations != null) {
+        query["TRANSFORMATIONS"] = transformations;
+    }
     console.log(query);
     return query;
 };
@@ -26,10 +30,11 @@ buildFilter = function (form) {
         switch (selectedRadioButton) {
             case "AND":
             case "OR":
-                obj[selectedRadioButton] = filterList;
+                if (filterList.length === 1) obj = filterList[0];
+                else obj[selectedRadioButton] = filterList;
                 break;
             case "NONE":
-                obj["NOT"] = {"OR": filterList}
+                obj["NOT"] = (filterList.length === 1) ? filterList[0] : {"OR": filterList};
         }
     }
     return obj;
@@ -104,30 +109,86 @@ buildFilterList = function (form) {
     }
 };
 
-buildOptions = function(form) {
-   let optionsObj = {};
-   optionsObj["COLUMNS"] = buildColumns(form);
-   let order = buildOrder(form);
-   if (order !== null) {
-       optionsObj["ORDER"] = order;
-   }
-   return optionsObj;
-
-  function buildOrder(form) {
-      return null;
-  }
-
-  function buildColumns(form) {
-    let columns = [];
-    let fields = allSubchildrenWithClass(form, "control field");
-    for (let field of fields) {
-        let input = firstChildWithTag(field, "INPUT");
-        if (input.checked) {
-          columns.push(getDataset() + input.value);
-      }
+buildOptions = function (form) {
+    let optionsObj = {};
+    optionsObj["COLUMNS"] = buildColumns(form);
+    let order = buildOrder(form);
+    if (order != null) {
+        optionsObj["ORDER"] = order;
     }
-    return columns;
-  }
+    return optionsObj;
+
+    function buildOrder(form) {
+        let orderFields = getAllSelectedFromSelectChild(firstSubchildWithClass(form, "control order fields"));
+        if (orderFields.length === 0) {
+            return null;
+        }
+        let isDescending = firstChildWithTag(firstSubchildWithClass(form, "control descending"), "INPUT").checked;
+        let dir = isDescending ? "DOWN" : "UP";
+        return {
+            keys: orderFields,
+            dir: dir
+        };
+    }
+
+    /**
+     * Returns selected columns (e.g. ["courses_XXX", "courses_YYY", "courses_ZZZ"]
+     */
+    function buildColumns(form) {
+        let columns = [];
+        let columnElement = firstSubchildWithClass(form, "form-group columns");
+        let fields = allSubchildrenWithClass(columnElement, "control field");
+        for (let field of fields) {
+            let input = firstChildWithTag(field, "INPUT");
+            if (input.checked) {
+                columns.push(getDataset() + input.value);
+            }
+        }
+        return columns;
+    }
+};
+
+buildTransformations = function (form) {
+
+    let transformations = {};
+    let groups = buildGroups(form);
+    if (groups.length > 0) {
+        transformations["GROUP"] = groups;
+    } else {
+        return null;
+    }
+    transformations["APPLY"] = buildApplies(form);
+
+    return transformations;
+
+    function buildGroups(form) {
+        let columns = [];
+        let groupElement = firstSubchildWithClass(form, "form-group groups");
+        let fields = allSubchildrenWithClass(groupElement, "control field");
+        for (let field of fields) {
+            let input = firstChildWithTag(field, "INPUT");
+            if (input.checked) {
+                columns.push(getDataset() + input.value);
+            }
+        }
+        return columns;
+    }
+
+    function buildApplies(form) {
+        let result = [];
+        let container = firstSubchildWithClass(form, "transformations-container");
+        for (let transformation of container.childNodes) {
+            let field = getSelectedFromSelectChild(firstChildWithClass(transformation, "control fields"));
+            let applyToken = getSelectedFromSelectChild(firstChildWithClass(transformation, "control operators"));
+            let innerObj = {};
+            innerObj[applyToken] = getDataset() + field;
+            let applyName = firstChildWithTag(firstChildWithClass(transformation, "control term"), "INPUT").value;
+            let apply = {};
+            apply[applyName] = innerObj;
+            result.push(apply);
+        }
+        return result;
+    }
 };
 
 /**
@@ -154,6 +215,20 @@ function getSelectedFromSelectChild(element) {
 }
 
 /**
+ * Gets a child of type SELECT, then returns the value of the selected option within that SELECT
+ */
+function getAllSelectedFromSelectChild(element) {
+    let select = firstChildWithTag(element, "SELECT");
+    let results = [];
+    for (let o of select.options) {
+        if (o.selected) {
+            results.push(getDataset() + o.value);
+        }
+    }
+    return results;
+}
+
+/**
  * Return the first child of element that has the given class name
  */
 firstChildWithClass = function (element, className) {
@@ -163,30 +238,30 @@ firstChildWithClass = function (element, className) {
 /**
  * Return the first child somewhere in the subchild tree with the given class name
  */
-firstSubchildWithClass = function(element, className) {
-  if (element.className === className) {
-      return element;
-  } else if (element.childNodes.length !== 0) {
-      for (let child of element.childNodes) {
-          let recursiveResult = firstSubchildWithClass(child, className);
-          if (recursiveResult !== null) {
-              return recursiveResult;
-          }
-      }
-  }
-  return null;
+firstSubchildWithClass = function (element, className) {
+    if (element.className === className) {
+        return element;
+    } else if (element.childNodes.length !== 0) {
+        for (let child of element.childNodes) {
+            let recursiveResult = firstSubchildWithClass(child, className);
+            if (recursiveResult !== null) {
+                return recursiveResult;
+            }
+        }
+    }
+    return null;
 };
 
-allSubchildrenWithTag = function(element, tagName) {
+allSubchildrenWithTag = function (element, tagName) {
     return selectAllSubchildren((e) => e.tagName === tagName, element);
 
 };
 
-allSubchildrenWithClass = function(element, className) {
+allSubchildrenWithClass = function (element, className) {
     return selectAllSubchildren((e) => e.className === className, element);
 };
 
-selectAllSubchildren = function(f, element) {
+selectAllSubchildren = function (f, element) {
     let results = [];
     let childStack = [element];
     while (childStack.length > 0) {
