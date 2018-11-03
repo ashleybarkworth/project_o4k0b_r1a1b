@@ -39,10 +39,18 @@ buildFilter = function (form) {
      * @returns {string} either AND, OR, or NONE
      */
     function getLogicComparison(form) {
-        if (document.getElementById("courses-conditiontype-all").checked) return "AND";
-        if (document.getElementById("courses-conditiontype-any").checked) return "OR";
-        if (document.getElementById("courses-conditiontype-none").checked) return "NONE";
-        throw new Error("Something is not right with dem radio buttons :thinking_face:");
+        let inputs = allSubchildrenWithTag(firstSubchildWithClass(form, "control-group condition-type"), "INPUT");
+        let checked = selectFirst((i => i.checked), inputs);
+        switch (checked.value) {
+            case "all":
+                return "AND";
+            case "any":
+                return "OR";
+            case "none":
+                return "NONE";
+            default:
+                throw new Error("Something is not right with dem radio buttons :thinking_face:");
+        }
     }
 };
 
@@ -96,22 +104,22 @@ buildFilterList = function (form) {
     }
 };
 
-buildOptions = function() {
+buildOptions = function(form) {
    let optionsObj = {};
-   optionsObj["COLUMNS"] = buildColumns();
-   let order = buildOrder();
+   optionsObj["COLUMNS"] = buildColumns(form);
+   let order = buildOrder(form);
    if (order !== null) {
        optionsObj["ORDER"] = order;
    }
    return optionsObj;
 
-  function buildOrder() {
+  function buildOrder(form) {
       return null;
   }
 
-  function buildColumns() {
+  function buildColumns(form) {
     let columns = [];
-    let fields = document.getElementsByClassName("control field");
+    let fields = allSubchildrenWithClass(form, "control field");
     for (let field of fields) {
         let input = firstChildWithTag(field, "INPUT");
         if (input.checked) {
@@ -162,13 +170,33 @@ firstSubchildWithClass = function(element, className) {
       for (let child of element.childNodes) {
           let recursiveResult = firstSubchildWithClass(child, className);
           if (recursiveResult !== null) {
-              console.log("Returning ");
-              console.log(recursiveResult);
               return recursiveResult;
           }
       }
   }
   return null;
+};
+
+allSubchildrenWithTag = function(element, tagName) {
+    return selectAllSubchildren((e) => e.tagName === tagName, element);
+
+};
+
+allSubchildrenWithClass = function(element, className) {
+    return selectAllSubchildren((e) => e.className === className, element);
+};
+
+selectAllSubchildren = function(f, element) {
+    let results = [];
+    let childStack = [element];
+    while (childStack.length > 0) {
+        let element = childStack.pop();
+        if (f(element)) {
+            results.push(element);
+        }
+        element.childNodes.forEach((e) => childStack.push(e));
+    }
+    return results;
 };
 
 /**
@@ -177,7 +205,6 @@ firstSubchildWithClass = function(element, className) {
 firstChildWithTag = function (element, tagName) {
     return selectFirst((e => e.tagName === tagName), element.childNodes);
 };
-
 
 /**
  * Finds and returns the first element of a list for which f(e) is true
