@@ -5,6 +5,9 @@
 import fs = require("fs");
 import restify = require("restify");
 import Log from "../Util";
+import TestUtil from "../../test/TestUtil";
+import InsightFacade from "../controller/InsightFacade";
+import {InsightDataset, NotFoundError} from "../controller/IInsightFacade";
 
 /**
  * This configures the REST endpoints for the server.
@@ -45,6 +48,8 @@ export default class Server {
     public start(): Promise<boolean> {
         const that = this;
         return new Promise(function (fulfill, reject) {
+            let insightFacade = new InsightFacade();
+
             try {
                 Log.info("Server::start() - start");
 
@@ -64,6 +69,79 @@ export default class Server {
                 that.rest.get("/echo/:msg", Server.echo);
 
                 // NOTE: your endpoints should go here
+                that.rest.put("/dataset/:id/:kind", (req: restify.Request,
+                                                     res: restify.Response, next: restify.Next) => {
+                    try {
+                        const datasetContent: string = req.params.body.toString("base64");
+                        const id  = req.params.id;
+                        const kind = req.params.kind;
+                        insightFacade.addDataset(id, datasetContent, kind).then((datasets: string[]) => {
+                            res.json(200, {datasets});
+                        }).catch((err) => {
+                            throw err;
+                        });
+
+                    } catch (err) {
+                        res.json(400, {
+                            error: `Error adding dataset with id = ${req.params.id}.`,
+                        });
+                    }
+                    return next();
+                });
+
+                that.rest.del("/dataset/:id", (req: restify.Request,
+                                               res: restify.Response, next: restify.Next) => {
+                    try {
+                        const id = req.params.id;
+                        insightFacade.removeDataset(id).then((dataset: string) => {
+                            res.json(200, dataset);
+                        }).catch(function (err) {
+                            throw err;
+                        });
+                    } catch (err) {
+                        if (err instanceof NotFoundError) {
+                            res.json(404, {
+                                error: `Could not find dataset with id = ${req.params.id} to remove`,
+                            });
+                        } else {
+                            res.json(400, {
+                                error: `Error occurred while removing dataset with id = ${req.params.id}.`,
+                            });
+                        }
+                    }
+                    return next();
+                });
+
+                that.rest.post("/query", (req: restify.Request,
+                                          res: restify.Response, next: restify.Next) => {
+                    try {
+                        const query: any = req.params.body;
+                        insightFacade.performQuery(query).then((entries: any[]) => {
+                            res.json(200, {entries});
+                        }).catch((err) => {
+                            throw err;
+                        });
+                    } catch (err) {
+                        res.json(400, {
+                            error: `Error occurred while executing query`,
+                        });
+                    }
+                });
+
+                that.rest.get("/datasets", (req: restify.Request,
+                                            res: restify.Response, next: restify.Next) => {
+                    try {
+                        insightFacade.listDatasets().then((datasets: InsightDataset[]) => {
+                            res.json(200, datasets);
+                        }).catch((err) => {
+                            throw err;
+                        });
+                    } catch {
+                        res.json(400, {
+                            error: `Error occurred while retrieving datasets`,
+                        });
+                    }
+                });
 
                 // This must be the last endpoint!
                 that.rest.get("/.*", Server.getStatic);
