@@ -9,3 +9,7 @@
  */
 
 // TODO: implement!
+
+document.getElementById("submit-button").addEventListener('click', function() {
+    CampusExplorer.buildQuery();
+});
