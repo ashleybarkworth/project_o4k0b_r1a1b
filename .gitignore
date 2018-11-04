@@ -13,4 +13,3 @@ test/*.js
 test/*.map
 .DS_Store
 .env
-./idea/misc.xml
