@@ -1,0 +1,23 @@
+{
+    "WHERE": {
+        "AND": [
+            {
+                "EQ": {
+                    "courses_dept": "biol"
+                }
+            },
+            {
+                "GT": {
+                    "courses_fail": 120
+                }
+            }
+        ]
+    },
+    "OPTIONS": {
+        "COLUMNS": [
+            "courses_dept",
+            "courses_avg"
+        ],
+        "ORDER": "courses_avg"
+    }
+}
