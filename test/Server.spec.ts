@@ -19,7 +19,6 @@ describe("Facade D3", function () {
     before(function () {
         facade = new InsightFacade();
         server = new Server(4321);
-        // TODO: start server here once and handle errors properly
         server.start().then(function (val: boolean) {
             Log.info("Server successfully started");
         }).catch(function (err: Error) {
@@ -28,16 +27,18 @@ describe("Facade D3", function () {
     });
 
     after(function () {
-        // TODO: stop server here once!
+        Log.test(`All tests executed: stopping server now`);
         server.stop();
     });
 
     beforeEach(function () {
         // might want to add some process logging here to keep track of what"s going on
+        Log.test(`BeforeTest: ${this.currentTest.title}`);
     });
 
     afterEach(function () {
         // might want to add some process logging here to keep track of what"s going on
+        Log.test(`AfterTest: ${this.currentTest.title}`);
     });
 
     // Hint on how to test PUT requests
@@ -50,14 +51,14 @@ describe("Facade D3", function () {
                 .post("/query")
                 .send(query)
                 .then(function (res: ChaiHttp.Response) {
+                    Log.test(`PUT request unexpectedly returned status  ${res.status}`);
                     chai.expect.fail();
                 })
                 .catch(function (res: ChaiHttp.Response) {
-                    // some logging here please!
                     chai.expect(res.status).to.be.equal(400);
                 });
         } catch (err) {
-            // and some more logging here!
+            Log.test(`${err} occurred during PUT request`);
         }
     });
 
@@ -73,12 +74,11 @@ describe("Facade D3", function () {
                     chai.expect(res.body.datasets).to.deep.include("courses");
                 })
                 .catch(function (err: any) {
-                    // some logging here please!
                     Log.test(err);
                     chai.expect.fail();
                 });
         } catch (err) {
-            // and some more logging here!
+            Log.test(`${err} occurred during PUT request`);
         }
     });
 
@@ -94,12 +94,11 @@ describe("Facade D3", function () {
                     chai.expect(res.body.datasets).to.have.deep.members(["courses", "rooms"]);
                 })
                 .catch(function (err: any) {
-                    // some logging here please!
                     Log.test(err);
                     chai.expect.fail();
                 });
         } catch (err) {
-            // and some more logging here!
+            Log.test(`${err} occurred during PUT request`);
         }
     });
 
@@ -114,11 +113,10 @@ describe("Facade D3", function () {
                     chai.expect.fail();
                 })
                 .catch(function (res: ChaiHttp.Response) {
-                    // some logging here please!
                     chai.expect(res.status).to.be.equal(400);
                 });
         } catch (err) {
-            // and some more logging here!
+            Log.test(`${err} occurred during PUT request`);
         }
     });
 
@@ -133,11 +131,10 @@ describe("Facade D3", function () {
                     chai.expect.fail();
                 })
                 .catch(function (res: ChaiHttp.Response) {
-                    // some logging here please!
                    chai.expect(res.status).to.equal(400);
                 });
         } catch (err) {
-            // and some more logging here!
+            Log.test(`${err} occurred during PUT request`);
         }
     });
 
@@ -148,14 +145,14 @@ describe("Facade D3", function () {
                 .del("/dataset/courses")
                 .then(function (res: ChaiHttp.Response) {
                     chai.expect(res.status).to.be.equal(200);
+                    chai.expect(res.body).to.deep.include("courses");
                 })
                 .catch(function (err: any) {
-                    // some logging here please!
                     Log.test(err);
                     chai.expect.fail();
                 });
         } catch (err) {
-            // and some more logging here!
+            Log.test(`${err} occurred during DELETE request`);
         }
     });
 
@@ -167,11 +164,10 @@ describe("Facade D3", function () {
                     chai.expect.fail();
                 })
                 .catch(function (res: ChaiHttp.Response) {
-                    // some logging here please!
                     chai.expect(res.status).to.be.equal(404);
                 });
         } catch (err) {
-            // and some more logging here!
+            Log.test(`${err} occurred during DELETE request`);
         }
     });
 
@@ -188,12 +184,11 @@ describe("Facade D3", function () {
                     chai.expect(res.body.entries).to.have.length(3);
                 })
                 .catch(function (err: any) {
-                    // some logging here please!
                     Log.test(err);
                     chai.expect.fail();
                 });
         } catch (err) {
-            // and some more logging here!
+            Log.test(`${err} occurred during POST request`);
         }
     });
 
@@ -208,11 +203,10 @@ describe("Facade D3", function () {
                     chai.expect.fail();
                 })
                 .catch(function (res: ChaiHttp.Response) {
-                    // some logging here please!
                     chai.expect(res.status).to.be.equal(400);
                 });
         } catch (err) {
-            // and some more logging here!
+            Log.test(`${err} occurred during POST request`);
         }
     });
 
@@ -227,13 +221,11 @@ describe("Facade D3", function () {
                     chai.expect(res.body).to.be.length(1);
                 })
                 .catch(function (res: ChaiHttp.Response) {
-                    // some logging here please!
                     chai.expect.fail();
                 });
         } catch (err) {
-            // and some more logging here!
+            Log.test(`${err} occurred during GET request`);
         }
     });
 
-    // The other endpoints work similarly. You should be able to find all instructions at the chai-http documentation
 });
