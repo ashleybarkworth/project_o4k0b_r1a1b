@@ -68,7 +68,7 @@ describe("Facade D3", function () {
             Log.test("Test PUT courses dataset");
             return chai.request("http://localhost:4321")
                 .put("/dataset/courses/courses")
-                .attach("body", fs.readFileSync(datasetPath + dataset), dataset)
+                .attach("body", datasetPath + dataset, dataset)
                 .then(function (res: ChaiHttp.Response) {
                     chai.expect(res.status).to.be.equal(200);
                     chai.expect(res.body.datasets).to.deep.include("courses");
@@ -88,7 +88,7 @@ describe("Facade D3", function () {
             Log.test("Test PUT courses dataset");
             return chai.request("http://localhost:4321")
                 .put("/dataset/rooms/rooms")
-                .attach("body", fs.readFileSync(datasetPath + dataset), dataset)
+                .attach("body", datasetPath + dataset, dataset)
                 .then(function (res: ChaiHttp.Response) {
                     chai.expect(res.status).to.be.equal(200);
                     chai.expect(res.body.datasets).to.have.deep.members(["courses", "rooms"]);
@@ -108,7 +108,7 @@ describe("Facade D3", function () {
             Log.test("Test PUT courses dataset");
             return chai.request("http://localhost:4321")
                 .put("/dataset/courses/courses")
-                .attach("body", fs.readFileSync(datasetPath + dataset), dataset)
+                .attach("body", datasetPath + dataset, dataset)
                 .then(function (res: ChaiHttp.Response) {
                     chai.expect.fail();
                 })
