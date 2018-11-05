@@ -89,10 +89,9 @@ buildFilterList = function (form) {
         let field = getSelectedFromSelectChild(firstChildWithClass(filter, "control fields"));
         let value = firstChildWithTag(firstChildWithClass(filter, "control term"), "INPUT").value;
         if (valueMustBeNumber) {
-            if (isNaN(value)) {
-                throw new Error("Not a number!");
+            if (!isNaN(value)) {
+                value = Number(value);
             }
-            value = Number(value);
         }
         innerObj[getDataset() + field] = value;
         return innerObj;
@@ -119,7 +118,14 @@ buildOptions = function (form) {
     return optionsObj;
 
     function buildOrder(form) {
-        let orderFields = getAllSelectedFromSelectChild(firstSubchildWithClass(form, "control order fields"));
+        let options = allSubchildrenWithTag(firstSubchildWithClass(form, "control order fields"), "OPTION");
+        let orderFields = options.filter((o) => o.selected).map((o) => {
+            if (o.className === "transformation") {
+                return o.value;
+            } else {
+                return getDataset() + o.value;
+            }
+        });
         if (orderFields.length === 0) {
             return null;
         }
@@ -136,12 +142,12 @@ buildOptions = function (form) {
      */
     function buildColumns(form) {
         let columns = [];
-        let columnElement = firstSubchildWithClass(form, "form-group columns");
-        let fields = allSubchildrenWithClass(columnElement, "control field");
-        for (let field of fields) {
-            let input = firstChildWithTag(field, "INPUT");
+        let groups = firstSubchildWithClass(form, "control-group");
+        let inputs = allSubchildrenWithTag(groups, "INPUT");
+        for (let input of inputs) {
             if (input.checked) {
-                columns.push(getDataset() + input.value);
+                let val = (input.parentElement.className === "control field") ? getDataset() + input.value : input.value;
+                columns.push(val);
             }
         }
         return columns;
@@ -152,12 +158,13 @@ buildTransformations = function (form) {
 
     let transformations = {};
     let groups = buildGroups(form);
-    if (groups.length > 0) {
-        transformations["GROUP"] = groups;
-    } else {
+    transformations["GROUP"] = groups;
+    let applies = buildApplies(form);
+    transformations["APPLY"] = applies;
+
+    if (groups.length === 0 && applies.length === 0) {
         return null;
     }
-    transformations["APPLY"] = buildApplies(form);
 
     return transformations;
 
@@ -212,20 +219,6 @@ getDataset = function () {
 function getSelectedFromSelectChild(element) {
     let select = firstChildWithTag(element, "SELECT");
     return select.options[select.selectedIndex].value;
-}
-
-/**
- * Gets a child of type SELECT, then returns the value of the selected option within that SELECT
- */
-function getAllSelectedFromSelectChild(element) {
-    let select = firstChildWithTag(element, "SELECT");
-    let results = [];
-    for (let o of select.options) {
-        if (o.selected) {
-            results.push(getDataset() + o.value);
-        }
-    }
-    return results;
 }
 
 /**

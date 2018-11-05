@@ -1,3 +1,11 @@
 {
-    "query1": "simple query IS comparison for department with two columns and old order syntax"
+    "query1": "simple query IS comparison for department with two columns and old order syntax",
+    "query2": "simple query with one transformation",
+    "query3": "rooms query with no transformations",
+    "query4": "rooms query with OR, 2 transformations",
+    "query5": "transformations but no groups",
+    "query6": "no columns",
+    "query7": "non-numeric value passed into eq",
+    "query8": "invalid field passed into is",
+    "query9": "numeric value passed into is"
 }

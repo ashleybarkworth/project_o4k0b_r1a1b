@@ -1,3 +1,11 @@
 {
     "query1":{"WHERE": {"IS": {"courses_dept": "cpsc"} }, "OPTIONS": {"COLUMNS": ["courses_dept", "courses_id"], "ORDER": "courses_id"} },
+    "query2":{"WHERE":{"NOT":{"OR":[{"LT":{"courses_avg":60}},{"GT":{"courses_fail":30}}]}},"OPTIONS":{"COLUMNS":["courses_dept","minAvg"],"ORDER":{"dir":"DOWN","keys":["courses_dept","minAvg"]}},"TRANSFORMATIONS":{"GROUP":["courses_dept"],"APPLY":[{"minAvg":{"MIN":"courses_avg"}}]}},
+    "query3":{"WHERE":{"NOT":{"EQ":{"rooms_seats":30}}},"OPTIONS":{"COLUMNS":["rooms_fullname","rooms_furniture","rooms_seats","rooms_shortname"],"ORDER":{"dir":"UP","keys":["rooms_fullname"]}}},
+    "query4":{"WHERE":{"OR":[{"NOT":{"EQ":{"rooms_seats":30}}},{"IS":{"rooms_name":"G*"}}]},"OPTIONS":{"COLUMNS":["rooms_fullname","rooms_furniture","rooms_seats","rooms_shortname","countType","maxSeats"],"ORDER":{"dir":"UP","keys":["rooms_fullname","rooms_furniture","countType","maxSeats"]}},"TRANSFORMATIONS":{"GROUP":["rooms_fullname","rooms_furniture","rooms_seats","rooms_shortname"],"APPLY":[{"countType":{"COUNT":"rooms_type"}},{"maxSeats":{"MAX":"rooms_seats"}}]}},
+    "query5":{"WHERE":{"OR":[{"NOT":{"EQ":{"rooms_seats":30}}},{"IS":{"rooms_name":"G*"}}]},"OPTIONS":{"COLUMNS":["rooms_fullname","rooms_furniture","rooms_seats","rooms_shortname","countType","maxSeats"],"ORDER":{"dir":"UP","keys":["rooms_fullname","rooms_furniture","countType","maxSeats"]}},"TRANSFORMATIONS":{"GROUP":[],"APPLY":[{"countType":{"COUNT":"rooms_type"}},{"maxSeats":{"MAX":"rooms_seats"}}]}},
+    "query6":{"WHERE":{"NOT":{"NOT":{"EQ":{"rooms_seats":30}}}},"OPTIONS":{"COLUMNS":[],"ORDER":{"dir":"DOWN","keys":["rooms_lat"]}}},
+    "query7":{"WHERE":{"NOT":{"EQ":{"rooms_seats":"asfasdfasdf"}}},"OPTIONS":{"COLUMNS":[]}},
+    "query8":{"WHERE":{"NOT":{"IS":{"rooms_seats":"1"}}},"OPTIONS":{"COLUMNS":["rooms_fullname"],"ORDER":{"dir":"UP","keys":["rooms_seats"]}}},
+    "query9":{"WHERE":{"NOT":{"IS":{"rooms_name":"1"}}},"OPTIONS":{"COLUMNS":["rooms_fullname","rooms_seats"],"ORDER":{"dir":"UP","keys":["rooms_seats"]}}}
 }
