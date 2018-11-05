@@ -71,7 +71,7 @@ export default class Server {
                 // NOTE: your endpoints should go here
                 that.rest.put("/dataset/:id/:kind", (req: restify.Request,
                                                      res: restify.Response, next: restify.Next) => {
-                    const dataset  = fs.readFileSync(req.params.body).toString("base64");
+                    const dataset = req.params.body.toString("base64");
                     const id  = req.params.id;
                     const kind = req.params.kind;
                     insightFacade.addDataset(id, dataset, kind).then((datasets: string[]) => {

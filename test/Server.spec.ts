@@ -126,7 +126,7 @@ describe("Facade D3", function () {
             Log.test("Test PUT courses dataset");
             return chai.request("http://localhost:4321")
                 .put("/dataset/courses/professors")
-                .attach("body", fs.readFileSync(datasetPath + dataset), dataset)
+                .attach("body", datasetPath + dataset, dataset)
                 .then(function (res: ChaiHttp.Response) {
                     chai.expect.fail();
                 })
