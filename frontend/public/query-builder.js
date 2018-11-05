@@ -15,7 +15,6 @@ CampusExplorer.buildQuery = function () {
     if (transformations != null) {
         query["TRANSFORMATIONS"] = transformations;
     }
-    console.log(query);
     return query;
 };
 

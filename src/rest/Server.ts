@@ -108,10 +108,10 @@ export default class Server {
 
                 that.rest.post("/query", (req: restify.Request,
                                           res: restify.Response, next: restify.Next) => {
-                    const query: any = JSON.parse(req.body);
-                    insightFacade.performQuery(query).then((entries: any[]) => {
-                        res.json(200, {entries});
+                    insightFacade.performQuery(req.body).then((result: any[]) => {
+                        res.json(200, {result});
                     }).catch((err) => {
+                        Log.error(err);
                         reject(err);
                         res.json(400, {
                             error: `Error occurred while executing query`,
