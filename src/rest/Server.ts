@@ -90,7 +90,7 @@ export default class Server {
                                                res: restify.Response, next: restify.Next) => {
                     const id = req.params.id;
                     insightFacade.removeDataset(id).then((result: string) => {
-                        res.json(200, result);
+                        res.json(200, {result});
                     }).catch(function (err) {
                         if (err instanceof NotFoundError) {
                             res.json(404, {
@@ -123,13 +123,14 @@ export default class Server {
                 that.rest.get("/datasets", (req: restify.Request,
                                             res: restify.Response, next: restify.Next) => {
                     insightFacade.listDatasets().then((result: InsightDataset[]) => {
-                        res.json(200, result);
+                        res.json(200, {result});
                     }).catch((err) => {
                         reject(err);
                         res.json(400, {
                             error: `Error occurred while retrieving datasets`,
                         });
                     });
+                    return next();
                 });
 
                 // This must be the last endpoint!
