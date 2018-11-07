@@ -154,6 +154,23 @@ describe("Facade D3", function () {
         }
     });
 
+    it("DELETE test for empty id dataset", function () {
+        try {
+            Log.test("Test DELETE courses dataset");
+            return chai.request("http://localhost:4321")
+                .del("/dataset/")
+                .then(function (err: any) {
+                    Log.test(err);
+                    chai.expect.fail();
+                })
+                .catch(function (res: ChaiHttp.Response) {
+                    chai.expect(res.status).to.equal(400);
+                });
+        } catch (err) {
+            Log.test(`${err} occurred during DELETE request`);
+        }
+    });
+
     it("DELETE test for dataset that hasn't been added", function () {
         try {
             return chai.request("http://localhost:4321")
@@ -187,6 +204,18 @@ describe("Facade D3", function () {
                 });
         } catch (err) {
             Log.test(`${err} occurred during POST request`);
+        }
+    });
+
+    it("Test for getStatic instance", function () {
+        try {
+            return chai.request("http://localhost:4321")
+                .get("/")
+                .then(function (res: ChaiHttp.Response) {
+                    chai.expect(res).is.not.equal(null);
+                });
+        } catch {
+            chai.expect.fail();
         }
     });
 

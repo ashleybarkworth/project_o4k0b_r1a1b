@@ -376,7 +376,7 @@ export default class InsightFacade implements IInsightFacade {
     public removeDataset(id: string): Promise<string> {
         let self = this;
         return new Promise<string>(function (resolve, reject) {
-            if (id == null) {
+            if (id == null || id.length === 0) {
                 let err = new InsightError("Null or undefined id");
                 reject(err);
                 return;
