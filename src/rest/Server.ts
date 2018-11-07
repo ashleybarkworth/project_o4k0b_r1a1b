@@ -74,8 +74,8 @@ export default class Server {
                     const dataset = req.params.body.toString("base64");
                     const id  = req.params.id;
                     const kind = req.params.kind;
-                    insightFacade.addDataset(id, dataset, kind).then((datasets: string[]) => {
-                        res.json(200, {datasets});
+                    insightFacade.addDataset(id, dataset, kind).then((result: string[]) => {
+                        res.json(200, {result});
                     }).catch((err) => {
                         reject(err);
                         res.json(400, {
@@ -89,8 +89,8 @@ export default class Server {
                 that.rest.del("/dataset/:id", (req: restify.Request,
                                                res: restify.Response, next: restify.Next) => {
                     const id = req.params.id;
-                    insightFacade.removeDataset(id).then((dataset: string) => {
-                        res.json(200, dataset);
+                    insightFacade.removeDataset(id).then((result: string) => {
+                        res.json(200, result);
                     }).catch(function (err) {
                         if (err instanceof NotFoundError) {
                             res.json(404, {
@@ -122,8 +122,8 @@ export default class Server {
 
                 that.rest.get("/datasets", (req: restify.Request,
                                             res: restify.Response, next: restify.Next) => {
-                    insightFacade.listDatasets().then((datasets: InsightDataset[]) => {
-                        res.json(200, datasets);
+                    insightFacade.listDatasets().then((result: InsightDataset[]) => {
+                        res.json(200, result);
                     }).catch((err) => {
                         reject(err);
                         res.json(400, {
