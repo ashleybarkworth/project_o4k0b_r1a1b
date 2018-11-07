@@ -46,7 +46,6 @@ describe("Facade D3", function () {
     it("POST query before PUT", function () {
         try {
             let query = fs.readFileSync(queryPath + "/queryOne.json").toString();
-            Log.test("Test PUT courses dataset");
             return chai.request("http://localhost:4321")
                 .post("/query")
                 .send(query)
@@ -67,11 +66,11 @@ describe("Facade D3", function () {
             let dataset = "courses.zip";
             Log.test("Test PUT courses dataset");
             return chai.request("http://localhost:4321")
-                .put("/dataset/courses/courses")
+                .put("/dataset/courses2/courses")
                 .attach("body", datasetPath + dataset, dataset)
                 .then(function (res: ChaiHttp.Response) {
                     chai.expect(res.status).to.be.equal(200);
-                    chai.expect(res.body.datasets).to.deep.include("courses");
+                    chai.expect(res.body.result).to.deep.include("courses2");
                 })
                 .catch(function (err: any) {
                     Log.test(err);
@@ -85,13 +84,12 @@ describe("Facade D3", function () {
     it("PUT test for rooms dataset", function () {
         try {
             let dataset = "rooms.zip";
-            Log.test("Test PUT courses dataset");
             return chai.request("http://localhost:4321")
-                .put("/dataset/rooms/rooms")
+                .put("/dataset/rooms2/rooms")
                 .attach("body", datasetPath + dataset, dataset)
                 .then(function (res: ChaiHttp.Response) {
                     chai.expect(res.status).to.be.equal(200);
-                    chai.expect(res.body.datasets).to.have.deep.members(["courses", "rooms"]);
+                    chai.expect(res.body.result).to.have.deep.members(["courses2", "rooms2"]);
                 })
                 .catch(function (err: any) {
                     Log.test(err);
@@ -107,7 +105,7 @@ describe("Facade D3", function () {
             let dataset = "courses.zip";
             Log.test("Test PUT courses dataset");
             return chai.request("http://localhost:4321")
-                .put("/dataset/courses/courses")
+                .put("/dataset/courses2/courses")
                 .attach("body", datasetPath + dataset, dataset)
                 .then(function (res: ChaiHttp.Response) {
                     chai.expect.fail();
@@ -125,7 +123,7 @@ describe("Facade D3", function () {
             let dataset = "rooms.zip";
             Log.test("Test PUT courses dataset");
             return chai.request("http://localhost:4321")
-                .put("/dataset/courses/professors")
+                .put("/dataset/courses3/professors")
                 .attach("body", datasetPath + dataset, dataset)
                 .then(function (res: ChaiHttp.Response) {
                     chai.expect.fail();
@@ -142,10 +140,10 @@ describe("Facade D3", function () {
         try {
             Log.test("Test DELETE courses dataset");
             return chai.request("http://localhost:4321")
-                .del("/dataset/courses")
+                .del("/dataset/courses2")
                 .then(function (res: ChaiHttp.Response) {
                     chai.expect(res.status).to.be.equal(200);
-                    chai.expect(res.body).to.deep.include("courses");
+                    chai.expect(res.body.result).to.deep.include("courses2");
                 })
                 .catch(function (err: any) {
                     Log.test(err);
@@ -174,14 +172,14 @@ describe("Facade D3", function () {
     it("POST test for simple query", function () {
         try {
             Log.test("Test POST query");
-            const query = fs.readFileSync(queryPath + "/queryOne.json").toString();
+            const query = JSON.parse(fs.readFileSync(queryPath + "/queryOne.json").toString());
             return chai.request("http://localhost:4321")
                 .post("/query")
                 .send(query)
                 .then(function (res: ChaiHttp.Response) {
                     chai.expect(res.status).to.be.equal(200);
-                    chai.expect(res.body.entries).to.be.an.instanceOf(Array);
-                    chai.expect(res.body.entries).to.have.length(3);
+                    chai.expect(res.body.result).to.be.an.instanceOf(Array);
+                    chai.expect(res.body.result).to.have.length(3);
                 })
                 .catch(function (err: any) {
                     Log.test(err);
@@ -217,8 +215,9 @@ describe("Facade D3", function () {
                 .get("/datasets")
                 .then(function (res: ChaiHttp.Response) {
                     chai.expect(res.status).to.be.equal(200);
-                    chai.expect(res.body).to.be.an.instanceOf(Array);
-                    chai.expect(res.body).to.be.length(1);
+                    chai.expect(res.body.result).to.be.an.instanceOf(Array);
+                    chai.expect(res.body.result).to.be.length.greaterThan(0);
+                    chai.expect(res.body.result.map((ds: any) => ds.id)).to.deep.include("rooms2");
                 })
                 .catch(function (res: ChaiHttp.Response) {
                     chai.expect.fail();

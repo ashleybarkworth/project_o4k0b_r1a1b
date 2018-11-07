@@ -3,21 +3,21 @@
         "AND": [
             {
                 "EQ": {
-                    "courses_dept": "biol"
+                    "courses2_dept": "biol"
                 }
             },
             {
                 "GT": {
-                    "courses_fail": 120
+                    "courses2_fail": 120
                 }
             }
         ]
     },
     "OPTIONS": {
         "COLUMNS": [
-            "courses_dept",
-            "courses_avg"
+            "courses2_dept",
+            "courses2_avg"
         ],
-        "ORDER": "courses_avg"
+        "ORDER": "courses2_avg"
     }
 }

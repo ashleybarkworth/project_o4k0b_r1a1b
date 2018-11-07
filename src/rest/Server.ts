@@ -76,6 +76,7 @@ export default class Server {
                     insightFacade.addDataset(id, dataset, kind).then((result: string[]) => {
                         res.json(200, {result});
                     }).catch((err) => {
+                        Log.error(err);
                         reject(err);
                         res.json(400, {
                             error: `Error adding dataset with id = ${req.params.id}.`,
@@ -96,6 +97,7 @@ export default class Server {
                                 error: `Could not find dataset with id = ${req.params.id} to remove`,
                             });
                         } else {
+                            Log.error(err.message);
                             reject(err);
                             res.json(400, {
                                 error: `Error occurred while removing dataset with id = ${req.params.id}.`,
@@ -124,6 +126,7 @@ export default class Server {
                     insightFacade.listDatasets().then((result: InsightDataset[]) => {
                         res.json(200, {result});
                     }).catch((err) => {
+                        Log.error(err);
                         reject(err);
                         res.json(400, {
                             error: `Error occurred while retrieving datasets`,

@@ -2,17 +2,17 @@
     "WHERE": {
         "AND": [{
             "IS": {
-                "rooms_furniture": "*Tables*"
+                "rooms2_furniture": "*Tables*"
             }
         }, {
             "GT": {
-                "rooms_seats": 300
+                "rooms2_seats": 300
             }
         }]
     },
     "OPTIONS": {
         "COLUMNS": [
-            "rooms_shortname",
+            "rooms2_shortname",
             "maxSeats"
         ],
         "ORDER": {
@@ -21,10 +21,10 @@
         }
     },
     "TRANSFORMATIONS": {
-        "GROUP": ["rooms_shortname"],
+        "GROUP": ["rooms2_shortname"],
         "APPLY": [{
             "maxSeats": {
-                "MAX": "rooms_seats"
+                "MAX": "rooms2_seats"
             }
         }]
     }
