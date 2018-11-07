@@ -5,7 +5,6 @@
 import fs = require("fs");
 import restify = require("restify");
 import Log from "../Util";
-import TestUtil from "../../test/TestUtil";
 import InsightFacade from "../controller/InsightFacade";
 import {InsightDataset, NotFoundError} from "../controller/IInsightFacade";
 
