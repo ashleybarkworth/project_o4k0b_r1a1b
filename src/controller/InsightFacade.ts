@@ -373,6 +373,7 @@ export default class InsightFacade implements IInsightFacade {
         }
     }
 
+    // Remove dataset
     public removeDataset(id: string): Promise<string> {
         let self = this;
         return new Promise<string>(function (resolve, reject) {
